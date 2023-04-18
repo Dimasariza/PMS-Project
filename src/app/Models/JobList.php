@@ -17,7 +17,7 @@ class JobList extends Model
     protected $fillable = [
         'department_id',
         'ship_id',
-        'system_id',
+        'typing_system_id',
         'component_name',
         'component_code',
         'part_name',
