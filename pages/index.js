@@ -16,20 +16,23 @@ const OverviewWrapper = styled(Box)(
   `
 );
 
-function Overview() {
+function Login() {
   return (
     <OverviewWrapper>
       <Head>
         <title>Batera PMS</title>
       </Head>
       
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: 4 }} className='w-full'>
         <Container maxWidth="sm">
-          <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }}>
+          <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }} className='items-center'>
+
             <img
               src="/static/images/logo/logo-batera.svg"
               alt="Javascript"
+              width={"30%"}
             />
+
             <TextField
               sx={{ width: '100%' }}
               required
@@ -43,22 +46,18 @@ function Overview() {
               type="password"
               autoComplete="current-password"
             />
+
             <Button
               sx={{ width: '100%' }}
               component={Link}
               href="/dashboards/tasks"
               variant="contained"
+              className="text-3xl font-bold underline"
             >
               Login
             </Button>
-            <Button
-              sx={{ width: '100%' }}
-              component={Link}
-              href="/dashboards/tasks"
-              variant="contained"
-            >
-              Examples Preview
-            </Button>
+
+            <h1 className="text-3xl font-bold underline">Test tailwind css</h1>
           </Box>
         </Container>
       </Box>
@@ -66,8 +65,8 @@ function Overview() {
   );
 }
 
-export default Overview;
+export default Login;
 
-Overview.getLayout = function getLayout(page) {
+Login.getLayout = function getLayout(page) {
   return <BaseLayout>{page}</BaseLayout>;
 };
