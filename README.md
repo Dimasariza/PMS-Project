@@ -22,6 +22,8 @@
    chown -R www-data:www-data *
    ```
 
+<br>
+
 2. If you get exception MissingAppKeyException:
 
    ```bash
@@ -34,6 +36,8 @@
    ```bash
    php artisan key:generate
    ```
+
+<br>
 
 3. If you get 403 forbidden from Apache
 
