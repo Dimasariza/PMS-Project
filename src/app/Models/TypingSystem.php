@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class TypingSystem extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'ship_id',
+        'system_name',
+        'running_hours',
+        'serial_number'
+    ];
 }
