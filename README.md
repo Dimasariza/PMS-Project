@@ -17,7 +17,11 @@
    ```
    
    Open laravel docker container as a root and then do this command in `/var/www/html`
-
+   
+   ```bash
+   docker exec -it --user=root laravel-app bash
+   ```
+   
    ```bash
    chown -R www-data:www-data *
    ```
@@ -34,6 +38,10 @@
    Open laravel docker container as a root and then do this command in `/var/www/html`
 
    ```bash
+   docker exec -it --user=root laravel-app bash
+   ```
+
+   ```bash
    php artisan key:generate
    ```
 
@@ -41,7 +49,7 @@
 
 3. If you get 403 forbidden from Apache
 
-   Create file `.htaccess` in `src` folder and copy this
+   Create file `.htaccess` in `src` root folder and copy this
 
    ```bash
    RewriteEngine On
