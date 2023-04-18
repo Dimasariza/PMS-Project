@@ -1,0 +1,17 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Traits\APIResponse;
+use Illuminate\Http\Response;
+
+class {{ class }} extends Controller
+{
+    use APIResponse;
+
+    public function __construct()
+    {
+
+    }
+}
