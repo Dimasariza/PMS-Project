@@ -26,6 +26,11 @@
    chown -R www-data:www-data *
    ```
 
+   If it's still not working, try this
+   ```bash
+   chmod -R 777 storage/
+   ```
+
 <br>
 
 2. If you get exception MissingAppKeyException:

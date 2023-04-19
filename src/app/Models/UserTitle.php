@@ -10,6 +10,13 @@ class UserTitle extends Model
     use HasFactory;
 
     /**
+    * The name of the "updated at" column.
+    *
+    * @var string
+    */
+    const UPDATED_AT = null;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -17,5 +24,6 @@ class UserTitle extends Model
     protected $fillable = [
         'title_name',
         'access',
+        'created_at',
     ];
 }
