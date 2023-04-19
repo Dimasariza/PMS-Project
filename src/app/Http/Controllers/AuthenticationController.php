@@ -13,7 +13,7 @@ class AuthenticationController extends Controller
 {
     use APIResponse;
 
-    private $authService;
+    private AuthService $authService;
 
     public function __construct(AuthService $authService)
     {
