@@ -6,6 +6,7 @@ namespace App\Models;
 
 use App\Enums\WorkPlace;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -61,5 +62,27 @@ class User extends Authenticatable
     public function setPasswordAttribute(string $password)
     {
         $this->attributes['password'] = Hash::make($password);
+    }
+
+
+    /**
+     * One user belongs to one department
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+
+    /**
+     * One user belongs to one title
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user_title(): BelongsTo
+    {
+        return $this->belongsTo(UserTitle::class, 'user_title_id');
     }
 }

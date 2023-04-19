@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Resources\UserResource;
 use App\Services\Auth\AuthService;
 use App\Traits\APIResponse;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class AuthenticationController extends Controller
             return $this->failResponse("Bad credentials", Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->successResponse($user, "Authenticated", Response::HTTP_OK);
+        return $this->successResponse(UserResource::make($user), "Authenticated", Response::HTTP_OK);
     }
 
     public function logout(Request $request)

@@ -2,15 +2,17 @@
 
 namespace App\Services\Auth;
 
+use App\Models\User;
+
 interface AuthService
 {
     /**
      * handle authentication login
      *
      * @param  array $credentials
-     * @return array
+     * @return ?User
      */
-    public function login(array $credentials): ?array;
+    public function login(array $credentials): ?User;
 
     /**
      * handle authentication logout
