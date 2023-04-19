@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\JobType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,6 +16,17 @@ class JobList extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'job_type' => JobType::class,
+    ];
+
 
     /**
      * The attributes that are mass assignable.
