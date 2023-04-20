@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\UserTitle\UserTitleRepository;
+use App\Repositories\UserTitle\UserTitleRepositoryImpl;
 use App\Services\Auth\AuthService;
 use App\Services\Auth\AuthServiceImpl;
 use Illuminate\Support\ServiceProvider;
@@ -13,7 +15,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(AuthService::class, AuthServiceImpl::class);
+        $instances = [
+            [AuthService::class, AuthServiceImpl::class],
+            [UserTitleRepository::class, UserTitleRepositoryImpl::class],
+        ];
+
+        foreach ($instances as $instance) {
+            $this->app->bind($instance[0], $instance[1]);
+        }
     }
 
     /**

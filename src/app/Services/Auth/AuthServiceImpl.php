@@ -21,7 +21,7 @@ class AuthServiceImpl implements AuthService
         }
 
         $user = Auth::user()->load(['department', 'user_title']);
-        $user['token'] = $user->createToken('auth_token')->plainTextToken;
+        $user['token'] = $user->createToken('auth_token', [$user->user_title->title_name])->plainTextToken;
 
         return $user;
     }

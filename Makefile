@@ -7,6 +7,9 @@ stop:
 up:
 	docker-compose up -d
 
+app:
+	docker exec -it laravel-app
+
 migrate:
 	docker exec laravel-app bash -c "php artisan migrate"
 

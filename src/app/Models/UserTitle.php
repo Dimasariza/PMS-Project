@@ -17,6 +17,15 @@ class UserTitle extends Model
     const UPDATED_AT = null;
 
     /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'access' => 'array',
+    ];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

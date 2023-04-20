@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('user_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('title_name');
-            $table->text('access');
+            $table->string('title_name')->unique();
+            $table->json('access');
             $table->timestamp('created_at')->useCurrent();
         });
     }
