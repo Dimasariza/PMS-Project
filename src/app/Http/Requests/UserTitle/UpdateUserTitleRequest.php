@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\UserTitle;
 
+use App\Rules\UserTitle\AccessNameExists;
 use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -27,7 +28,7 @@ class UpdateUserTitleRequest extends FormRequest
     {
         return [
             'titleName' => ['required', 'string', Rule::unique('user_titles', 'title_name')->ignore($this->id)],
-            'titleAccess' => ['required', 'json'],
+            'titleAccess' => ['required', 'json', new AccessNameExists],
         ];
     }
 }
