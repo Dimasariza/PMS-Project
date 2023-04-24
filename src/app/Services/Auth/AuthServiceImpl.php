@@ -34,8 +34,12 @@ class AuthServiceImpl implements AuthService
      */
     public function logout(string $token): bool
     {
-        $token = PersonalAccessToken::findToken($token);
-        $isDeleted = $token->delete();
+        $currentUser = PersonalAccessToken::findToken($token);
+        if(is_null($currentUser)) {
+            return false;
+        }
+
+        $isDeleted = $currentUser->delete();
 
         if($isDeleted) {
             return true;

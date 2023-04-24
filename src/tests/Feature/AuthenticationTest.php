@@ -64,9 +64,9 @@ class AuthenticationTest extends TestCase
         ]);
     }
 
-    public function test_login_success()
+    public function test_login_success(): string
     {
-        $this->postJson(route('auth.login'), [
+        $response = $this->postJson(route('auth.login'), [
             'username' => 'admin123',
             'password' => 'admin1234'
         ])
@@ -82,6 +82,64 @@ class AuthenticationTest extends TestCase
             ->has("data.token")
             ->etc()
         );
+
+        return $response['data']['token'];
+    }
+
+    public function test_logout_with_empty_bearer_token()
+    {
+        $this->postJson(route('auth.logout'))
+        ->assertStatus(400)
+        ->assertJson([
+            'statusCode' => 400,
+            'message' => 'Bad credentials'
+        ]);
+    }
+
+    public function test_logout_with_random_token_should_error()
+    {
+        $this->postJson(route('auth.logout'), [], ['Authorization' => "Bearer {1234567890!#$%^!&@*("])
+        ->assertStatus(400)
+        ->assertJson([
+            'statusCode' => 400,
+            'message' => 'Invalid credentials'
+        ]);
+    }
+
+    public function test_logout_success()
+    {
+        $response = $this->postJson(route('auth.login'), [
+            'username' => 'admin123',
+            'password' => 'admin1234'
+        ]);
+
+        $token = $response['data']['token'];
+
+        $this->postJson(route('auth.logout'), [], ['Authorization' => "Bearer {$token}"])
+        ->assertStatus(200)
+        ->assertJson([
+            'statusCode' => 200,
+            'message' => 'Logout success'
+        ]);
+    }
+
+    public function test_logout_with_same_token_after_logout()
+    {
+        $response = $this->postJson(route('auth.login'), [
+            'username' => 'admin123',
+            'password' => 'admin1234'
+        ]);
+
+        $token = $response['data']['token'];
+
+        $this->postJson(route('auth.logout'), [], ['Authorization' => "Bearer {$token}"]);
+
+        $this->postJson(route('auth.logout'), [], ['Authorization' => "Bearer {$token}"])
+        ->assertStatus(400)
+        ->assertJson([
+            'statusCode' => 400,
+            'message' => 'Invalid credentials'
+        ]);
     }
 
     protected function setUp(): void

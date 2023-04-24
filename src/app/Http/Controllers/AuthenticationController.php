@@ -35,10 +35,14 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         $token = $request->bearerToken();
+        if(is_null($token)) {
+            return $this->failResponse("Bad credentials", Response::HTTP_BAD_REQUEST);
+        }
+
         $deleted = $this->authService->logout($token);
 
         if(!$deleted) {
-            return $this->failResponse("Bad credentials", Response::HTTP_BAD_REQUEST);
+            return $this->failResponse("Invalid credentials", Response::HTTP_BAD_REQUEST);
         }
 
         return $this->successResponse(null, "Logout success", Response::HTTP_OK);
