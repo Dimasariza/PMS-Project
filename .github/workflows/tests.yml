@@ -23,7 +23,7 @@ jobs:
 
     strategy:
       matrix:
-        operating-system: [ubuntu-latest]
+        operating-system: [ ubuntu-latest ]
         php-versions: [ '8.1.10' ]
 
         laravel: [ '10.*' ]

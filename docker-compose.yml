@@ -17,15 +17,6 @@ services:
       - MYSQL_DATABASE=pms_project_db
     ports:
       - 3306:3306
-
-  mysql_db_testing:
-    container_name: mysql_db_testing
-    image: mysql:latest
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=pms_project_db
-    ports:
-      - 3307:3306
   
   phpmyadmin:
     container_name: phpmyadmin
