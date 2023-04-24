@@ -12,7 +12,6 @@ jobs:
 
     services:
       mysql_db:
-        container_name: mysql_db
         image: mysql:latest
         env:
           MYSQL_DATABASE: pms_project_db
