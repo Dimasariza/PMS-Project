@@ -12,6 +12,7 @@ jobs:
 
     services:
       mysql_db:
+        container_name: mysql_db
         image: mysql:latest
         env:
           MYSQL_DATABASE: pms_project_db
@@ -70,7 +71,7 @@ jobs:
           key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
       
       - name: Copy .env
-        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.github', '.env');"
 
       - name: Install Laravel Dependencies
         run: |
