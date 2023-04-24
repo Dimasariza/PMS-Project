@@ -64,9 +64,9 @@ class AuthenticationTest extends TestCase
         ]);
     }
 
-    public function test_login_success(): string
+    public function test_login_success()
     {
-        $response = $this->postJson(route('auth.login'), [
+        $this->postJson(route('auth.login'), [
             'username' => 'admin123',
             'password' => 'admin1234'
         ])
@@ -82,8 +82,6 @@ class AuthenticationTest extends TestCase
             ->has("data.token")
             ->etc()
         );
-
-        return $response['data']['token'];
     }
 
     public function test_logout_with_empty_bearer_token()
