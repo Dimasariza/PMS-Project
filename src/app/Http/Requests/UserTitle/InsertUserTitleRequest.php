@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\UserTitle;
 
+use App\Rules\UserTitle\AccessNameExists;
 use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,7 +27,7 @@ class InsertUserTitleRequest extends FormRequest
     {
         return [
             'titleName' => ['required', 'string', 'unique:user_titles,title_name'],
-            'titleAccess' => ['required', 'json'],
+            'titleAccess' => ['required', 'json', new AccessNameExists],
         ];
     }
 }
