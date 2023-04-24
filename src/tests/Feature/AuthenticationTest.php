@@ -20,6 +20,50 @@ class AuthenticationTest extends TestCase
         ]);
     }
 
+    public function test_all_field_is_required()
+    {
+        $this->postJson(route('auth.login'), [])
+        ->assertStatus(422)
+        ->assertSimilarJson([
+            'statusCode' => 422,
+            'message' => 'Bad input',
+            'errors' => [
+                'username' => 'The username field is required.',
+                'password' => 'The password field is required.'
+            ]
+        ]);
+    }
+
+    public function test_username_is_required()
+    {
+        $this->postJson(route('auth.login'), [
+            'password' => 'something',
+        ])
+        ->assertStatus(422)
+        ->assertSimilarJson([
+            'statusCode' => 422,
+            'message' => 'Bad input',
+            'errors' => [
+                'username' => 'The username field is required.'
+            ]
+        ]);
+    }
+
+    public function test_password_is_required()
+    {
+        $this->postJson(route('auth.login'), [
+            'username' => 'something',
+        ])
+        ->assertStatus(422)
+        ->assertSimilarJson([
+            'statusCode' => 422,
+            'message' => 'Bad input',
+            'errors' => [
+                'password' => 'The password field is required.'
+            ]
+        ]);
+    }
+
     public function test_login_success()
     {
         $this->postJson(route('auth.login'), [
