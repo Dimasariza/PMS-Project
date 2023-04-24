@@ -17,7 +17,7 @@ jobs:
           MYSQL_DATABASE: pms_project_db
           MYSQL_ROOT_PASSWORD: root
         ports:
-          - 33306:3306
+          - 3306:3306
         options: >-
           --health-cmd="mysqladmin ping"
           --health-interval=10s
@@ -85,10 +85,8 @@ jobs:
 
       - name: Run Migrations
         env:
-          DB_HOST: mysql_db
-          DB_CONNECTION: mysql
           DB_DATABASE: pms_project_db
-          DB_PORT: 33306
+          DB_PORT: 3306
           DB_USER: root
           DB_PASSWORD: root
         run: php artisan migrate

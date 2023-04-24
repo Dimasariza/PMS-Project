@@ -20,7 +20,7 @@ abstract class TestCase extends BaseTestCase
      */
     protected function createStarter(): void
     {
-        Artisan::call('migrate');
+        Artisan::call('migrate:fresh');
 
         User::create([
             'username' => 'admin123',
