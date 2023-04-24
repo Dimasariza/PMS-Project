@@ -22,19 +22,6 @@ abstract class TestCase extends BaseTestCase
     {
         Artisan::call('migrate:fresh');
 
-        User::create([
-            'username' => 'admin123',
-            'fullname' => 'Super Admin',
-            'department_id' => 1,
-            'email' => 'admin@gmail.com',
-            'password' => 'admin1234',
-            'user_title_id' => 1,
-            'work_place' => WorkPlace::Office,
-            'status' => true,
-            'document' => 'somedocs.pdf',
-        ]);
-
-
         UserTitle::create([
             'title_name' => 'Admin',
             'access' => [
@@ -54,6 +41,18 @@ abstract class TestCase extends BaseTestCase
             'department_name' => 'Department 1',
             'department_code' => 'D001',
             'work_place' => WorkPlace::Ship,
+        ]);
+
+        User::create([
+            'username' => 'admin123',
+            'fullname' => 'Super Admin',
+            'department_id' => 1,
+            'email' => 'admin@gmail.com',
+            'password' => 'admin1234',
+            'user_title_id' => 1,
+            'work_place' => WorkPlace::Office,
+            'status' => true,
+            'document' => 'somedocs.pdf',
         ]);
     }
 }
