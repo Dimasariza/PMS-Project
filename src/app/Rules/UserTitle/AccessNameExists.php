@@ -15,24 +15,23 @@ class AccessNameExists implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $requestedAccess = json_decode($value, true);
-        if(!$requestedAccess) {
+        if(!$value) {
             $fail("Invalid json structure");
         }
 
         $defaultAccess = AccessTitle::toArrayColumn();
 
-        if(count($defaultAccess) !== count($requestedAccess)) {
-            $fail(sprintf("Total length access title given is not the same, expected %d, got %d", count($defaultAccess), count($requestedAccess)));
+        if(count($defaultAccess) !== count($value)) {
+            $fail(sprintf("Total length access title given is not the same, expected %d, got %d", count($defaultAccess), count($value)));
         }
 
-        foreach ($requestedAccess as $access => $value) {
+        foreach ($value as $access => $currValue) {
             if(!in_array($access, $defaultAccess)) {
                 $fail("Unknown access type '{$access}'");
             }
 
             if(!is_bool($value)) {
-                $fail("Access type value must be boolean, got {$value}");
+                $fail("Access type value must be boolean, got {$currValue}");
             }
         }
     }

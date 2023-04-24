@@ -28,7 +28,7 @@ class UpdateUserTitleRequest extends FormRequest
     {
         return [
             'titleName' => ['required', 'string', Rule::unique('user_titles', 'title_name')->ignore($this->id)],
-            'titleAccess' => ['required', 'json', new AccessNameExists],
+            'titleAccess' => ['required', new AccessNameExists],
         ];
     }
 }

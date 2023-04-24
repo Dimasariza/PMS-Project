@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/v1')->group(function() {
     Route::prefix('/auth')->controller(AuthenticationController::class)->group(function() {
-        Route::post('/login', 'login');
-        Route::post('/logout', 'logout');
+        Route::post('/login', 'login')->name('auth.login');
+        Route::post('/logout', 'logout')->name('auth.logout');
     });
 
     Route::middleware(['auth.api', 'title:Admin'])

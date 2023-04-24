@@ -27,7 +27,7 @@ class InsertUserTitleRequest extends FormRequest
     {
         return [
             'titleName' => ['required', 'string', 'unique:user_titles,title_name'],
-            'titleAccess' => ['required', 'json', new AccessNameExists],
+            'titleAccess' => ['required', new AccessNameExists],
         ];
     }
 }
