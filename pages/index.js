@@ -35,6 +35,13 @@ function Login() {
               width={"30%"}
             />
 
+            
+            <img
+              src="/static/images/logo/logo-batera.svg"
+              alt="Without PMS-project"
+              width={"30%"}
+            />
+
             <TextField
               sx={{ width: '100%' }}
               required
