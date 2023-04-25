@@ -65,7 +65,7 @@ function Sidebar() {
             >
 
               <img
-                src={"/static/images/logo/logo-batera.svg"} 
+                src={url + "/static/images/logo/logo-batera.svg"} 
                 alt="Logo Batera"
                 height={"100%"}
               />
