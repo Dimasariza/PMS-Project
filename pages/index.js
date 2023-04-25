@@ -4,7 +4,6 @@ import Link from 'src/components/Link';
 import Head from 'next/head';
 import TextField from '@mui/material/TextField';
 import NextLink from 'next/link';
-import logo from '../public/static/images/logo/logo-batera.svg'
 
 
 const OverviewWrapper = styled(Box)(
@@ -36,13 +35,6 @@ function Login() {
               width={"30%"}
             />
 
-            
-            <img
-              src={logo}
-              alt="Without PMS-project"
-              width={"30%"}
-            />
-
             <TextField
               sx={{ width: '100%' }}
               required
@@ -58,17 +50,6 @@ function Login() {
               autoComplete="current-password"
             />
 
-            <NextLink href="./PMS-Project/batera/dashboards/tasks" passHref>
-              <Button
-                sx={{ width: '100%' }}
-                component={Link}
-                variant="contained"
-                className="text-3xl font-bold underline"
-              >
-                Login
-              </Button>
-            </NextLink >
-
             <NextLink href="./batera/dashboards/tasks" passHref>
               <Button
                 sx={{ width: '100%' }}
@@ -76,7 +57,7 @@ function Login() {
                 variant="contained"
                 className="text-3xl font-bold underline"
               >
-                Without public url
+                Login
               </Button>
             </NextLink >
 
