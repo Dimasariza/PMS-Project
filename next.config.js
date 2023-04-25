@@ -12,4 +12,4 @@ const redirects = {
   },
 };
 
-module.exports = withImages();
+module.exports = withImages(redirects);
