@@ -29,7 +29,7 @@ function Login() {
 
             <img
               src="/static/images/logo/logo-batera.svg"
-              alt="Javascript"
+              alt="Logo Batera"
               width={"30%"}
             />
 
@@ -51,14 +51,24 @@ function Login() {
             <Button
               sx={{ width: '100%' }}
               component={Link}
-              href="/dashboards/tasks"
+              href="/batera/dashboards/tasks"
               variant="contained"
               className="text-3xl font-bold underline"
             >
               Login
             </Button>
 
-            <h1 className="text-3xl font-bold underline">Test tailwind css</h1>
+            <Button
+              sx={{ width: '100%' }}
+              component={Link}
+              href="/dashboards/tasks"
+              variant="contained"
+              className="text-3xl font-bold underline"
+            >
+              Preview
+            </Button>
+
+            {/* <h1 className="text-3xl font-bold underline">Test tailwind css</h1> */}
           </Box>
         </Container>
       </Box>
