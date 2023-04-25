@@ -223,7 +223,7 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/batera/dashboards/tasks" passHref>
+                <NextLink href="./batera/dashboards/tasks" passHref>
                   <Button
                     className={
                       currentRoute.includes('/batera/dashboards/tasks') ? 'active' : ''
