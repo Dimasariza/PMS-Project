@@ -223,10 +223,10 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/dashboards/tasks" passHref>
+                <NextLink href="/batera/dashboards/tasks" passHref>
                   <Button
                     className={
-                      currentRoute === '/dashboards/tasks' ? 'active' : ''
+                      currentRoute === '/batera/dashboards/tasks' ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -328,10 +328,10 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/management/profile" passHref>
+                <NextLink href="/batera/members/users" passHref>
                   <Button
                     className={
-                      currentRoute === '/management/profile' ? 'active' : ''
+                      currentRoute === '/batera/members/users' ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -343,10 +343,10 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/management/profile/settings" passHref>
+                <NextLink href="/batera/members/department" passHref>
                   <Button
                     className={
-                      currentRoute === '/management/profile/settings'
+                      currentRoute === '/batera/members/department'
                         ? 'active'
                         : ''
                     }

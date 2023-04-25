@@ -50,14 +50,14 @@ function Login() {
             <Button
               sx={{ width: '100%' }}
               component={Link}
-              href="/dashboard-batera/tasks"
+              href="/batera/dashboards/tasks"
               variant="contained"
               className="text-3xl font-bold underline"
             >
               Login
             </Button>
 
-            {/* <Button
+            <Button
               sx={{ width: '100%' }}
               component={Link}
               href="/dashboards/tasks"
@@ -65,7 +65,7 @@ function Login() {
               className="text-3xl font-bold underline"
             >
               Preview
-            </Button> */}
+            </Button>
 
             {/* <h1 className="text-3xl font-bold underline">Test tailwind css</h1> */}
           </Box>
