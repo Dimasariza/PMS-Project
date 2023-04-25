@@ -63,6 +63,7 @@ function Sidebar() {
               }}
             >
               <Image
+                loader={'akamai'}
                 priority
                 src={BateraLogo}
                 alt="Logo Batera"
