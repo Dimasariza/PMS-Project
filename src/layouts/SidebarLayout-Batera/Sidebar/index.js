@@ -30,7 +30,7 @@ const SidebarWrapper = styled(Box)(
 );
 
 function Sidebar() {
-  const url = process.env.PUBLIC_URL
+  const url = process.env.PUBLIC_URL || ""
 
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
@@ -65,7 +65,7 @@ function Sidebar() {
             >
 
               <img
-                src={url || "" + "/static/images/logo/logo-batera.svg"} 
+                src={url + "/static/images/logo/logo-batera.svg"} 
                 alt="Logo Batera"
                 height={"100%"}
               />
