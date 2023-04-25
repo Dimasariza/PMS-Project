@@ -1,7 +1,6 @@
 const withImages = require('next-images');
 
 const redirects = {
-  reactStrictMode: true,
   async redirects() {
     return [
       {
