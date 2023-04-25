@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
+import Image  from 'next/image';
 
 import {
   Box,
@@ -16,6 +17,7 @@ import {
 
 import SidebarMenu from './SidebarMenu';
 import Logo from 'src/components/LogoSign';
+import { ImportExportOutlined } from '@mui/icons-material';
 
 const SidebarWrapper = styled(Box)(
   ({ theme }) => `
@@ -61,10 +63,11 @@ function Sidebar() {
                 width: '100%'
               }}
             >
-              <img
+              <Image
                 src="/static/images/logo/logo-batera.svg"
                 alt="Logo Batera"
                 height={"100%"}
+                width={"100%"}
               />
             </Box>
           </Box>
