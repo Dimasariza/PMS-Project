@@ -30,7 +30,7 @@ function Login() {
           <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }} className='items-center'>
 
             <img
-              src="/static/images/logo/logo-batera.svg"
+              src="PMS-Project/static/images/logo/logo-batera.svg"
               alt="Logo Batera"
               width={"30%"}
             />
