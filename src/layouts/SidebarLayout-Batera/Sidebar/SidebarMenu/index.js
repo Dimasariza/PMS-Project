@@ -327,6 +327,21 @@ function SidebarMenu() {
         >
           <SubMenuWrapper>
             <List component="div">
+            <ListItem component="div">
+                <NextLink href="/batera/members/title-settings" passHref>
+                  <Button
+                    className={
+                      currentRoute === '/batera/members/title-settings' ? 'active' : ''
+                    }
+                    disableRipple
+                    component="a"
+                    onClick={closeSidebar}
+                    startIcon={<AccountCircleTwoToneIcon />}
+                  >
+                    Title Settings
+                  </Button>
+                </NextLink>
+              </ListItem>
               <ListItem component="div">
                 <NextLink href="/batera/members/users" passHref>
                   <Button
@@ -343,10 +358,10 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/batera/members/department" passHref>
+                <NextLink href="/batera/members/departments" passHref>
                   <Button
                     className={
-                      currentRoute === '/batera/members/department'
+                      currentRoute === '/batera/members/departments'
                         ? 'active'
                         : ''
                     }

@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/batera/content/members/users/PageHeader';
+import PageHeader from 'src/batera/content/members/title-settings/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import UsersList from 'src/batera/content/members/users/UsersList';
+import TitlesList from 'src/batera/content/members/title-settings/TitlesList';
 
 function Users() {
   return (
     <>
       <Head>
-        <title>Users</title>
+        <title>Title Settings</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -25,7 +25,7 @@ function Users() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <UsersList />
+            <TitlesList />
           </Grid>
         </Grid>
       </Container>

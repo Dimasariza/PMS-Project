@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/content/Management/Transactions/PageHeader';
+import PageHeader from 'src/batera/content/members/departments/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import RecentOrders from 'src/content/Management/Transactions/RecentOrders';
+import DepartmentsList from 'src/batera/content/members/departments/DepartmentsList';
 
 function Department() {
   return (
@@ -25,7 +25,7 @@ function Department() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <RecentOrders />
+            <DepartmentsList />
           </Grid>
         </Grid>
       </Container>
