@@ -4,8 +4,8 @@ const redirects = {
   async redirects() {
     return [
       {
-        source: '/dashboards',
-        destination: '/dashboards/tasks',
+        source: '/PMS-Project',
+        destination: '/PMS-Project/batera/dashboards/tasks',
         permanent: true
       }
     ];
