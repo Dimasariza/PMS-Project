@@ -1,6 +1,7 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
+
 
 import {
   Box,
@@ -29,6 +30,8 @@ const SidebarWrapper = styled(Box)(
 );
 
 function Sidebar() {
+  const url = process.env.PUBLIC_URL
+
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
   const theme = useTheme();
@@ -60,11 +63,13 @@ function Sidebar() {
                 width: '100%'
               }}
             >
+
               <img
-                src={GH_PUBLIC_URL + "/static/images/logo/logo-batera.svg"} 
+                src={url || "" + "/static/images/logo/logo-batera.svg"} 
                 alt="Logo Batera"
                 height={"100%"}
               />
+
             </Box>
           </Box>
           <Divider
