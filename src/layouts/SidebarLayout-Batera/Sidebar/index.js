@@ -31,6 +31,7 @@ const SidebarWrapper = styled(Box)(
 
 function Sidebar() {
   const url = process.env.PUBLIC_URL || ""
+  console.log(url)
 
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
