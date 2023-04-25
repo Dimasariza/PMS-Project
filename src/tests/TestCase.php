@@ -55,4 +55,34 @@ abstract class TestCase extends BaseTestCase
             'document' => 'somedocs.pdf',
         ]);
     }
+
+    protected function createNonAdminUser(): void
+    {
+        UserTitle::create([
+            'title_name' => 'View Only',
+            'access' => [
+                "shipList" => false,
+                "shipDetails" => false,
+                "jobList" => false,
+                "dataSheet" => false,
+                "stock" => false,
+                "users" => false,
+                "department" => false,
+                "inbox" => false,
+            ],
+            'created_at' => now(),
+        ]);
+
+        User::create([
+            'username' => 'normal123',
+            'fullname' => 'Normal User',
+            'department_id' => 1,
+            'email' => 'normal@gmail.com',
+            'password' => 'normal1234',
+            'user_title_id' => 2,
+            'work_place' => WorkPlace::Ship,
+            'status' => true,
+            'document' => 'somedocs.pdf',
+        ]);
+    }
 }

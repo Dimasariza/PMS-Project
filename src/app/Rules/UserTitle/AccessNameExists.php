@@ -15,24 +15,54 @@ class AccessNameExists implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if(!$value) {
+        $toCheck = match(gettype($value)) {
+            'string' => json_decode($value, true),
+            'array', 'object' => $value,
+        };
+
+        if(!$toCheck) {
             $fail("Invalid json structure");
+            return;
         }
 
         $defaultAccess = AccessTitle::toArrayColumn();
 
-        if(count($defaultAccess) !== count($value)) {
+        if(count($defaultAccess) !== count($toCheck)) {
             $fail(sprintf("Total length access title given is not the same, expected %d, got %d", count($defaultAccess), count($value)));
+            return;
         }
 
-        foreach ($value as $access => $currValue) {
+        foreach ($toCheck as $access => $currValue) {
             if(!in_array($access, $defaultAccess)) {
                 $fail("Unknown access type '{$access}'");
+                return;
             }
 
-            if(!is_bool($value)) {
-                $fail("Access type value must be boolean, got {$currValue}");
+            if(! $this->isBoolean($currValue)) {
+                $type = gettype($currValue);
+                $fail("Access type value must be boolean, got {$type} '{$currValue}'");
+                return;
             }
         }
+    }
+
+
+    /**
+     * Check if the value is boolean (boolean could be int 1|0 or true|false).
+     *
+     * @param  mixed $value
+     * @return bool
+     */
+    protected function isBoolean(mixed $value): bool
+    {
+        if($value === 0 || $value === 1) {
+            return true;
+        }
+
+        if(is_bool($value)) {
+            return true;
+        }
+
+        return false;
     }
 }
