@@ -9,6 +9,7 @@ use App\Traits\APIResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+
 class AuthenticationController extends Controller
 {
     use APIResponse;
