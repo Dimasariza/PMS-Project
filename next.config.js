@@ -9,7 +9,7 @@ const redirects = {
         permanent: true
       }
     ];
-  }
+  },
 };
 
 module.exports = withImages(redirects);

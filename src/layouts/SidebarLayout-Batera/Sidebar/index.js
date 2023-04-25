@@ -10,14 +10,12 @@ import {
   styled,
   Divider,
   useTheme,
-  Button,
   lighten,
   darken
 } from '@mui/material';
 
 import SidebarMenu from './SidebarMenu';
 import Logo from 'src/components/LogoSign';
-import { ImportExportOutlined } from '@mui/icons-material';
 
 const SidebarWrapper = styled(Box)(
   ({ theme }) => `
@@ -63,11 +61,12 @@ function Sidebar() {
                 width: '100%'
               }}
             >
-              <Image
+              <img
                 src="/static/images/logo/logo-batera.svg"
                 alt="Logo Batera"
                 height={"100%"}
-                width={"100%"}
+                // width={"100%"}
+                // loader={"custom"}
               />
             </Box>
           </Box>
