@@ -1,7 +1,8 @@
 import { useContext } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
-// import Image  from 'next/image';
+import Image  from 'next/image';
+import BateraLogo from '../../../../public/static/images/logo/logo-batera.svg'
 
 import {
   Box,
@@ -61,10 +62,12 @@ function Sidebar() {
                 width: '100%'
               }}
             >
-              <img
-                src="/static/images/logo/logo-batera.svg"
+              <Image
+                priority
+                src={BateraLogo}
                 alt="Logo Batera"
                 height={"100%"}
+                width={"100%"}
               />
             </Box>
           </Box>
