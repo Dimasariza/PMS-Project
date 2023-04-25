@@ -1,5 +1,9 @@
 # PMS PROJECT Backend
 
+## Note
+- If you want to running it without a docker, just run in `/src` file with usual setup.
+- Run `php artisan migrate:fresh --seed` after cloning in `/src`
+
 ### Prerequisites
 - Docker 
 - MinGW for Makefile (optional)
@@ -7,6 +11,16 @@
 ### Run
 - Clone this repo branch
 - run `docker-compose up -d`
+- Copy .env.example as .env and change DB section to this
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql_db
+DB_PORT=3306
+DB_DATABASE=pms_project_db
+DB_USERNAME=root
+DB_PASSWORD=root
+```
 
 ### Troubleshooting
 1. If you get exception UnexpectedValueException:
