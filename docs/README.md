@@ -167,7 +167,7 @@ Request Headers
 
 | Key            | Value                                             |
 | -------------  | ------------------------------------------------- |
-| Authorization  | Bearer 8|ljEZbRymxcgYsi6vDYt7m1SRHdXwFfFkQ0dsBwgr |
+| Authorization  | Bearer 8\|ljEZbRymxcgYsi6vDYt7m1SRHdXwFfFkQ0dsBwgr |
 
 
 Response
