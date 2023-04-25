@@ -50,7 +50,7 @@ function Login() {
               autoComplete="current-password"
             />
 
-            <NextLink href="PMS-Project/batera/dashboards/tasks" passHref>
+            <NextLink href="/batera/dashboards/tasks" passHref>
               <Button
                 sx={{ width: '100%' }}
                 component={Link}
