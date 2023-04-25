@@ -20,77 +20,24 @@ function TitlesList() {
       users: true,
       department: true,
     },
-    {
-      id: '2',
-      titleName: 'Captain',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: true,
-      stock: true,
-      users: true,
-      department: true,
-    },
-    {
-      id: '3',
-      titleName: 'Chief Engineer',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: true,
-      stock: true,
-      users: true,
-      department: true,
-    },
-    {
-      id: '4',
-      titleName: 'Chief Officer',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: true,
-      stock: true,
-      users: true,
-      department: true,
-    },
-    {
-      id: '5',
-      titleName: 'Second Engineer',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: false,
-      stock: true,
-      users: true,
-      department: true,
-    },
-    {
-      id: '6',
-      titleName: 'TestUser',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: true,
-      stock: true,
-      users: true,
-      department: true,
-    }
   ];
 
   return (
     <>
-      <Card>
-        <CardHeader
-            title="Title Settings"
+      <div style={{paddingBottom: '2vh'}}>
+        <Card >
+          <CardHeader
+              title="Add Title"
+            />
+          <Divider />
+          <TextField
+            sx={{ width: '100%', padding: '1%' }}
+            required
+            id="outlined-required"
+            label="Title Name"
           />
-        <Divider />
-        <TextField
-          sx={{ width: '100%' }}
-          required
-          id="outlined-required"
-          label="Title Name"
-        />
-      </Card>
+        </Card>
+      </div>
       <Card>
         <TitlesTable titleList={titleList} />
       </Card>

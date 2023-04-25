@@ -125,22 +125,24 @@ const TitlesTable = ({ titleList }) => {
   return (
     <Card>
       <CardHeader
-        title="Title Settings"
+        title="Title Access"
       />
       <Divider />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell align="left">No.</TableCell>
-              <TableCell align="left">Title Name</TableCell>
-              <TableCell align="left">Ship List</TableCell>
-              <TableCell align="left">Ship Details</TableCell>
-              <TableCell align="left">Job List</TableCell>
-              <TableCell align="left">Data Sheet</TableCell>
-              <TableCell align="left">Stock</TableCell>
-              <TableCell align="left">User</TableCell>
-              <TableCell align="left">Department</TableCell>
+              <TableCell align="center">No.</TableCell>
+              <TableCell align="center">Title Name</TableCell>
+              <TableCell align="center">Ship List</TableCell>
+              <TableCell align="center">Ship Details</TableCell>
+              <TableCell align="center">Unscheduled Job</TableCell>
+              <TableCell align="center">Data Sheet</TableCell>
+              <TableCell align="center">Stock</TableCell>
+              <TableCell align="center">User</TableCell>
+              <TableCell align="center">Department</TableCell>
+              <TableCell align="center">Notification</TableCell>
+              <TableCell align="center">Inbox</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -216,7 +218,7 @@ const TitlesTable = ({ titleList }) => {
                     </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Job List Access" arrow>
+                    <Tooltip title="Unscheduled Job Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -262,7 +264,7 @@ const TitlesTable = ({ titleList }) => {
                     </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Data Sheet Access" arrow>
+                    <Tooltip title="Stock List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -285,7 +287,7 @@ const TitlesTable = ({ titleList }) => {
                     </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Data Sheet Access" arrow>
+                    <Tooltip title="User List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -308,7 +310,7 @@ const TitlesTable = ({ titleList }) => {
                     </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Data Sheet Access" arrow>
+                    <Tooltip title="Department List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -319,6 +321,52 @@ const TitlesTable = ({ titleList }) => {
                         size="small"
                       >
                         {title.department ? 
+                          (
+                            <CheckBoxTwoToneIcon fontSize="small" style={{ color: 'green' }} />
+                          ) 
+                          : 
+                          (
+                            <CheckBoxOutlineBlankTwoToneIcon fontSize="small" style={{ color: 'grey' }} />
+                          )
+                        }
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                  <TableCell align='center'>
+                    <Tooltip title="Notification Access" arrow>
+                      <IconButton
+                        sx={{
+                          '&:hover': {
+                            background: theme.colors.primary.lighter
+                          },
+                          color: theme.palette.primary.main
+                        }}
+                        size="small"
+                      >
+                        {title.notification ? 
+                          (
+                            <CheckBoxTwoToneIcon fontSize="small" style={{ color: 'green' }} />
+                          ) 
+                          : 
+                          (
+                            <CheckBoxOutlineBlankTwoToneIcon fontSize="small" style={{ color: 'grey' }} />
+                          )
+                        }
+                      </IconButton>
+                    </Tooltip>
+                  </TableCell>
+                  <TableCell align='center'>
+                    <Tooltip title="Inbox Access" arrow>
+                      <IconButton
+                        sx={{
+                          '&:hover': {
+                            background: theme.colors.primary.lighter
+                          },
+                          color: theme.palette.primary.main
+                        }}
+                        size="small"
+                      >
+                        {title.inbox ? 
                           (
                             <CheckBoxTwoToneIcon fontSize="small" style={{ color: 'green' }} />
                           ) 

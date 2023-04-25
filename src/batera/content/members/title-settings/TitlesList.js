@@ -14,6 +14,8 @@ function TitlesList() {
       stock: false,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     },
     {
       id: '2',
@@ -25,6 +27,8 @@ function TitlesList() {
       stock: true,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     },
     {
       id: '3',
@@ -36,6 +40,8 @@ function TitlesList() {
       stock: true,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     },
     {
       id: '4',
@@ -47,6 +53,8 @@ function TitlesList() {
       stock: true,
       users: true,
       department: true,
+      notification: false,
+      inbox: false,
     },
     {
       id: '5',
@@ -58,6 +66,8 @@ function TitlesList() {
       stock: true,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     },
     {
       id: '6',
@@ -69,6 +79,8 @@ function TitlesList() {
       stock: true,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     }
   ];
 
