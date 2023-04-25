@@ -43,6 +43,7 @@ function Login() {
               sx={{ width: '100%' }}
               id="outlined-password-input"
               label="Password"
+              required
               type="password"
               autoComplete="current-password"
             />
