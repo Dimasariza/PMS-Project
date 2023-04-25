@@ -226,7 +226,7 @@ function SidebarMenu() {
                 <NextLink href="/batera/dashboards/tasks" passHref>
                   <Button
                     className={
-                      currentRoute === '/batera/dashboards/tasks' ? 'active' : ''
+                      currentRoute.includes('/batera/dashboards/tasks') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -241,7 +241,7 @@ function SidebarMenu() {
                 <NextLink href="/applications/messenger" passHref>
                   <Button
                     className={
-                      currentRoute === '/applications/messenger' ? 'active' : ''
+                      currentRoute.includes('/applications/messenger') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -256,7 +256,7 @@ function SidebarMenu() {
                 <NextLink href="/applications/messenger" passHref>
                   <Button
                     className={
-                      currentRoute === '/applications/messenger' ? 'active' : ''
+                      currentRoute.includes('/applications/messenger') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -284,7 +284,7 @@ function SidebarMenu() {
                 <NextLink href="/management/transactions" passHref>
                   <Button
                     className={
-                      currentRoute === '/management/transactions'
+                      currentRoute.includes('/management/transactions')
                         ? 'active'
                         : ''
                     }
@@ -301,7 +301,7 @@ function SidebarMenu() {
                 <NextLink href="/management/transactions" passHref>
                   <Button
                     className={
-                      currentRoute === '/management/transactions'
+                      currentRoute.includes('/management/transactions')
                         ? 'active'
                         : ''
                     }
@@ -331,7 +331,7 @@ function SidebarMenu() {
                 <NextLink href="/batera/members/title-settings" passHref>
                   <Button
                     className={
-                      currentRoute === '/batera/members/title-settings' ? 'active' : ''
+                      currentRoute.includes('/batera/members/title-settings') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -346,7 +346,7 @@ function SidebarMenu() {
                 <NextLink href="/batera/members/users" passHref>
                   <Button
                     className={
-                      currentRoute === '/batera/members/users' ? 'active' : ''
+                      currentRoute.includes('/batera/members/users') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -361,7 +361,7 @@ function SidebarMenu() {
                 <NextLink href="/batera/members/departments" passHref>
                   <Button
                     className={
-                      currentRoute === '/batera/members/departments'
+                      currentRoute.includes('/batera/members/departments')
                         ? 'active'
                         : ''
                     }
@@ -391,7 +391,7 @@ function SidebarMenu() {
                 <NextLink href="/components/buttons" passHref>
                   <Button
                     className={
-                      currentRoute === '/components/buttons' ? 'active' : ''
+                      currentRoute.includes('/components/buttons') ? 'active' : ''
                     }
                     disableRipple
                     component="a"
@@ -406,7 +406,7 @@ function SidebarMenu() {
                 <NextLink href="/components/modals" passHref>
                   <Button
                     className={
-                      currentRoute === '/components/modals' ? 'active' : ''
+                      currentRoute.includes('/components/modals') ? 'active' : ''
                     }
                     disableRipple
                     component="a"

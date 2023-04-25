@@ -58,7 +58,7 @@ function Login() {
               Login
             </Button>
 
-            <Button
+            {/* <Button
               sx={{ width: '100%' }}
               component={Link}
               href="/dashboards/tasks"
@@ -66,7 +66,7 @@ function Login() {
               className="text-3xl font-bold underline"
             >
               Preview
-            </Button>
+            </Button> */}
 
             {/* <h1 className="text-3xl font-bold underline">Test tailwind css</h1> */}
           </Box>
