@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
-import lgoo from './../../../../public/static/images/logo/logo-batera.svg'
 
 import {
   Box,
@@ -62,10 +61,9 @@ function Sidebar() {
               }}
             >
               <img
-                src="/PMS-Project/static/images/logo/logo-batera.svg"
+                src={GH_PUBLIC_URL + "/static/images/logo/logo-batera.svg"} 
                 alt="Logo Batera"
                 height={"100%"}
-                width={"100%"}
               />
             </Box>
           </Box>
