@@ -31,7 +31,7 @@ function Login() {
           <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }} className='items-center'>
 
             <img
-              src={"/static/images/logo/logo-batera.svg"} 
+              src={url + "/static/images/logo/logo-batera.svg"} 
               alt="Logo Batera"
               width={"30%"}
             />
@@ -51,14 +51,13 @@ function Login() {
               autoComplete="current-password"
             />
 
-            <NextLink href="/batera/dashboards/tasks" passHref>
+            <NextLink href= {url + "/batera/dashboards/tasks"} passHref>
               <Button
                 sx={{ width: '100%' }}
                 component={Link}
                 variant="contained"
                 className="text-3xl font-bold underline"
               >
-                2
                 Login
               </Button>
             </NextLink >

@@ -190,6 +190,8 @@ function SidebarMenu() {
   const router = useRouter();
   const currentRoute = router.pathname;
 
+  const url = process.env.PUBLIC_URL;
+
   return (
     <>
       <MenuWrapper>
@@ -223,7 +225,7 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/batera/dashboards/tasks" passHref>
+                <NextLink href={url + "/batera/dashboards/tasks"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/batera/dashboards/tasks') ? 'active' : ''
