@@ -41,6 +41,13 @@ class UserTitleTest extends TestCase
         ]);
     }
 
+    public function test_get_all_user_titles()
+    {
+        $this->withHeader("Authorization", "Bearer {$this->authToken}")
+        ->get(route('user_title.index'))
+        ->assertStatus(200);
+    }
+
     public function test_create_new_user_title_success()
     {
         $this->postJson(route('user_title.store'), [
