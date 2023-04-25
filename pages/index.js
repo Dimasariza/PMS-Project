@@ -5,7 +5,6 @@ import Head from 'next/head';
 import TextField from '@mui/material/TextField';
 import NextLink from 'next/link';
 
-
 const OverviewWrapper = styled(Box)(
   ({ theme }) => `
     overflow: auto;
@@ -31,12 +30,23 @@ function Login() {
         <Container maxWidth="sm">
           <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }} className='items-center'>
 
-            <img
+            {/* <img
               src={"/static/images/logo/logo-batera.svg"} 
               alt="Logo Batera"
               width={"30%"}
-            />
-              1
+            /> */}
+                 <Box
+                  component="img"
+                  sx={{
+                    height: 233,
+                    width: 350,
+                    maxHeight: { xs: 233, md: 167 },
+                    maxWidth: { xs: 350, md: 250 },
+                  }}
+                  alt="The house from the offer."
+                  src={"/static/images/logo/logo-batera.svg"} 
+                />
+                
             <TextField
               sx={{ width: '100%' }}
               required
