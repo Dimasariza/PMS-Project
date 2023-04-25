@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTitleController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,8 @@ Route::prefix('/v1')->group(function() {
     Route::middleware(['auth.api', 'title:Admin'])
     ->apiResource('user_title', UserTitleController::class)
     ->only(['index', 'store', 'update']);
+
+    Route::middleware(['auth.api', 'title:Admin'])
+    ->apiResource('user', UserController::class)
+    ->except('destroy');
 });
