@@ -3,6 +3,8 @@ import BaseLayout from 'src/layouts/BaseLayout';
 import Link from 'src/components/Link';
 import Head from 'next/head';
 import TextField from '@mui/material/TextField';
+import NextLink from 'next/link';
+
 
 const OverviewWrapper = styled(Box)(
   ({ theme }) => `
@@ -48,27 +50,19 @@ function Login() {
               autoComplete="current-password"
             />
 
-            <Button
-              sx={{ width: '100%' }}
-              component={Link}
-              href="/batera/dashboards/tasks"
-              variant="contained"
-              className="text-3xl font-bold underline"
-            >
-              Login
-            </Button>
+            <NextLink href="/batera/dashboards/tasks" passHref>
+              <Button
+                sx={{ width: '100%' }}
+                component={Link}
+                // href="/batera/dashboards/tasks"
+                variant="contained"
+                className="text-3xl font-bold underline"
+              >
+                Login
+              </Button>
+            </NextLink >
 
-            {/* <Button
-              sx={{ width: '100%' }}
-              component={Link}
-              href="/dashboards/tasks"
-              variant="contained"
-              className="text-3xl font-bold underline"
-            >
-              Preview
-            </Button> */}
 
-            {/* <h1 className="text-3xl font-bold underline">Test tailwind css</h1> */}
           </Box>
         </Container>
       </Box>
