@@ -22,9 +22,8 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
 
     public function create(InsertUserDTO $dto): stdClass
     {
-        return $this->format(
-            $this->model->create($dto->build())->tArray(),
-        );
+        $result = $this->model->create($dto->build())->load(['department', 'user_title']);
+        return $this->format($result->toArray());
     }
 
     public function update(int|string $id, UpdateUserDTO $dto): stdClass

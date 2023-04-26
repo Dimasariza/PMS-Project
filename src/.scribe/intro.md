@@ -1,9 +1,9 @@
 # Introduction
 
-
+This is the documentation for PMS Project. If there is something wrong, please contact the developer.
 
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>localhost:{port}/api/v1</code>
 </aside>
 
 This documentation aims to provide all the information you need to work with our API.

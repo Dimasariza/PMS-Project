@@ -6,9 +6,11 @@ use App\DTO\User\InsertUserDTO;
 use App\DTO\User\UpdateUserDTO;
 use App\Http\Requests\User\InsertUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
-use App\Http\Resources\User\UserResource;
+use App\Http\Resources\User\UserCreatedResource;
+use App\Http\Resources\UserResource;
 use App\Services\User\UserService;
 use App\Traits\APIResponse;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -34,7 +36,7 @@ class UserController extends Controller
         );
 
         return $this->successResponse(
-            UserResource::make($result),
+            UserCreatedResource::make($result),
             "Created",
             Response::HTTP_CREATED,
         );

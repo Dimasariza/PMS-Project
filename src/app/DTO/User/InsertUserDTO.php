@@ -14,7 +14,7 @@ class InsertUserDTO
         readonly public string $password,
         readonly public string $userTitleId,
         readonly public string $workPlace,
-        readonly public boolean $status,
+        readonly public bool $status,
         readonly public mixed $document,
     ) {}
 

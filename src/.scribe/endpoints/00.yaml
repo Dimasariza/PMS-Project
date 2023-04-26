@@ -1,21 +1,17 @@
-name: Auth
-description: |-
-
-  APIs for managing auth
+name: Endpoints
+description: ''
 endpoints:
   -
     httpMethods:
       - POST
     uri: api/v1/auth/login
     metadata:
-      groupName: Auth
-      groupDescription: |-
-
-        APIs for managing auth
+      groupName: Endpoints
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: Login
-      description: 'This endpoint is used to login a user to the system.'
+      title: ''
+      description: ''
       authenticated: false
       custom: []
     headers:
@@ -30,41 +26,21 @@ endpoints:
         name: username
         description: ''
         required: true
-        example: superadmin
+        example: et
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: user1234
+        example: quis
         type: string
         custom: []
     cleanBodyParameters:
-      username: superadmin
-      password: user1234
+      username: et
+      password: quis
     fileParameters: []
-    responses:
-      -
-        status: 200
-        content: |-
-          {
-          "message": "User Login Successfully",
-          "access_token": "8|MgowQLkdpShwrb8AI9j1YAGmwnDjAOeE17XrP5nb",
-          "token_type": "Bearer"
-          }
-        headers: []
-        description: 'Successful Login'
-        custom: []
-      -
-        status: 401
-        content: |-
-          {
-          "message": "Invalid login credentials"
-          }
-        headers: []
-        description: 'Failed Login'
-        custom: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -76,14 +52,42 @@ endpoints:
       - POST
     uri: api/v1/auth/logout
     metadata:
-      groupName: Auth
-      groupDescription: |-
-
-        APIs for managing auth
+      groupName: Endpoints
+      groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: Logout
-      description: 'This endpoint is used to logout a user to the system.'
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/user_title
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
       authenticated: false
       custom: []
     headers:
@@ -98,25 +102,410 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: |-
-          {
-          "message": "User Login Successfully",
-          "access_token": "8|MgowQLkdpShwrb8AI9j1YAGmwnDjAOeE17XrP5nb",
-          "token_type": "Bearer"
-          }
-        headers: []
-        description: 'Successful Login'
+        status: 403
+        content: '{"statusCode":403,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
         custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user_title
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      titleName:
+        name: titleName
+        description: ''
+        required: true
+        example: inventore
+        type: string
+        custom: []
+      titleAccess:
+        name: titleAccess
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+    cleanBodyParameters:
+      titleName: inventore
+      titleAccess: quia
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/user_title/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user title.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      titleName:
+        name: titleName
+        description: ''
+        required: true
+        example: nihil
+        type: string
+        custom: []
+      titleAccess:
+        name: titleAccess
+        description: ''
+        required: true
+        example: quae
+        type: string
+        custom: []
+    cleanBodyParameters:
+      titleName: nihil
+      titleAccess: quae
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/user
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
       -
-        status: 401
-        content: |-
-          {
-          "message": "Invalid login credentials"
-          }
-        headers: []
-        description: 'Failed Login'
+        status: 403
+        content: '{"statusCode":403,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
         custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      username:
+        name: username
+        description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
+        required: true
+        example: eufqkrgybmw
+        type: string
+        custom: []
+      fullname:
+        name: fullname
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: vm
+        type: string
+        custom: []
+      departmentId:
+        name: departmentId
+        description: ''
+        required: true
+        example: ut
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        required: true
+        example: reichel.albin@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+        required: true
+        example: '~ui\8c}x'
+        type: string
+        custom: []
+      userTitleId:
+        name: userTitleId
+        description: ''
+        required: true
+        example: voluptatem
+        type: string
+        custom: []
+      workPlace:
+        name: workPlace
+        description: 'Must be one of <code>ship</code> or <code>office</code>.'
+        required: true
+        example: office
+        type: string
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: true
+        example: false
+        type: boolean
+        custom: []
+      document:
+        name: document
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    cleanBodyParameters:
+      username: eufqkrgybmw
+      fullname: vm
+      departmentId: ut
+      email: reichel.albin@example.net
+      password: '~ui\8c}x'
+      userTitleId: voluptatem
+      workPlace: office
+      status: false
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/user/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 403
+        content: '{"statusCode":403,"message":"Unauthenticated"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/v1/user/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      username:
+        name: username
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: wzfewvuxnyadzpmiaa
+        type: string
+        custom: []
+      fullname:
+        name: fullname
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: cwmiiwkkjjqcpejaqqmzvwy
+        type: string
+        custom: []
+      departmentId:
+        name: departmentId
+        description: ''
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: abner.baumbach@example.net
+        type: string
+        custom: []
+      userTitleId:
+        name: userTitleId
+        description: ''
+        required: true
+        example: at
+        type: string
+        custom: []
+      workPlace:
+        name: workPlace
+        description: ''
+        required: true
+        example: eos
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'Must be one of <code>true</code> or <code>false</code>.'
+        required: true
+        example: 'true'
+        type: boolean
+        custom: []
+      document:
+        name: document
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    cleanBodyParameters:
+      username: wzfewvuxnyadzpmiaa
+      fullname: cwmiiwkkjjqcpejaqqmzvwy
+      departmentId: accusantium
+      email: abner.baumbach@example.net
+      userTitleId: at
+      workPlace: eos
+      status: 'true'
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null

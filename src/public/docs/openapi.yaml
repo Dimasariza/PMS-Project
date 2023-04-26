@@ -1,0 +1,319 @@
+openapi: 3.0.3
+info:
+  title: 'PMS Project API Documentation'
+  description: 'This is the documentation for PMS Project. If there is something wrong, please contact the developer.'
+  version: 1.0.0
+servers:
+  -
+    url: 'localhost:{port}/api/v1'
+paths:
+  /api/v1/auth/login:
+    post:
+      summary: ''
+      operationId: postApiV1AuthLogin
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: ''
+                  example: et
+                password:
+                  type: string
+                  description: ''
+                  example: quis
+              required:
+                - username
+                - password
+      security: []
+  /api/v1/auth/logout:
+    post:
+      summary: ''
+      operationId: postApiV1AuthLogout
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/user_title:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 403
+                  message: Unauthenticated
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  message:
+                    type: string
+                    example: Unauthenticated
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titleName:
+                  type: string
+                  description: ''
+                  example: inventore
+                titleAccess:
+                  type: string
+                  description: ''
+                  example: quia
+              required:
+                - titleName
+                - titleAccess
+      security: []
+  '/api/v1/user_title/{id}':
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titleName:
+                  type: string
+                  description: ''
+                  example: nihil
+                titleAccess:
+                  type: string
+                  description: ''
+                  example: quae
+              required:
+                - titleName
+                - titleAccess
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user title.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/user:
+    get:
+      summary: ''
+      operationId: getApiV1User
+      description: ''
+      parameters: []
+      responses:
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 403
+                  message: Unauthenticated
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  message:
+                    type: string
+                    example: Unauthenticated
+      tags:
+        - Endpoints
+      security: []
+    post:
+      summary: ''
+      operationId: postApiV1User
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
+                  example: eufqkrgybmw
+                fullname:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: vm
+                departmentId:
+                  type: string
+                  description: ''
+                  example: ut
+                email:
+                  type: string
+                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
+                  example: reichel.albin@example.net
+                password:
+                  type: string
+                  description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+                  example: '~ui\8c}x'
+                userTitleId:
+                  type: string
+                  description: ''
+                  example: voluptatem
+                workPlace:
+                  type: string
+                  description: 'Must be one of <code>ship</code> or <code>office</code>.'
+                  example: office
+                status:
+                  type: boolean
+                  description: ''
+                  example: false
+                document:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - username
+                - fullname
+                - departmentId
+                - email
+                - password
+                - userTitleId
+                - workPlace
+                - status
+      security: []
+  '/api/v1/user/{id}':
+    get:
+      summary: ''
+      operationId: getApiV1UserId
+      description: ''
+      parameters: []
+      responses:
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 403
+                  message: Unauthenticated
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 403
+                  message:
+                    type: string
+                    example: Unauthenticated
+      tags:
+        - Endpoints
+      security: []
+    put:
+      summary: ''
+      operationId: putApiV1UserId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: wzfewvuxnyadzpmiaa
+                fullname:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: cwmiiwkkjjqcpejaqqmzvwy
+                departmentId:
+                  type: string
+                  description: ''
+                  example: accusantium
+                email:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: abner.baumbach@example.net
+                userTitleId:
+                  type: string
+                  description: ''
+                  example: at
+                workPlace:
+                  type: string
+                  description: ''
+                  example: eos
+                status:
+                  type: boolean
+                  description: 'Must be one of <code>true</code> or <code>false</code>.'
+                  example: 'true'
+                document:
+                  type: string
+                  description: ''
+                  example: null
+              required:
+                - username
+                - fullname
+                - departmentId
+                - email
+                - userTitleId
+                - workPlace
+                - status
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''

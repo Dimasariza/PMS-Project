@@ -28,14 +28,14 @@ class InsertUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'max:255', 'unique:users,username'],
+            'username' => ['required', 'string', 'max:255', 'regex:/^\S*$/u', 'unique:users,username'],
             'fullname' => ['required', 'string', 'max:255'],
-            'departmentId' => ['required', 'exists:deparments,id'],
-            'email' => ['required', 'max:255', 'unique:users,email'],
+            'departmentId' => ['required', 'exists:departments,id'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'min:8', 'max:255'],
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
-            'status' => ['required', 'boolean', 'in:true,false'],
+            'status' => ['required', 'boolean'],
             'document' => ['nullable'],
         ];
     }

@@ -21,9 +21,12 @@ class HasAccessTitle
     {
         $token = $request->bearerToken();
         $user = PersonalAccessToken::findToken($token);
-        $abilities = $user->abilities;
+        if(!$user || is_null($user)) {
+            return $this->failResponse("Unauthenticated", Response::HTTP_FORBIDDEN);
+        }
 
-        if(!$user) {
+        $abilities = $user->abilities;
+        if(!$abilities || is_null($abilities)) {
             return $this->failResponse("Unauthenticated", Response::HTTP_FORBIDDEN);
         }
 
