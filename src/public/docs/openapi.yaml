@@ -5,17 +5,145 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'localhost:{port}/api/v1'
+    url: 'http://localhost:9000'
 paths:
   /api/v1/auth/login:
     post:
-      summary: ''
-      operationId: postApiV1AuthLogin
-      description: ''
+      summary: Login
+      operationId: login
+      description: 'Login an user.'
       parameters: []
-      responses: {  }
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Authenticated
+                  data:
+                    id: 16
+                    username: superadmin
+                    fullname: 'LeBron Juara NBA 2K23'
+                    email: admin@gmail.com
+                    workPlace: office
+                    status: true
+                    document: some_document.pdf
+                    createdAt: '2023-04-26 12:56:31'
+                    updatedAt: '2023-04-26 12:56:31'
+                    department:
+                      id: 5
+                      name: 'Dr. Destiney Fadel II'
+                      code: BY
+                      workPlace: "96159 Abernathy Field Suite 772\nCronamouth, WI 79459"
+                    title:
+                      id: 4
+                      name: Admin
+                      access:
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
+                      createdAt: '2023-04-26 12:56:29'
+                    token: 2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Authenticated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 16
+                      username:
+                        type: string
+                        example: superadmin
+                      fullname:
+                        type: string
+                        example: 'LeBron Juara NBA 2K23'
+                      email:
+                        type: string
+                        example: admin@gmail.com
+                      workPlace:
+                        type: string
+                        example: office
+                      status:
+                        type: boolean
+                        example: true
+                      document:
+                        type: string
+                        example: some_document.pdf
+                      createdAt:
+                        type: string
+                        example: '2023-04-26 12:56:31'
+                      updatedAt:
+                        type: string
+                        example: '2023-04-26 12:56:31'
+                      department:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 5
+                          name:
+                            type: string
+                            example: 'Dr. Destiney Fadel II'
+                          code:
+                            type: string
+                            example: BY
+                          workPlace:
+                            type: string
+                            example: "96159 Abernathy Field Suite 772\nCronamouth, WI 79459"
+                      title:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 4
+                          name:
+                            type: string
+                            example: Admin
+                          access:
+                            type: object
+                            properties:
+                              stock:
+                                type: boolean
+                                example: true
+                              users:
+                                type: boolean
+                                example: true
+                              jobList:
+                                type: boolean
+                                example: true
+                              shipList:
+                                type: boolean
+                                example: true
+                              dataSheet:
+                                type: boolean
+                                example: true
+                              department:
+                                type: boolean
+                                example: true
+                              shipDetails:
+                                type: boolean
+                                example: true
+                          createdAt:
+                            type: string
+                            example: '2023-04-26 12:56:29'
+                      token:
+                        type: string
+                        example: 2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh
       tags:
-        - Endpoints
+        - Authentication
       requestBody:
         required: true
         content:
@@ -25,26 +153,48 @@ paths:
               properties:
                 username:
                   type: string
-                  description: ''
-                  example: et
+                  description: 'Username of the user.'
+                  example: superadmin
                 password:
                   type: string
-                  description: ''
-                  example: quis
+                  description: 'Password of the user.'
+                  example: user1234
               required:
                 - username
                 - password
       security: []
   /api/v1/auth/logout:
     post:
-      summary: ''
-      operationId: postApiV1AuthLogout
-      description: ''
-      parameters: []
-      responses: {  }
+      summary: Logout
+      operationId: logout
+      description: 'Logout an user.'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: 'Logout success'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: 'Logout success'
       tags:
-        - Endpoints
-      security: []
+        - Authentication
   /api/v1/user_title:
     get:
       summary: 'Display a listing of the resource.'
@@ -89,11 +239,11 @@ paths:
                 titleName:
                   type: string
                   description: ''
-                  example: inventore
+                  example: cumque
                 titleAccess:
                   type: string
                   description: ''
-                  example: quia
+                  example: natus
               required:
                 - titleName
                 - titleAccess
@@ -117,11 +267,11 @@ paths:
                 titleName:
                   type: string
                   description: ''
-                  example: nihil
+                  example: autem
                 titleAccess:
                   type: string
                   description: ''
-                  example: quae
+                  example: hic
               required:
                 - titleName
                 - titleAccess
@@ -179,31 +329,31 @@ paths:
                 username:
                   type: string
                   description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
-                  example: eufqkrgybmw
+                  example: qwwzpnmbzocinyi
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: vm
+                  example: bpgjml
                 departmentId:
                   type: string
                   description: ''
-                  example: ut
+                  example: et
                 email:
                   type: string
                   description: 'Must be a valid email address. Must not be greater than 255 characters.'
-                  example: reichel.albin@example.net
+                  example: trent.zieme@example.com
                 password:
                   type: string
                   description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
-                  example: '~ui\8c}x'
+                  example: "Bl(Lka':sQFRrr|"
                 userTitleId:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: quisquam
                 workPlace:
                   type: string
                   description: 'Must be one of <code>ship</code> or <code>office</code>.'
-                  example: office
+                  example: ship
                 status:
                   type: boolean
                   description: ''
@@ -266,31 +416,31 @@ paths:
                 username:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: wzfewvuxnyadzpmiaa
+                  example: jo
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: cwmiiwkkjjqcpejaqqmzvwy
+                  example: gnxpzxyuwdktvt
                 departmentId:
                   type: string
                   description: ''
-                  example: accusantium
+                  example: et
                 email:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: abner.baumbach@example.net
+                  example: monty.hegmann@example.org
                 userTitleId:
                   type: string
                   description: ''
-                  example: at
+                  example: earum
                 workPlace:
                   type: string
                   description: ''
-                  example: eos
+                  example: velit
                 status:
                   type: boolean
                   description: 'Must be one of <code>true</code> or <code>false</code>.'
-                  example: 'true'
+                  example: 'false'
                 document:
                   type: string
                   description: ''
@@ -314,6 +464,9 @@ paths:
         schema:
           type: integer
 tags:
+  -
+    name: Authentication
+    description: "\nAPIs for authenticating user"
   -
     name: Endpoints
     description: ''

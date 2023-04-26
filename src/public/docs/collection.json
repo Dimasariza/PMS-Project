@@ -5,22 +5,22 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "localhost:{port}\/api\/v1"
+            "value": "http:\/\/localhost:9000"
         }
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "d48b2345-3947-4379-b7db-17e9a0bf9c2d",
+        "_postman_id": "c198db4b-10dc-4431-b44d-67295b9a2d62",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Endpoints",
-            "description": "",
+            "name": "Authentication",
+            "description": "\nAPIs for authenticating user",
             "item": [
                 {
-                    "name": "POST api\/v1\/auth\/login",
+                    "name": "Login",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -41,17 +41,24 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"et\",\"password\":\"quis\"}"
+                            "raw": "{\"username\":\"superadmin\",\"password\":\"user1234\"}"
                         },
-                        "description": "",
+                        "description": "Login an user.",
                         "auth": {
                             "type": "noauth"
                         }
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"statusCode\":200,\"message\":\"Authenticated\",\"data\":{\"id\":16,\"username\":\"superadmin\",\"fullname\":\"LeBron Juara NBA 2K23\",\"email\":\"admin@gmail.com\",\"workPlace\":\"office\",\"status\":true,\"document\":\"some_document.pdf\",\"createdAt\":\"2023-04-26 12:56:31\",\"updatedAt\":\"2023-04-26 12:56:31\",\"department\":{\"id\":5,\"name\":\"Dr. Destiney Fadel II\",\"code\":\"BY\",\"workPlace\":\"96159 Abernathy Field Suite 772\\nCronamouth, WI 79459\"},\"title\":{\"id\":4,\"name\":\"Admin\",\"access\":{\"stock\":true,\"users\":true,\"jobList\":true,\"shipList\":true,\"dataSheet\":true,\"department\":true,\"shipDetails\":true},\"createdAt\":\"2023-04-26 12:56:29\"},\"token\":\"2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh\"}}",
+                            "name": ""
+                        }
+                    ]
                 },
                 {
-                    "name": "POST api\/v1\/auth\/logout",
+                    "name": "Logout",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -68,16 +75,30 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Logout an user."
                     },
-                    "response": []
-                },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{ \"statusCode\": 200, \"message\": \"Logout success\" }",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
                 {
                     "name": "Display a listing of the resource.",
                     "request": {
@@ -156,7 +177,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"titleName\":\"inventore\",\"titleAccess\":\"quia\"}"
+                            "raw": "{\"titleName\":\"cumque\",\"titleAccess\":\"natus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -195,7 +216,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"titleName\":\"nihil\",\"titleAccess\":\"quae\"}"
+                            "raw": "{\"titleName\":\"autem\",\"titleAccess\":\"hic\"}"
                         },
                         "description": "",
                         "auth": {
@@ -282,7 +303,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"eufqkrgybmw\",\"fullname\":\"vm\",\"departmentId\":\"ut\",\"email\":\"reichel.albin@example.net\",\"password\":\"~ui\\\\8c}x\",\"userTitleId\":\"voluptatem\",\"workPlace\":\"office\",\"status\":false}"
+                            "raw": "{\"username\":\"qwwzpnmbzocinyi\",\"fullname\":\"bpgjml\",\"departmentId\":\"et\",\"email\":\"trent.zieme@example.com\",\"password\":\"Bl(Lka':sQFRrr|\",\"userTitleId\":\"quisquam\",\"workPlace\":\"ship\",\"status\":false}"
                         },
                         "description": "",
                         "auth": {
@@ -385,7 +406,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"wzfewvuxnyadzpmiaa\",\"fullname\":\"cwmiiwkkjjqcpejaqqmzvwy\",\"departmentId\":\"accusantium\",\"email\":\"abner.baumbach@example.net\",\"userTitleId\":\"at\",\"workPlace\":\"eos\",\"status\":\"true\"}"
+                            "raw": "{\"username\":\"jo\",\"fullname\":\"gnxpzxyuwdktvt\",\"departmentId\":\"et\",\"email\":\"monty.hegmann@example.org\",\"userTitleId\":\"earum\",\"workPlace\":\"velit\",\"status\":\"false\"}"
                         },
                         "description": "",
                         "auth": {
