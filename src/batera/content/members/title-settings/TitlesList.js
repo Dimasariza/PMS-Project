@@ -1,9 +1,10 @@
 import { Card } from '@mui/material';
 import TitlesTable from './TitlesTable';
 import { subDays } from 'date-fns';
+import { useState } from 'react';
 
 function TitlesList() {
-  const titleList = [
+  const [titleList, setTitleList] = useState([
     {
       id: '1',
       titleName: 'Admin',
@@ -82,11 +83,20 @@ function TitlesList() {
       notification: true,
       inbox: true,
     }
-  ];
+  ]);
+
+  function handleUpdate(id, key, value) {
+    setTitleList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === id ? { ...title, [key]: value } : title
+      );
+      return updatedTitleList;
+    });
+  }
 
   return (
     <Card>
-      <TitlesTable titleList={titleList} />
+      <TitlesTable titleList={titleList} handleUpdate={handleUpdate}/>
     </Card>
   );
 }

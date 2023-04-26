@@ -6,21 +6,33 @@ import {
   CardHeader,
   TextField
 } from '@mui/material';
+import { useState } from 'react';
 
 function TitlesList() {
-  const titleList = [
+  const [titleList, setTitleList] = useState([
     {
       id: '1',
       titleName: 'Admin',
       shipList: true,
-      shipDetails: false,
+      shipDetails: true,
       jobList: true,
       dataSheet: true,
-      stock: false,
+      stock: true,
       users: true,
       department: true,
+      notification: true,
+      inbox: true,
     },
-  ];
+  ]);
+
+  function handleUpdate(id, key, value) {
+    setTitleList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === id ? { ...title, [key]: value } : title
+      );
+      return updatedTitleList;
+    });
+  }
 
   return (
     <>
@@ -39,7 +51,7 @@ function TitlesList() {
         </Card>
       </div>
       <Card>
-        <TitlesTable titleList={titleList} />
+        <TitlesTable titleList={titleList} handleUpdate={handleUpdate} />
       </Card>
     </>
   );

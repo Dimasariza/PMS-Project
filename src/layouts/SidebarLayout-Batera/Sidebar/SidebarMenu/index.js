@@ -190,7 +190,7 @@ function SidebarMenu() {
   const router = useRouter();
   const currentRoute = router.pathname;
 
-  const url = process.env.PUBLIC_URL;
+  const url = process.env.PUBLIC_URL || ""
 
   return (
     <>
@@ -240,7 +240,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="./applications/messenger" passHref>
+                <NextLink href={url + "/applications/messenger"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/applications/messenger') ? 'active' : ''
@@ -255,7 +255,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/applications/messenger" passHref>
+                <NextLink href={url + "/applications/messenger"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/applications/messenger') ? 'active' : ''
@@ -283,7 +283,7 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/management/transactions" passHref>
+                <NextLink href={url + "/management/transactions"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/management/transactions')
@@ -300,7 +300,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/management/transactions" passHref>
+                <NextLink href={url + "/management/transactions"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/management/transactions')
@@ -330,7 +330,7 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
             <ListItem component="div">
-                <NextLink href="/batera/members/title-settings" passHref>
+                <NextLink href={url + "/batera/members/title-settings"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/batera/members/title-settings') ? 'active' : ''
@@ -345,7 +345,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/batera/members/users" passHref>
+                <NextLink href={url + "/batera/members/users"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/batera/members/users') ? 'active' : ''
@@ -360,7 +360,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/batera/members/departments" passHref>
+                <NextLink href={url + "/batera/members/departments"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/batera/members/departments')
@@ -390,7 +390,7 @@ function SidebarMenu() {
           <SubMenuWrapper>
             <List component="div">
               <ListItem component="div">
-                <NextLink href="/components/buttons" passHref>
+                <NextLink href={url + "/components/buttons"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/components/buttons') ? 'active' : ''
@@ -405,7 +405,7 @@ function SidebarMenu() {
                 </NextLink>
               </ListItem>
               <ListItem component="div">
-                <NextLink href="/components/modals" passHref>
+                <NextLink href={url + "/components/modals"} passHref>
                   <Button
                     className={
                       currentRoute.includes('/components/modals') ? 'active' : ''

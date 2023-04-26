@@ -7,6 +7,7 @@ function PageHeader() {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg'
   };
+  
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>

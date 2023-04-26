@@ -7,6 +7,7 @@ function PageHeader() {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg'
   };
+  const url = process.env.PUBLIC_URL || ""
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
@@ -19,7 +20,7 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href="/batera/members/title-settings/add-title" passHref>
+        <NextLink href={url + "/batera/members/title-settings/add-title"} passHref>
           <Button
             sx={{ mt: { xs: 2, md: 0 } }}
             variant="contained"

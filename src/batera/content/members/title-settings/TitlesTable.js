@@ -67,7 +67,7 @@ const applyPagination = (titles, page, limit) => {
   return titles.slice(page * limit, page * limit + limit);
 };
 
-const TitlesTable = ({ titleList }) => {
+const TitlesTable = ({ titleList, handleUpdate }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -172,7 +172,6 @@ const TitlesTable = ({ titleList }) => {
                     </Typography>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Ship List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -181,6 +180,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'shipList', !title.shipList);
+                        }}
                       >
                         {title.shipList ? 
                           (
@@ -192,10 +194,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center' >
-                    <Tooltip title="Ship Details Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -204,6 +204,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'shipDetails', !title.shipDetails);
+                        }}
                       >
                         {title.shipDetails ? 
                           (
@@ -215,10 +218,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Unscheduled Job Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -227,6 +228,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'jobList', !title.jobList);
+                        }}
                       >
                         {title.jobList ? 
                           (
@@ -238,10 +242,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Data Sheet Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -250,6 +252,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'dataSheet', !title.dataSheet);
+                        }}
                       >
                         {title.dataSheet ? 
                           (
@@ -261,10 +266,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Stock List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -273,6 +276,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'stock', !title.stock);
+                        }}
                       >
                         {title.stock ? 
                           (
@@ -284,10 +290,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="User List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -296,6 +300,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'users', !title.users);
+                        }}
                       >
                         {title.users ? 
                           (
@@ -307,10 +314,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Department List Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -319,6 +324,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'department', !title.department);
+                        }}
                       >
                         {title.department ? 
                           (
@@ -330,10 +338,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Notification Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -342,6 +348,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'notification', !title.notification);
+                        }}
                       >
                         {title.notification ? 
                           (
@@ -353,10 +362,8 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                   <TableCell align='center'>
-                    <Tooltip title="Inbox Access" arrow>
                       <IconButton
                         sx={{
                           '&:hover': {
@@ -365,6 +372,9 @@ const TitlesTable = ({ titleList }) => {
                           color: theme.palette.primary.main
                         }}
                         size="small"
+                        onClick={() => {
+                          handleUpdate(title.id, 'inbox', !title.inbox);
+                        }}
                       >
                         {title.inbox ? 
                           (
@@ -376,7 +386,6 @@ const TitlesTable = ({ titleList }) => {
                           )
                         }
                       </IconButton>
-                    </Tooltip>
                   </TableCell>
                 </TableRow>
               );
