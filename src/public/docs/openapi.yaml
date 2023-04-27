@@ -241,30 +241,229 @@ paths:
         - Authentication
   /api/v1/user:
     get:
-      summary: ''
-      operationId: getApiV1User
-      description: ''
-      parameters: []
-      responses:
-        403:
+      summary: All
+      operationId: all
+      description: 'Get list of user'
+      parameters:
+        -
+          in: header
+          name: Authorization
           description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  statusCode: 403
-                  message: Unauthenticated
+                  statusCode: 200
+                  message: Success
+                  data:
+                    -
+                      id: 1
+                      username: mac73
+                      fullname: 'Cory Lakin'
+                      email: napoleon.daugherty@example.com
+                      workPlace: office
+                      status: true
+                      document: q5kPi6lZcXZ2epP6apHT
+                      createdAt: '2023-04-27 12:12:17'
+                      updatedAt: '2023-04-27 12:12:17'
+                      department:
+                        id: 3
+                        name: 'Osvaldo Rice'
+                        code: IL
+                        workPlace: "8142 April Falls\nJamelberg, WY 17000-8540"
+                      title:
+                        id: 3
+                        name: 'Chief Officer'
+                        access:
+                          stock: false
+                          users: true
+                          jobList: true
+                          shipList: false
+                          dataSheet: true
+                          department: true
+                          shipDetails: false
+                        createdAt: '2023-04-27 12:12:15'
+                    -
+                      id: 2
+                      username: igreen
+                      fullname: 'Leanna Torphy'
+                      email: phyllis.conn@example.com
+                      workPlace: office
+                      status: false
+                      document: XNkthvsxloY6OgXXLfq6
+                      createdAt: '2023-04-27 12:12:17'
+                      updatedAt: '2023-04-27 12:12:17'
+                      department:
+                        id: 2
+                        name: 'Prof. Antwan Hermann Sr.'
+                        code: VI
+                        workPlace: "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
+                      title:
+                        id: 1
+                        name: Captain
+                        access:
+                          stock: true
+                          users: true
+                          jobList: true
+                          shipList: true
+                          dataSheet: true
+                          department: true
+                          shipDetails: true
+                        createdAt: '2023-04-27 12:12:15'
                 properties:
                   statusCode:
                     type: integer
-                    example: 403
+                    example: 200
                   message:
                     type: string
-                    example: Unauthenticated
+                    example: Success
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        username: mac73
+                        fullname: 'Cory Lakin'
+                        email: napoleon.daugherty@example.com
+                        workPlace: office
+                        status: true
+                        document: q5kPi6lZcXZ2epP6apHT
+                        createdAt: '2023-04-27 12:12:17'
+                        updatedAt: '2023-04-27 12:12:17'
+                        department:
+                          id: 3
+                          name: 'Osvaldo Rice'
+                          code: IL
+                          workPlace: "8142 April Falls\nJamelberg, WY 17000-8540"
+                        title:
+                          id: 3
+                          name: 'Chief Officer'
+                          access:
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-27 12:12:15'
+                      -
+                        id: 2
+                        username: igreen
+                        fullname: 'Leanna Torphy'
+                        email: phyllis.conn@example.com
+                        workPlace: office
+                        status: false
+                        document: XNkthvsxloY6OgXXLfq6
+                        createdAt: '2023-04-27 12:12:17'
+                        updatedAt: '2023-04-27 12:12:17'
+                        department:
+                          id: 2
+                          name: 'Prof. Antwan Hermann Sr.'
+                          code: VI
+                          workPlace: "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
+                        title:
+                          id: 1
+                          name: Captain
+                          access:
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-27 12:12:15'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        username:
+                          type: string
+                          example: mac73
+                        fullname:
+                          type: string
+                          example: 'Cory Lakin'
+                        email:
+                          type: string
+                          example: napoleon.daugherty@example.com
+                        workPlace:
+                          type: string
+                          example: office
+                        status:
+                          type: boolean
+                          example: true
+                        document:
+                          type: string
+                          example: q5kPi6lZcXZ2epP6apHT
+                        createdAt:
+                          type: string
+                          example: '2023-04-27 12:12:17'
+                        updatedAt:
+                          type: string
+                          example: '2023-04-27 12:12:17'
+                        department:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 3
+                            name:
+                              type: string
+                              example: 'Osvaldo Rice'
+                            code:
+                              type: string
+                              example: IL
+                            workPlace:
+                              type: string
+                              example: "8142 April Falls\nJamelberg, WY 17000-8540"
+                        title:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 3
+                            name:
+                              type: string
+                              example: 'Chief Officer'
+                            access:
+                              type: object
+                              properties:
+                                stock:
+                                  type: boolean
+                                  example: false
+                                users:
+                                  type: boolean
+                                  example: true
+                                jobList:
+                                  type: boolean
+                                  example: true
+                                shipList:
+                                  type: boolean
+                                  example: false
+                                dataSheet:
+                                  type: boolean
+                                  example: true
+                                department:
+                                  type: boolean
+                                  example: true
+                                shipDetails:
+                                  type: boolean
+                                  example: false
+                            createdAt:
+                              type: string
+                              example: '2023-04-27 12:12:15'
       tags:
-        - Endpoints
-      security: []
+        - User
     post:
       summary: ''
       operationId: postApiV1User
@@ -272,7 +471,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Endpoints
+        - User
       requestBody:
         required: true
         content:
@@ -283,31 +482,31 @@ paths:
                 username:
                   type: string
                   description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
-                  example: aqihaohfd
+                  example: fjchhifoingobpatlie
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: wt
+                  example: zqalyjcb
                 departmentId:
                   type: string
                   description: ''
-                  example: vel
+                  example: deleniti
                 email:
                   type: string
                   description: 'Must be a valid email address. Must not be greater than 255 characters.'
-                  example: brad.hand@example.com
+                  example: demarcus.predovic@example.net
                 password:
                   type: string
                   description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
-                  example: '{89L2#'
+                  example: 'h)yH7Vp5ixhvQkh*>NDF'
                 userTitleId:
                   type: string
                   description: ''
-                  example: rerum
+                  example: deserunt
                 workPlace:
                   type: string
                   description: 'Must be one of <code>ship</code> or <code>office</code>.'
-                  example: ship
+                  example: office
                 status:
                   type: boolean
                   description: ''
@@ -350,7 +549,7 @@ paths:
                     type: string
                     example: Unauthenticated
       tags:
-        - Endpoints
+        - User
       security: []
     put:
       summary: ''
@@ -359,7 +558,7 @@ paths:
       parameters: []
       responses: {  }
       tags:
-        - Endpoints
+        - User
       requestBody:
         required: true
         content:
@@ -370,27 +569,27 @@ paths:
                 username:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: ovjglsoewoaotzcgya
+                  example: iacnnvswlrm
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: ypfyyrkitimnqascpztjdys
+                  example: dktos
                 departmentId:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: sed
                 email:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: morissette.carley@example.net
+                  example: glowe@example.org
                 userTitleId:
                   type: string
                   description: ''
-                  example: est
+                  example: explicabo
                 workPlace:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: veritatis
                 status:
                   type: boolean
                   description: 'Must be one of <code>true</code> or <code>false</code>.'
@@ -833,8 +1032,8 @@ tags:
     name: Authentication
     description: "\nAPIs for authenticating user"
   -
-    name: Endpoints
-    description: ''
+    name: User
+    description: "\nAPIs for user in general"
   -
     name: 'User Title'
     description: "\nAPIs for user title"

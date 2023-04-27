@@ -1,0 +1,33 @@
+{
+    "statusCode": 200,
+    "message": "Updated",
+    "data": {
+        "id": 17,
+        "username": "sayamaco",
+        "fullname": "Anak Maco Cie",
+        "email": "maco@gmail.com",
+        "workPlace": "ship",
+        "status": true,
+        "document": "some",
+        "createdAt": "2023-04-27 12:46:07",
+        "department": {
+            "id": 1,
+            "name": "Matteo Parisian",
+            "code": "MU",
+            "workPlace": "60243 Myrna Loaf\nCarolinechester, DC 89574"
+        },
+        "userTitle": {
+            "id": 1,
+            "titleName": "Captain",
+            "access": {
+                "stock": true,
+                "users": true,
+                "jobList": true,
+                "shipList": true,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": true
+            }
+        }
+    }
+}

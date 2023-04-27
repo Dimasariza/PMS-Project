@@ -34,21 +34,11 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
             throw new ModelNotFoundException("Unknown user");
         }
 
-        $user->username = $dto->username;
-        $user->fullname = $dto->fullname;
-        $user->department_id = $dto->departmentId;
-        $user->email = $dto->email;
-        $user->user_title_id = $dto->userTitleId;
-        $user->work_place = $dto->workPlace;
-        $user->status = $dto->status;
+        $user->update($dto->build());
 
-        if($dto->document) {
-            $user->document = $dto->document;
-        }
-
-        $user->save();
-
-        return $this->format($user);
+        return $this->format(
+            $user->load(['department', 'user_title'])->toArray()
+        );
     }
 
     public function show(int|string $id): stdClass
@@ -59,6 +49,6 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
             throw new ModelNotFoundException("Unknown user");
         }
 
-        return $this->format($user);
+        return $this->format($user->toArray());
     }
 }

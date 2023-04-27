@@ -52,8 +52,6 @@ class UserTitleController extends Controller
 
      * @authenticated
      *
-     * @urlParam id integer required The ID of user title to update. Example: 2
-     *
      * @bodyParam titleName string required The name of the new user title. Example: General
      * @bodyParam titleAccess string required The list of access title (can be json type / json stringify). Example: {\"shipList\":false,\"shipDetails\":false,\"jobList\":true,\"dataSheet\":true,\"stock\":false,\"users\":true,\"department\":true,\"inbox\":true}
      *
@@ -81,6 +79,7 @@ class UserTitleController extends Controller
      *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      *
+     * @urlParam id integer required The ID of user title to update. Example: 2
      * @authenticated
      *
      * @bodyParam titleName string required The name of the new user title. Example: Admiral

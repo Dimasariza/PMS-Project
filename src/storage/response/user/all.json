@@ -1,0 +1,68 @@
+{
+    "statusCode": 200,
+    "message": "Success",
+    "data": [
+        {
+            "id": 1,
+            "username": "mac73",
+            "fullname": "Cory Lakin",
+            "email": "napoleon.daugherty@example.com",
+            "workPlace": "office",
+            "status": true,
+            "document": "q5kPi6lZcXZ2epP6apHT",
+            "createdAt": "2023-04-27 12:12:17",
+            "updatedAt": "2023-04-27 12:12:17",
+            "department": {
+                "id": 3,
+                "name": "Osvaldo Rice",
+                "code": "IL",
+                "workPlace": "8142 April Falls\nJamelberg, WY 17000-8540"
+            },
+            "title": {
+                "id": 3,
+                "name": "Chief Officer",
+                "access": {
+                    "stock": false,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": false,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": false
+                },
+                "createdAt": "2023-04-27 12:12:15"
+            }
+        },
+        {
+            "id": 2,
+            "username": "igreen",
+            "fullname": "Leanna Torphy",
+            "email": "phyllis.conn@example.com",
+            "workPlace": "office",
+            "status": false,
+            "document": "XNkthvsxloY6OgXXLfq6",
+            "createdAt": "2023-04-27 12:12:17",
+            "updatedAt": "2023-04-27 12:12:17",
+            "department": {
+                "id": 2,
+                "name": "Prof. Antwan Hermann Sr.",
+                "code": "VI",
+                "workPlace": "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
+            },
+            "title": {
+                "id": 1,
+                "name": "Captain",
+                "access": {
+                    "stock": true,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": true,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": true
+                },
+                "createdAt": "2023-04-27 12:12:15"
+            }
+        }
+    ]
+}

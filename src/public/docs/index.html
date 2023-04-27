@@ -79,22 +79,22 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-endpoints" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="endpoints">
-                    <a href="#endpoints">Endpoints</a>
+                    <ul id="tocify-header-user" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user">
+                    <a href="#user">User</a>
                 </li>
-                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-user">
-                                <a href="#endpoints-GETapi-v1-user">GET api/v1/user</a>
+                                    <ul id="tocify-subheader-user" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-GETapi-v1-user">
+                                <a href="#user-GETapi-v1-user">All</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-v1-user">
-                                <a href="#endpoints-POSTapi-v1-user">POST api/v1/user</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user">
+                                <a href="#user-POSTapi-v1-user">POST api/v1/user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-user--id-">
-                                <a href="#endpoints-GETapi-v1-user--id-">GET api/v1/user/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user--id-">
+                                <a href="#user-GETapi-v1-user--id-">GET api/v1/user/{id}</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-v1-user--id-">
-                                <a href="#endpoints-PUTapi-v1-user--id-">PUT api/v1/user/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-PUTapi-v1-user--id-">
+                                <a href="#user-PUTapi-v1-user--id-">PUT api/v1/user/{id}</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -532,16 +532,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                <h1 id="endpoints">Endpoints</h1>
+                <h1 id="user">User</h1>
 
-    
+    <p>APIs for user in general</p>
 
-                                <h2 id="endpoints-GETapi-v1-user">GET api/v1/user</h2>
+                                <h2 id="user-GETapi-v1-user">All</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Get list of user</p>
 
 <span id="example-requests-GETapi-v1-user">
 <blockquote>Example request:</blockquote>
@@ -551,7 +552,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request GET \
     --get "http://localhost:9000/api/v1/user" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"</code></pre></div>
 
 
 <div class="javascript-example">
@@ -562,6 +564,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
 };
 
 fetch(url, {
@@ -573,22 +576,77 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user">
             <blockquote>
-            <p>Example response (403):</p>
+            <p>Example response (200, Success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;statusCode&quot;: 403,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;username&quot;: &quot;mac73&quot;,
+            &quot;fullname&quot;: &quot;Cory Lakin&quot;,
+            &quot;email&quot;: &quot;napoleon.daugherty@example.com&quot;,
+            &quot;workPlace&quot;: &quot;office&quot;,
+            &quot;status&quot;: true,
+            &quot;document&quot;: &quot;q5kPi6lZcXZ2epP6apHT&quot;,
+            &quot;createdAt&quot;: &quot;2023-04-27 12:12:17&quot;,
+            &quot;updatedAt&quot;: &quot;2023-04-27 12:12:17&quot;,
+            &quot;department&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Osvaldo Rice&quot;,
+                &quot;code&quot;: &quot;IL&quot;,
+                &quot;workPlace&quot;: &quot;8142 April Falls\nJamelberg, WY 17000-8540&quot;
+            },
+            &quot;title&quot;: {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Chief Officer&quot;,
+                &quot;access&quot;: {
+                    &quot;stock&quot;: false,
+                    &quot;users&quot;: true,
+                    &quot;jobList&quot;: true,
+                    &quot;shipList&quot;: false,
+                    &quot;dataSheet&quot;: true,
+                    &quot;department&quot;: true,
+                    &quot;shipDetails&quot;: false
+                },
+                &quot;createdAt&quot;: &quot;2023-04-27 12:12:15&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;username&quot;: &quot;igreen&quot;,
+            &quot;fullname&quot;: &quot;Leanna Torphy&quot;,
+            &quot;email&quot;: &quot;phyllis.conn@example.com&quot;,
+            &quot;workPlace&quot;: &quot;office&quot;,
+            &quot;status&quot;: false,
+            &quot;document&quot;: &quot;XNkthvsxloY6OgXXLfq6&quot;,
+            &quot;createdAt&quot;: &quot;2023-04-27 12:12:17&quot;,
+            &quot;updatedAt&quot;: &quot;2023-04-27 12:12:17&quot;,
+            &quot;department&quot;: {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Prof. Antwan Hermann Sr.&quot;,
+                &quot;code&quot;: &quot;VI&quot;,
+                &quot;workPlace&quot;: &quot;664 Kuhic Parks\nAnthonyville, CA 81454-3650&quot;
+            },
+            &quot;title&quot;: {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Captain&quot;,
+                &quot;access&quot;: {
+                    &quot;stock&quot;: true,
+                    &quot;users&quot;: true,
+                    &quot;jobList&quot;: true,
+                    &quot;shipList&quot;: true,
+                    &quot;dataSheet&quot;: true,
+                    &quot;department&quot;: true,
+                    &quot;shipDetails&quot;: true
+                },
+                &quot;createdAt&quot;: &quot;2023-04-27 12:12:15&quot;
+            }
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -609,7 +667,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-v1-user" data-method="GET"
       data-path="api/v1/user"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -661,9 +719,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-user"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-v1-user">POST api/v1/user</h2>
+                    <h2 id="user-POSTapi-v1-user">POST api/v1/user</h2>
 
 <p>
 </p>
@@ -680,13 +749,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"username\": \"aqihaohfd\",
-    \"fullname\": \"wt\",
-    \"departmentId\": \"vel\",
-    \"email\": \"brad.hand@example.com\",
-    \"password\": \"{89L2#\",
-    \"userTitleId\": \"rerum\",
-    \"workPlace\": \"ship\",
+    \"username\": \"fjchhifoingobpatlie\",
+    \"fullname\": \"zqalyjcb\",
+    \"departmentId\": \"deleniti\",
+    \"email\": \"demarcus.predovic@example.net\",
+    \"password\": \"h)yH7Vp5ixhvQkh*&gt;NDF\",
+    \"userTitleId\": \"deserunt\",
+    \"workPlace\": \"office\",
     \"status\": false
 }"
 </code></pre></div>
@@ -703,13 +772,13 @@ const headers = {
 };
 
 let body = {
-    "username": "aqihaohfd",
-    "fullname": "wt",
-    "departmentId": "vel",
-    "email": "brad.hand@example.com",
-    "password": "{89L2#",
-    "userTitleId": "rerum",
-    "workPlace": "ship",
+    "username": "fjchhifoingobpatlie",
+    "fullname": "zqalyjcb",
+    "departmentId": "deleniti",
+    "email": "demarcus.predovic@example.net",
+    "password": "h)yH7Vp5ixhvQkh*&gt;NDF",
+    "userTitleId": "deserunt",
+    "workPlace": "office",
     "status": false
 };
 
@@ -799,10 +868,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="username"                data-endpoint="POSTapi-v1-user"
-               value="aqihaohfd"
+               value="fjchhifoingobpatlie"
                data-component="body">
     <br>
-<p>Must match the regex /^\S*$/u. Must not be greater than 255 characters. Example: <code>aqihaohfd</code></p>
+<p>Must match the regex /^\S*$/u. Must not be greater than 255 characters. Example: <code>fjchhifoingobpatlie</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fullname</code></b>&nbsp;&nbsp;
@@ -810,10 +879,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fullname"                data-endpoint="POSTapi-v1-user"
-               value="wt"
+               value="zqalyjcb"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>wt</code></p>
+<p>Must not be greater than 255 characters. Example: <code>zqalyjcb</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>departmentId</code></b>&nbsp;&nbsp;
@@ -821,10 +890,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="departmentId"                data-endpoint="POSTapi-v1-user"
-               value="vel"
+               value="deleniti"
                data-component="body">
     <br>
-<p>Example: <code>vel</code></p>
+<p>Example: <code>deleniti</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -832,10 +901,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-v1-user"
-               value="brad.hand@example.com"
+               value="demarcus.predovic@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>brad.hand@example.com</code></p>
+<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>demarcus.predovic@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -843,10 +912,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-v1-user"
-               value="{89L2#"
+               value="h)yH7Vp5ixhvQkh*>NDF"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Must not be greater than 255 characters. Example: <code>{89L2#</code></p>
+<p>Must be at least 8 characters. Must not be greater than 255 characters. Example: <code>h)yH7Vp5ixhvQkh*&gt;NDF</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>userTitleId</code></b>&nbsp;&nbsp;
@@ -854,10 +923,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="userTitleId"                data-endpoint="POSTapi-v1-user"
-               value="rerum"
+               value="deserunt"
                data-component="body">
     <br>
-<p>Example: <code>rerum</code></p>
+<p>Example: <code>deserunt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>workPlace</code></b>&nbsp;&nbsp;
@@ -865,10 +934,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="workPlace"                data-endpoint="POSTapi-v1-user"
-               value="ship"
+               value="office"
                data-component="body">
     <br>
-<p>Must be one of <code>ship</code> or <code>office</code>. Example: <code>ship</code></p>
+<p>Must be one of <code>ship</code> or <code>office</code>. Example: <code>office</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -904,7 +973,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-v1-user--id-">GET api/v1/user/{id}</h2>
+                    <h2 id="user-GETapi-v1-user--id-">GET api/v1/user/{id}</h2>
 
 <p>
 </p>
@@ -950,7 +1019,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1043,7 +1112,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PUTapi-v1-user--id-">PUT api/v1/user/{id}</h2>
+                    <h2 id="user-PUTapi-v1-user--id-">PUT api/v1/user/{id}</h2>
 
 <p>
 </p>
@@ -1060,12 +1129,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"username\": \"ovjglsoewoaotzcgya\",
-    \"fullname\": \"ypfyyrkitimnqascpztjdys\",
-    \"departmentId\": \"voluptatem\",
-    \"email\": \"morissette.carley@example.net\",
-    \"userTitleId\": \"est\",
-    \"workPlace\": \"voluptatem\",
+    \"username\": \"iacnnvswlrm\",
+    \"fullname\": \"dktos\",
+    \"departmentId\": \"sed\",
+    \"email\": \"glowe@example.org\",
+    \"userTitleId\": \"explicabo\",
+    \"workPlace\": \"veritatis\",
     \"status\": \"false\"
 }"
 </code></pre></div>
@@ -1082,12 +1151,12 @@ const headers = {
 };
 
 let body = {
-    "username": "ovjglsoewoaotzcgya",
-    "fullname": "ypfyyrkitimnqascpztjdys",
-    "departmentId": "voluptatem",
-    "email": "morissette.carley@example.net",
-    "userTitleId": "est",
-    "workPlace": "voluptatem",
+    "username": "iacnnvswlrm",
+    "fullname": "dktos",
+    "departmentId": "sed",
+    "email": "glowe@example.org",
+    "userTitleId": "explicabo",
+    "workPlace": "veritatis",
     "status": "false"
 };
 
@@ -1193,10 +1262,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="username"                data-endpoint="PUTapi-v1-user--id-"
-               value="ovjglsoewoaotzcgya"
+               value="iacnnvswlrm"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>ovjglsoewoaotzcgya</code></p>
+<p>Must not be greater than 255 characters. Example: <code>iacnnvswlrm</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fullname</code></b>&nbsp;&nbsp;
@@ -1204,10 +1273,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fullname"                data-endpoint="PUTapi-v1-user--id-"
-               value="ypfyyrkitimnqascpztjdys"
+               value="dktos"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>ypfyyrkitimnqascpztjdys</code></p>
+<p>Must not be greater than 255 characters. Example: <code>dktos</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>departmentId</code></b>&nbsp;&nbsp;
@@ -1215,10 +1284,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="departmentId"                data-endpoint="PUTapi-v1-user--id-"
-               value="voluptatem"
+               value="sed"
                data-component="body">
     <br>
-<p>Example: <code>voluptatem</code></p>
+<p>Example: <code>sed</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1226,10 +1295,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="PUTapi-v1-user--id-"
-               value="morissette.carley@example.net"
+               value="glowe@example.org"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>morissette.carley@example.net</code></p>
+<p>Must not be greater than 255 characters. Example: <code>glowe@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>userTitleId</code></b>&nbsp;&nbsp;
@@ -1237,10 +1306,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="userTitleId"                data-endpoint="PUTapi-v1-user--id-"
-               value="est"
+               value="explicabo"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>explicabo</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>workPlace</code></b>&nbsp;&nbsp;
@@ -1248,10 +1317,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="workPlace"                data-endpoint="PUTapi-v1-user--id-"
-               value="voluptatem"
+               value="veritatis"
                data-component="body">
     <br>
-<p>Example: <code>voluptatem</code></p>
+<p>Example: <code>veritatis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;

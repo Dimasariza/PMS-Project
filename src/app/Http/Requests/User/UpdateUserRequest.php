@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\User;
 
+use App\Enums\WorkPlace;
 use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class UpdateUserRequest extends FormRequest
@@ -27,13 +27,11 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => ['required', 'string', 'max:255', Rule::unique('users', 'username')->ignore($this->id)],
             'fullname' => ['required', 'string', 'max:255'],
             'departmentId' => ['required', 'exists:departments,id'],
-            'email' => ['required', 'max:255', Rule::unique('users', 'email')->ignore($this->id)],
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
-            'status' => ['required', 'boolean', 'in:true,false'],
+            'status' => ['required', 'boolean'],
             'document' => ['nullable'],
         ];
     }

@@ -1,0 +1,20 @@
+{
+    "statusCode": 201,
+    "message": "Created",
+    "data": {
+        "id": 17,
+        "username": "sayamaco",
+        "fullname": "Anak Maco",
+        "email": "maco@gmail.com",
+        "workPlace": "ship",
+        "status": true,
+        "document": "some",
+        "createdAt": "2023-04-27 12:46:07",
+        "department": {
+            "id": 1,
+            "name": "Matteo Parisian",
+            "code": "MU",
+            "workPlace": "60243 Myrna Loaf\nCarolinechester, DC 89574"
+        }
+    }
+}

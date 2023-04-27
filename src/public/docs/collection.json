@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "280b79d0-72e5-4528-9a30-99c1be122909",
+        "_postman_id": "36250909-3df8-4896-8f01-01f493ccc39d",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -132,11 +132,11 @@
             ]
         },
         {
-            "name": "Endpoints",
-            "description": "",
+            "name": "User",
+            "description": "\nAPIs for user in general",
             "item": [
                 {
-                    "name": "GET api\/v1\/user",
+                    "name": "All",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -153,41 +153,21 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Get list of user"
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 403,
-                            "body": "{\"statusCode\":403,\"message\":\"Unauthenticated\"}",
-                            "name": ""
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"username\": \"mac73\",\n            \"fullname\": \"Cory Lakin\",\n            \"email\": \"napoleon.daugherty@example.com\",\n            \"workPlace\": \"office\",\n            \"status\": true,\n            \"document\": \"q5kPi6lZcXZ2epP6apHT\",\n            \"createdAt\": \"2023-04-27 12:12:17\",\n            \"updatedAt\": \"2023-04-27 12:12:17\",\n            \"department\": {\n                \"id\": 3,\n                \"name\": \"Osvaldo Rice\",\n                \"code\": \"IL\",\n                \"workPlace\": \"8142 April Falls\\nJamelberg, WY 17000-8540\"\n            },\n            \"title\": {\n                \"id\": 3,\n                \"name\": \"Chief Officer\",\n                \"access\": {\n                    \"stock\": false,\n                    \"users\": true,\n                    \"jobList\": true,\n                    \"shipList\": false,\n                    \"dataSheet\": true,\n                    \"department\": true,\n                    \"shipDetails\": false\n                },\n                \"createdAt\": \"2023-04-27 12:12:15\"\n            }\n        },\n        {\n            \"id\": 2,\n            \"username\": \"igreen\",\n            \"fullname\": \"Leanna Torphy\",\n            \"email\": \"phyllis.conn@example.com\",\n            \"workPlace\": \"office\",\n            \"status\": false,\n            \"document\": \"XNkthvsxloY6OgXXLfq6\",\n            \"createdAt\": \"2023-04-27 12:12:17\",\n            \"updatedAt\": \"2023-04-27 12:12:17\",\n            \"department\": {\n                \"id\": 2,\n                \"name\": \"Prof. Antwan Hermann Sr.\",\n                \"code\": \"VI\",\n                \"workPlace\": \"664 Kuhic Parks\\nAnthonyville, CA 81454-3650\"\n            },\n            \"title\": {\n                \"id\": 1,\n                \"name\": \"Captain\",\n                \"access\": {\n                    \"stock\": true,\n                    \"users\": true,\n                    \"jobList\": true,\n                    \"shipList\": true,\n                    \"dataSheet\": true,\n                    \"department\": true,\n                    \"shipDetails\": true\n                },\n                \"createdAt\": \"2023-04-27 12:12:15\"\n            }\n        }\n    ]\n}\n",
+                            "name": "Success"
                         }
                     ]
                 },
@@ -213,7 +193,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"aqihaohfd\",\"fullname\":\"wt\",\"departmentId\":\"vel\",\"email\":\"brad.hand@example.com\",\"password\":\"{89L2#\",\"userTitleId\":\"rerum\",\"workPlace\":\"ship\",\"status\":false}"
+                            "raw": "{\"username\":\"fjchhifoingobpatlie\",\"fullname\":\"zqalyjcb\",\"departmentId\":\"deleniti\",\"email\":\"demarcus.predovic@example.net\",\"password\":\"h)yH7Vp5ixhvQkh*>NDF\",\"userTitleId\":\"deserunt\",\"workPlace\":\"office\",\"status\":false}"
                         },
                         "description": "",
                         "auth": {
@@ -273,7 +253,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "58"
+                                    "value": "59"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -316,7 +296,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"ovjglsoewoaotzcgya\",\"fullname\":\"ypfyyrkitimnqascpztjdys\",\"departmentId\":\"voluptatem\",\"email\":\"morissette.carley@example.net\",\"userTitleId\":\"est\",\"workPlace\":\"voluptatem\",\"status\":\"false\"}"
+                            "raw": "{\"username\":\"iacnnvswlrm\",\"fullname\":\"dktos\",\"departmentId\":\"sed\",\"email\":\"glowe@example.org\",\"userTitleId\":\"explicabo\",\"workPlace\":\"veritatis\",\"status\":\"false\"}"
                         },
                         "description": "",
                         "auth": {
