@@ -1,0 +1,19 @@
+{
+    "statusCode": 201,
+    "message": "Created",
+    "data": {
+        "id": 6,
+        "name": "Bukan CEO",
+        "access": {
+            "shipList": false,
+            "shipDetails": false,
+            "jobList": true,
+            "dataSheet": true,
+            "stock": false,
+            "users": true,
+            "department": true,
+            "inbox": true
+        },
+        "createdAt": "2023-04-27 12:18:22"
+    }
+}

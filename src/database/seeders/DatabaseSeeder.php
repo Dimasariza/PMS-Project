@@ -38,23 +38,25 @@ class DatabaseSeeder extends Seeder
     private function generateUserTitle(): void
     {
         $normal_roles = [
-            "ship_list" => false,
-            "ship_details" => false,
-            "job_list" => true,
-            "data_sheet" => true,
+            "shipList" => false,
+            "shipDetails" => false,
+            "jobList" => true,
+            "dataSheet" => true,
             "stock" => false,
             "users" => true,
-            "department" => true
+            "department" => true,
+            "inbox" => true
         ];
 
         $super_roles = [
-            "ship_list" => true,
-            "ship_details" => true,
-            "job_list" => true,
-            "data_sheet" => true,
+            "shipList" => true,
+            "shipDetails" => true,
+            "jobList" => true,
+            "dataSheet" => true,
             "stock" => true,
             "users" => true,
-            "department" => true
+            "department" => true,
+            "inbox" => true,
         ];
 
         $title_names = ['Captain', 'Chief Engineer', 'Chief Officer', 'Admin', 'Second Engineer'];

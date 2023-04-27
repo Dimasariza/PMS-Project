@@ -11,6 +11,11 @@ use App\Repositories\UserTitle\UserTitleRepository;
 use App\Traits\APIResponse;
 use Illuminate\Http\Response;
 
+/**
+ * @group User Title
+ *
+ * APIs for user title
+ */
 class UserTitleController extends Controller
 {
     use APIResponse;
@@ -20,7 +25,14 @@ class UserTitleController extends Controller
     ) {}
 
     /**
-     * Display a listing of the resource.
+     * All
+     *
+     * Get list of user title
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/userTitle/all.json
      */
     public function index()
     {
@@ -32,7 +44,21 @@ class UserTitleController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create User Title
+     *
+     * Create new user title
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+
+     * @authenticated
+     *
+     * @urlParam id integer required The ID of user title to update. Example: 2
+     *
+     * @bodyParam titleName string required The name of the new user title. Example: General
+     * @bodyParam titleAccess string required The list of access title (can be json type / json stringify). Example: {\"shipList\":false,\"shipDetails\":false,\"jobList\":true,\"dataSheet\":true,\"stock\":false,\"users\":true,\"department\":true,\"inbox\":true}
+     *
+     * @responseFile status=200 scenario='Success' response/userTitle/insert_new.json
+     * @responseFile status=422 scenario='Access Title field is missing' response/userTitle/insert_len_access.json
      */
     public function store(InsertUserTitleRequest $request)
     {
@@ -49,7 +75,18 @@ class UserTitleController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
+     * Update User Title
+     *
+     * Update new user title
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @authenticated
+     *
+     * @bodyParam titleName string required The name of the new user title. Example: Admiral
+     * @bodyParam titleAccess string required The list of access title (can be json type / json stringify). Example: {\"shipList\":false,\"shipDetails\":false,\"jobList\":true,\"dataSheet\":true,\"stock\":false,\"users\":true,\"department\":true,\"inbox\":true}
+     *
+     * @responseFile status=200 scenario='Success' response/userTitle/updated.json
      */
     public function update($id, UpdateUserTitleRequest $request)
     {

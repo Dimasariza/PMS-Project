@@ -1,0 +1,8 @@
+{
+    "statusCode": 422,
+    "message": "Bad input",
+    "errors": {
+        "username": "The username field is required.",
+        "password": "The password field is required."
+    }
+}

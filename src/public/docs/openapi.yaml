@@ -15,7 +15,7 @@ paths:
       parameters: []
       responses:
         200:
-          description: ''
+          description: Success
           content:
             application/json:
               schema:
@@ -50,7 +50,7 @@ paths:
                         department: true
                         shipDetails: true
                       createdAt: '2023-04-26 12:56:29'
-                    token: 2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh
+                    token: 1|gZBSXA7mpHgVUT1dY5jbeoecNuZg1qtox3eQHb3D
                 properties:
                   statusCode:
                     type: integer
@@ -141,7 +141,35 @@ paths:
                             example: '2023-04-26 12:56:29'
                       token:
                         type: string
-                        example: 2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh
+                        example: 1|gZBSXA7mpHgVUT1dY5jbeoecNuZg1qtox3eQHb3D
+        422:
+          description: 'Without Any Input'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 422
+                  message: 'Bad input'
+                  errors:
+                    username: 'The username field is required.'
+                    password: 'The password field is required.'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 422
+                  message:
+                    type: string
+                    example: 'Bad input'
+                  errors:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                        example: 'The username field is required.'
+                      password:
+                        type: string
+                        example: 'The password field is required.'
       tags:
         - Authentication
       requestBody:
@@ -178,7 +206,7 @@ paths:
             type: string
       responses:
         200:
-          description: ''
+          description: Success
           content:
             application/json:
               schema:
@@ -193,98 +221,24 @@ paths:
                   message:
                     type: string
                     example: 'Logout success'
-      tags:
-        - Authentication
-  /api/v1/user_title:
-    get:
-      summary: 'Display a listing of the resource.'
-      operationId: displayAListingOfTheResource
-      description: ''
-      parameters: []
-      responses:
-        403:
-          description: ''
+        400:
+          description: 'Without Any Token'
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  statusCode: 403
-                  message: Unauthenticated
+                  statusCode: 400
+                  message: 'Bad credentials'
                 properties:
                   statusCode:
                     type: integer
-                    example: 403
+                    example: 400
                   message:
                     type: string
-                    example: Unauthenticated
+                    example: 'Bad credentials'
       tags:
-        - Endpoints
-      security: []
-    post:
-      summary: 'Store a newly created resource in storage.'
-      operationId: storeANewlyCreatedResourceInStorage
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                titleName:
-                  type: string
-                  description: ''
-                  example: cumque
-                titleAccess:
-                  type: string
-                  description: ''
-                  example: natus
-              required:
-                - titleName
-                - titleAccess
-      security: []
-  '/api/v1/user_title/{id}':
-    put:
-      summary: 'Update the specified resource in storage.'
-      operationId: updateTheSpecifiedResourceInStorage
-      description: ''
-      parameters: []
-      responses: {  }
-      tags:
-        - Endpoints
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                titleName:
-                  type: string
-                  description: ''
-                  example: autem
-                titleAccess:
-                  type: string
-                  description: ''
-                  example: hic
-              required:
-                - titleName
-                - titleAccess
-      security: []
-    parameters:
-      -
-        in: path
-        name: id
-        description: 'The ID of the user title.'
-        example: 1
-        required: true
-        schema:
-          type: integer
+        - Authentication
   /api/v1/user:
     get:
       summary: ''
@@ -329,27 +283,27 @@ paths:
                 username:
                   type: string
                   description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
-                  example: qwwzpnmbzocinyi
+                  example: aqihaohfd
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: bpgjml
+                  example: wt
                 departmentId:
                   type: string
                   description: ''
-                  example: et
+                  example: vel
                 email:
                   type: string
                   description: 'Must be a valid email address. Must not be greater than 255 characters.'
-                  example: trent.zieme@example.com
+                  example: brad.hand@example.com
                 password:
                   type: string
                   description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
-                  example: "Bl(Lka':sQFRrr|"
+                  example: '{89L2#'
                 userTitleId:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: rerum
                 workPlace:
                   type: string
                   description: 'Must be one of <code>ship</code> or <code>office</code>.'
@@ -416,27 +370,27 @@ paths:
                 username:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: jo
+                  example: ovjglsoewoaotzcgya
                 fullname:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: gnxpzxyuwdktvt
+                  example: ypfyyrkitimnqascpztjdys
                 departmentId:
                   type: string
                   description: ''
-                  example: et
+                  example: voluptatem
                 email:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: monty.hegmann@example.org
+                  example: morissette.carley@example.net
                 userTitleId:
                   type: string
                   description: ''
-                  example: earum
+                  example: est
                 workPlace:
                   type: string
                   description: ''
-                  example: velit
+                  example: voluptatem
                 status:
                   type: boolean
                   description: 'Must be one of <code>true</code> or <code>false</code>.'
@@ -463,6 +417,417 @@ paths:
         required: true
         schema:
           type: integer
+  /api/v1/user_title:
+    get:
+      summary: All
+      operationId: all
+      description: 'Get list of user title'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    -
+                      id: 1
+                      name: Captain
+                      access:
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
+                    -
+                      id: 2
+                      name: 'Chief Engineer'
+                      access:
+                        stock: false
+                        users: true
+                        jobList: true
+                        shipList: false
+                        dataSheet: true
+                        department: true
+                        shipDetails: false
+                    -
+                      id: 3
+                      name: 'Chief Officer'
+                      access:
+                        stock: false
+                        users: true
+                        jobList: true
+                        shipList: false
+                        dataSheet: true
+                        department: true
+                        shipDetails: false
+                    -
+                      id: 4
+                      name: Admin
+                      access:
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
+                    -
+                      id: 5
+                      name: 'Second Engineer'
+                      access:
+                        stock: false
+                        users: true
+                        jobList: true
+                        shipList: false
+                        dataSheet: true
+                        department: true
+                        shipDetails: false
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Captain
+                        access:
+                          stock: true
+                          users: true
+                          jobList: true
+                          shipList: true
+                          dataSheet: true
+                          department: true
+                          shipDetails: true
+                      -
+                        id: 2
+                        name: 'Chief Engineer'
+                        access:
+                          stock: false
+                          users: true
+                          jobList: true
+                          shipList: false
+                          dataSheet: true
+                          department: true
+                          shipDetails: false
+                      -
+                        id: 3
+                        name: 'Chief Officer'
+                        access:
+                          stock: false
+                          users: true
+                          jobList: true
+                          shipList: false
+                          dataSheet: true
+                          department: true
+                          shipDetails: false
+                      -
+                        id: 4
+                        name: Admin
+                        access:
+                          stock: true
+                          users: true
+                          jobList: true
+                          shipList: true
+                          dataSheet: true
+                          department: true
+                          shipDetails: true
+                      -
+                        id: 5
+                        name: 'Second Engineer'
+                        access:
+                          stock: false
+                          users: true
+                          jobList: true
+                          shipList: false
+                          dataSheet: true
+                          department: true
+                          shipDetails: false
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Captain
+                        access:
+                          type: object
+                          properties:
+                            stock:
+                              type: boolean
+                              example: true
+                            users:
+                              type: boolean
+                              example: true
+                            jobList:
+                              type: boolean
+                              example: true
+                            shipList:
+                              type: boolean
+                              example: true
+                            dataSheet:
+                              type: boolean
+                              example: true
+                            department:
+                              type: boolean
+                              example: true
+                            shipDetails:
+                              type: boolean
+                              example: true
+      tags:
+        - 'User Title'
+    post:
+      summary: 'Create User Title'
+      operationId: createUserTitle
+      description: 'Create new user title'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 201
+                  message: Created
+                  data:
+                    id: 6
+                    name: 'Bukan CEO'
+                    access:
+                      shipList: false
+                      shipDetails: false
+                      jobList: true
+                      dataSheet: true
+                      stock: false
+                      users: true
+                      department: true
+                      inbox: true
+                    createdAt: '2023-04-27 12:18:22'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: Created
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 6
+                      name:
+                        type: string
+                        example: 'Bukan CEO'
+                      access:
+                        type: object
+                        properties:
+                          shipList:
+                            type: boolean
+                            example: false
+                          shipDetails:
+                            type: boolean
+                            example: false
+                          jobList:
+                            type: boolean
+                            example: true
+                          dataSheet:
+                            type: boolean
+                            example: true
+                          stock:
+                            type: boolean
+                            example: false
+                          users:
+                            type: boolean
+                            example: true
+                          department:
+                            type: boolean
+                            example: true
+                          inbox:
+                            type: boolean
+                            example: true
+                      createdAt:
+                        type: string
+                        example: '2023-04-27 12:18:22'
+        422:
+          description: 'Access Title field is missing'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 422
+                  message: 'Bad input'
+                  errors:
+                    titleAccess: 'Total length access title given is not the same, expected 8, got 1'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 422
+                  message:
+                    type: string
+                    example: 'Bad input'
+                  errors:
+                    type: object
+                    properties:
+                      titleAccess:
+                        type: string
+                        example: 'Total length access title given is not the same, expected 8, got 1'
+      tags:
+        - 'User Title'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titleName:
+                  type: string
+                  description: 'The name of the new user title.'
+                  example: General
+                titleAccess:
+                  type: string
+                  description: 'The list of access title (can be json type / json stringify).'
+                  example: '{\"shipList\":false,\"shipDetails\":false,\"jobList\":true,\"dataSheet\":true,\"stock\":false,\"users\":true,\"department\":true,\"inbox\":true}'
+              required:
+                - titleName
+                - titleAccess
+  '/api/v1/user_title/{id}':
+    put:
+      summary: 'Update User Title'
+      operationId: updateUserTitle
+      description: 'Update new user title'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Updated
+                  data:
+                    id: 6
+                    name: 'Maunya CTO'
+                    access:
+                      shipList: false
+                      shipDetails: false
+                      jobList: true
+                      dataSheet: true
+                      stock: false
+                      users: true
+                      department: true
+                      inbox: true
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 6
+                      name:
+                        type: string
+                        example: 'Maunya CTO'
+                      access:
+                        type: object
+                        properties:
+                          shipList:
+                            type: boolean
+                            example: false
+                          shipDetails:
+                            type: boolean
+                            example: false
+                          jobList:
+                            type: boolean
+                            example: true
+                          dataSheet:
+                            type: boolean
+                            example: true
+                          stock:
+                            type: boolean
+                            example: false
+                          users:
+                            type: boolean
+                            example: true
+                          department:
+                            type: boolean
+                            example: true
+                          inbox:
+                            type: boolean
+                            example: true
+      tags:
+        - 'User Title'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                titleName:
+                  type: string
+                  description: 'The name of the new user title.'
+                  example: Admiral
+                titleAccess:
+                  type: string
+                  description: 'The list of access title (can be json type / json stringify).'
+                  example: '{\"shipList\":false,\"shipDetails\":false,\"jobList\":true,\"dataSheet\":true,\"stock\":false,\"users\":true,\"department\":true,\"inbox\":true}'
+              required:
+                - titleName
+                - titleAccess
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user title.'
+        example: 1
+        required: true
+        schema:
+          type: integer
 tags:
   -
     name: Authentication
@@ -470,3 +835,6 @@ tags:
   -
     name: Endpoints
     description: ''
+  -
+    name: 'User Title'
+    description: "\nAPIs for user title"

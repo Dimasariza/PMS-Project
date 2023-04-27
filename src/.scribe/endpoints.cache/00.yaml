@@ -49,9 +49,85 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"statusCode":200,"message":"Authenticated","data":{"id":16,"username":"superadmin","fullname":"LeBron Juara NBA 2K23","email":"admin@gmail.com","workPlace":"office","status":true,"document":"some_document.pdf","createdAt":"2023-04-26 12:56:31","updatedAt":"2023-04-26 12:56:31","department":{"id":5,"name":"Dr. Destiney Fadel II","code":"BY","workPlace":"96159 Abernathy Field Suite 772\nCronamouth, WI 79459"},"title":{"id":4,"name":"Admin","access":{"stock":true,"users":true,"jobList":true,"shipList":true,"dataSheet":true,"department":true,"shipDetails":true},"createdAt":"2023-04-26 12:56:29"},"token":"2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh"}}'
+        content: |
+          {
+              "statusCode": 200,
+              "message": "Authenticated",
+              "data": {
+                  "id": 16,
+                  "username": "superadmin",
+                  "fullname": "LeBron Juara NBA 2K23",
+                  "email": "admin@gmail.com",
+                  "workPlace": "office",
+                  "status": true,
+                  "document": "some_document.pdf",
+                  "createdAt": "2023-04-26 12:56:31",
+                  "updatedAt": "2023-04-26 12:56:31",
+                  "department": {
+                      "id": 5,
+                      "name": "Dr. Destiney Fadel II",
+                      "code": "BY",
+                      "workPlace": "96159 Abernathy Field Suite 772\nCronamouth, WI 79459"
+                  },
+                  "title": {
+                      "id": 4,
+                      "name": "Admin",
+                      "access": {
+                          "stock": true,
+                          "users": true,
+                          "jobList": true,
+                          "shipList": true,
+                          "dataSheet": true,
+                          "department": true,
+                          "shipDetails": true
+                      },
+                      "createdAt": "2023-04-26 12:56:29"
+                  },
+                  "token": "1|gZBSXA7mpHgVUT1dY5jbeoecNuZg1qtox3eQHb3D"
+              }
+          }
         headers: []
-        description: ''
+        description: Success
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "statusCode": 422,
+              "message": "Bad input",
+              "errors": {
+                  "username": "The username field is required."
+              }
+          }
+        headers: []
+        description: 'Without Username'
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "statusCode": 422,
+              "message": "Bad input",
+              "errors": {
+                  "password": "The password field is required."
+              }
+          }
+        headers: []
+        description: 'Without Password'
+        custom: []
+      -
+        status: 422
+        content: |
+          {
+              "statusCode": 422,
+              "message": "Bad input",
+              "errors": {
+                  "username": "The username field is required.",
+                  "password": "The password field is required."
+              }
+          }
+        headers: []
+        description: 'Without Any Input'
         custom: []
     responseFields: []
     auth: []
@@ -88,9 +164,43 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{ "statusCode": 200, "message": "Logout success" }'
+        content: |
+          {
+              "statusCode": 200,
+              "message": "Logout success"
+          }
         headers: []
-        description: ''
+        description: Success
+        custom: []
+      -
+        status: 400
+        content: |
+          {
+              "statusCode": 400,
+              "message": "Invalid credentials"
+          }
+        headers: []
+        description: 'With Same Token'
+        custom: []
+      -
+        status: 400
+        content: |
+          {
+              "statusCode": 400,
+              "message": "Invalid credentials"
+          }
+        headers: []
+        description: 'Unknown Token'
+        custom: []
+      -
+        status: 400
+        content: |
+          {
+              "statusCode": 400,
+              "message": "Bad credentials"
+          }
+        headers: []
+        description: 'Without Any Token'
         custom: []
     responseFields: []
     auth: []

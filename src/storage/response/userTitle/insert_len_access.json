@@ -1,0 +1,7 @@
+{
+    "statusCode": 422,
+    "message": "Bad input",
+    "errors": {
+        "titleAccess": "Total length access title given is not the same, expected 8, got 1"
+    }
+}

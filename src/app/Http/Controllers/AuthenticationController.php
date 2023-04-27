@@ -33,7 +33,10 @@ class AuthenticationController extends Controller
      * @bodyParam username string required Username of the user. Example: superadmin
      * @bodyParam password string required Password of the user. Example: user1234
      *
-     * @response 200 {"statusCode":200,"message":"Authenticated","data":{"id":16,"username":"superadmin","fullname":"LeBron Juara NBA 2K23","email":"admin@gmail.com","workPlace":"office","status":true,"document":"some_document.pdf","createdAt":"2023-04-26 12:56:31","updatedAt":"2023-04-26 12:56:31","department":{"id":5,"name":"Dr. Destiney Fadel II","code":"BY","workPlace":"96159 Abernathy Field Suite 772\nCronamouth, WI 79459"},"title":{"id":4,"name":"Admin","access":{"stock":true,"users":true,"jobList":true,"shipList":true,"dataSheet":true,"department":true,"shipDetails":true},"createdAt":"2023-04-26 12:56:29"},"token":"2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh"}}
+     * @responseFile status=200 scenario='Success' response/auth/success.json
+     * @responseFile status=422 scenario='Without Username' response/auth/without_username.json
+     * @responseFile status=422 scenario='Without Password' response/auth/without_password.json
+     * @responseFile status=422 scenario='Without Any Input' response/auth/without_any_creds.json
      */
     public function login(LoginRequest $request)
     {
@@ -55,7 +58,10 @@ class AuthenticationController extends Controller
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      * @authenticated
      *
-     * @response { "statusCode": 200, "message": "Logout success" }
+     * @responseFile status=200 scenario='Success' response/auth/logout_success.json
+     * @responseFile status=400 scenario='With Same Token' response/auth/logout_same_token_or_unknown.json
+     * @responseFile status=400 scenario='Unknown Token' response/auth/logout_same_token_or_unknown.json
+     * @responseFile status=400 scenario='Without Any Token' response/auth/without_any_token.json
      */
     public function logout(Request $request)
     {

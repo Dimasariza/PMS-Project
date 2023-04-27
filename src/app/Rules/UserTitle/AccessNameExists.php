@@ -28,7 +28,7 @@ class AccessNameExists implements ValidationRule
         $defaultAccess = AccessTitle::toArrayColumn();
 
         if(count($defaultAccess) !== count($toCheck)) {
-            $fail(sprintf("Total length access title given is not the same, expected %d, got %d", count($defaultAccess), count($value)));
+            $fail(sprintf("Total length access title given is not the same, expected %d, got %d", count($defaultAccess), count($toCheck)));
             return;
         }
 

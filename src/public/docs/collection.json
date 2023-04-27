@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "c198db4b-10dc-4431-b44d-67295b9a2d62",
+        "_postman_id": "280b79d0-72e5-4528-9a30-99c1be122909",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -52,8 +52,26 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\"statusCode\":200,\"message\":\"Authenticated\",\"data\":{\"id\":16,\"username\":\"superadmin\",\"fullname\":\"LeBron Juara NBA 2K23\",\"email\":\"admin@gmail.com\",\"workPlace\":\"office\",\"status\":true,\"document\":\"some_document.pdf\",\"createdAt\":\"2023-04-26 12:56:31\",\"updatedAt\":\"2023-04-26 12:56:31\",\"department\":{\"id\":5,\"name\":\"Dr. Destiney Fadel II\",\"code\":\"BY\",\"workPlace\":\"96159 Abernathy Field Suite 772\\nCronamouth, WI 79459\"},\"title\":{\"id\":4,\"name\":\"Admin\",\"access\":{\"stock\":true,\"users\":true,\"jobList\":true,\"shipList\":true,\"dataSheet\":true,\"department\":true,\"shipDetails\":true},\"createdAt\":\"2023-04-26 12:56:29\"},\"token\":\"2|vQYUWZT1wmiieHl4AhPg3ajkEv1g4mmLVn9tclPh\"}}",
-                            "name": ""
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Authenticated\",\n    \"data\": {\n        \"id\": 16,\n        \"username\": \"superadmin\",\n        \"fullname\": \"LeBron Juara NBA 2K23\",\n        \"email\": \"admin@gmail.com\",\n        \"workPlace\": \"office\",\n        \"status\": true,\n        \"document\": \"some_document.pdf\",\n        \"createdAt\": \"2023-04-26 12:56:31\",\n        \"updatedAt\": \"2023-04-26 12:56:31\",\n        \"department\": {\n            \"id\": 5,\n            \"name\": \"Dr. Destiney Fadel II\",\n            \"code\": \"BY\",\n            \"workPlace\": \"96159 Abernathy Field Suite 772\\nCronamouth, WI 79459\"\n        },\n        \"title\": {\n            \"id\": 4,\n            \"name\": \"Admin\",\n            \"access\": {\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            },\n            \"createdAt\": \"2023-04-26 12:56:29\"\n        },\n        \"token\": \"1|gZBSXA7mpHgVUT1dY5jbeoecNuZg1qtox3eQHb3D\"\n    }\n}\n",
+                            "name": "Success"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"statusCode\": 422,\n    \"message\": \"Bad input\",\n    \"errors\": {\n        \"username\": \"The username field is required.\"\n    }\n}\n",
+                            "name": "Without Username"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"statusCode\": 422,\n    \"message\": \"Bad input\",\n    \"errors\": {\n        \"password\": \"The password field is required.\"\n    }\n}\n",
+                            "name": "Without Password"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"statusCode\": 422,\n    \"message\": \"Bad input\",\n    \"errors\": {\n        \"username\": \"The username field is required.\",\n        \"password\": \"The password field is required.\"\n    }\n}\n",
+                            "name": "Without Any Input"
                         }
                     ]
                 },
@@ -88,8 +106,26 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{ \"statusCode\": 200, \"message\": \"Logout success\" }",
-                            "name": ""
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Logout success\"\n}\n",
+                            "name": "Success"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"statusCode\": 400,\n    \"message\": \"Invalid credentials\"\n}\n",
+                            "name": "With Same Token"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"statusCode\": 400,\n    \"message\": \"Invalid credentials\"\n}\n",
+                            "name": "Unknown Token"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\n    \"statusCode\": 400,\n    \"message\": \"Bad credentials\"\n}\n",
+                            "name": "Without Any Token"
                         }
                     ]
                 }
@@ -100,13 +136,13 @@
             "description": "",
             "item": [
                 {
-                    "name": "Display a listing of the resource.",
+                    "name": "GET api\/v1\/user",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user_title",
+                            "path": "api\/v1\/user",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user_title"
+                            "raw": "{{baseUrl}}\/api\/v1\/user"
                         },
                         "method": "GET",
                         "header": [
@@ -156,132 +192,6 @@
                     ]
                 },
                 {
-                    "name": "Store a newly created resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user_title",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user_title"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"titleName\":\"cumque\",\"titleAccess\":\"natus\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Update the specified resource in storage.",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user_title\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user_title\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user title."
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"titleName\":\"autem\",\"titleAccess\":\"hic\"}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "GET api\/v1\/user",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "58"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 403,
-                            "body": "{\"statusCode\":403,\"message\":\"Unauthenticated\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
                     "name": "POST api\/v1\/user",
                     "request": {
                         "url": {
@@ -303,7 +213,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"qwwzpnmbzocinyi\",\"fullname\":\"bpgjml\",\"departmentId\":\"et\",\"email\":\"trent.zieme@example.com\",\"password\":\"Bl(Lka':sQFRrr|\",\"userTitleId\":\"quisquam\",\"workPlace\":\"ship\",\"status\":false}"
+                            "raw": "{\"username\":\"aqihaohfd\",\"fullname\":\"wt\",\"departmentId\":\"vel\",\"email\":\"brad.hand@example.com\",\"password\":\"{89L2#\",\"userTitleId\":\"rerum\",\"workPlace\":\"ship\",\"status\":false}"
                         },
                         "description": "",
                         "auth": {
@@ -363,7 +273,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "57"
+                                    "value": "58"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -406,7 +316,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"username\":\"jo\",\"fullname\":\"gnxpzxyuwdktvt\",\"departmentId\":\"et\",\"email\":\"monty.hegmann@example.org\",\"userTitleId\":\"earum\",\"workPlace\":\"velit\",\"status\":\"false\"}"
+                            "raw": "{\"username\":\"ovjglsoewoaotzcgya\",\"fullname\":\"ypfyyrkitimnqascpztjdys\",\"departmentId\":\"voluptatem\",\"email\":\"morissette.carley@example.net\",\"userTitleId\":\"est\",\"workPlace\":\"voluptatem\",\"status\":\"false\"}"
                         },
                         "description": "",
                         "auth": {
@@ -414,6 +324,148 @@
                         }
                     },
                     "response": []
+                }
+            ]
+        },
+        {
+            "name": "User Title",
+            "description": "\nAPIs for user title",
+            "item": [
+                {
+                    "name": "All",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user_title",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user_title"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Get list of user title"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Captain\",\n            \"access\": {\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            }\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Chief Engineer\",\n            \"access\": {\n                \"stock\": false,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": false,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": false\n            }\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Chief Officer\",\n            \"access\": {\n                \"stock\": false,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": false,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": false\n            }\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Admin\",\n            \"access\": {\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            }\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Second Engineer\",\n            \"access\": {\n                \"stock\": false,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": false,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": false\n            }\n        }\n    ]\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Create User Title",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user_title",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user_title",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of user title to update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"titleName\":\"General\",\"titleAccess\":\"{\\\\\\\"shipList\\\\\\\":false,\\\\\\\"shipDetails\\\\\\\":false,\\\\\\\"jobList\\\\\\\":true,\\\\\\\"dataSheet\\\\\\\":true,\\\\\\\"stock\\\\\\\":false,\\\\\\\"users\\\\\\\":true,\\\\\\\"department\\\\\\\":true,\\\\\\\"inbox\\\\\\\":true}\"}"
+                        },
+                        "description": "Create new user title"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 201,\n    \"message\": \"Created\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Bukan CEO\",\n        \"access\": {\n            \"shipList\": false,\n            \"shipDetails\": false,\n            \"jobList\": true,\n            \"dataSheet\": true,\n            \"stock\": false,\n            \"users\": true,\n            \"department\": true,\n            \"inbox\": true\n        },\n        \"createdAt\": \"2023-04-27 12:18:22\"\n    }\n}\n",
+                            "name": "Success"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"statusCode\": 422,\n    \"message\": \"Bad input\",\n    \"errors\": {\n        \"titleAccess\": \"Total length access title given is not the same, expected 8, got 1\"\n    }\n}\n",
+                            "name": "Access Title field is missing"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update User Title",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user_title\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user_title\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user title."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"titleName\":\"Admiral\",\"titleAccess\":\"{\\\\\\\"shipList\\\\\\\":false,\\\\\\\"shipDetails\\\\\\\":false,\\\\\\\"jobList\\\\\\\":true,\\\\\\\"dataSheet\\\\\\\":true,\\\\\\\"stock\\\\\\\":false,\\\\\\\"users\\\\\\\":true,\\\\\\\"department\\\\\\\":true,\\\\\\\"inbox\\\\\\\":true}\"}"
+                        },
+                        "description": "Update new user title"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Updated\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Maunya CTO\",\n        \"access\": {\n            \"shipList\": false,\n            \"shipDetails\": false,\n            \"jobList\": true,\n            \"dataSheet\": true,\n            \"stock\": false,\n            \"users\": true,\n            \"department\": true,\n            \"inbox\": true\n        }\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
                 }
             ]
         }

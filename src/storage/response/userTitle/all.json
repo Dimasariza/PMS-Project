@@ -1,0 +1,71 @@
+{
+    "statusCode": 200,
+    "message": "Success",
+    "data": [
+        {
+            "id": 1,
+            "name": "Captain",
+            "access": {
+                "stock": true,
+                "users": true,
+                "jobList": true,
+                "shipList": true,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": true
+            }
+        },
+        {
+            "id": 2,
+            "name": "Chief Engineer",
+            "access": {
+                "stock": false,
+                "users": true,
+                "jobList": true,
+                "shipList": false,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": false
+            }
+        },
+        {
+            "id": 3,
+            "name": "Chief Officer",
+            "access": {
+                "stock": false,
+                "users": true,
+                "jobList": true,
+                "shipList": false,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": false
+            }
+        },
+        {
+            "id": 4,
+            "name": "Admin",
+            "access": {
+                "stock": true,
+                "users": true,
+                "jobList": true,
+                "shipList": true,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": true
+            }
+        },
+        {
+            "id": 5,
+            "name": "Second Engineer",
+            "access": {
+                "stock": false,
+                "users": true,
+                "jobList": true,
+                "shipList": false,
+                "dataSheet": true,
+                "department": true,
+                "shipDetails": false
+            }
+        }
+    ]
+}

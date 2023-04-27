@@ -1,0 +1,18 @@
+{
+    "statusCode": 200,
+    "message": "Updated",
+    "data": {
+        "id": 6,
+        "name": "Maunya CTO",
+        "access": {
+            "shipList": false,
+            "shipDetails": false,
+            "jobList": true,
+            "dataSheet": true,
+            "stock": false,
+            "users": true,
+            "department": true,
+            "inbox": true
+        }
+    }
+}
