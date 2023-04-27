@@ -2,6 +2,7 @@ import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
 
+
 function PageHeader() {
   const user = {
     name: 'Catherine Pike',
@@ -16,17 +17,17 @@ function PageHeader() {
         </Typography> */}
         <Typography variant="subtitle2">
           {/* {user.name}, these are your recent transactions */}
-          Members/Titles/Add Title
+          Members/Titles/Add User
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/members/title-settings"} passHref>
+        <NextLink href={url + "/batera/members/users"} passHref>
           <Button
             sx={{ mt: { xs: 2, md: 0 } }}
             variant="contained"
             startIcon={<SaveTwoToneIcon fontSize="small" />}
           >
-            Save Title
+            Save User
           </Button>
         </NextLink>
       </Grid>

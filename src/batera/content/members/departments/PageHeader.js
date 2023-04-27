@@ -1,13 +1,14 @@
 import { Typography, Button, Grid } from '@mui/material';
-
+import NextLink from 'next/link';
 import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
+
 
 function PageHeader() {
   const user = {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg'
   };
-  
+  const url = process.env.PUBLIC_URL || ""
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
@@ -20,13 +21,15 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <Button
-          sx={{ mt: { xs: 2, md: 0 } }}
-          variant="contained"
-          startIcon={<AddTwoToneIcon fontSize="small" />}
-        >
-          Add Department
-        </Button>
+        <NextLink href={url + "/batera/members/departments/add-departments"} passHref>
+          <Button
+            sx={{ mt: { xs: 2, md: 0 } }}
+            variant="contained"
+            startIcon={<AddTwoToneIcon fontSize="small" />}
+          >
+            Add Department
+          </Button>
+        </NextLink>
       </Grid>
     </Grid>
   );

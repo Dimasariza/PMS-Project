@@ -2,7 +2,6 @@ import { useContext, useEffect } from 'react';
 import Scrollbar from 'src/components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
-
 import {
   Box,
   Drawer,
@@ -31,8 +30,6 @@ const SidebarWrapper = styled(Box)(
 
 function Sidebar() {
   const url = process.env.PUBLIC_URL || ""
-  console.log(url)
-
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
   const theme = useTheme();

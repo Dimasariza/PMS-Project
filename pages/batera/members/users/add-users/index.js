@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/batera/content/members/title-settings/add-title/PageHeader';
+import PageHeader from 'src/batera/content/members/users/add-users/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import TitlesList from 'src/batera/content/members/title-settings/add-title/TitlesList';
+import TitlesList from 'src/batera/content/members/users/add-users/TitlesList';
 
 function Users() {
   return (
     <>
       <Head>
-        <title>Title Settings</title>
+        <title>Add User</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
