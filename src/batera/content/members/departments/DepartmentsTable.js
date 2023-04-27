@@ -49,11 +49,11 @@ const getStatusLabel = (cryptoOrderStatus) => {
   return <Label color={color}>{text}</Label>;
 };
 
-const applyFilters = (cryptoOrders, filters) => {
-  return cryptoOrders.filter((cryptoOrder) => {
+const applyFilters = (departmentList, filters) => {
+  return departmentList.filter((department) => {
     let matches = true;
 
-    if (filters.status && cryptoOrder.status !== filters.status) {
+    if (filters.status && department.status !== filters.status) {
       matches = false;
     }
 
@@ -61,11 +61,11 @@ const applyFilters = (cryptoOrders, filters) => {
   });
 };
 
-const applyPagination = (cryptoOrders, page, limit) => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
+const applyPagination = (departmentList, page, limit) => {
+  return departmentList.slice(page * limit, page * limit + limit);
 };
 
-const DepartmentsTable = ({ cryptoOrders }) => {
+const DepartmentsTable = ({ departmentList }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -112,9 +112,9 @@ const DepartmentsTable = ({ cryptoOrders }) => {
     setLimit(parseInt(event.target.value));
   };
 
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
-  const paginatedCryptoOrders = applyPagination(
-    filteredCryptoOrders,
+  const filteredDepartmentList = applyFilters(departmentList, filters);
+  const paginatedDepartmentList = applyPagination(
+    filteredDepartmentList,
     page,
     limit
   );
@@ -125,7 +125,7 @@ const DepartmentsTable = ({ cryptoOrders }) => {
       <CardHeader
         action={
           <Box width={150}>
-            <FormControl fullWidth variant="outlined">
+            {/* <FormControl fullWidth variant="outlined">
               <InputLabel>Status</InputLabel>
               <Select
                 value={filters.status || 'all'}
@@ -139,28 +139,26 @@ const DepartmentsTable = ({ cryptoOrders }) => {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
+            </FormControl> */}
           </Box>
         }
-        title="Recent Orders"
+        title="Department"
       />
       <Divider />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Order Details</TableCell>
-              <TableCell>Order ID</TableCell>
-              <TableCell>Source</TableCell>
-              <TableCell align="right">Amount</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell>No.</TableCell>
+              <TableCell>Department Code</TableCell>
+              <TableCell>Department Name</TableCell>
+              <TableCell>Workplace</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedCryptoOrders.map((cryptoOrder) => {
+            {paginatedDepartmentList.map((department, index) => {
               return (
-                <TableRow hover key={cryptoOrder.id}>
+                <TableRow hover key={department.id}>
                   <TableCell>
                     <Typography
                       variant="body1"
@@ -169,21 +167,7 @@ const DepartmentsTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.orderDetails}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {format(cryptoOrder.orderDate, 'MMMM dd yyyy')}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {cryptoOrder.orderID}
+                      {index + 1}
                     </Typography>
                   </TableCell>
                   <TableCell>
@@ -194,13 +178,10 @@ const DepartmentsTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.sourceName}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {cryptoOrder.sourceDesc}
+                      {department.departmentCode}
                     </Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell>
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -208,45 +189,19 @@ const DepartmentsTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.amountCrypto}
-                      {cryptoOrder.cryptoCurrency}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {numeral(cryptoOrder.amount).format(
-                        `${cryptoOrder.currency}0,0.00`
-                      )}
+                      {department.departmentName}
                     </Typography>
                   </TableCell>
-                  <TableCell align="right">
-                    {getStatusLabel(cryptoOrder.status)}
-                  </TableCell>
-                  <TableCell align="right">
-                    <Tooltip title="Edit Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': {
-                            background: theme.colors.primary.lighter
-                          },
-                          color: theme.palette.primary.main
-                        }}
-                        color="inherit"
-                        size="small"
-                      >
-                        <EditTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Delete Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': { background: theme.colors.error.lighter },
-                          color: theme.palette.error.main
-                        }}
-                        color="inherit"
-                        size="small"
-                      >
-                        <DeleteTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
+                  <TableCell>
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {department.workplace}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               );
@@ -257,7 +212,7 @@ const DepartmentsTable = ({ cryptoOrders }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={filteredCryptoOrders.length}
+          count={filteredDepartmentList.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}
@@ -270,11 +225,11 @@ const DepartmentsTable = ({ cryptoOrders }) => {
 };
 
 DepartmentsTable.propTypes = {
-  cryptoOrders: PropTypes.array.isRequired
+  departmentList: PropTypes.array.isRequired
 };
 
 DepartmentsTable.defaultProps = {
-  cryptoOrders: []
+  departmentList: []
 };
 
 export default DepartmentsTable;

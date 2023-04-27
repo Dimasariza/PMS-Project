@@ -49,11 +49,11 @@ const getStatusLabel = (cryptoOrderStatus) => {
   return <Label color={color}>{text}</Label>;
 };
 
-const applyFilters = (cryptoOrders, filters) => {
-  return cryptoOrders.filter((cryptoOrder) => {
+const applyFilters = (usersList, filters) => {
+  return usersList.filter((user) => {
     let matches = true;
 
-    if (filters.status && cryptoOrder.status !== filters.status) {
+    if (filters.status && user.status !== filters.status) {
       matches = false;
     }
 
@@ -61,11 +61,11 @@ const applyFilters = (cryptoOrders, filters) => {
   });
 };
 
-const applyPagination = (cryptoOrders, page, limit) => {
-  return cryptoOrders.slice(page * limit, page * limit + limit);
+const applyPagination = (usersList, page, limit) => {
+  return usersList.slice(page * limit, page * limit + limit);
 };
 
-const UsersTable = ({ cryptoOrders }) => {
+const UsersTable = ({ usersList }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -112,9 +112,9 @@ const UsersTable = ({ cryptoOrders }) => {
     setLimit(parseInt(event.target.value));
   };
 
-  const filteredCryptoOrders = applyFilters(cryptoOrders, filters);
-  const paginatedCryptoOrders = applyPagination(
-    filteredCryptoOrders,
+  const filteredUserList = applyFilters(usersList, filters);
+  const paginatedUserList = applyPagination(
+    filteredUserList,
     page,
     limit
   );
@@ -125,7 +125,7 @@ const UsersTable = ({ cryptoOrders }) => {
       <CardHeader
         action={
           <Box width={150}>
-            <FormControl fullWidth variant="outlined">
+            {/* <FormControl fullWidth variant="outlined">
               <InputLabel>Status</InputLabel>
               <Select
                 value={filters.status || 'all'}
@@ -139,29 +139,31 @@ const UsersTable = ({ cryptoOrders }) => {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
+            </FormControl> */}
           </Box>
         }
-        title="Recent Orders"
+        title="Users"
       />
       <Divider />
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Order Details</TableCell>
-              <TableCell>Order ID</TableCell>
-              <TableCell>Source</TableCell>
-              <TableCell align="right">Amount</TableCell>
-              <TableCell align="right">Status</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell align="left">No.</TableCell>
+              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">User Name</TableCell>
+              <TableCell align="left">Title</TableCell>
+              <TableCell align="left">Email</TableCell>
+              <TableCell align="left">Workplace</TableCell>
+              <TableCell align="left">Status</TableCell>
+              <TableCell align="left">Department</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedCryptoOrders.map((cryptoOrder) => {
+            {paginatedUserList.map((user, index) => {
               return (
-                <TableRow hover key={cryptoOrder.id}>
-                  <TableCell>
+                <TableRow hover key={user.id}>
+                  <TableCell align="left">
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -169,13 +171,10 @@ const UsersTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.orderDetails}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {format(cryptoOrder.orderDate, 'MMMM dd yyyy')}
+                      {index+1}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align="left">
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -183,10 +182,10 @@ const UsersTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.orderID}
+                      {user.name}
                     </Typography>
                   </TableCell>
-                  <TableCell>
+                  <TableCell align="left">
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -194,13 +193,10 @@ const UsersTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.sourceName}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {cryptoOrder.sourceDesc}
+                      {user.userName}
                     </Typography>
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">
                     <Typography
                       variant="body1"
                       fontWeight="bold"
@@ -208,45 +204,52 @@ const UsersTable = ({ cryptoOrders }) => {
                       gutterBottom
                       noWrap
                     >
-                      {cryptoOrder.amountCrypto}
-                      {cryptoOrder.cryptoCurrency}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {numeral(cryptoOrder.amount).format(
-                        `${cryptoOrder.currency}0,0.00`
-                      )}
+                      {user.title}
                     </Typography>
                   </TableCell>
-                  <TableCell align="right">
-                    {getStatusLabel(cryptoOrder.status)}
-                  </TableCell>
-                  <TableCell align="right">
-                    <Tooltip title="Edit Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': {
-                            background: theme.colors.primary.lighter
-                          },
-                          color: theme.palette.primary.main
-                        }}
-                        color="inherit"
-                        size="small"
+                  <TableCell align="left">
+                    <Typography
+                        variant="body1"
+                        fontWeight="bold"
+                        color="text.primary"
+                        gutterBottom
+                        noWrap
                       >
-                        <EditTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Delete Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': { background: theme.colors.error.lighter },
-                          color: theme.palette.error.main
-                        }}
-                        color="inherit"
-                        size="small"
-                      >
-                        <DeleteTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
+                        {user.email}
+                      </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {user.workplace}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {user.status}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align="left">
+                    <Typography
+                      variant="body1"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                    >
+                      {user.department}
+                    </Typography>
                   </TableCell>
                 </TableRow>
               );
@@ -257,7 +260,7 @@ const UsersTable = ({ cryptoOrders }) => {
       <Box p={2}>
         <TablePagination
           component="div"
-          count={filteredCryptoOrders.length}
+          count={filteredUserList.length}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleLimitChange}
           page={page}
@@ -270,11 +273,11 @@ const UsersTable = ({ cryptoOrders }) => {
 };
 
 UsersTable.propTypes = {
-  cryptoOrders: PropTypes.array.isRequired
+  usersList: PropTypes.array.isRequired
 };
 
 UsersTable.defaultProps = {
-  cryptoOrders: []
+  usersList: []
 };
 
 export default UsersTable;

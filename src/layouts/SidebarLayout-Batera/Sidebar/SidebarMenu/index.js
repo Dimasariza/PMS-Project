@@ -40,6 +40,7 @@ import HomeRepairServiceTwoToneIcon from '@mui/icons-material/HomeRepairServiceT
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import EngineeringTwoToneIcon from '@mui/icons-material/EngineeringTwoTone';
 import MailTwoToneIcon from '@mui/icons-material/MailTwoTone';
+import BuildCircleTwoToneIcon from '@mui/icons-material/BuildCircleTwoTone';
 import MarkEmailUnreadTwoToneIcon from '@mui/icons-material/MarkEmailUnreadTwoTone';
 import CheckCircleTwoToneIcon from '@mui/icons-material/CheckCircleTwoTone';
 
@@ -338,7 +339,7 @@ function SidebarMenu() {
                     disableRipple
                     component="a"
                     onClick={closeSidebar}
-                    startIcon={<AccountCircleTwoToneIcon />}
+                    startIcon={<BuildCircleTwoToneIcon />}
                   >
                     Title Settings
                   </Button>

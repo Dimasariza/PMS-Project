@@ -25,7 +25,7 @@ function PageHeader() {
           variant="contained"
           startIcon={<AddTwoToneIcon fontSize="small" />}
         >
-          Add User
+          Add Department
         </Button>
       </Grid>
     </Grid>

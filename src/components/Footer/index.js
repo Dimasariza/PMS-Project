@@ -16,7 +16,7 @@ function Footer() {
         textAlign={{ xs: 'center', md: 'left' }}
         justifyContent="space-between"
       >
-        <Box>
+        {/* <Box>
           <Typography variant="subtitle1">
             &copy; 2022 - Tokyo Free Black Next.js Javascript Admin Dashboard
           </Typography>
@@ -35,7 +35,7 @@ function Footer() {
           >
             BloomUI.com
           </Link>
-        </Typography>
+        </Typography> */}
       </Box>
     </FooterWrapper>
   );
