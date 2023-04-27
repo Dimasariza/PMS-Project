@@ -62,6 +62,17 @@ function Login() {
               </Button>
             </NextLink >
 
+            <NextLink href= {url + "/dashboards/tasks"} passHref>
+              <Button
+                sx={{ width: '100%' }}
+                component={Link}
+                variant="contained"
+                className="text-3xl font-bold underline"
+              >
+                Login
+              </Button>
+            </NextLink >
+
 
           </Box>
         </Container>
