@@ -51,7 +51,7 @@ function Login() {
               autoComplete="current-password"
             />
 
-            <NextLink href= {url + "/batera/dashboards/tasks"} passHref>
+            <NextLink href= {url + "/batera/ship-list"} passHref>
               <Button
                 sx={{ width: '100%' }}
                 component={Link}
@@ -62,7 +62,7 @@ function Login() {
               </Button>
             </NextLink >
 
-            <NextLink href= {url + "/dashboards/tasks"} passHref>
+            {/* <NextLink href= {url + "/dashboards/tasks"} passHref>
               <Button
                 sx={{ width: '100%' }}
                 component={Link}
@@ -71,7 +71,7 @@ function Login() {
               >
                 Login
               </Button>
-            </NextLink >
+            </NextLink > */}
 
 
           </Box>

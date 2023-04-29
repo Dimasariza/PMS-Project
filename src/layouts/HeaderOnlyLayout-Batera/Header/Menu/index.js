@@ -74,7 +74,7 @@ function HeaderMenu() {
   const handleClose = () => {
     setOpen(false);
   };
-
+  const url = process.env.PUBLIC_URL || ""
   return (
     <>
       <ListWrapper
@@ -85,9 +85,20 @@ function HeaderMenu() {
           }
         }}
       >
-        {/* <List disablePadding component={Box} display="flex">
-          
-        </List> */}
+        <List disablePadding component={Box} display="flex">
+          <ListItem
+            classes={{ root: 'MuiListItem-indicators' }}
+            button
+            component={Link}
+            href="/components/buttons"
+          >
+            <img
+                src={url + "/static/images/logo/logo-batera.svg"} 
+                alt="Logo Batera"
+                height={"50%"}
+              />
+          </ListItem>
+        </List>
       </ListWrapper>
       <Menu anchorEl={ref.current} onClose={handleClose} open={isOpen}>
         <MenuItem sx={{ px: 3 }} component={Link} href="/">
