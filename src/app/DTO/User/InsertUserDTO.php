@@ -15,10 +15,10 @@ class InsertUserDTO
         readonly public string $userTitleId,
         readonly public string $workPlace,
         readonly public bool $status,
-        readonly public mixed $document,
+        readonly public ?string $document,
     ) {}
 
-    public static function fromRequest(InsertUserRequest $request): InsertUserDTO
+    public static function fromRequest(InsertUserRequest $request, ?string $documentName = null): InsertUserDTO
     {
         return new self(
             username: $request->validated('username'),
@@ -29,7 +29,7 @@ class InsertUserDTO
             userTitleId: $request->validated('userTitleId'),
             workPlace: $request->validated('workPlace'),
             status: $request->validated('status'),
-            document: $request->validated('document')
+            document: $documentName
         );
     }
 

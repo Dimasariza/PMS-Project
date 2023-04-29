@@ -3,6 +3,7 @@
 namespace App\DTO\User;
 
 use App\Http\Requests\User\UpdateUserRequest;
+use Illuminate\Http\UploadedFile;
 
 class UpdateUserDTO
 {
@@ -12,10 +13,10 @@ class UpdateUserDTO
         readonly public string $userTitleId,
         readonly public string $workPlace,
         readonly public bool $status,
-        readonly public mixed $document,
+        readonly public ?string $document,
     ) {}
 
-    public static function fromRequest(UpdateUserRequest $request): UpdateUserDTO
+    public static function fromRequest(UpdateUserRequest $request, string $documentName = null): UpdateUserDTO
     {
         return new self(
             fullname: $request->validated('fullname'),
@@ -23,7 +24,7 @@ class UpdateUserDTO
             userTitleId: $request->validated('userTitleId'),
             workPlace: $request->validated('workPlace'),
             status: $request->validated('status'),
-            document: $request->validated('document') ?? null
+            document: $documentName
         );
     }
 

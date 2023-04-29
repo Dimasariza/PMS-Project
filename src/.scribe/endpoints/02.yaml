@@ -121,13 +121,14 @@ endpoints:
         APIs for user in general
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
+      title: Create
+      description: 'Get list of user'
+      authenticated: true
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
+      Authorization: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -135,78 +136,119 @@ endpoints:
     bodyParameters:
       username:
         name: username
-        description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
+        description: 'Username of user.'
         required: true
-        example: fjchhifoingobpatlie
+        example: sundelbolong
         type: string
         custom: []
       fullname:
         name: fullname
-        description: 'Must not be greater than 255 characters.'
+        description: 'Fullname of user.'
         required: true
-        example: zqalyjcb
+        example: 'Sundel Bolong'
         type: string
         custom: []
       departmentId:
         name: departmentId
-        description: ''
+        description: 'Id department of user.'
         required: true
-        example: deleniti
-        type: string
+        example: 1
+        type: integer
         custom: []
       email:
         name: email
-        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        description: 'Email of user.'
         required: true
-        example: demarcus.predovic@example.net
+        example: sundelbolong@gmail.com
         type: string
         custom: []
       password:
         name: password
-        description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+        description: 'Password of user.'
         required: true
-        example: 'h)yH7Vp5ixhvQkh*>NDF'
+        example: sundel123
         type: string
         custom: []
       userTitleId:
         name: userTitleId
-        description: ''
+        description: 'Id Title of user.'
         required: true
-        example: deserunt
-        type: string
+        example: 1
+        type: integer
         custom: []
       workPlace:
         name: workPlace
-        description: 'Must be one of <code>ship</code> or <code>office</code>.'
+        description: 'Workplace of user (only ship or office).'
         required: true
-        example: office
+        example: ship
         type: string
         custom: []
       status:
         name: status
-        description: ''
+        description: 'Status of user (only true or false).'
         required: true
-        example: false
+        example: true
         type: boolean
         custom: []
       document:
         name: document
-        description: ''
+        description: 'optional The image of user.'
         required: false
         example: null
-        type: string
+        type: file
         custom: []
     cleanBodyParameters:
-      username: fjchhifoingobpatlie
-      fullname: zqalyjcb
-      departmentId: deleniti
-      email: demarcus.predovic@example.net
-      password: 'h)yH7Vp5ixhvQkh*>NDF'
-      userTitleId: deserunt
-      workPlace: office
-      status: false
-    fileParameters: []
-    responses: []
+      username: sundelbolong
+      fullname: 'Sundel Bolong'
+      departmentId: 1
+      email: sundelbolong@gmail.com
+      password: sundel123
+      userTitleId: 1
+      workPlace: ship
+      status: true
+    fileParameters:
+      document: null
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "statusCode": 200,
+              "message": "Success",
+              "data": {
+                  "id": 18,
+                  "username": "sayamsaco1",
+                  "fullname": "Anak Maco",
+                  "email": "mirco1@gmail.com",
+                  "workPlace": "ship",
+                  "status": true,
+                  "document": "http://localhost:9000/users/rHEA9CIz8oDEI3buvzQKPEZQ20weOUJLPkGPHn93.png",
+                  "createdAt": "2023-04-28 12:12:39",
+                  "department": {
+                      "id": 1,
+                      "name": "Tobin Goodwin",
+                      "code": "JM",
+                      "workPlace": "65118 Conn Street\nYundtview, MN 81843"
+                  },
+                  "userTitle": {
+                      "id": 1,
+                      "titleName": "Captain",
+                      "access": {
+                          "inbox": true,
+                          "stock": true,
+                          "users": true,
+                          "jobList": true,
+                          "shipList": true,
+                          "dataSheet": true,
+                          "department": true,
+                          "shipDetails": true
+                      }
+                  }
+              }
+          }
+        headers: []
+        description: Success
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -224,23 +266,24 @@ endpoints:
         APIs for user in general
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
+      title: 'Get One'
+      description: 'Get one user'
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user.'
+        description: 'The ID of user title to update.'
         required: true
-        example: 1
+        example: 5
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -248,15 +291,44 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 403
-        content: '{"statusCode":403,"message":"Unauthenticated"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
-          access-control-allow-origin: '*'
-        description: null
+        status: 200
+        content: |
+          {
+              "statusCode": 200,
+              "message": "Success",
+              "data": {
+                  "id": 17,
+                  "username": "sayamsaco",
+                  "fullname": "Anak Maco",
+                  "email": "mirco@gmail.com",
+                  "workPlace": "ship",
+                  "status": 1,
+                  "document": "http://localhost:9000/users/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png",
+                  "createdAt": "2023-04-28 12:08:54",
+                  "department": {
+                      "id": 1,
+                      "name": "Tobin Goodwin",
+                      "code": "JM",
+                      "workPlace": "65118 Conn Street\nYundtview, MN 81843"
+                  },
+                  "userTitle": {
+                      "id": 1,
+                      "titleName": "Captain",
+                      "access": {
+                          "inbox": true,
+                          "stock": true,
+                          "users": true,
+                          "jobList": true,
+                          "shipList": true,
+                          "dataSheet": true,
+                          "department": true,
+                          "shipDetails": true
+                      }
+                  }
+              }
+          }
+        headers: []
+        description: Success
         custom: []
     responseFields: []
     auth: []
@@ -266,9 +338,8 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/v1/user/{id}'
+      - POST
+    uri: 'api/v1/user/{id}/update'
     metadata:
       groupName: User
       groupDescription: |-
@@ -276,92 +347,118 @@ endpoints:
         APIs for user in general
       subgroup: ''
       subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
+      title: Update
+      description: 'Update an user'
+      authenticated: true
       custom: []
     headers:
-      Content-Type: application/json
+      Content-Type: multipart/form-data
       Accept: application/json
+      Authorization: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user.'
+        description: 'The ID of user title to update.'
         required: true
-        example: 1
+        example: 5
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 5
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      username:
-        name: username
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: iacnnvswlrm
-        type: string
-        custom: []
       fullname:
         name: fullname
-        description: 'Must not be greater than 255 characters.'
+        description: 'Fullname of user.'
         required: true
-        example: dktos
+        example: 'Saia Sundel Bolong'
         type: string
         custom: []
       departmentId:
         name: departmentId
-        description: ''
+        description: 'Id department of user.'
         required: true
-        example: sed
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: glowe@example.org
-        type: string
+        example: 1
+        type: integer
         custom: []
       userTitleId:
         name: userTitleId
-        description: ''
+        description: 'Id Title of user.'
         required: true
-        example: explicabo
-        type: string
+        example: 1
+        type: integer
         custom: []
       workPlace:
         name: workPlace
-        description: ''
+        description: 'Workplace of user (only ship or office).'
         required: true
-        example: veritatis
+        example: ship
         type: string
         custom: []
       status:
         name: status
-        description: 'Must be one of <code>true</code> or <code>false</code>.'
+        description: 'Status of user (only true or false).'
         required: true
-        example: 'false'
+        example: true
         type: boolean
         custom: []
       document:
         name: document
-        description: ''
+        description: 'optional The image of user.'
         required: false
         example: null
-        type: string
+        type: file
         custom: []
     cleanBodyParameters:
-      username: iacnnvswlrm
-      fullname: dktos
-      departmentId: sed
-      email: glowe@example.org
-      userTitleId: explicabo
-      workPlace: veritatis
-      status: 'false'
-    fileParameters: []
-    responses: []
+      fullname: 'Saia Sundel Bolong'
+      departmentId: 1
+      userTitleId: 1
+      workPlace: ship
+      status: true
+    fileParameters:
+      document: null
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "statusCode": 200,
+              "message": "Updated",
+              "data": {
+                  "id": 18,
+                  "username": "sayamsaco1",
+                  "fullname": "Aku anak Indonesia #3",
+                  "email": "mirco1@gmail.com",
+                  "workPlace": "ship",
+                  "status": true,
+                  "document": "http://localhost:9000/users/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png",
+                  "createdAt": "2023-04-28 12:12:39",
+                  "department": {
+                      "id": 1,
+                      "name": "Tobin Goodwin",
+                      "code": "JM",
+                      "workPlace": "65118 Conn Street\nYundtview, MN 81843"
+                  },
+                  "userTitle": {
+                      "id": 1,
+                      "titleName": "Captain",
+                      "access": {
+                          "inbox": true,
+                          "stock": true,
+                          "users": true,
+                          "jobList": true,
+                          "shipList": true,
+                          "dataSheet": true,
+                          "department": true,
+                          "shipDetails": true
+                      }
+                  }
+              }
+          }
+        headers: []
+        description: Success
+        custom: []
     responseFields: []
     auth: []
     controller: null

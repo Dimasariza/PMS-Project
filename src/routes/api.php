@@ -33,5 +33,6 @@ Route::prefix('/v1')->group(function() {
 
     Route::middleware(['auth.api', 'title:Admin'])
     ->apiResource('user', UserController::class)
-    ->except('destroy');
+    ->only(['index', 'store', 'show']);
+    Route::middleware(['auth.api', 'title:Admin'])->post('user/{user}/update', [UserController::class, 'update'])->name('user.update');
 });

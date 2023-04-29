@@ -2,24 +2,25 @@
     "statusCode": 200,
     "message": "Updated",
     "data": {
-        "id": 17,
-        "username": "sayamaco",
-        "fullname": "Anak Maco Cie",
-        "email": "maco@gmail.com",
+        "id": 18,
+        "username": "sayamsaco1",
+        "fullname": "Aku anak Indonesia #3",
+        "email": "mirco1@gmail.com",
         "workPlace": "ship",
         "status": true,
-        "document": "some",
-        "createdAt": "2023-04-27 12:46:07",
+        "document": "http://localhost:9000/users/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png",
+        "createdAt": "2023-04-28 12:12:39",
         "department": {
             "id": 1,
-            "name": "Matteo Parisian",
-            "code": "MU",
-            "workPlace": "60243 Myrna Loaf\nCarolinechester, DC 89574"
+            "name": "Tobin Goodwin",
+            "code": "JM",
+            "workPlace": "65118 Conn Street\nYundtview, MN 81843"
         },
         "userTitle": {
             "id": 1,
             "titleName": "Captain",
             "access": {
+                "inbox": true,
                 "stock": true,
                 "users": true,
                 "jobList": true,

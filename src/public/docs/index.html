@@ -88,13 +88,13 @@
                                 <a href="#user-GETapi-v1-user">All</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user">
-                                <a href="#user-POSTapi-v1-user">POST api/v1/user</a>
+                                <a href="#user-POSTapi-v1-user">Create</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user--id-">
-                                <a href="#user-GETapi-v1-user--id-">GET api/v1/user/{id}</a>
+                                <a href="#user-GETapi-v1-user--id-">Get One</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="user-PUTapi-v1-user--id-">
-                                <a href="#user-PUTapi-v1-user--id-">PUT api/v1/user/{id}</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user--id--update">
+                                <a href="#user-POSTapi-v1-user--id--update">Update</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -123,7 +123,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: April 27, 2023</li>
+        <li>Last updated: April 29, 2023</li>
     </ul>
 </div>
 
@@ -732,12 +732,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="user-POSTapi-v1-user">POST api/v1/user</h2>
+                    <h2 id="user-POSTapi-v1-user">Create</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Get list of user</p>
 
 <span id="example-requests-POSTapi-v1-user">
 <blockquote>Example request:</blockquote>
@@ -746,19 +747,18 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://localhost:9000/api/v1/user" \
-    --header "Content-Type: application/json" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"username\": \"fjchhifoingobpatlie\",
-    \"fullname\": \"zqalyjcb\",
-    \"departmentId\": \"deleniti\",
-    \"email\": \"demarcus.predovic@example.net\",
-    \"password\": \"h)yH7Vp5ixhvQkh*&gt;NDF\",
-    \"userTitleId\": \"deserunt\",
-    \"workPlace\": \"office\",
-    \"status\": false
-}"
-</code></pre></div>
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
+    --form "username=sundelbolong" \
+    --form "fullname=Sundel Bolong" \
+    --form "departmentId=1" \
+    --form "email=sundelbolong@gmail.com" \
+    --form "password=sundel123" \
+    --form "userTitleId=1" \
+    --form "workPlace=ship" \
+    --form "status=1" \
+    --form "document=@/var/www/html/public/example.jpg" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -767,31 +767,72 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
 };
 
-let body = {
-    "username": "fjchhifoingobpatlie",
-    "fullname": "zqalyjcb",
-    "departmentId": "deleniti",
-    "email": "demarcus.predovic@example.net",
-    "password": "h)yH7Vp5ixhvQkh*&gt;NDF",
-    "userTitleId": "deserunt",
-    "workPlace": "office",
-    "status": false
-};
+const body = new FormData();
+body.append('username', 'sundelbolong');
+body.append('fullname', 'Sundel Bolong');
+body.append('departmentId', '1');
+body.append('email', 'sundelbolong@gmail.com');
+body.append('password', 'sundel123');
+body.append('userTitleId', '1');
+body.append('workPlace', 'ship');
+body.append('status', '1');
+body.append('document', document.querySelector('input[name="document"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
 <span id="example-responses-POSTapi-v1-user">
-</span>
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 18,
+        &quot;username&quot;: &quot;sayamsaco1&quot;,
+        &quot;fullname&quot;: &quot;Anak Maco&quot;,
+        &quot;email&quot;: &quot;mirco1@gmail.com&quot;,
+        &quot;workPlace&quot;: &quot;ship&quot;,
+        &quot;status&quot;: true,
+        &quot;document&quot;: &quot;http://localhost:9000/users/rHEA9CIz8oDEI3buvzQKPEZQ20weOUJLPkGPHn93.png&quot;,
+        &quot;createdAt&quot;: &quot;2023-04-28 12:12:39&quot;,
+        &quot;department&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Tobin Goodwin&quot;,
+            &quot;code&quot;: &quot;JM&quot;,
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+        },
+        &quot;userTitle&quot;: {
+            &quot;id&quot;: 1,
+            &quot;titleName&quot;: &quot;Captain&quot;,
+            &quot;access&quot;: {
+                &quot;inbox&quot;: true,
+                &quot;stock&quot;: true,
+                &quot;users&quot;: true,
+                &quot;jobList&quot;: true,
+                &quot;shipList&quot;: true,
+                &quot;dataSheet&quot;: true,
+                &quot;department&quot;: true,
+                &quot;shipDetails&quot;: true
+            }
+        }
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-v1-user" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-v1-user"></span>:
@@ -809,8 +850,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-POSTapi-v1-user" data-method="POST"
       data-path="api/v1/user"
-      data-authed="0"
-      data-hasfiles="0"
+      data-authed="1"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user', this);">
@@ -845,10 +886,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="Content-Type"                data-endpoint="POSTapi-v1-user"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -861,6 +902,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-user"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>username</code></b>&nbsp;&nbsp;
@@ -868,10 +920,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="username"                data-endpoint="POSTapi-v1-user"
-               value="fjchhifoingobpatlie"
+               value="sundelbolong"
                data-component="body">
     <br>
-<p>Must match the regex /^\S*$/u. Must not be greater than 255 characters. Example: <code>fjchhifoingobpatlie</code></p>
+<p>Username of user. Example: <code>sundelbolong</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fullname</code></b>&nbsp;&nbsp;
@@ -879,21 +931,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="fullname"                data-endpoint="POSTapi-v1-user"
-               value="zqalyjcb"
+               value="Sundel Bolong"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>zqalyjcb</code></p>
+<p>Fullname of user. Example: <code>Sundel Bolong</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>departmentId</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
+                <input type="number" style="display: none"
                name="departmentId"                data-endpoint="POSTapi-v1-user"
-               value="deleniti"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>deleniti</code></p>
+<p>Id department of user. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -901,10 +953,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-v1-user"
-               value="demarcus.predovic@example.net"
+               value="sundelbolong@gmail.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>demarcus.predovic@example.net</code></p>
+<p>Email of user. Example: <code>sundelbolong@gmail.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -912,21 +964,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-v1-user"
-               value="h)yH7Vp5ixhvQkh*>NDF"
+               value="sundel123"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Must not be greater than 255 characters. Example: <code>h)yH7Vp5ixhvQkh*&gt;NDF</code></p>
+<p>Password of user. Example: <code>sundel123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>userTitleId</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
+                <input type="number" style="display: none"
                name="userTitleId"                data-endpoint="POSTapi-v1-user"
-               value="deserunt"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>deserunt</code></p>
+<p>Id Title of user. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>workPlace</code></b>&nbsp;&nbsp;
@@ -934,10 +986,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="workPlace"                data-endpoint="POSTapi-v1-user"
-               value="office"
+               value="ship"
                data-component="body">
     <br>
-<p>Must be one of <code>ship</code> or <code>office</code>. Example: <code>office</code></p>
+<p>Workplace of user (only ship or office). Example: <code>ship</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
@@ -958,27 +1010,28 @@ You can check the Dev Tools console for debugging information.</code></pre>
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Status of user (only true or false). Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>file</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
+                <input type="file" style="display: none"
                name="document"                data-endpoint="POSTapi-v1-user"
                value=""
                data-component="body">
     <br>
-
+<p>optional The image of user. Example: <code>public/example.jpg</code></p>
         </div>
         </form>
 
-                    <h2 id="user-GETapi-v1-user--id-">GET api/v1/user/{id}</h2>
+                    <h2 id="user-GETapi-v1-user--id-">Get One</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
-
+<p>Get one user</p>
 
 <span id="example-requests-GETapi-v1-user--id-">
 <blockquote>Example request:</blockquote>
@@ -986,19 +1039,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9000/api/v1/user/1" \
+    --get "http://localhost:9000/api/v1/user/5" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9000/api/v1/user/1"
+    "http://localhost:9000/api/v1/user/5"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
 };
 
 fetch(url, {
@@ -1010,22 +1065,43 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user--id-">
             <blockquote>
-            <p>Example response (403):</p>
+            <p>Example response (200, Success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;statusCode&quot;: 403,
-    &quot;message&quot;: &quot;Unauthenticated&quot;
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 17,
+        &quot;username&quot;: &quot;sayamsaco&quot;,
+        &quot;fullname&quot;: &quot;Anak Maco&quot;,
+        &quot;email&quot;: &quot;mirco@gmail.com&quot;,
+        &quot;workPlace&quot;: &quot;ship&quot;,
+        &quot;status&quot;: 1,
+        &quot;document&quot;: &quot;http://localhost:9000/users/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png&quot;,
+        &quot;createdAt&quot;: &quot;2023-04-28 12:08:54&quot;,
+        &quot;department&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Tobin Goodwin&quot;,
+            &quot;code&quot;: &quot;JM&quot;,
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+        },
+        &quot;userTitle&quot;: {
+            &quot;id&quot;: 1,
+            &quot;titleName&quot;: &quot;Captain&quot;,
+            &quot;access&quot;: {
+                &quot;inbox&quot;: true,
+                &quot;stock&quot;: true,
+                &quot;users&quot;: true,
+                &quot;jobList&quot;: true,
+                &quot;shipList&quot;: true,
+                &quot;dataSheet&quot;: true,
+                &quot;department&quot;: true,
+                &quot;shipDetails&quot;: true
+            }
+        }
+    }
 }</code>
  </pre>
     </span>
@@ -1046,7 +1122,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 </span>
 <form id="form-GETapi-v1-user--id-" data-method="GET"
       data-path="api/v1/user/{id}"
-      data-authed="0"
+      data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
@@ -1098,6 +1174,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-user--id-"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
@@ -1105,120 +1192,153 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-v1-user--id-"
-               value="1"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of user title to update. Example: <code>5</code></p>
             </div>
                     </form>
 
-                    <h2 id="user-PUTapi-v1-user--id-">PUT api/v1/user/{id}</h2>
+                    <h2 id="user-POSTapi-v1-user--id--update">Update</h2>
 
 <p>
+<small class="badge badge-darkred">requires authentication</small>
 </p>
 
+<p>Update an user</p>
 
-
-<span id="example-requests-PUTapi-v1-user--id-">
+<span id="example-requests-POSTapi-v1-user--id--update">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:9000/api/v1/user/1" \
-    --header "Content-Type: application/json" \
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:9000/api/v1/user/5/update" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"username\": \"iacnnvswlrm\",
-    \"fullname\": \"dktos\",
-    \"departmentId\": \"sed\",
-    \"email\": \"glowe@example.org\",
-    \"userTitleId\": \"explicabo\",
-    \"workPlace\": \"veritatis\",
-    \"status\": \"false\"
-}"
-</code></pre></div>
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
+    --form "fullname=Saia Sundel Bolong" \
+    --form "departmentId=1" \
+    --form "userTitleId=1" \
+    --form "workPlace=ship" \
+    --form "status=1" \
+    --form "document=@/var/www/html/public/example.jpg" </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9000/api/v1/user/1"
+    "http://localhost:9000/api/v1/user/5/update"
 );
 
 const headers = {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
 };
 
-let body = {
-    "username": "iacnnvswlrm",
-    "fullname": "dktos",
-    "departmentId": "sed",
-    "email": "glowe@example.org",
-    "userTitleId": "explicabo",
-    "workPlace": "veritatis",
-    "status": "false"
-};
+const body = new FormData();
+body.append('fullname', 'Saia Sundel Bolong');
+body.append('departmentId', '1');
+body.append('userTitleId', '1');
+body.append('workPlace', 'ship');
+body.append('status', '1');
+body.append('document', document.querySelector('input[name="document"]').files[0]);
 
 fetch(url, {
-    method: "PUT",
+    method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
 
-<span id="example-responses-PUTapi-v1-user--id-">
-</span>
-<span id="execution-results-PUTapi-v1-user--id-" hidden>
+<span id="example-responses-POSTapi-v1-user--id--update">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Updated&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 18,
+        &quot;username&quot;: &quot;sayamsaco1&quot;,
+        &quot;fullname&quot;: &quot;Aku anak Indonesia #3&quot;,
+        &quot;email&quot;: &quot;mirco1@gmail.com&quot;,
+        &quot;workPlace&quot;: &quot;ship&quot;,
+        &quot;status&quot;: true,
+        &quot;document&quot;: &quot;http://localhost:9000/users/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png&quot;,
+        &quot;createdAt&quot;: &quot;2023-04-28 12:12:39&quot;,
+        &quot;department&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Tobin Goodwin&quot;,
+            &quot;code&quot;: &quot;JM&quot;,
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+        },
+        &quot;userTitle&quot;: {
+            &quot;id&quot;: 1,
+            &quot;titleName&quot;: &quot;Captain&quot;,
+            &quot;access&quot;: {
+                &quot;inbox&quot;: true,
+                &quot;stock&quot;: true,
+                &quot;users&quot;: true,
+                &quot;jobList&quot;: true,
+                &quot;shipList&quot;: true,
+                &quot;dataSheet&quot;: true,
+                &quot;department&quot;: true,
+                &quot;shipDetails&quot;: true
+            }
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-user--id--update" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-v1-user--id-"></span>:
+                id="execution-response-status-POSTapi-v1-user--id--update"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-v1-user--id-"
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user--id--update"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-v1-user--id-" hidden>
+<span id="execution-error-POSTapi-v1-user--id--update" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-v1-user--id-">
+    <pre><code id="execution-error-message-POSTapi-v1-user--id--update">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-v1-user--id-" data-method="PUT"
-      data-path="api/v1/user/{id}"
-      data-authed="0"
-      data-hasfiles="0"
+<form id="form-POSTapi-v1-user--id--update" data-method="POST"
+      data-path="api/v1/user/{id}/update"
+      data-authed="1"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-v1-user--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user--id--update', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-v1-user--id-"
-                    onclick="tryItOut('PUTapi-v1-user--id-');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-user--id--update"
+                    onclick="tryItOut('POSTapi-v1-user--id--update');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-v1-user--id-"
-                    onclick="cancelTryOut('PUTapi-v1-user--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-user--id--update"
+                    onclick="cancelTryOut('POSTapi-v1-user--id--update');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-v1-user--id-"
+                    id="btn-executetryout-POSTapi-v1-user--id--update"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
             </button>
             </h3>
             <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/v1/user/{id}</code></b>
-        </p>
-            <p>
-            <small class="badge badge-purple">PATCH</small>
-            <b><code>api/v1/user/{id}</code></b>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/user/{id}/update</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1226,22 +1346,33 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="PUTapi-v1-user--id-"
-               value="application/json"
+               name="Content-Type"                data-endpoint="POSTapi-v1-user--id--update"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="PUTapi-v1-user--id-"
+               name="Accept"                data-endpoint="POSTapi-v1-user--id--update"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-user--id--update"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
@@ -1249,110 +1380,88 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               name="id"                data-endpoint="PUTapi-v1-user--id-"
-               value="1"
+               name="id"                data-endpoint="POSTapi-v1-user--id--update"
+               value="5"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of user title to update. Example: <code>5</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>username</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="username"                data-endpoint="PUTapi-v1-user--id-"
-               value="iacnnvswlrm"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>iacnnvswlrm</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>fullname</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="fullname"                data-endpoint="PUTapi-v1-user--id-"
-               value="dktos"
+               name="fullname"                data-endpoint="POSTapi-v1-user--id--update"
+               value="Saia Sundel Bolong"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>dktos</code></p>
+<p>Fullname of user. Example: <code>Saia Sundel Bolong</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>departmentId</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-               name="departmentId"                data-endpoint="PUTapi-v1-user--id-"
-               value="sed"
+                <input type="number" style="display: none"
+               name="departmentId"                data-endpoint="POSTapi-v1-user--id--update"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>sed</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="email"                data-endpoint="PUTapi-v1-user--id-"
-               value="glowe@example.org"
-               data-component="body">
-    <br>
-<p>Must not be greater than 255 characters. Example: <code>glowe@example.org</code></p>
+<p>Id department of user. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>userTitleId</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
-               name="userTitleId"                data-endpoint="PUTapi-v1-user--id-"
-               value="explicabo"
+                <input type="number" style="display: none"
+               name="userTitleId"                data-endpoint="POSTapi-v1-user--id--update"
+               value="1"
                data-component="body">
     <br>
-<p>Example: <code>explicabo</code></p>
+<p>Id Title of user. Example: <code>1</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>workPlace</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="workPlace"                data-endpoint="PUTapi-v1-user--id-"
-               value="veritatis"
+               name="workPlace"                data-endpoint="POSTapi-v1-user--id--update"
+               value="ship"
                data-component="body">
     <br>
-<p>Example: <code>veritatis</code></p>
+<p>Workplace of user (only ship or office). Example: <code>ship</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
  &nbsp;
-                <label data-endpoint="PUTapi-v1-user--id-" style="display: none">
+                <label data-endpoint="POSTapi-v1-user--id--update" style="display: none">
             <input type="radio" name="status"
                    value="true"
-                   data-endpoint="PUTapi-v1-user--id-"
+                   data-endpoint="POSTapi-v1-user--id--update"
                    data-component="body"             >
             <code>true</code>
         </label>
-        <label data-endpoint="PUTapi-v1-user--id-" style="display: none">
+        <label data-endpoint="POSTapi-v1-user--id--update" style="display: none">
             <input type="radio" name="status"
                    value="false"
-                   data-endpoint="PUTapi-v1-user--id-"
+                   data-endpoint="POSTapi-v1-user--id--update"
                    data-component="body"             >
             <code>false</code>
         </label>
     <br>
-<p>Must be one of <code>true</code> or <code>false</code>. Example: <code>false</code></p>
+<p>Status of user (only true or false). Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>document</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>file</small>&nbsp;
 <i>optional</i> &nbsp;
-                <input type="text" style="display: none"
-               name="document"                data-endpoint="PUTapi-v1-user--id-"
+                <input type="file" style="display: none"
+               name="document"                data-endpoint="POSTapi-v1-user--id--update"
                value=""
                data-component="body">
     <br>
-
+<p>optional The image of user. Example: <code>public/example.jpg</code></p>
         </div>
         </form>
 
@@ -1728,19 +1837,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
             </div>
-                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
-<small>integer</small>&nbsp;
- &nbsp;
-                <input type="number" style="display: none"
-               name="id"                data-endpoint="POSTapi-v1-user_title"
-               value="2"
-               data-component="url">
-    <br>
-<p>The ID of user title to update. Example: <code>2</code></p>
-            </div>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>titleName</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
@@ -1779,7 +1876,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:9000/api/v1/user_title/1" \
+    "http://localhost:9000/api/v1/user_title/2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
@@ -1792,7 +1889,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9000/api/v1/user_title/1"
+    "http://localhost:9000/api/v1/user_title/2"
 );
 
 const headers = {
@@ -1931,10 +2028,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="PUTapi-v1-user_title--id-"
-               value="1"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the user title. Example: <code>1</code></p>
+<p>The ID of user title to update. Example: <code>2</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">

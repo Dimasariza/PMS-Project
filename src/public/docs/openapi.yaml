@@ -465,56 +465,183 @@ paths:
       tags:
         - User
     post:
-      summary: ''
-      operationId: postApiV1User
-      description: ''
-      parameters: []
-      responses: {  }
+      summary: Create
+      operationId: create
+      description: 'Get list of user'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    id: 18
+                    username: sayamsaco1
+                    fullname: 'Anak Maco'
+                    email: mirco1@gmail.com
+                    workPlace: ship
+                    status: true
+                    document: 'http://localhost:9000/users/rHEA9CIz8oDEI3buvzQKPEZQ20weOUJLPkGPHn93.png'
+                    createdAt: '2023-04-28 12:12:39'
+                    department:
+                      id: 1
+                      name: 'Tobin Goodwin'
+                      code: JM
+                      workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                    userTitle:
+                      id: 1
+                      titleName: Captain
+                      access:
+                        inbox: true
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 18
+                      username:
+                        type: string
+                        example: sayamsaco1
+                      fullname:
+                        type: string
+                        example: 'Anak Maco'
+                      email:
+                        type: string
+                        example: mirco1@gmail.com
+                      workPlace:
+                        type: string
+                        example: ship
+                      status:
+                        type: boolean
+                        example: true
+                      document:
+                        type: string
+                        example: 'http://localhost:9000/users/rHEA9CIz8oDEI3buvzQKPEZQ20weOUJLPkGPHn93.png'
+                      createdAt:
+                        type: string
+                        example: '2023-04-28 12:12:39'
+                      department:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Tobin Goodwin'
+                          code:
+                            type: string
+                            example: JM
+                          workPlace:
+                            type: string
+                            example: "65118 Conn Street\nYundtview, MN 81843"
+                      userTitle:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          titleName:
+                            type: string
+                            example: Captain
+                          access:
+                            type: object
+                            properties:
+                              inbox:
+                                type: boolean
+                                example: true
+                              stock:
+                                type: boolean
+                                example: true
+                              users:
+                                type: boolean
+                                example: true
+                              jobList:
+                                type: boolean
+                                example: true
+                              shipList:
+                                type: boolean
+                                example: true
+                              dataSheet:
+                                type: boolean
+                                example: true
+                              department:
+                                type: boolean
+                                example: true
+                              shipDetails:
+                                type: boolean
+                                example: true
       tags:
         - User
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
                 username:
                   type: string
-                  description: 'Must match the regex /^\S*$/u. Must not be greater than 255 characters.'
-                  example: fjchhifoingobpatlie
+                  description: 'Username of user.'
+                  example: sundelbolong
                 fullname:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: zqalyjcb
+                  description: 'Fullname of user.'
+                  example: 'Sundel Bolong'
                 departmentId:
-                  type: string
-                  description: ''
-                  example: deleniti
+                  type: integer
+                  description: 'Id department of user.'
+                  example: 1
                 email:
                   type: string
-                  description: 'Must be a valid email address. Must not be greater than 255 characters.'
-                  example: demarcus.predovic@example.net
+                  description: 'Email of user.'
+                  example: sundelbolong@gmail.com
                 password:
                   type: string
-                  description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
-                  example: 'h)yH7Vp5ixhvQkh*>NDF'
+                  description: 'Password of user.'
+                  example: sundel123
                 userTitleId:
-                  type: string
-                  description: ''
-                  example: deserunt
+                  type: integer
+                  description: 'Id Title of user.'
+                  example: 1
                 workPlace:
                   type: string
-                  description: 'Must be one of <code>ship</code> or <code>office</code>.'
-                  example: office
+                  description: 'Workplace of user (only ship or office).'
+                  example: ship
                 status:
                   type: boolean
-                  description: ''
-                  example: false
+                  description: 'Status of user (only true or false).'
+                  example: true
                 document:
                   type: string
-                  description: ''
-                  example: null
+                  format: binary
+                  description: 'optional The image of user.'
               required:
                 - username
                 - fullname
@@ -524,95 +651,330 @@ paths:
                 - userTitleId
                 - workPlace
                 - status
-      security: []
   '/api/v1/user/{id}':
     get:
-      summary: ''
-      operationId: getApiV1UserId
-      description: ''
-      parameters: []
-      responses:
-        403:
+      summary: 'Get One'
+      operationId: getOne
+      description: 'Get one user'
+      parameters:
+        -
+          in: header
+          name: Authorization
           description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  statusCode: 403
-                  message: Unauthenticated
+                  statusCode: 200
+                  message: Success
+                  data:
+                    id: 17
+                    username: sayamsaco
+                    fullname: 'Anak Maco'
+                    email: mirco@gmail.com
+                    workPlace: ship
+                    status: 1
+                    document: 'http://localhost:9000/users/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png'
+                    createdAt: '2023-04-28 12:08:54'
+                    department:
+                      id: 1
+                      name: 'Tobin Goodwin'
+                      code: JM
+                      workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                    userTitle:
+                      id: 1
+                      titleName: Captain
+                      access:
+                        inbox: true
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
                 properties:
                   statusCode:
                     type: integer
-                    example: 403
+                    example: 200
                   message:
                     type: string
-                    example: Unauthenticated
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 17
+                      username:
+                        type: string
+                        example: sayamsaco
+                      fullname:
+                        type: string
+                        example: 'Anak Maco'
+                      email:
+                        type: string
+                        example: mirco@gmail.com
+                      workPlace:
+                        type: string
+                        example: ship
+                      status:
+                        type: integer
+                        example: 1
+                      document:
+                        type: string
+                        example: 'http://localhost:9000/users/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png'
+                      createdAt:
+                        type: string
+                        example: '2023-04-28 12:08:54'
+                      department:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Tobin Goodwin'
+                          code:
+                            type: string
+                            example: JM
+                          workPlace:
+                            type: string
+                            example: "65118 Conn Street\nYundtview, MN 81843"
+                      userTitle:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          titleName:
+                            type: string
+                            example: Captain
+                          access:
+                            type: object
+                            properties:
+                              inbox:
+                                type: boolean
+                                example: true
+                              stock:
+                                type: boolean
+                                example: true
+                              users:
+                                type: boolean
+                                example: true
+                              jobList:
+                                type: boolean
+                                example: true
+                              shipList:
+                                type: boolean
+                                example: true
+                              dataSheet:
+                                type: boolean
+                                example: true
+                              department:
+                                type: boolean
+                                example: true
+                              shipDetails:
+                                type: boolean
+                                example: true
       tags:
         - User
-      security: []
-    put:
-      summary: ''
-      operationId: putApiV1UserId
-      description: ''
-      parameters: []
-      responses: {  }
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of user title to update.'
+        example: 5
+        required: true
+        schema:
+          type: integer
+  '/api/v1/user/{id}/update':
+    post:
+      summary: Update
+      operationId: update
+      description: 'Update an user'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Updated
+                  data:
+                    id: 18
+                    username: sayamsaco1
+                    fullname: 'Aku anak Indonesia #3'
+                    email: mirco1@gmail.com
+                    workPlace: ship
+                    status: true
+                    document: 'http://localhost:9000/users/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png'
+                    createdAt: '2023-04-28 12:12:39'
+                    department:
+                      id: 1
+                      name: 'Tobin Goodwin'
+                      code: JM
+                      workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                    userTitle:
+                      id: 1
+                      titleName: Captain
+                      access:
+                        inbox: true
+                        stock: true
+                        users: true
+                        jobList: true
+                        shipList: true
+                        dataSheet: true
+                        department: true
+                        shipDetails: true
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 18
+                      username:
+                        type: string
+                        example: sayamsaco1
+                      fullname:
+                        type: string
+                        example: 'Aku anak Indonesia #3'
+                      email:
+                        type: string
+                        example: mirco1@gmail.com
+                      workPlace:
+                        type: string
+                        example: ship
+                      status:
+                        type: boolean
+                        example: true
+                      document:
+                        type: string
+                        example: 'http://localhost:9000/users/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png'
+                      createdAt:
+                        type: string
+                        example: '2023-04-28 12:12:39'
+                      department:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'Tobin Goodwin'
+                          code:
+                            type: string
+                            example: JM
+                          workPlace:
+                            type: string
+                            example: "65118 Conn Street\nYundtview, MN 81843"
+                      userTitle:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          titleName:
+                            type: string
+                            example: Captain
+                          access:
+                            type: object
+                            properties:
+                              inbox:
+                                type: boolean
+                                example: true
+                              stock:
+                                type: boolean
+                                example: true
+                              users:
+                                type: boolean
+                                example: true
+                              jobList:
+                                type: boolean
+                                example: true
+                              shipList:
+                                type: boolean
+                                example: true
+                              dataSheet:
+                                type: boolean
+                                example: true
+                              department:
+                                type: boolean
+                                example: true
+                              shipDetails:
+                                type: boolean
+                                example: true
       tags:
         - User
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
-                username:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: iacnnvswlrm
                 fullname:
                   type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: dktos
+                  description: 'Fullname of user.'
+                  example: 'Saia Sundel Bolong'
                 departmentId:
-                  type: string
-                  description: ''
-                  example: sed
-                email:
-                  type: string
-                  description: 'Must not be greater than 255 characters.'
-                  example: glowe@example.org
+                  type: integer
+                  description: 'Id department of user.'
+                  example: 1
                 userTitleId:
-                  type: string
-                  description: ''
-                  example: explicabo
+                  type: integer
+                  description: 'Id Title of user.'
+                  example: 1
                 workPlace:
                   type: string
-                  description: ''
-                  example: veritatis
+                  description: 'Workplace of user (only ship or office).'
+                  example: ship
                 status:
                   type: boolean
-                  description: 'Must be one of <code>true</code> or <code>false</code>.'
-                  example: 'false'
+                  description: 'Status of user (only true or false).'
+                  example: true
                 document:
                   type: string
-                  description: ''
-                  example: null
+                  format: binary
+                  description: 'optional The image of user.'
               required:
-                - username
                 - fullname
                 - departmentId
-                - email
                 - userTitleId
                 - workPlace
                 - status
-      security: []
     parameters:
       -
         in: path
         name: id
-        description: 'The ID of the user.'
-        example: 1
+        description: 'The ID of user title to update.'
+        example: 5
         required: true
         schema:
           type: integer
@@ -1022,8 +1384,8 @@ paths:
       -
         in: path
         name: id
-        description: 'The ID of the user title.'
-        example: 1
+        description: 'The ID of user title to update.'
+        example: 2
         required: true
         schema:
           type: integer

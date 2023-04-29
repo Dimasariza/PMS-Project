@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "36250909-3df8-4896-8f01-01f493ccc39d",
+        "_postman_id": "fd8e63b1-d6c4-4390-8594-21a6b6fb78be",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -172,7 +172,7 @@
                     ]
                 },
                 {
-                    "name": "POST api\/v1\/user",
+                    "name": "Create",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -184,26 +184,88 @@
                         "header": [
                             {
                                 "key": "Content-Type",
-                                "value": "application\/json"
+                                "value": "multipart\/form-data"
                             },
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "{\"username\":\"fjchhifoingobpatlie\",\"fullname\":\"zqalyjcb\",\"departmentId\":\"deleniti\",\"email\":\"demarcus.predovic@example.net\",\"password\":\"h)yH7Vp5ixhvQkh*>NDF\",\"userTitleId\":\"deserunt\",\"workPlace\":\"office\",\"status\":false}"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "username",
+                                    "value": "sundelbolong",
+                                    "type": "text",
+                                    "description": "Username of user."
+                                },
+                                {
+                                    "key": "fullname",
+                                    "value": "Sundel Bolong",
+                                    "type": "text",
+                                    "description": "Fullname of user."
+                                },
+                                {
+                                    "key": "departmentId",
+                                    "value": 1,
+                                    "type": "text",
+                                    "description": "Id department of user."
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "sundelbolong@gmail.com",
+                                    "type": "text",
+                                    "description": "Email of user."
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "sundel123",
+                                    "type": "text",
+                                    "description": "Password of user."
+                                },
+                                {
+                                    "key": "userTitleId",
+                                    "value": 1,
+                                    "type": "text",
+                                    "description": "Id Title of user."
+                                },
+                                {
+                                    "key": "workPlace",
+                                    "value": "ship",
+                                    "type": "text",
+                                    "description": "Workplace of user (only ship or office)."
+                                },
+                                {
+                                    "key": "status",
+                                    "value": true,
+                                    "type": "text",
+                                    "description": "Status of user (only true or false)."
+                                },
+                                {
+                                    "key": "document",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Get list of user"
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 18,\n        \"username\": \"sayamsaco1\",\n        \"fullname\": \"Anak Maco\",\n        \"email\": \"mirco1@gmail.com\",\n        \"workPlace\": \"ship\",\n        \"status\": true,\n        \"document\": \"http:\/\/localhost:9000\/users\/rHEA9CIz8oDEI3buvzQKPEZQ20weOUJLPkGPHn93.png\",\n        \"createdAt\": \"2023-04-28 12:12:39\",\n        \"department\": {\n            \"id\": 1,\n            \"name\": \"Tobin Goodwin\",\n            \"code\": \"JM\",\n            \"workPlace\": \"65118 Conn Street\\nYundtview, MN 81843\"\n        },\n        \"userTitle\": {\n            \"id\": 1,\n            \"titleName\": \"Captain\",\n            \"access\": {\n                \"inbox\": true,\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            }\n        }\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
                 },
                 {
-                    "name": "GET api\/v1\/user\/{id}",
+                    "name": "Get One",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -214,8 +276,8 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user."
+                                    "value": "5",
+                                    "description": "The ID of user title to update."
                                 }
                             ]
                         },
@@ -228,82 +290,106 @@
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
                             }
                         ],
                         "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Get one user"
                     },
                     "response": [
                         {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 403,
-                            "body": "{\"statusCode\":403,\"message\":\"Unauthenticated\"}",
-                            "name": ""
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 17,\n        \"username\": \"sayamsaco\",\n        \"fullname\": \"Anak Maco\",\n        \"email\": \"mirco@gmail.com\",\n        \"workPlace\": \"ship\",\n        \"status\": 1,\n        \"document\": \"http:\/\/localhost:9000\/users\/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png\",\n        \"createdAt\": \"2023-04-28 12:08:54\",\n        \"department\": {\n            \"id\": 1,\n            \"name\": \"Tobin Goodwin\",\n            \"code\": \"JM\",\n            \"workPlace\": \"65118 Conn Street\\nYundtview, MN 81843\"\n        },\n        \"userTitle\": {\n            \"id\": 1,\n            \"titleName\": \"Captain\",\n            \"access\": {\n                \"inbox\": true,\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            }\n        }\n    }\n}\n",
+                            "name": "Success"
                         }
                     ]
                 },
                 {
-                    "name": "PUT api\/v1\/user\/{id}",
+                    "name": "Update",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/:id",
+                            "path": "api\/v1\/user\/:id\/update",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/:id",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/:id\/update",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user."
+                                    "value": "5",
+                                    "description": "The ID of user title to update."
                                 }
                             ]
                         },
-                        "method": "PUT",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
-                                "value": "application\/json"
+                                "value": "multipart\/form-data"
                             },
                             {
                                 "key": "Accept",
                                 "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "{\"username\":\"iacnnvswlrm\",\"fullname\":\"dktos\",\"departmentId\":\"sed\",\"email\":\"glowe@example.org\",\"userTitleId\":\"explicabo\",\"workPlace\":\"veritatis\",\"status\":\"false\"}"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "fullname",
+                                    "value": "Saia Sundel Bolong",
+                                    "type": "text",
+                                    "description": "Fullname of user."
+                                },
+                                {
+                                    "key": "departmentId",
+                                    "value": 1,
+                                    "type": "text",
+                                    "description": "Id department of user."
+                                },
+                                {
+                                    "key": "userTitleId",
+                                    "value": 1,
+                                    "type": "text",
+                                    "description": "Id Title of user."
+                                },
+                                {
+                                    "key": "workPlace",
+                                    "value": "ship",
+                                    "type": "text",
+                                    "description": "Workplace of user (only ship or office)."
+                                },
+                                {
+                                    "key": "status",
+                                    "value": true,
+                                    "type": "text",
+                                    "description": "Status of user (only true or false)."
+                                },
+                                {
+                                    "key": "document",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
                         },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
+                        "description": "Update an user"
                     },
-                    "response": []
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Updated\",\n    \"data\": {\n        \"id\": 18,\n        \"username\": \"sayamsaco1\",\n        \"fullname\": \"Aku anak Indonesia #3\",\n        \"email\": \"mirco1@gmail.com\",\n        \"workPlace\": \"ship\",\n        \"status\": true,\n        \"document\": \"http:\/\/localhost:9000\/users\/u8KSBuEiACp1R3U1UXWUi04ly8JRQEy1XAHnKeWx.png\",\n        \"createdAt\": \"2023-04-28 12:12:39\",\n        \"department\": {\n            \"id\": 1,\n            \"name\": \"Tobin Goodwin\",\n            \"code\": \"JM\",\n            \"workPlace\": \"65118 Conn Street\\nYundtview, MN 81843\"\n        },\n        \"userTitle\": {\n            \"id\": 1,\n            \"titleName\": \"Captain\",\n            \"access\": {\n                \"inbox\": true,\n                \"stock\": true,\n                \"users\": true,\n                \"jobList\": true,\n                \"shipList\": true,\n                \"dataSheet\": true,\n                \"department\": true,\n                \"shipDetails\": true\n            }\n        }\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
                 }
             ]
         },
@@ -354,15 +440,7 @@
                             "host": "{{baseUrl}}",
                             "path": "api\/v1\/user_title",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user_title",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "2",
-                                    "description": "The ID of user title to update."
-                                }
-                            ]
+                            "raw": "{{baseUrl}}\/api\/v1\/user_title"
                         },
                         "method": "POST",
                         "header": [
@@ -412,8 +490,8 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
-                                    "description": "The ID of the user title."
+                                    "value": "2",
+                                    "description": "The ID of user title to update."
                                 }
                             ]
                         },

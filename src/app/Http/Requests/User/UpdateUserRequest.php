@@ -4,8 +4,8 @@ namespace App\Http\Requests\User;
 
 use App\Enums\WorkPlace;
 use App\Traits\FailedValidation;
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Enum;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateUserRequest extends FormRequest
 {
@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
             'status' => ['required', 'boolean'],
-            'document' => ['nullable'],
+            'document' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:1024'],
         ];
     }
 }

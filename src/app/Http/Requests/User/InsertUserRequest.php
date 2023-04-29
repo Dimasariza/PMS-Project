@@ -5,7 +5,6 @@ namespace App\Http\Requests\User;
 use App\Enums\WorkPlace;
 use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class InsertUserRequest extends FormRequest
@@ -36,7 +35,14 @@ class InsertUserRequest extends FormRequest
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
             'status' => ['required', 'boolean'],
-            'document' => ['nullable'],
+            'document' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:1024'],
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'status' => filter_var($this->get('status'), FILTER_VALIDATE_BOOLEAN),
+        ]);
     }
 }

@@ -22,8 +22,8 @@ class UserUpdatedResource extends JsonResource
             'email' => $this->email,
             'workPlace' => $this->work_place,
             'status' => $this->status,
-            'document' => $this->document,
-            'createdAt' => date('Y-m-d H:i:s', strtotime($this->created_at)),
+            'document' => $this->when(!is_null($this->document) || $this->document !== "", asset($this->document)),
+            'updatedAt' => date('Y-m-d H:i:s', strtotime($this->updated_at)),
             'department' => [
                 'id' => $this->department['id'],
                 'name' => $this->department['department_name'],

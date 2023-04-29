@@ -134,16 +134,8 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
       Authorization: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of user title to update.'
-        required: true
-        example: 2
-        type: integer
-        custom: []
-    cleanUrlParameters:
-      id: 2
+    urlParameters: []
+    cleanUrlParameters: []
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -233,13 +225,13 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the user title.'
+        description: 'The ID of user title to update.'
         required: true
-        example: 1
+        example: 2
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 2
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:

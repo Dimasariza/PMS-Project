@@ -3,23 +3,24 @@
     "message": "Success",
     "data": {
         "id": 17,
-        "username": "sayamaco",
-        "fullname": "Anak Maco Cie",
-        "email": "maco@gmail.com",
+        "username": "sayamsaco",
+        "fullname": "Anak Maco",
+        "email": "mirco@gmail.com",
         "workPlace": "ship",
         "status": 1,
-        "document": "some",
-        "createdAt": "2023-04-27 12:46:07",
+        "document": "http://localhost:9000/users/bHMIJAc8KakBIrMXMSQlP3jFR1GER6vzAfVm39bI.png",
+        "createdAt": "2023-04-28 12:08:54",
         "department": {
             "id": 1,
-            "name": "Matteo Parisian",
-            "code": "MU",
-            "workPlace": "60243 Myrna Loaf\nCarolinechester, DC 89574"
+            "name": "Tobin Goodwin",
+            "code": "JM",
+            "workPlace": "65118 Conn Street\nYundtview, MN 81843"
         },
         "userTitle": {
             "id": 1,
             "titleName": "Captain",
             "access": {
+                "inbox": true,
                 "stock": true,
                 "users": true,
                 "jobList": true,
