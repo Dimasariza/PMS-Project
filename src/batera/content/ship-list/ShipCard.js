@@ -12,6 +12,8 @@ import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import NextLink from 'next/link';
+import Link from 'src/components/Link';
 
 const ShipCard = ({ shipInfo }) => {
   const url = process.env.PUBLIC_URL || ""
@@ -30,7 +32,18 @@ const ShipCard = ({ shipInfo }) => {
           </CardContent>
           <CardActions sx={{ height: '10%' }}>
             <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
-              <Button size="small" width='50%' variant="contained" color="primary">See Details</Button>
+              <NextLink href= {url + "/batera/dashboards/ship-details"} passHref>
+                <Button 
+                  size="small" 
+                  component={Link}
+                  width='50%' 
+                  variant="contained" 
+                  color="primary"
+                  className="text-3xl font-bold underline"
+                >
+                  See Details
+                </Button>
+              </NextLink >
             </div>
           </CardActions>
         </Card>

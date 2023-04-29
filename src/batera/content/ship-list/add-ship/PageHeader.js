@@ -1,6 +1,6 @@
 import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
-import AddTwoToneIcon from '@mui/icons-material/AddTwoTone';
+import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
 
 
 function PageHeader() {
@@ -17,17 +17,17 @@ function PageHeader() {
         </Typography> */}
         <Typography variant="subtitle2">
           {/* {user.name}, these are your recent transactions */}
-          Ship List
+          Ship List/Add Ship
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/ship-list/add-ship"} passHref>
+        <NextLink href={url + "/batera/ship-list"} passHref>
           <Button
             sx={{ mt: { xs: 2, md: 0 } }}
             variant="contained"
-            startIcon={<AddTwoToneIcon fontSize="small" />}
+            startIcon={<SaveTwoToneIcon fontSize="small" />}
           >
-            Add Ship
+            Save Ship
           </Button>
         </NextLink>
       </Grid>
