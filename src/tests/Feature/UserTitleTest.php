@@ -371,18 +371,6 @@ class UserTitleTest extends TestCase
         );
     }
 
-    private function login(): string
-    {
-        $response = $this->postJson(route('auth.login'), [
-            'username' => 'admin123',
-            'password' => 'admin1234'
-        ]);
-
-        $token = $response['data']['token'];
-
-        return $token;
-    }
-
     private function loginNonAdmin(): string
     {
         $response = $this->postJson(route('auth.login'), [

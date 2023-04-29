@@ -21,7 +21,7 @@ class UserCreatedResource extends JsonResource
             'email' => $this->email,
             'workPlace' => $this->work_place,
             'status' => $this->status,
-            'document' => asset($this->document),
+            'document' => $this->when(!is_null($this->document) || $this->document !== "", asset($this->document)),
             'createdAt' => date('Y-m-d H:i:s', strtotime($this->created_at)),
             'department' => [
                 'id' => $this->department['id'],

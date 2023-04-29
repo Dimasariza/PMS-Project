@@ -10,7 +10,7 @@ trait FileUtils
     protected function storeFile(string $path, ?UploadedFile $file): string
     {
         if(!$file) {
-            return null;
+            return "";
         }
 
         $uploaded = $file->store($path);

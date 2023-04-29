@@ -35,7 +35,7 @@ class InsertUserRequest extends FormRequest
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
             'status' => ['required', 'boolean'],
-            'document' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:1024'],
+            'document' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:1024'],
         ];
     }
 

@@ -85,4 +85,16 @@ abstract class TestCase extends BaseTestCase
             'document' => 'somedocs.pdf',
         ]);
     }
+
+    protected function login(): string
+    {
+        $response = $this->postJson(route('auth.login'), [
+            'username' => 'admin123',
+            'password' => 'admin1234'
+        ]);
+
+        $token = $response['data']['token'];
+
+        return $token;
+    }
 }
