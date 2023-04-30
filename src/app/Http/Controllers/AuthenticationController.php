@@ -18,12 +18,9 @@ class AuthenticationController extends Controller
 {
     use APIResponse;
 
-    private AuthService $authService;
-
-    public function __construct(AuthService $authService)
-    {
-        $this->authService = $authService;
-    }
+    public function __construct(
+        protected AuthService $authService
+    ) {}
 
     /**
      * Login
