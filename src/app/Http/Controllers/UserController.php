@@ -9,10 +9,9 @@ use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\User\UserCreatedResource;
 use App\Http\Resources\User\UserUpdatedResource;
 use App\Http\Resources\UserResource;
-use App\Services\User\UserService;
+use App\Repositories\User\UserRepository;
 use App\Traits\APIResponse;
 use App\Traits\FileUtils;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @group User
@@ -24,7 +23,7 @@ class UserController extends Controller
     use APIResponse, FileUtils;
 
     public function __construct(
-        protected UserService $service,
+        protected UserRepository $repository,
     ){}
 
     /**
@@ -42,7 +41,7 @@ class UserController extends Controller
     {
         return $this->successResponse(
             UserResource::collection(
-                $this->service->all(),
+                $this->repository->getAll(),
             )
         );
     }
@@ -74,7 +73,7 @@ class UserController extends Controller
 
         return $this->successResponse(
             UserCreatedResource::make(
-                $this->service->store($dto)
+                $this->repository->create($dto)
             )
         );
     }
@@ -95,7 +94,7 @@ class UserController extends Controller
     {
         return $this->successResponse(
             UserCreatedResource::make(
-                $this->service->show($id)
+                $this->repository->show($id)
             )
         );
     }
@@ -122,12 +121,12 @@ class UserController extends Controller
      */
     public function update(string $id, UpdateUserRequest $request)
     {
-        $user = $this->service->show($id);
+        $user = $this->repository->show($id);
         $url = $this->replaceFile('users', $user->document, $request->validated('document'));
 
         $dto = UpdateUserDTO::fromRequest($request, $url);
 
-        $result = $this->service->update($id, $dto);
+        $result = $this->repository->update($id, $dto);
 
         return $this->successResponse(
             UserUpdatedResource::make($result),

@@ -8,8 +8,6 @@ use App\Repositories\UserTitle\UserTitleRepository;
 use App\Repositories\UserTitle\UserTitleRepositoryImpl;
 use App\Services\Auth\AuthService;
 use App\Services\Auth\AuthServiceImpl;
-use App\Services\User\UserService;
-use App\Services\User\UserServiceImpl;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,7 +21,6 @@ class AppServiceProvider extends ServiceProvider
             [AuthService::class, AuthServiceImpl::class],
             [UserTitleRepository::class, UserTitleRepositoryImpl::class],
             [UserRepository::class, UserRepositoryImpl::class],
-            [UserService::class, UserServiceImpl::class],
         ];
 
         foreach ($instances as $instance) {
