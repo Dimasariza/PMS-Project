@@ -13,7 +13,8 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
 {
     public function __construct(
         protected UserTitle $model,
-    ){}
+    ) {
+    }
 
     /**
      * Get id and title name from all user title
@@ -28,30 +29,27 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
     /**
      * Create new user title
      *
-     * @param  App\DTO\UserTitle\UserTitleDTO $dto
-     * @return stdClass
+     * @param  App\DTO\UserTitle\UserTitleDTO  $dto
      */
     public function create(UserTitleDTO $dto): stdClass
     {
-        $result =  $this->model->create($dto->build());
+        $result = $this->model->create($dto->build());
 
         return $this->format($result->toArray());
     }
 
-
     /**
      * Update an user title
      *
-     * @param  int|string $id
-     * @param  App\DTO\UserTitle\UserTitleDTO $dto
-     * @return stdClass
+     * @param  App\DTO\UserTitle\UserTitleDTO  $dto
+     *
      * @throws Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function update(int|string $id, UserTitleDTO $dto): stdClass
     {
         $userTitle = $this->model->findOr(
             $id,
-            fn() => throw new ModelNotFoundException("Unknown user title")
+            fn () => throw new ModelNotFoundException('Unknown user title')
         );
 
         $userTitle->update($dto->build());

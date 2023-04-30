@@ -7,3 +7,4 @@ After clone, run `php artisan migrate:fresh --seed` (or `make migrate-fresh-seed
 Package / Library            | Description
 -----------------------------|-------------
 [Laravel Scribe](https://scribe.knuckles.wtf/laravel) | Generate Docs
+[Laravel Pint](https://laravel.com/docs/10.x/pint)    | Standard Code Style Fixer

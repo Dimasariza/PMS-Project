@@ -10,10 +10,10 @@ class UserTitle extends Model
     use HasFactory;
 
     /**
-    * The name of the "updated at" column.
-    *
-    * @var string
-    */
+     * The name of the "updated at" column.
+     *
+     * @var string
+     */
     const UPDATED_AT = null;
 
     /**

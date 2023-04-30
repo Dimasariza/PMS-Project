@@ -9,12 +9,10 @@ use Illuminate\Http\Response;
 trait FailedValidation
 {
     /**
-    * Overriding the event validator for custom error response
-    *
-    * @param  Validator $validator
-    * @throws Illuminate\Http\Exceptions\HttpResponseException
-    *
-    */
+     * Overriding the event validator for custom error response
+     *
+     * @throws Illuminate\Http\Exceptions\HttpResponseException
+     */
     public function failedValidation(Validator $validator)
     {
         $errFields = array_keys($validator->failed());
@@ -25,12 +23,12 @@ trait FailedValidation
             'message' => 'Bad input',
         ];
 
-        for ($i=0; $i < count($errFields); $i++) {
-            if( $e = $validator->errors()->get($errFields[$i]) ) {
+        for ($i = 0; $i < count($errFields); $i++) {
+            if ($e = $validator->errors()->get($errFields[$i])) {
                 $errors[$errFields[$i]] = $e[0];
             }
         }
 
-        throw new HttpResponseException(response()->json(array_merge($response, ["errors" => $errors]), Response::HTTP_UNPROCESSABLE_ENTITY));
-   }
+        throw new HttpResponseException(response()->json(array_merge($response, ['errors' => $errors]), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }
 }

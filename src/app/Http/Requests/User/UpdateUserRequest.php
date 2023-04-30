@@ -4,8 +4,8 @@ namespace App\Http\Requests\User;
 
 use App\Enums\WorkPlace;
 use App\Traits\FailedValidation;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class UpdateUserRequest extends FormRequest
 {

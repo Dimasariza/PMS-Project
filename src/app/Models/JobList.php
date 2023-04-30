@@ -17,7 +17,6 @@ class JobList extends Model
      */
     public $timestamps = false;
 
-
     /**
      * The attributes that should be cast.
      *
@@ -26,7 +25,6 @@ class JobList extends Model
     protected $casts = [
         'job_type' => JobType::class,
     ];
-
 
     /**
      * The attributes that are mass assignable.
@@ -45,6 +43,6 @@ class JobList extends Model
         'approved_job',
         'person_in_charge',
         'status',
-        'level'
+        'level',
     ];
 }

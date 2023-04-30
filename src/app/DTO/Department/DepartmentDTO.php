@@ -11,9 +11,10 @@ class DepartmentDTO
         readonly public string $departmentName,
         readonly public string $departmentCode,
         readonly public string $workPlace,
-    ) {}
+    ) {
+    }
 
-    public static function fromRequest(CreateDepartmentRequest | UpdateDepartmentRequest $request): DepartmentDTO
+    public static function fromRequest(CreateDepartmentRequest|UpdateDepartmentRequest $request): DepartmentDTO
     {
         return new self(
             departmentName: $request->validated('departmentName'),
@@ -27,7 +28,7 @@ class DepartmentDTO
         return [
             'department_name' => $this->departmentName,
             'department_code' => $this->departmentCode,
-            'work_place' => $this->workPlace
+            'work_place' => $this->workPlace,
         ];
     }
 }

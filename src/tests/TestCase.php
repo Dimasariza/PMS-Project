@@ -2,10 +2,10 @@
 
 namespace Tests;
 
-use App\Models\User;
 use App\Enums\WorkPlace;
-use App\Models\UserTitle;
 use App\Models\Department;
+use App\Models\User;
+use App\Models\UserTitle;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
 
@@ -15,8 +15,6 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Create the user, user title, and department for test
-     *
-     * @return void
      */
     protected function createStarter(): void
     {
@@ -25,14 +23,14 @@ abstract class TestCase extends BaseTestCase
         UserTitle::create([
             'title_name' => 'Admin',
             'access' => [
-                "shipList" => true,
-                "shipDetails" => true,
-                "jobList" => true,
-                "dataSheet" => true,
-                "stock" => true,
-                "users" => true,
-                "department" => true,
-                "inbox" => true,
+                'shipList' => true,
+                'shipDetails' => true,
+                'jobList' => true,
+                'dataSheet' => true,
+                'stock' => true,
+                'users' => true,
+                'department' => true,
+                'inbox' => true,
             ],
             'created_at' => now(),
         ]);
@@ -61,14 +59,14 @@ abstract class TestCase extends BaseTestCase
         UserTitle::create([
             'title_name' => 'View Only',
             'access' => [
-                "shipList" => false,
-                "shipDetails" => false,
-                "jobList" => false,
-                "dataSheet" => false,
-                "stock" => false,
-                "users" => false,
-                "department" => false,
-                "inbox" => false,
+                'shipList' => false,
+                'shipDetails' => false,
+                'jobList' => false,
+                'dataSheet' => false,
+                'stock' => false,
+                'users' => false,
+                'department' => false,
+                'inbox' => false,
             ],
             'created_at' => now(),
         ]);
@@ -90,7 +88,7 @@ abstract class TestCase extends BaseTestCase
     {
         $response = $this->postJson(route('auth.login'), [
             'username' => 'admin123',
-            'password' => 'admin1234'
+            'password' => 'admin1234',
         ]);
 
         $token = $response['data']['token'];

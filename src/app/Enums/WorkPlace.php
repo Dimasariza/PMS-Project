@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum WorkPlace: string
 {
-    case Ship = "ship";
-    case Office = "office";
+    case Ship = 'ship';
+    case Office = 'office';
 }

@@ -26,6 +26,6 @@ class EquipmentDatasheet extends Model
         'datasheet_code',
         'equipment_brand',
         'maintenance_interval',
-        'document'
+        'document',
     ];
 }

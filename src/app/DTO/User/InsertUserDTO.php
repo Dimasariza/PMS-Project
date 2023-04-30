@@ -16,7 +16,8 @@ class InsertUserDTO
         readonly public string $workPlace,
         readonly public bool $status,
         readonly public string $document,
-    ) {}
+    ) {
+    }
 
     public static function fromRequest(InsertUserRequest $request, string $documentName): InsertUserDTO
     {

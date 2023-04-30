@@ -20,7 +20,8 @@ class AuthenticationController extends Controller
 
     public function __construct(
         protected AuthService $authService
-    ) {}
+    ) {
+    }
 
     /**
      * Login
@@ -40,11 +41,11 @@ class AuthenticationController extends Controller
         $credentials = $request->validated();
         $user = $this->authService->login($credentials);
 
-        if(!$user) {
-            return $this->failResponse("Bad credentials", Response::HTTP_BAD_REQUEST);
+        if (! $user) {
+            return $this->failResponse('Bad credentials', Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->successResponse(AuthResource::make($user), "Authenticated", Response::HTTP_OK);
+        return $this->successResponse(AuthResource::make($user), 'Authenticated', Response::HTTP_OK);
     }
 
     /**
@@ -53,6 +54,7 @@ class AuthenticationController extends Controller
      * Logout an user.
      *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
      * @authenticated
      *
      * @responseFile status=200 scenario='Success' response/auth/logout_success.json
@@ -63,16 +65,16 @@ class AuthenticationController extends Controller
     public function logout(Request $request)
     {
         $token = $request->bearerToken();
-        if(is_null($token)) {
-            return $this->failResponse("Bad credentials", Response::HTTP_BAD_REQUEST);
+        if (is_null($token)) {
+            return $this->failResponse('Bad credentials', Response::HTTP_BAD_REQUEST);
         }
 
         $deleted = $this->authService->logout($token);
 
-        if(!$deleted) {
-            return $this->failResponse("Invalid credentials", Response::HTTP_BAD_REQUEST);
+        if (! $deleted) {
+            return $this->failResponse('Invalid credentials', Response::HTTP_BAD_REQUEST);
         }
 
-        return $this->successResponse(null, "Logout success", Response::HTTP_OK);
+        return $this->successResponse(null, 'Logout success', Response::HTTP_OK);
     }
 }

@@ -4,6 +4,6 @@ namespace App\Enums;
 
 enum JobType: string
 {
-    case Scheduled = "scheduled";
-    case Unscheduled = "unscheduled";
+    case Scheduled = 'scheduled';
+    case Unscheduled = 'unscheduled';
 }

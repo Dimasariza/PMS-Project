@@ -22,14 +22,17 @@ class UserTitleController extends Controller
 
     public function __construct(
         protected UserTitleRepository $repository
-    ) {}
+    ) {
+    }
 
     /**
      * All
      *
      * Get list of user title
+     *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
 
+     *
      * @authenticated
      *
      * @responseFile status=200 scenario='Success' response/userTitle/all.json
@@ -50,6 +53,7 @@ class UserTitleController extends Controller
      *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
 
+     *
      * @authenticated
      *
      * @bodyParam titleName string required The name of the new user title. Example: General
@@ -66,11 +70,10 @@ class UserTitleController extends Controller
 
         return $this->successResponse(
             UserTitleResource::make($result),
-            "Created",
+            'Created',
             Response::HTTP_CREATED,
         );
     }
-
 
     /**
      * Update User Title
@@ -80,6 +83,7 @@ class UserTitleController extends Controller
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      *
      * @urlParam id integer required The ID of user title to update. Example: 2
+     *
      * @authenticated
      *
      * @bodyParam titleName string required The name of the new user title. Example: Admiral
@@ -96,7 +100,7 @@ class UserTitleController extends Controller
 
         return $this->successResponse(
             UpdatedUserTitleResource::make($result),
-            "Updated",
+            'Updated',
         );
     }
 }

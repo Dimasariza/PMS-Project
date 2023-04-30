@@ -15,10 +15,10 @@ class UserTitleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            "id" => $this->id,
-            "name" => $this->title_name,
-            "access" => $this->access,
-            "createdAt" => $this->when(!is_null($this->created_at), date('Y-m-d H:i:s', strtotime($this->created_at))),
+            'id' => $this->id,
+            'name' => $this->title_name,
+            'access' => $this->access,
+            'createdAt' => $this->when(! is_null($this->created_at), date('Y-m-d H:i:s', strtotime($this->created_at))),
         ];
     }
 }

@@ -21,21 +21,21 @@ class HasAccessTitle
     {
         $token = $request->bearerToken();
         $user = PersonalAccessToken::findToken($token);
-        if(!$user || is_null($user)) {
-            return $this->failResponse("Unauthenticated", Response::HTTP_FORBIDDEN);
+        if (! $user || is_null($user)) {
+            return $this->failResponse('Unauthenticated', Response::HTTP_FORBIDDEN);
         }
 
         $abilities = $user->abilities;
-        if(!$abilities || is_null($abilities)) {
-            return $this->failResponse("Unauthenticated", Response::HTTP_FORBIDDEN);
+        if (! $abilities || is_null($abilities)) {
+            return $this->failResponse('Unauthenticated', Response::HTTP_FORBIDDEN);
         }
 
         foreach ($roles as $role) {
-            if(in_array($role, $abilities)) {
+            if (in_array($role, $abilities)) {
                 return $next($request);
             }
         }
 
-        return $this->failResponse("Unauthorized", Response::HTTP_UNAUTHORIZED);
+        return $this->failResponse('Unauthorized', Response::HTTP_UNAUTHORIZED);
     }
 }

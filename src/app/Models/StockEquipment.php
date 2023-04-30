@@ -27,6 +27,6 @@ class StockEquipment extends Model
         'department_id',
         'equipment_name',
         'stock_category',
-        'status_part'
+        'status_part',
     ];
 }

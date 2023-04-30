@@ -18,8 +18,8 @@ class TokenHeaderExists
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->bearerToken() == "") {
-            return $this->failResponse("Unauthenticated", Response::HTTP_FORBIDDEN);
+        if ($request->bearerToken() == '') {
+            return $this->failResponse('Unauthenticated', Response::HTTP_FORBIDDEN);
         }
 
         return $next($request);

@@ -34,20 +34,18 @@ class Handler extends ExceptionHandler
 
     public function render($request, Throwable $e)
     {
-        if($e instanceof ModelNotFoundException) {
+        if ($e instanceof ModelNotFoundException) {
             if ($request->is('api/*')) {
                 return $this->failResponse($e->getMessage(), HTTPResponse::HTTP_BAD_REQUEST);
             }
 
-            return $this->failResponse("Not acceptable", HTTPResponse::HTTP_NOT_ACCEPTABLE);
-        }
-
-        else if($e instanceof MethodNotAllowedHttpException) {
+            return $this->failResponse('Not acceptable', HTTPResponse::HTTP_NOT_ACCEPTABLE);
+        } elseif ($e instanceof MethodNotAllowedHttpException) {
             if ($request->is('api/*')) {
-                return $this->failResponse("Method not allowed", Response::HTTP_METHOD_NOT_ALLOWED);
+                return $this->failResponse('Method not allowed', Response::HTTP_METHOD_NOT_ALLOWED);
             }
 
-            return $this->failResponse("Not acceptable", HTTPResponse::HTTP_NOT_ACCEPTABLE);
+            return $this->failResponse('Not acceptable', HTTPResponse::HTTP_NOT_ACCEPTABLE);
         }
 
         return app()->isProduction() ? $this->failResponse() : parent::render($request, $e);

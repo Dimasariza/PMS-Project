@@ -50,9 +50,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'work_place' => WorkPlace::class
+        'work_place' => WorkPlace::class,
     ];
-
 
     /**
      * Password must be hashed before inserted into database
@@ -64,7 +63,6 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($password);
     }
 
-
     /**
      * One user belongs to one department
      *
@@ -74,7 +72,6 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Department::class, 'department_id')->withTrashed();
     }
-
 
     /**
      * One user belongs to one title

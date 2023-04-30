@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\User;
 
-use App\Http\Resources\DepartmentResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +21,7 @@ class UserUpdatedResource extends JsonResource
             'email' => $this->email,
             'workPlace' => $this->work_place,
             'status' => $this->status,
-            'document' => $this->when(!is_null($this->document) || $this->document !== "", asset($this->document)),
+            'document' => $this->when(! is_null($this->document) || $this->document !== '', asset($this->document)),
             'updatedAt' => date('Y-m-d H:i:s', strtotime($this->updated_at)),
             'department' => [
                 'id' => $this->department['id'],
@@ -31,10 +30,10 @@ class UserUpdatedResource extends JsonResource
                 'workPlace' => $this->department['work_place'],
             ],
             'userTitle' => [
-                "id" => $this->user_title['id'],
-                "titleName" => $this->user_title['title_name'],
-                "access" => $this->user_title['access'],
-            ]
+                'id' => $this->user_title['id'],
+                'titleName' => $this->user_title['title_name'],
+                'access' => $this->user_title['access'],
+            ],
         ];
     }
 }

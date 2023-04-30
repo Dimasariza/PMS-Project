@@ -13,7 +13,8 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
 {
     public function __construct(
         protected Department $model,
-    ) {}
+    ) {
+    }
 
     public function getAll(): Collection
     {
@@ -32,7 +33,7 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
         $department = $this->model->findOr(
             $id,
             ['id', 'department_name', 'department_code', 'work_place'],
-            fn () => throw new ModelNotFoundException("Unknown department")
+            fn () => throw new ModelNotFoundException('Unknown department')
         );
 
         return $this->format($department->toArray());
@@ -42,7 +43,7 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
     {
         $department = $this->model->findOr(
             $id,
-            fn () => throw new ModelNotFoundException("Unknown department")
+            fn () => throw new ModelNotFoundException('Unknown department')
         );
 
         $department->update($dto->build());
@@ -54,7 +55,7 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
     {
         $department = $this->model->findOr(
             $id,
-            fn () => throw new ModelNotFoundException("Unknown department")
+            fn () => throw new ModelNotFoundException('Unknown department')
         );
 
         $department->delete();

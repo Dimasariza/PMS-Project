@@ -21,22 +21,21 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-
-Route::prefix('/v1')->group(function() {
-    Route::prefix('/auth')->controller(AuthenticationController::class)->group(function() {
+Route::prefix('/v1')->group(function () {
+    Route::prefix('/auth')->controller(AuthenticationController::class)->group(function () {
         Route::post('/login', 'login')->name('auth.login');
         Route::post('/logout', 'logout')->name('auth.logout');
     });
 
     Route::middleware(['auth.api', 'title:Admin'])
-    ->apiResource('user_title', UserTitleController::class)
-    ->only(['index', 'store', 'update']);
+        ->apiResource('user_title', UserTitleController::class)
+        ->only(['index', 'store', 'update']);
 
     Route::middleware(['auth.api', 'title:Admin'])
-    ->apiResource('user', UserController::class)
-    ->only(['index', 'store', 'show']);
+        ->apiResource('user', UserController::class)
+        ->only(['index', 'store', 'show']);
     Route::middleware(['auth.api', 'title:Admin'])->post('user/{user}/update', [UserController::class, 'update'])->name('user.update');
 
     Route::middleware(['auth.api', 'title:Admin'])
-    ->apiResource('department', DepartmentController::class);
+        ->apiResource('department', DepartmentController::class);
 });

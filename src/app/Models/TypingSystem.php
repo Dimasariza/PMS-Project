@@ -25,6 +25,6 @@ class TypingSystem extends Model
         'ship_id',
         'system_name',
         'running_hours',
-        'serial_number'
+        'serial_number',
     ];
 }

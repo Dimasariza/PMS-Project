@@ -10,14 +10,14 @@ class AccessTitleTest extends TestCase
     public function test_access_title_valid(): void
     {
         $expected = [
-            "shipList",
-            "shipDetails",
-            "jobList",
-            "dataSheet",
-            "stock",
-            "users",
-            "department",
-            "inbox",
+            'shipList',
+            'shipDetails',
+            'jobList',
+            'dataSheet',
+            'stock',
+            'users',
+            'department',
+            'inbox',
         ];
 
         $got = AccessTitle::toArrayColumn();

@@ -24,16 +24,18 @@ class UserController extends Controller
 
     public function __construct(
         protected UserRepository $repository,
-    ){}
+    ) {
+    }
 
     /**
      * All
      *
      * Get list of user
+     *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
 
-     * @authenticated
      *
+     * @authenticated
      *
      * @responseFile status=200 scenario='Success' response/user/all.json
      */
@@ -50,8 +52,10 @@ class UserController extends Controller
      * Create
      *
      * Get list of user
+     *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      * @header Content-Type multipart/form-data
+     *
      * @authenticated
      *
      * @bodyParam username string required Username of user. Example: sundelbolong
@@ -84,8 +88,10 @@ class UserController extends Controller
      * Get one user
      *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
      * @urlParam id integer required The ID of user title to update. Example: 5
 
+     *
      * @authenticated
      *
      * @responseFile status=200 scenario='Success' response/user/get_one.json
@@ -99,15 +105,16 @@ class UserController extends Controller
         );
     }
 
-
     /**
      * Update
      *
      * Update an user
+     *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      * @header Content-Type multipart/form-data
      *
      * @urlParam id integer required The ID of user title to update. Example: 5
+     *
      * @authenticated
      *
      * @bodyParam fullname string required Fullname of user. Example: Saia Sundel Bolong
@@ -130,7 +137,7 @@ class UserController extends Controller
 
         return $this->successResponse(
             UserUpdatedResource::make($result),
-            "Updated",
+            'Updated',
         );
     }
 }

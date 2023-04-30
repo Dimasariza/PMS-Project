@@ -3,10 +3,10 @@
 namespace App\Http\Requests\Department;
 
 use App\Enums\WorkPlace;
-use Illuminate\Validation\Rule;
 use App\Traits\FailedValidation;
-use Illuminate\Validation\Rules\Enum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Enum;
 
 class UpdateDepartmentRequest extends FormRequest
 {

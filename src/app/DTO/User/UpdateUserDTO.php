@@ -3,7 +3,6 @@
 namespace App\DTO\User;
 
 use App\Http\Requests\User\UpdateUserRequest;
-use Illuminate\Http\UploadedFile;
 
 class UpdateUserDTO
 {
@@ -14,7 +13,8 @@ class UpdateUserDTO
         readonly public string $workPlace,
         readonly public bool $status,
         readonly public ?string $document,
-    ) {}
+    ) {
+    }
 
     public static function fromRequest(UpdateUserRequest $request, string $documentName = null): UpdateUserDTO
     {
@@ -38,7 +38,7 @@ class UpdateUserDTO
             'status' => $this->status,
         ];
 
-        if(!$this->document) {
+        if (! $this->document) {
             return $arr;
         }
 

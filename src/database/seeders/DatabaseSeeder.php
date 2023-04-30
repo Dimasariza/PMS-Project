@@ -31,32 +31,32 @@ class DatabaseSeeder extends Seeder
             'user_title_id' => UserTitle::where('title_name', 'Admin')->first()->id,
             'work_place' => 'office',
             'status' => true,
-            'document' => "some_document.pdf",
+            'document' => 'some_document.pdf',
         ]);
     }
 
     private function generateUserTitle(): void
     {
         $normal_roles = [
-            "shipList" => false,
-            "shipDetails" => false,
-            "jobList" => true,
-            "dataSheet" => true,
-            "stock" => false,
-            "users" => true,
-            "department" => true,
-            "inbox" => true
+            'shipList' => false,
+            'shipDetails' => false,
+            'jobList' => true,
+            'dataSheet' => true,
+            'stock' => false,
+            'users' => true,
+            'department' => true,
+            'inbox' => true,
         ];
 
         $super_roles = [
-            "shipList" => true,
-            "shipDetails" => true,
-            "jobList" => true,
-            "dataSheet" => true,
-            "stock" => true,
-            "users" => true,
-            "department" => true,
-            "inbox" => true,
+            'shipList' => true,
+            'shipDetails' => true,
+            'jobList' => true,
+            'dataSheet' => true,
+            'stock' => true,
+            'users' => true,
+            'department' => true,
+            'inbox' => true,
         ];
 
         $title_names = ['Captain', 'Chief Engineer', 'Chief Officer', 'Admin', 'Second Engineer'];

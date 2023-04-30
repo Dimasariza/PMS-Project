@@ -18,7 +18,8 @@ class DepartmentController extends Controller
 
     public function __construct(
         protected DepartmentRepository $repository
-    ) {}
+    ) {
+    }
 
     /**
      * Display a listing of the resource.
@@ -41,7 +42,7 @@ class DepartmentController extends Controller
 
         return $this->successResponse(
             DepartmentCreatedResource::make($result),
-            "Created",
+            'Created',
             Response::HTTP_CREATED,
         );
     }
@@ -68,7 +69,7 @@ class DepartmentController extends Controller
 
         return $this->successResponse(
             DepartmentUpdatedResource::make($result),
-            "Updated",
+            'Updated',
         );
     }
 
@@ -79,6 +80,6 @@ class DepartmentController extends Controller
     {
         $this->repository->delete($id);
 
-        return $this->successResponse(null, "Deleted");
+        return $this->successResponse(null, 'Deleted');
     }
 }

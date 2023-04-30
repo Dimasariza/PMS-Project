@@ -9,19 +9,18 @@ trait FileUtils
 {
     protected function storeFile(string $path, ?UploadedFile $file): string
     {
-        if(!$file) {
-            return "";
+        if (! $file) {
+            return '';
         }
 
         $uploaded = $file->store($path);
-
 
         return $uploaded;
     }
 
     protected function deleteFile(string $path, string $filename): bool
     {
-        if(!Storage::exists("{$path}/{$filename}")) {
+        if (! Storage::exists("{$path}/{$filename}")) {
             return false;
         }
 
@@ -30,20 +29,20 @@ trait FileUtils
 
     protected function replaceFile(string $path, string $fileBefore, ?UploadedFile $fileAfter)
     {
-        if(is_null($fileAfter)) {
+        if (is_null($fileAfter)) {
             return null;
         }
 
-        if(is_null($fileBefore) || $fileBefore === "") {
+        if (is_null($fileBefore) || $fileBefore === '') {
             return $this->storeFile($path, $fileAfter);
         }
 
-        $exploded = explode("/", $fileBefore);
+        $exploded = explode('/', $fileBefore);
         $filename = $exploded[array_key_last($exploded)];
 
         $deleted = $this->deleteFile($path, $filename);
-        if(!$deleted) {
-            return "";
+        if (! $deleted) {
+            return '';
         }
 
         return $this->storeFile($path, $fileAfter);
