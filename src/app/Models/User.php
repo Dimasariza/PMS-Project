@@ -72,7 +72,7 @@ class User extends Authenticatable
      */
     public function department(): BelongsTo
     {
-        return $this->belongsTo(Department::class, 'department_id');
+        return $this->belongsTo(Department::class, 'department_id')->withTrashed();
     }
 
 
