@@ -28,11 +28,11 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
 
     public function update(int|string $id, UpdateUserDTO $dto): stdClass
     {
-        $user = $this->model::with(['department', 'user_title'])->find($id);
-
-        if(!$user) {
-            throw new ModelNotFoundException("Unknown user");
-        }
+        $user = $this->model::with(['department', 'user_title'])
+        ->findOr(
+            $id,
+            fn () => throw new ModelNotFoundException("Unknown user")
+        );
 
         $user->update($dto->build());
 
@@ -43,11 +43,10 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
 
     public function show(int|string $id): stdClass
     {
-        $user = $this->model::with(['department', 'user_title'])->find($id);
-
-        if(!$user) {
-            throw new ModelNotFoundException("Unknown user");
-        }
+        $user = $this->model::with(['department', 'user_title'])->findOr(
+            $id,
+            fn () => throw new ModelNotFoundException("Unknown user")
+        );
 
         return $this->format($user->toArray());
     }

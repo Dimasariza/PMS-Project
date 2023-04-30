@@ -22,4 +22,12 @@ class UserTitleDTO
             },
         );
     }
+
+    public function build(): array
+    {
+        return [
+            'title_name' => $this->titleName,
+            'access' => $this->access,
+        ];
+    }
 }

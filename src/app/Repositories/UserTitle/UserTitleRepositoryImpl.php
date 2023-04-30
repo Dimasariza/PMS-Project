@@ -33,12 +33,9 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
      */
     public function create(UserTitleDTO $dto): stdClass
     {
-        return $this->format(
-            $this->model->create([
-                'title_name' => $dto->titleName,
-                'access' => $dto->access,
-            ])->toArray()
-        );
+        $result =  $this->model->create($dto->build());
+
+        return $this->format($result->toArray());
     }
 
 
@@ -52,19 +49,15 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
      */
     public function update(int|string $id, UserTitleDTO $dto): stdClass
     {
-        $userTitle = $this->model->find($id);
+        $userTitle = $this->model->findOr(
+            $id,
+            fn() => throw new ModelNotFoundException("Unknown user title")
+        );
 
-        if(!$userTitle) {
-            throw new ModelNotFoundException("Unknown user title");
-        }
-
-        $userTitle->title_name = $dto->titleName;
-        $userTitle->access = $dto->access;
-
-        $userTitle->save();
+        $userTitle->update($dto->build());
 
         return $this->format(
-            $userTitle->only(['id', 'title_name', 'access']),
+            $userTitle->toArray(),
         );
     }
 }
