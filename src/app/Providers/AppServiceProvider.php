@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Department\DepartmentRepository;
+use App\Repositories\Department\DepartmentRepositoryImpl;
 use App\Repositories\User\UserRepository;
 use App\Repositories\User\UserRepositoryImpl;
 use App\Repositories\UserTitle\UserTitleRepository;
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
             [AuthService::class, AuthServiceImpl::class],
             [UserTitleRepository::class, UserTitleRepositoryImpl::class],
             [UserRepository::class, UserRepositoryImpl::class],
+            [DepartmentRepository::class, DepartmentRepositoryImpl::class],
         ];
 
         foreach ($instances as $instance) {

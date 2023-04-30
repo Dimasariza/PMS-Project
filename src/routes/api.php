@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTitleController;
 use Illuminate\Support\Facades\Route;
@@ -35,4 +36,7 @@ Route::prefix('/v1')->group(function() {
     ->apiResource('user', UserController::class)
     ->only(['index', 'store', 'show']);
     Route::middleware(['auth.api', 'title:Admin'])->post('user/{user}/update', [UserController::class, 'update'])->name('user.update');
+
+    Route::middleware(['auth.api', 'title:Admin'])
+    ->apiResource('department', DepartmentController::class);
 });
