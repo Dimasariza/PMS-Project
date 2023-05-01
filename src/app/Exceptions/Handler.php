@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response as HTTPResponse;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -42,10 +43,12 @@ class Handler extends ExceptionHandler
             return $this->failResponse('Not acceptable', HTTPResponse::HTTP_NOT_ACCEPTABLE);
         } elseif ($e instanceof MethodNotAllowedHttpException) {
             if ($request->is('api/*')) {
-                return $this->failResponse('Method not allowed', Response::HTTP_METHOD_NOT_ALLOWED);
+                return $this->failResponse('Method not allowed', HTTPResponse::HTTP_METHOD_NOT_ALLOWED);
             }
 
             return $this->failResponse('Not acceptable', HTTPResponse::HTTP_NOT_ACCEPTABLE);
+        } elseif ($e instanceof RouteNotFoundException) {
+            return $this->failResponse('Not Found', HTTPResponse::HTTP_NOT_FOUND);
         }
 
         return app()->isProduction() ? $this->failResponse() : parent::render($request, $e);

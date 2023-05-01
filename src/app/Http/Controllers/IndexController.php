@@ -10,6 +10,6 @@ class IndexController extends Controller
 
     public function __invoke()
     {
-        return $this->successResponse(null, "OK");
+        return $this->successResponse(null, 'OK');
     }
 }
