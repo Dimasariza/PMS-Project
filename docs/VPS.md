@@ -136,49 +136,57 @@ sudo apt install git
    ```bash
    cd /etc/nginx
    ```
-
-2. Move to `sites-enabled`
+2. Move to `sites-available`
    ```bash
-   cd sites-enabled/
+   cd sites-available/
    ```
 
 3. Make a file and edit in nano/vim
    ```bash
-   nano pms_project
+   nano staging.pms.com
    ```
 
 4. Copy this. Edit the `server_name`. Save and exit the editor.
-   ```bash
+   ```nginx
    server {
        listen 80;
-       listen [::]:80;
-       server_name <YOUR_IP_OR_DOMAIN>;
+       server_name <YOUR_IP_OR_URL>;
+
        root /var/www/PMS-Project/src/public;
-
-       add_header X-Frame-Options "SAMEORIGIN";
-       add_header X-Content-Type-Options "nosniff";
-
        index index.php;
 
-       charset utf-8;
+       error_page 403 /403.json;
+       location /403.json {
+           internal;
+           add_header 'Content-Type' 'application/json charset=UTF-8';
+           return 403 '{"statusCode":403,"message":"Forbidden"}';
+       }
 
        location / {
            try_files $uri $uri/ /index.php?$query_string;
        }
 
        location ~ \.php$ {
-           fastcgi_pass unix:/var/run/php/php8.1-fpm.sock;
-           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+           try_files $uri = 404;
+           fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+           fastcgi_index index.php;
+           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
            include fastcgi_params;
-       }
-
-       location ~ /\.(?!well-known).* {
-           deny all;
        }
    }
    ```
 
-5. Restart nginx
+5. Create a symbolic link to `sites-enabled`
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/<YOUR_PROJECT_NAME> /etc/nginx/sites-enabled
+   ```
+
+6. Give write access to storage and cache
+   ```bash
+   sudo chown -R www-data.www-data /var/www/PMS-Project/src/storage
+   sudo chown -R www-data.www-data /var/www/PMS-Project/src/bootstrap/cache
+
+7. Restart nginx
    ```bash
    sudo systemctl restart nginx
    ```
