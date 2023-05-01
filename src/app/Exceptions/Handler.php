@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response as HTTPResponse;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Throwable;
 
@@ -47,7 +48,7 @@ class Handler extends ExceptionHandler
             }
 
             return $this->failResponse('Not acceptable', HTTPResponse::HTTP_NOT_ACCEPTABLE);
-        } elseif ($e instanceof RouteNotFoundException) {
+        } elseif ($e instanceof RouteNotFoundException || $e instanceof NotFoundHttpException) {
             return $this->failResponse('Not Found', HTTPResponse::HTTP_NOT_FOUND);
         }
 
