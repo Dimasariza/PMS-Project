@@ -1,17 +1,17 @@
 import Head from 'next/head';
-import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/batera/content/dashboards/ship-details/PageHeader';
+import SidebarLayout from 'src/layouts/HeaderOnlyLayout-Batera';
+import PageHeader from 'src/batera/content/dashboards/ship-details/update-ship/PageHeader.js';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import Content from 'src/batera/content/dashboards/ship-details/Content.js';
+import TitlesList from 'src/batera/content/dashboards/ship-details/update-ship/TitlesList.js';
 
-function ShipDetails() {
+function Users() {
   return (
     <>
       <Head>
-        <title>Ship Details</title>
+        <title>Update Ship</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -25,7 +25,7 @@ function ShipDetails() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <Content />
+            <TitlesList />
           </Grid>
         </Grid>
       </Container>
@@ -34,8 +34,8 @@ function ShipDetails() {
   );
 }
 
-ShipDetails.getLayout = (page) => (
+Users.getLayout = (page) => (
   <SidebarLayout>{page}</SidebarLayout>
 );
 
-export default ShipDetails;
+export default Users;
