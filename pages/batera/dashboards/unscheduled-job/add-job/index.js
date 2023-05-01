@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/batera/content/dashboards/scheduled-job/PageHeader';
+import PageHeader from 'src/batera/content/dashboards/unscheduled-job/add-job/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import ScheduledJobList from 'src/batera/content/dashboards/scheduled-job/ScheduledJobList.js';
+import AddJobList from 'src/batera/content/dashboards/unscheduled-job/add-job/AddJobList';
 
-function ScheduledJob() {
+function AddJob() {
   return (
     <>
       <Head>
-        <title>Scheduled Job</title>
+        <title>Add Job</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -25,7 +25,7 @@ function ScheduledJob() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <ScheduledJobList />
+            <AddJobList />
           </Grid>
         </Grid>
       </Container>
@@ -34,8 +34,8 @@ function ScheduledJob() {
   );
 }
 
-ScheduledJob.getLayout = (page) => (
+AddJob.getLayout = (page) => (
   <SidebarLayout>{page}</SidebarLayout>
 );
 
-export default ScheduledJob;
+export default AddJob;
