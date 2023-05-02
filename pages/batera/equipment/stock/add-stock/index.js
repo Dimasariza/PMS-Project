@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
-import PageHeader from 'src/batera/content/equipment/stock/PageHeader';
+import PageHeader from 'src/batera/content/equipment/stock/add-stock/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import StockList from 'src/batera/content/equipment/stock/StockList';
+import AddStockList from 'src/batera/content/equipment/stock/add-stock/AddStockList';
 
-function Stock() {
+function AddStock() {
   return (
     <>
       <Head>
-        <title>Stock</title>
+        <title>Add Stock</title>
       </Head>
       <PageTitleWrapper>
         <PageHeader />
@@ -25,7 +25,7 @@ function Stock() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <StockList />
+            <AddStockList />
           </Grid>
         </Grid>
       </Container>
@@ -34,8 +34,8 @@ function Stock() {
   );
 }
 
-Stock.getLayout = (page) => (
+AddStock.getLayout = (page) => (
   <SidebarLayout>{page}</SidebarLayout>
 );
 
-export default Stock;
+export default AddStock;
