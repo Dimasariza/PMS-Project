@@ -40,7 +40,7 @@ const applyPagination = (inboxList, page, limit) => {
   return inboxList.slice(page * limit, page * limit + limit);
 };
 
-const InboxTable = ({ inboxList }) => {
+const InboxTable = ({ inboxList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -90,7 +90,7 @@ const InboxTable = ({ inboxList }) => {
           <TableBody>
             {paginatedList.map((schedule, index) => {
               return (
-                <TableRow hover key={schedule.id}>
+                <TableRow hover key={schedule.id} onClick={() => handleOpen(schedule)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
