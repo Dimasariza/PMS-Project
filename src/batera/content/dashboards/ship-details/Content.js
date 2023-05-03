@@ -10,80 +10,17 @@ import {
   IconButton
 } from '@mui/material';
 import SummaryTable from './SummaryTable';
-import { subDays } from 'date-fns';
 import { useState } from 'react';
-import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
-import DoneTwoToneIcon from '@mui/icons-material/DoneTwoTone';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import Text from 'src/components/Text';
-import Label from 'src/components/Label';
-import { Padding } from '@mui/icons-material';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import PersonIcon from '@mui/icons-material/Person';
-import AddIcon from '@mui/icons-material/Add';
-import { blue } from '@mui/material/colors';
-
-const emails = ['username@gmail.com', 'user02@gmail.com'];
-const url = process.env.PUBLIC_URL || ""
-
-function SimpleDialog(props) {
-  const { onClose, selectedValue, open, shipName } = props;
-
-  const handleClose = () => {
-    onClose(selectedValue);
-  };
-
-  const handleListItemClick = (value) => {
-    onClose(value);
-  };
-
-  return (
-    <Dialog onClose={handleClose} open={open}>
-      <DialogTitle>
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center"}}>
-          <Typography align='left' variant="h6" style={{ fontWeight: 'bold' }}>
-            Delete Ship
-          </Typography>
-          <IconButton align='right'  onClick={handleClose} variant="contained" color='error'>
-            <CloseTwoToneIcon fontSize='small' />
-          </IconButton>
-        </div>
-      </DialogTitle>
-      <div style={{padding: '5%'}}>
-        <Typography align='center' variant="h5" style={{ fontWeight: 'bold', marginBottom: '5%' }}>
-          {"Are you sure you want to delete " + shipName+"?"}
-        </Typography>
-        <div style={{display: 'flex', padding: '1%', gap: '2%', justifyContent: 'center', alignItems: 'center'}}>
-          <NextLink href= {url + "/batera/ship-list"} passHref>
-            <Button variant="contained" color="primary" style={{backgroundColor: '#FF5AD9'}}>
-              Yes
-            </Button>
-          </NextLink>
-          <Button variant="contained" color="primary" onClick={handleClose} style={{}}>
-            No
-          </Button>
-          
-        </div>
-      </div>
-    </Dialog>
-  );
-}
-
-SimpleDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  shipName: PropTypes.string.isRequired,
-};
+import DeleteModal from './DeleteModal'
 
 function Content() {
+  const url = process.env.PUBLIC_URL || ""
   const [summaryList, setSummaryList] = useState([
     {
       jobStatus: 'On Progress',
@@ -148,7 +85,7 @@ function Content() {
 
   
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(emails[1]);
+  const [selectedValue, setSelectedValue] = useState();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -157,6 +94,10 @@ function Content() {
   const handleClose = (value) => {
     setOpen(false);
     setSelectedValue(value);
+  };
+
+  const handleListItemClick = (value) => {
+    onClose(value);
   };
 
   return (
@@ -210,7 +151,7 @@ function Content() {
                   <Button variant="contained" color="primary" onClick={handleClickOpen} style={{width: '45%', backgroundColor: '#FF5AD9'}}>
                     Delete Ship
                   </Button>
-                  <SimpleDialog
+                  <DeleteModal
                     selectedValue={selectedValue}
                     open={open}
                     onClose={handleClose}
