@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import StockTable from './StockTable';
 import { subDays } from 'date-fns';
 import { useState } from 'react';
+import DetailsModal from './DetailsModal';
 
 function StockList() {
   const [stockList, setScheduledJobList] = useState([
@@ -42,10 +43,36 @@ function StockList() {
     },
   ]);
 
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({
+    equipmentCode: '41040-10190',
+    category: 'Oil Filter',
+    equipment: 'Element Kit',
+    department: 'Engine',
+    statusPart: 'Ordering',
+  });
+
+  const handleClickOpen = (value) => {
+    setSelectedValue(value);
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
-    <Card>
-      <StockTable stockList={stockList} />
-    </Card>
+    <>
+      <Card>
+        <StockTable stockList={stockList} handleOpen={handleClickOpen} />
+      </Card>
+      <DetailsModal
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
+    </>
   );
 }
 

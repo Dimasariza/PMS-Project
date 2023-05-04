@@ -40,7 +40,7 @@ const applyPagination = (scheduledJobList, page, limit) => {
   return scheduledJobList.slice(page * limit, page * limit + limit);
 };
 
-const UnscheduledJobTable = ({ scheduledJobList }) => {
+const UnscheduledJobTable = ({ scheduledJobList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -85,7 +85,7 @@ const UnscheduledJobTable = ({ scheduledJobList }) => {
           <TableBody>
             {paginatedList.map((schedule, index) => {
               return (
-                <TableRow hover key={schedule.id}>
+                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -104,6 +104,7 @@ const UnscheduledJobTable = ({ scheduledJobList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
                       {schedule.jobName}
                     </Typography>

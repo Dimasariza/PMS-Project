@@ -25,10 +25,10 @@ import {
 } from '@mui/material';
 
 const applyFilters = (approvedList, filters) => {
-  return approvedList.filter((schedule) => {
+  return approvedList.filter((item) => {
     let matches = true;
 
-    if (filters.status && schedule.status !== filters.status) {
+    if (filters.status && item.status !== filters.status) {
       matches = false;
     }
 
@@ -40,7 +40,7 @@ const applyPagination = (approvedList, page, limit) => {
   return approvedList.slice(page * limit, page * limit + limit);
 };
 
-const ApprovedTable = ({ approvedList }) => {
+const ApprovedTable = ({ approvedList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -90,9 +90,9 @@ const ApprovedTable = ({ approvedList }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedList.map((schedule, index) => {
+            {paginatedList.map((item, index) => {
               return (
-                <TableRow hover key={schedule.id}>
+                <TableRow hover key={item.id} onClick={() => handleOpen(item)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -112,7 +112,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.sendDate}
+                      {item.sendDate}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -123,7 +123,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.checkedDate}
+                      {item.checkedDate}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -133,8 +133,9 @@ const ApprovedTable = ({ approvedList }) => {
                         color="text.primary"
                         gutterBottom
                         noWrap
+                        style={{textDecoration: 'underline'}}
                       >
-                        {schedule.checker}
+                        {item.checker}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -145,7 +146,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.job}
+                      {item.job}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -156,7 +157,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.componentCode}
+                      {item.componentCode}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -167,7 +168,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.department}
+                      {item.department}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -178,7 +179,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.system}
+                      {item.system}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -189,7 +190,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.componentName}
+                      {item.componentName}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -200,7 +201,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.part}
+                      {item.part}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -211,7 +212,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.runningHours}
+                      {item.runningHours}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -222,7 +223,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.maintenanceInterval}
+                      {item.maintenanceInterval}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -233,7 +234,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.diffrent}
+                      {item.diffrent}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -244,7 +245,7 @@ const ApprovedTable = ({ approvedList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.status}
+                      {item.status}
                     </Typography>
                   </TableCell>
                 </TableRow>

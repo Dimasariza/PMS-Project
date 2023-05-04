@@ -67,7 +67,7 @@ const applyPagination = (titles, page, limit) => {
   return titles.slice(page * limit, page * limit + limit);
 };
 
-const TitlesTable = ({ titleList, handleUpdate }) => {
+const TitlesTable = ({ titleList, handleUpdate, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -148,7 +148,7 @@ const TitlesTable = ({ titleList, handleUpdate }) => {
           <TableBody>
             {paginatedTitleList.map((title, index) => {
               return (
-                <TableRow hover key={title.id}>
+                <TableRow hover key={title.id} >
                   <TableCell>
                     <Typography
                       variant="body1"
@@ -167,6 +167,8 @@ const TitlesTable = ({ titleList, handleUpdate }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
+                      onClick={() => handleOpen(title)}
                     >
                       {title.titleName}
                     </Typography>

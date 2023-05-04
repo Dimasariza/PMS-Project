@@ -65,7 +65,7 @@ const applyPagination = (usersList, page, limit) => {
   return usersList.slice(page * limit, page * limit + limit);
 };
 
-const UsersTable = ({ usersList }) => {
+const UsersTable = ({ usersList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -123,25 +123,6 @@ const UsersTable = ({ usersList }) => {
   return (
     <Card>
       <CardHeader
-        action={
-          <Box width={150}>
-            {/* <FormControl fullWidth variant="outlined">
-              <InputLabel>Status</InputLabel>
-              <Select
-                value={filters.status || 'all'}
-                onChange={handleStatusChange}
-                label="Status"
-                autoWidth
-              >
-                {statusOptions.map((statusOption) => (
-                  <MenuItem key={statusOption.id} value={statusOption.id}>
-                    {statusOption.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl> */}
-          </Box>
-        }
         title="Users"
       />
       <Divider />
@@ -162,7 +143,7 @@ const UsersTable = ({ usersList }) => {
           <TableBody>
             {paginatedUserList.map((user, index) => {
               return (
-                <TableRow hover key={user.id}>
+                <TableRow hover key={user.id} onClick={() => handleOpen(user)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -181,6 +162,7 @@ const UsersTable = ({ usersList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
                       {user.name}
                     </Typography>

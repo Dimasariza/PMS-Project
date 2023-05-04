@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import ApprovedTable from './ApprovedTable';
 import { subDays } from 'date-fns';
 import { useState } from 'react';
+import DetailsModal from './DetailsModal';
 
 function ApprovedList() {
   const [approvedList, setScheduledJobList] = useState([
@@ -82,10 +83,43 @@ function ApprovedList() {
     },
   ]);
 
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({
+    sendDate: '18 April 2023',
+    checkedDate: '20 April 2023',
+    checker: 'Gunila Canairo',
+    job: 'Check And Replace',
+    componentCode: '41040-10190',
+    department: 'Engine',
+    system: 'Main Engine',
+    componentName: 'Oil Filter',
+    part: 'Element Kit',
+    runningHours: '495 H',
+    maintenanceInterval: '500 H',
+    diffrent: '5 H',
+    status: 'On Progress'
+  });
+  const handleClickOpen = (value) => {
+    setSelectedValue(value);
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
-    <Card>
-      <ApprovedTable approvedList={approvedList} />
-    </Card>
+    <>
+      <Card>
+        <ApprovedTable approvedList={approvedList} handleOpen={handleClickOpen}/>
+      </Card>
+      <DetailsModal
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
+    </>
   );
 }
 

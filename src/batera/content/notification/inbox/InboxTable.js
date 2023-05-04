@@ -25,10 +25,10 @@ import {
 } from '@mui/material';
 
 const applyFilters = (inboxList, filters) => {
-  return inboxList.filter((schedule) => {
+  return inboxList.filter((mail) => {
     let matches = true;
 
-    if (filters.status && schedule.status !== filters.status) {
+    if (filters.status && mail.status !== filters.status) {
       matches = false;
     }
 
@@ -88,9 +88,9 @@ const InboxTable = ({ inboxList, handleOpen }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedList.map((schedule, index) => {
+            {paginatedList.map((mail, index) => {
               return (
-                <TableRow hover key={schedule.id} onClick={() => handleOpen(schedule)}>
+                <TableRow hover key={mail.id} onClick={() => handleOpen(mail)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -110,7 +110,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.sendDate}
+                      {mail.sendDate}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -120,8 +120,9 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
-                      {schedule.job}
+                      {mail.job}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -132,7 +133,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                         gutterBottom
                         noWrap
                       >
-                        {schedule.componentCode}
+                        {mail.componentCode}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -143,7 +144,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.department}
+                      {mail.department}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -154,7 +155,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.system}
+                      {mail.system}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -165,7 +166,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.componentName}
+                      {mail.componentName}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -176,7 +177,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.part}
+                      {mail.part}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -187,7 +188,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.runningHours}
+                      {mail.runningHours}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -198,7 +199,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.maintenanceInterval}
+                      {mail.maintenanceInterval}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -209,7 +210,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.diffrent}
+                      {mail.diffrent}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -220,7 +221,7 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.status}
+                      {mail.status}
                     </Typography>
                   </TableCell>
                 </TableRow>

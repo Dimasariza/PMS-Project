@@ -25,10 +25,10 @@ import {
 } from '@mui/material';
 
 const applyFilters = (stockList, filters) => {
-  return stockList.filter((schedule) => {
+  return stockList.filter((stock) => {
     let matches = true;
 
-    if (filters.status && schedule.status !== filters.status) {
+    if (filters.status && stock.status !== filters.status) {
       matches = false;
     }
 
@@ -40,7 +40,7 @@ const applyPagination = (stockList, page, limit) => {
   return stockList.slice(page * limit, page * limit + limit);
 };
 
-const StockTable = ({ stockList }) => {
+const StockTable = ({ stockList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -82,9 +82,9 @@ const StockTable = ({ stockList }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedList.map((schedule, index) => {
+            {paginatedList.map((stock, index) => {
               return (
-                <TableRow hover key={schedule.id}>
+                <TableRow hover key={stock.id}  onClick={() => handleOpen(stock)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -103,8 +103,9 @@ const StockTable = ({ stockList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
-                      {schedule.equipmentCode}
+                      {stock.equipmentCode}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -115,7 +116,7 @@ const StockTable = ({ stockList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.category}
+                      {stock.category}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -126,7 +127,7 @@ const StockTable = ({ stockList }) => {
                         gutterBottom
                         noWrap
                       >
-                        {schedule.equipment}
+                        {stock.equipment}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -137,7 +138,7 @@ const StockTable = ({ stockList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.department}
+                      {stock.department}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -148,7 +149,7 @@ const StockTable = ({ stockList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.statusPart}
+                      {stock.statusPart}
                     </Typography>
                   </TableCell>
                 </TableRow>

@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import ScheduledJobTable from './ScheduledJobTable';
 import { subDays } from 'date-fns';
 import { useState } from 'react';
+import DetailsModal from './DetailsModal';
 
 function ScheduledJobList() {
   const [scheduledJobList, setScheduledJobList] = useState([
@@ -47,10 +48,37 @@ function ScheduledJobList() {
     },
   ]);
 
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({
+    jobName: 'Check and Replace',
+    componentCode: '41040-10190',
+    department: 'Engine',
+    system: 'Main Engine',
+    component: 'Oil Filter',
+    part: 'Element Kit',
+  });
+
+  const handleClickOpen = (value) => {
+    setSelectedValue(value);
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
-    <Card>
-      <ScheduledJobTable scheduledJobList={scheduledJobList} />
-    </Card>
+    <>
+      <Card>
+        <ScheduledJobTable scheduledJobList={scheduledJobList} handleOpen={handleClickOpen}/>
+      </Card>
+      <DetailsModal
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
+    </>
   );
 }
 

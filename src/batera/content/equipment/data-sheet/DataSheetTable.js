@@ -25,10 +25,10 @@ import {
 } from '@mui/material';
 
 const applyFilters = (dataSheetList, filters) => {
-  return dataSheetList.filter((schedule) => {
+  return dataSheetList.filter((dataSheet) => {
     let matches = true;
 
-    if (filters.status && schedule.status !== filters.status) {
+    if (filters.status && dataSheet.status !== filters.status) {
       matches = false;
     }
 
@@ -40,7 +40,7 @@ const applyPagination = (dataSheetList, page, limit) => {
   return dataSheetList.slice(page * limit, page * limit + limit);
 };
 
-const DataSheetTable = ({ dataSheetList }) => {
+const DataSheetTable = ({ dataSheetList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -84,9 +84,9 @@ const DataSheetTable = ({ dataSheetList }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedList.map((schedule, index) => {
+            {paginatedList.map((dataSheet, index) => {
               return (
-                <TableRow hover key={schedule.id}>
+                <TableRow hover key={dataSheet.id}  onClick={() => handleOpen(dataSheet)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -105,8 +105,9 @@ const DataSheetTable = ({ dataSheetList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
-                      {schedule.dataSheetCode}
+                      {dataSheet.dataSheetCode}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -117,7 +118,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.department}
+                      {dataSheet.department}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -128,7 +129,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.system}
+                      {dataSheet.system}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -139,7 +140,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                         gutterBottom
                         noWrap
                       >
-                        {schedule.brand}
+                        {dataSheet.brand}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -150,7 +151,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.component}
+                      {dataSheet.component}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -161,7 +162,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.part}
+                      {dataSheet.part}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -172,7 +173,7 @@ const DataSheetTable = ({ dataSheetList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.maintenance}
+                      {dataSheet.maintenance}
                     </Typography>
                   </TableCell>
                 </TableRow>

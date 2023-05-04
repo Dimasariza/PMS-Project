@@ -2,6 +2,7 @@ import { Card } from '@mui/material';
 import TitlesTable from './TitlesTable';
 import { subDays } from 'date-fns';
 import { useState } from 'react';
+import DetailsModal from './DetailsModal';
 
 function TitlesList() {
   const [titleList, setTitleList] = useState([
@@ -94,10 +95,41 @@ function TitlesList() {
     });
   }
 
+  const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({
+    id: '6',
+    titleName: 'TestUser',
+    shipList: true,
+    shipDetails: true,
+    jobList: true,
+    dataSheet: true,
+    stock: true,
+    users: true,
+    department: true,
+    notification: true,
+    inbox: true,
+  });
+  const handleClickOpen = (value) => {
+    setSelectedValue(value);
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
+
   return (
-    <Card>
-      <TitlesTable titleList={titleList} handleUpdate={handleUpdate}/>
-    </Card>
+    <div>
+      <Card>
+        <TitlesTable titleList={titleList} handleUpdate={handleUpdate} handleOpen={handleClickOpen}/>
+      </Card>
+      <DetailsModal
+        selectedValue={selectedValue}
+        open={open}
+        onClose={handleClose}
+      />
+    </div>
   );
 }
 

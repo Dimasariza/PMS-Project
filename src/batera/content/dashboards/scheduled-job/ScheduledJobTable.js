@@ -25,10 +25,10 @@ import {
 } from '@mui/material';
 
 const applyFilters = (scheduledJobList, filters) => {
-  return scheduledJobList.filter((user) => {
+  return scheduledJobList.filter((schedule) => {
     let matches = true;
 
-    if (filters.status && user.status !== filters.status) {
+    if (filters.status && schedule.status !== filters.status) {
       matches = false;
     }
 
@@ -40,7 +40,7 @@ const applyPagination = (scheduledJobList, page, limit) => {
   return scheduledJobList.slice(page * limit, page * limit + limit);
 };
 
-const ScheduledJobTable = ({ scheduledJobList }) => {
+const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -83,9 +83,9 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {paginatedUserList.map((user, index) => {
+            {paginatedUserList.map((schedule, index) => {
               return (
-                <TableRow hover key={user.id}>
+                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -104,8 +104,9 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
-                      {user.jobName}
+                      {schedule.jobName}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -116,7 +117,7 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.componentCode}
+                      {schedule.componentCode}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -127,7 +128,7 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.department}
+                      {schedule.department}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -138,7 +139,7 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                         gutterBottom
                         noWrap
                       >
-                        {user.system}
+                        {schedule.system}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -149,7 +150,7 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.component}
+                      {schedule.component}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -160,7 +161,7 @@ const ScheduledJobTable = ({ scheduledJobList }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.part}
+                      {schedule.part}
                     </Typography>
                   </TableCell>
                 </TableRow>

@@ -65,7 +65,7 @@ const applyPagination = (departmentList, page, limit) => {
   return departmentList.slice(page * limit, page * limit + limit);
 };
 
-const DepartmentsTable = ({ departmentList }) => {
+const DepartmentsTable = ({ departmentList, handleOpen }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -158,7 +158,7 @@ const DepartmentsTable = ({ departmentList }) => {
           <TableBody>
             {paginatedDepartmentList.map((department, index) => {
               return (
-                <TableRow hover key={department.id}>
+                <TableRow hover key={department.id} onClick={() => handleOpen(department)}>
                   <TableCell>
                     <Typography
                       variant="body1"
@@ -188,6 +188,7 @@ const DepartmentsTable = ({ departmentList }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      style={{textDecoration: 'underline'}}
                     >
                       {department.departmentName}
                     </Typography>
