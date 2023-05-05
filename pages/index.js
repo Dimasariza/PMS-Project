@@ -30,11 +30,13 @@ function Login() {
         <Container maxWidth="sm">
           <Box display="flex" flexDirection="column" gap={2} sx={{ mt: 4 }} className='items-center'>
 
-            <img
-              src={url + "/static/images/logo/logo-batera.svg"} 
-              alt="Logo Batera"
-              width={"30%"}
-            />
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <img
+                src={url + "/static/images/logo/logo-batera.svg"} 
+                alt="Logo Batera"
+                width={"80%"}
+              />
+            </div>
 
             <TextField
               sx={{ width: '100%' }}
