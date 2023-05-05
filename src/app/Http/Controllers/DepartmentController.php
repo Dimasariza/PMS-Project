@@ -12,6 +12,11 @@ use App\Repositories\Department\DepartmentRepository;
 use App\Traits\APIResponse;
 use Illuminate\Http\Response;
 
+/**
+ * @group Department
+ *
+ * APIs for department
+ */
 class DepartmentController extends Controller
 {
     use APIResponse;
@@ -22,7 +27,16 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * All
+     *
+     * Get list of department
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/department/all.json
      */
     public function index()
     {
@@ -32,7 +46,19 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Create
+     *
+     * Get list of department
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @authenticated
+     *
+     * @bodyParam departmentName string required department name. Example: Project Department
+     * @bodyParam departmentCode string required department code (unique). Example: SB-789
+     * @bodyParam workPlace string required workplace (ship or office). Example: ship
+     *
+     * @responseFile status=200 scenario='Success' response/department/created.json
      */
     public function store(CreateDepartmentRequest $request)
     {
@@ -48,7 +74,18 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Get One
+     *
+     * Get one department detail
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @urlParam id integer required The ID of department. Example: 5
+
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/department/find_one.json
      */
     public function show(string|int $id)
     {
@@ -58,7 +95,19 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update
+     *
+     * update one of department
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @authenticated
+     *
+     * @bodyParam departmentName string required department name. Example: Project Department
+     * @bodyParam departmentCode string required department code (unique). Example: SB-789
+     * @bodyParam workPlace string required workplace (ship or office). Example: office
+     *
+     * @responseFile status=200 scenario='Success' response/department/updated.json
      */
     public function update(string|int $id, UpdateDepartmentRequest $request)
     {
@@ -74,7 +123,18 @@ class DepartmentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete
+     *
+     * Delete one department
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @urlParam id integer required The ID of department. Example: 5
+
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/department/delete.json
      */
     public function destroy(string|int $id)
     {

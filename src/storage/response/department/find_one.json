@@ -1,0 +1,10 @@
+{
+    "statusCode": 200,
+    "message": "Success",
+    "data": {
+        "id": 8,
+        "name": "Samsudin",
+        "code": "SB-1232455",
+        "workPlace": "ship"
+    }
+}

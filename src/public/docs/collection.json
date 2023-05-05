@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "fd8e63b1-d6c4-4390-8594-21a6b6fb78be",
+        "_postman_id": "6e2b446f-4c8a-42b0-864e-4ad398a1ba54",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -126,6 +126,222 @@
                             "code": 400,
                             "body": "{\n    \"statusCode\": 400,\n    \"message\": \"Bad credentials\"\n}\n",
                             "name": "Without Any Token"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Department",
+            "description": "\nAPIs for department",
+            "item": [
+                {
+                    "name": "All",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/department",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/department"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Get list of department"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Ole Gutkowski\",\n            \"code\": \"CC\",\n            \"workPlace\": \"83294 Gia Hills Suite 087\\nNorth Patriciafurt, RI 68325\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Dr. Darryl Carroll I\",\n            \"code\": \"NR\",\n            \"workPlace\": \"3635 Evelyn Corners Suite 127\\nSouth Alexandreville, OR 40070\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Prof. Rosalind Paucek Sr.\",\n            \"code\": \"BB\",\n            \"workPlace\": \"55329 Ernesto Alley\\nDanikaberg, GA 24670\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Miss Daisy Lakin\",\n            \"code\": \"KH\",\n            \"workPlace\": \"252 Bethany Route\\nWest Zackery, WY 31105-5244\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Marques Dach\",\n            \"code\": \"NZ\",\n            \"workPlace\": \"97424 Jammie Drive\\nBashirianland, DC 29308\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Samsudin\",\n            \"code\": \"SB-12324\",\n            \"workPlace\": \"ship\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Samsudin\",\n            \"code\": \"SB-1234\",\n            \"workPlace\": \"ship\"\n        }\n    ]\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/department",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/department"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"departmentName\":\"Project Department\",\"departmentCode\":\"SB-789\",\"workPlace\":\"ship\"}"
+                        },
+                        "description": "Get list of department"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 201,\n    \"message\": \"Created\",\n    \"data\": {\n        \"id\": 8,\n        \"name\": \"Samsudin\",\n        \"code\": \"SB-1232455\",\n        \"workPlace\": \"ship\",\n        \"createdAt\": \"2023-05-05 06:20:26\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/department\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/department\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of department."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Get one department detail"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 8,\n        \"name\": \"Samsudin\",\n        \"code\": \"SB-1232455\",\n        \"workPlace\": \"ship\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/department\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/department\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the department."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"departmentName\":\"Project Department\",\"departmentCode\":\"SB-789\",\"workPlace\":\"office\"}"
+                        },
+                        "description": "update one of department"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Updated\",\n    \"data\": {\n        \"id\": 8,\n        \"name\": \"Samsudin Jaya\",\n        \"code\": \"SB-1232455\",\n        \"workPlace\": \"ship\",\n        \"updatedAt\": \"2023-05-05 06:33:34\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/department\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/department\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of department."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete one department"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Deleted\"\n}\n",
+                            "name": "Success"
                         }
                     ]
                 }
@@ -277,7 +493,7 @@
                                     "id": "id",
                                     "key": "id",
                                     "value": "5",
-                                    "description": "The ID of user title to update."
+                                    "description": "The ID of user title."
                                 }
                             ]
                         },

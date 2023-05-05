@@ -1,0 +1,48 @@
+{
+    "statusCode": 200,
+    "message": "Success",
+    "data": [
+        {
+            "id": 1,
+            "name": "Ole Gutkowski",
+            "code": "CC",
+            "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+        },
+        {
+            "id": 2,
+            "name": "Dr. Darryl Carroll I",
+            "code": "NR",
+            "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+        },
+        {
+            "id": 3,
+            "name": "Prof. Rosalind Paucek Sr.",
+            "code": "BB",
+            "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670"
+        },
+        {
+            "id": 4,
+            "name": "Miss Daisy Lakin",
+            "code": "KH",
+            "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+        },
+        {
+            "id": 5,
+            "name": "Marques Dach",
+            "code": "NZ",
+            "workPlace": "97424 Jammie Drive\nBashirianland, DC 29308"
+        },
+        {
+            "id": 6,
+            "name": "Samsudin",
+            "code": "SB-12324",
+            "workPlace": "ship"
+        },
+        {
+            "id": 7,
+            "name": "Samsudin",
+            "code": "SB-1234",
+            "workPlace": "ship"
+        }
+    ]
+}

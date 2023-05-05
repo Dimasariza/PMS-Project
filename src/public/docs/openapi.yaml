@@ -239,6 +239,375 @@ paths:
                     example: 'Bad credentials'
       tags:
         - Authentication
+  /api/v1/department:
+    get:
+      summary: All
+      operationId: all
+      description: 'Get list of department'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    -
+                      id: 1
+                      name: 'Ole Gutkowski'
+                      code: CC
+                      workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    -
+                      id: 2
+                      name: 'Dr. Darryl Carroll I'
+                      code: NR
+                      workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                    -
+                      id: 3
+                      name: 'Prof. Rosalind Paucek Sr.'
+                      code: BB
+                      workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                    -
+                      id: 4
+                      name: 'Miss Daisy Lakin'
+                      code: KH
+                      workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                    -
+                      id: 5
+                      name: 'Marques Dach'
+                      code: NZ
+                      workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
+                    -
+                      id: 6
+                      name: Samsudin
+                      code: SB-12324
+                      workPlace: ship
+                    -
+                      id: 7
+                      name: Samsudin
+                      code: SB-1234
+                      workPlace: ship
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Ole Gutkowski'
+                        code: CC
+                        workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                      -
+                        id: 2
+                        name: 'Dr. Darryl Carroll I'
+                        code: NR
+                        workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                      -
+                        id: 3
+                        name: 'Prof. Rosalind Paucek Sr.'
+                        code: BB
+                        workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                      -
+                        id: 4
+                        name: 'Miss Daisy Lakin'
+                        code: KH
+                        workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                      -
+                        id: 5
+                        name: 'Marques Dach'
+                        code: NZ
+                        workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
+                      -
+                        id: 6
+                        name: Samsudin
+                        code: SB-12324
+                        workPlace: ship
+                      -
+                        id: 7
+                        name: Samsudin
+                        code: SB-1234
+                        workPlace: ship
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Ole Gutkowski'
+                        code:
+                          type: string
+                          example: CC
+                        workPlace:
+                          type: string
+                          example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+      tags:
+        - Department
+    post:
+      summary: Create
+      operationId: create
+      description: 'Get list of department'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 201
+                  message: Created
+                  data:
+                    id: 8
+                    name: Samsudin
+                    code: SB-1232455
+                    workPlace: ship
+                    createdAt: '2023-05-05 06:20:26'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: Created
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 8
+                      name:
+                        type: string
+                        example: Samsudin
+                      code:
+                        type: string
+                        example: SB-1232455
+                      workPlace:
+                        type: string
+                        example: ship
+                      createdAt:
+                        type: string
+                        example: '2023-05-05 06:20:26'
+      tags:
+        - Department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                departmentName:
+                  type: string
+                  description: 'department name.'
+                  example: 'Project Department'
+                departmentCode:
+                  type: string
+                  description: 'department code (unique).'
+                  example: SB-789
+                workPlace:
+                  type: string
+                  description: 'workplace (ship or office).'
+                  example: ship
+              required:
+                - departmentName
+                - departmentCode
+                - workPlace
+  '/api/v1/department/{id}':
+    get:
+      summary: 'Get One'
+      operationId: getOne
+      description: 'Get one department detail'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    id: 8
+                    name: Samsudin
+                    code: SB-1232455
+                    workPlace: ship
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 8
+                      name:
+                        type: string
+                        example: Samsudin
+                      code:
+                        type: string
+                        example: SB-1232455
+                      workPlace:
+                        type: string
+                        example: ship
+      tags:
+        - Department
+    put:
+      summary: Update
+      operationId: update
+      description: 'update one of department'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Updated
+                  data:
+                    id: 8
+                    name: 'Samsudin Jaya'
+                    code: SB-1232455
+                    workPlace: ship
+                    updatedAt: '2023-05-05 06:33:34'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 8
+                      name:
+                        type: string
+                        example: 'Samsudin Jaya'
+                      code:
+                        type: string
+                        example: SB-1232455
+                      workPlace:
+                        type: string
+                        example: ship
+                      updatedAt:
+                        type: string
+                        example: '2023-05-05 06:33:34'
+      tags:
+        - Department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                departmentName:
+                  type: string
+                  description: 'department name.'
+                  example: 'Project Department'
+                departmentCode:
+                  type: string
+                  description: 'department code (unique).'
+                  example: SB-789
+                workPlace:
+                  type: string
+                  description: 'workplace (ship or office).'
+                  example: office
+              required:
+                - departmentName
+                - departmentCode
+                - workPlace
+    delete:
+      summary: Delete
+      operationId: delete
+      description: 'Delete one department'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Deleted
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Deleted
+      tags:
+        - Department
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of department.'
+        example: 5
+        required: true
+        schema:
+          type: integer
   /api/v1/user:
     get:
       summary: All
@@ -791,7 +1160,7 @@ paths:
       -
         in: path
         name: id
-        description: 'The ID of user title to update.'
+        description: 'The ID of user title.'
         example: 5
         required: true
         schema:
@@ -1393,6 +1762,9 @@ tags:
   -
     name: Authentication
     description: "\nAPIs for authenticating user"
+  -
+    name: Department
+    description: "\nAPIs for department"
   -
     name: User
     description: "\nAPIs for user in general"

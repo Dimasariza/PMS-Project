@@ -89,7 +89,7 @@ class UserController extends Controller
      *
      * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
      *
-     * @urlParam id integer required The ID of user title to update. Example: 5
+     * @urlParam id integer required The ID of user title. Example: 5
 
      *
      * @authenticated

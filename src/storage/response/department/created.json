@@ -1,0 +1,11 @@
+{
+    "statusCode": 201,
+    "message": "Created",
+    "data": {
+        "id": 8,
+        "name": "Samsudin",
+        "code": "SB-1232455",
+        "workPlace": "ship",
+        "createdAt": "2023-05-05 06:20:26"
+    }
+}

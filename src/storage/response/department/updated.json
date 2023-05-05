@@ -1,0 +1,11 @@
+{
+    "statusCode": 200,
+    "message": "Updated",
+    "data": {
+        "id": 8,
+        "name": "Samsudin Jaya",
+        "code": "SB-1232455",
+        "workPlace": "ship",
+        "updatedAt": "2023-05-05 06:33:34"
+    }
+}
