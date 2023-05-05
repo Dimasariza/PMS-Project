@@ -52,8 +52,8 @@ function TitlesList() {
         background: ${theme.colors.primary.main};
         color: ${theme.palette.primary.contrastText};
         box-shadow: ${theme.colors.shadows.primary};
-        width: 300%;
-        height: 300%;
+        width: 200%;
+        height: 200%;
         padding: 0;
     
         &:hover {

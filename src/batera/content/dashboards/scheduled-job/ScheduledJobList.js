@@ -58,8 +58,11 @@ function ScheduledJobList() {
     part: 'Element Kit',
   });
 
-  const handleClickOpen = (value) => {
+  const [selectedValueIndex, setSelectedValueIndex] = useState(0);
+
+  const handleClickOpen = (value, index) => {
     setSelectedValue(value);
+    setSelectedValueIndex(index);
     setOpen(true);
   };
 
@@ -67,6 +70,23 @@ function ScheduledJobList() {
     setOpen(false);
     setSelectedValue(value);
   };
+
+  const handleUpdate = (key,value) => {
+    setSelectedValue((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
+  const confirmUpdate = () => {
+    setScheduledJobList(prevList => {
+      const newList = [...prevList]; // make a copy of the original array
+      newList[selectedValueIndex] = selectedValue; // update the second entry
+      return newList; // return the updated array
+    });
+  };
+
+  
 
   return (
     <>
@@ -77,6 +97,8 @@ function ScheduledJobList() {
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
+        handleUpdate={handleUpdate}
+        confirmUpdate={confirmUpdate}
       />
     </>
   );

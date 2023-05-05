@@ -85,7 +85,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
           <TableBody>
             {paginatedUserList.map((schedule, index) => {
               return (
-                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule)}>
+                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule, index)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"

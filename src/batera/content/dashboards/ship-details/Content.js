@@ -85,7 +85,7 @@ function Content() {
 
   
   const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue, setSelectedValue] = useState({uwu: 'uwu'});
 
   const handleClickOpen = () => {
     setOpen(true);
