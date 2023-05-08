@@ -21,7 +21,6 @@ import HeaderMenu from './Menu';
 
 const HeaderWrapper = styled(Box)(
   ({ theme }) => `
-        height: ${theme.header.height};
         color: ${theme.header.textColor};
         padding: ${theme.spacing(0, 2)};
         right: 0;
@@ -31,9 +30,17 @@ const HeaderWrapper = styled(Box)(
         position: fixed;
         justify-content: space-between;
         width: 100%;
-        @media (min-width: ${theme.breakpoints.values.lg}px) {
-            left: 0%;
-            width: auto;
+        @media (max-height: 600px) {
+          height: 18%;
+        }
+        @media (min-height: 601px) and (max-height: 800px) {
+            height: 12%;
+        }
+        @media (min-height: 801px) and (max-height: 1000px) {
+            height: 10%;
+        }
+        @media (min-height: 1001px) {
+            height: 8%;
         }
 `
 );
@@ -72,24 +79,6 @@ function Header() {
       </Stack>
       <Box display="flex" alignItems="center">
         <HeaderButtons />
-        {/* <HeaderUserbox /> */}
-        <Box
-          component="span"
-          sx={{
-            ml: 2,
-            display: { lg: 'none', xs: 'inline-block' }
-          }}
-        >
-          <Tooltip arrow title="Toggle Menu">
-            <IconButton color="primary" onClick={toggleSidebar}>
-              {!sidebarToggle ? (
-                <MenuTwoToneIcon fontSize="small" />
-              ) : (
-                <CloseTwoToneIcon fontSize="small" />
-              )}
-            </IconButton>
-          </Tooltip>
-        </Box>
       </Box>
     </HeaderWrapper>
   );

@@ -3,14 +3,15 @@ import { Box, Container, styled } from '@mui/material';
 
 const PageTitle = styled(Box)(
   ({ theme }) => `
-        padding: ${theme.spacing(4)};
+        padding-top: ${theme.spacing(4)};
+        padding-bottom: ${theme.spacing(4)};
 `
 );
 
 const PageTitleWrapper = ({ children }) => {
   return (
     <PageTitle className="MuiPageTitle-wrapper">
-      <Container maxWidth="lg">{children}</Container>
+      <Container maxWidth={'100%'}>{children}</Container>
     </PageTitle>
   );
 };

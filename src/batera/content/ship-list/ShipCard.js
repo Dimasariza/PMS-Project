@@ -15,22 +15,57 @@ import Button from '@mui/material/Button';
 import NextLink from 'next/link';
 import Link from 'src/components/Link';
 
-const ShipCard = ({ shipInfo }) => {
+const ShipCard = ({ shipInfo, entriesPerRow }) => {
   const url = process.env.PUBLIC_URL || ""
+
+  const [cardSizes, setCardSizes] = useState([{
+    cardWidth: '100%',
+    imageHeight: '80%',
+    textHeight: '10%',
+    actionHeight: '10%',
+    padding: '5%'
+  },
+  {
+    cardWidth: '48%',
+    imageHeight: '80%',
+    textHeight: '10%',
+    actionHeight: '10%',
+    padding: '3%'
+  },
+  {
+    cardWidth: '32%',
+    imageHeight: '75%',
+    textHeight: '12.5%',
+    actionHeight: '12.5%',
+    padding: '2%'
+  },
+  {
+    cardWidth: '23%',
+    imageHeight: '75%',
+    textHeight: '12.5%',
+    actionHeight: '12.5%',
+    padding: '1%'
+  },
+  ]);
+
   return (
     <>
-      <Card sx={{ width: '23%', height: '35vh', background: '#FFFFFF', padding: '1%' }}>
+      <Card sx={{ 
+        width: cardSizes[entriesPerRow - 1].cardWidth, 
+        height: '35vh', minHeight: 300, 
+        background: '#FFFFFF', 
+        padding: cardSizes[entriesPerRow - 1].padding, boxSizing: 'border-box' }}>
           <CardMedia
-            sx={{ height: '80%' }}
+            sx={{ height: cardSizes[entriesPerRow - 1].imageHeight }}
             image={url + shipInfo.image}
             title={shipInfo.shipName}
           />
-          <CardContent sx={{ height: '10%' }}>
+          <CardContent sx={{ height: cardSizes[entriesPerRow - 1].textHeight }}>
             <Typography gutterBottom variant="h5" component="div" align='left' color='#000000'>
               {shipInfo.shipName}
             </Typography>
           </CardContent>
-          <CardActions sx={{ height: '10%' }}>
+          <CardActions sx={{ height: cardSizes[entriesPerRow - 1].actionHeight }}>
             <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
               <NextLink href= {url + "/batera/dashboards/ship-details"} passHref>
                 <Button 

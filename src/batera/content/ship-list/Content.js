@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import ShipCard from './ShipCard';
+import { useMediaQuery } from '@mui/material';
 
 function Content() {
   const [shipList, setShipList] = useState([
@@ -52,13 +53,19 @@ function Content() {
     });
   }
 
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
+  const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+
+  const entriesPerRow = isSmallScreen ? 1 : isMediumScreen ? 2 : isLargeScreen ? 4 : 3;
+
   const CardBlocks = ({index}) =>{
     return(
       <div style={{display: 'flex', width: '100%', flexDirection: 'row', gap: '2%', marginBottom: '2%'}}>
-        <ShipCard shipInfo={shipList[index]}/>
-        {index + 1 < shipList.length ? <ShipCard shipInfo={shipList[index + 1]}/> : null}
-        {index + 2 < shipList.length ? <ShipCard shipInfo={shipList[index + 2]}/> : null}
-        {index + 3 < shipList.length ? <ShipCard shipInfo={shipList[index + 3]}/> : null}
+        {Array(entriesPerRow).fill().map((_, i) => {
+          const shipIndex = index + i;
+          return shipIndex < shipList.length ? <ShipCard key={shipList[shipIndex].id} shipInfo={shipList[shipIndex]} entriesPerRow={entriesPerRow}/> : null;
+        })}
       </div>
     )
   }
@@ -67,7 +74,7 @@ function Content() {
     <>
       {
         shipList.map((ship, index) => {
-          if(index % 4 === 0){
+          if(index % entriesPerRow === 0){
             return (
               <CardBlocks index={index}/>
             )
