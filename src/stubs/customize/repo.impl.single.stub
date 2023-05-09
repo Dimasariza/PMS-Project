@@ -1,0 +1,62 @@
+<?php
+
+namespace App\Repositories\{{ model }};
+
+use App\DTO\{{ model }}\{{ model }}DTO;
+use App\Models\{{ model }};
+use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use stdClass;
+
+class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Repository
+{
+    public function __construct(
+        protected {{ model }} $model,
+    ) {
+    }
+
+    public function getAll(): Collection
+    {
+        return $this->model->all();
+    }
+
+    public function create({{ model }}DTO $dto): stdClass
+    {
+        $result = $this->model->create($dto->build());
+
+        return $this->format($result->toArray());
+    }
+
+    public function show(string|int $id): stdClass
+    {
+        $result = $this->model->findOr(
+            $id,
+            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+        );
+
+        return $this->format($result->toArray());
+    }
+
+    public function update(int|string $id, {{ model }}DTO $dto): stdClass
+    {
+        $result = $this->model->findOr(
+            $id,
+            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+        );
+
+        $result->update($dto->build());
+
+        return $this->format($result->toArray());
+    }
+
+    public function delete(string|int $id): void
+    {
+        $result = $this->model->findOr(
+            $id,
+            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+        );
+
+        $result->delete();
+    }
+}
