@@ -1,0 +1,26 @@
+<?php
+
+namespace App\DTO\{{ model }};
+
+use App\Http\Requests\{{ model }}\Update{{ model }}Request;
+
+class Update{{ model }}DTO
+{
+    public function __construct(
+
+    ) {}
+
+    public static function fromRequest(Update{{ model }}Request $request): self
+    {
+        return new self(
+
+        );
+    }
+
+    public function build(): array
+    {
+        return [
+
+        ];
+    }
+}

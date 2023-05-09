@@ -13,13 +13,18 @@ use App\Repositories\{{ model }}\{{ model }}Repository;
 use App\Traits\APIResponse;
 use Illuminate\Http\Response;
 
+/**
+ * @group {{ model }}
+ *
+ * APIs for {{ model }}
+ */
 class {{ class }} extends Controller
 {
     use APIResponse;
 
     public function __construct(
         protected {{ model }}Repository $repository
-    ) {}
+    ) {  }
 
     /**
      * Display a listing of the resource.
