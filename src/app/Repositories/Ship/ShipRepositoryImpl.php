@@ -14,7 +14,8 @@ class ShipRepositoryImpl extends BaseRepository implements ShipRepository
 {
     public function __construct(
         protected Ship $model
-    ) {}
+    ) {
+    }
 
     public function getAll(): Collection
     {

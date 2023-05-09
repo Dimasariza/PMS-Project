@@ -19,7 +19,8 @@ class UpdateShipDTO
         public readonly float $breadth,
         public readonly string $vesselTypeGeneric,
         public readonly string $vesselTypeDetailed,
-    ) {}
+    ) {
+    }
 
     public static function fromRequest(UpdateShipRequest $request, string $picture = null): self
     {
@@ -56,11 +57,11 @@ class UpdateShipDTO
             'vessel_type_detailed' => $this->vesselTypeDetailed,
         ];
 
-        if(!is_null($this->picture)) {
+        if (! is_null($this->picture)) {
             $arr['picture'] = $this->picture;
         }
 
-        if(!is_null($this->year)) {
+        if (! is_null($this->year)) {
             $arr['year'] = $this->year;
         }
 

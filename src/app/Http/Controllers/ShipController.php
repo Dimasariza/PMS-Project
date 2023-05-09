@@ -19,7 +19,8 @@ class ShipController extends Controller
 
     public function __construct(
         protected ShipRepository $repository
-    ) {}
+    ) {
+    }
 
     public function index()
     {

@@ -19,7 +19,8 @@ class InsertShipDTO
         public readonly float $breadth,
         public readonly string $vesselTypeGeneric,
         public readonly string $vesselTypeDetailed,
-    ) {}
+    ) {
+    }
 
     public static function fromRequest(CreateShipRequest $request, string $picture): self
     {

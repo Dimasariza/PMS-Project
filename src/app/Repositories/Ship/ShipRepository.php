@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Ship;
 
-use stdClass;
 use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
 use Illuminate\Database\Eloquent\Collection;
+use stdClass;
 
 interface ShipRepository
 {
