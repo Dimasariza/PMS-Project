@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Artisan;
 
 class Resource extends Command
 {
-/**
+    /**
      * The name and signature of the console command.
      *
      * @var string
