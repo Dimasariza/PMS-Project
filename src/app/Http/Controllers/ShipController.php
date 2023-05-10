@@ -13,6 +13,11 @@ use App\Repositories\Ship\ShipRepository;
 use App\Traits\APIResponse;
 use App\Traits\FileUtils;
 
+/**
+ * @group Ship
+ *
+ * APIs for Ship
+ */
 class ShipController extends Controller
 {
     use APIResponse, FileUtils;
@@ -22,6 +27,18 @@ class ShipController extends Controller
     ) {
     }
 
+    /**
+     * All
+     *
+     * Get list of ship
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/ship/all.json
+     */
     public function index()
     {
         return $this->successResponse(
@@ -31,6 +48,30 @@ class ShipController extends Controller
         );
     }
 
+    /**
+     * Create
+     *
+     * Create ship
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     * @header Content-Type multipart/form-data
+     *
+     * @authenticated
+     *
+     * @bodyParam imoNumber string required imo_number of ship. Example: IMO69
+     * @bodyParam vesselName string required vessel name of ship. Example: Vessel
+     * @bodyParam flag string required flag of ship. Example: ID
+     * @bodyParam picture file required The image of ship. Example: public/example.jpg
+     * @bodyParam dwt int required dwt of ship. Example: 1000
+     * @bodyParam grossTonage int required int of ship. Example: 1000
+     * @bodyParam year int required year of ship. Example: 2023
+     * @bodyParam LOA string required LOA of ship (type float). Example: 10.05
+     * @bodyParam breadth string required breadth of ship (type float). Example: 11.05
+     * @bodyParam vesselTypeGeneric string required vessel type generic of ship. Example: Generic
+     * @bodyParam vesselTypeDetailed string required vessel type detailed of ship. Example: Detailed
+     *
+     * @responseFile status=200 scenario='Success' response/ship/created.json
+     */
     public function store(CreateShipRequest $request)
     {
         $url = $this->storeFile('ships', $request->validated('picture'));
@@ -43,6 +84,20 @@ class ShipController extends Controller
         );
     }
 
+    /**
+     * Get One
+     *
+     * Get one ship detail
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @urlParam id integer required The ID of ship. Example: 1
+     *
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/ship/find_one.json
+     */
     public function show(string|int $id)
     {
         return $this->successResponse(
@@ -50,6 +105,33 @@ class ShipController extends Controller
         );
     }
 
+    /**
+     * Update
+     *
+     * Update ship
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     * @header Content-Type multipart/form-data
+     *
+     * @urlParam id integer required The ID of ship to update. Example: 5
+     *
+     *
+     * @authenticated
+     *
+     * @bodyParam imoNumber string required imo_number of ship. Example: IMO69
+     * @bodyParam vesselName string required vessel name of ship. Example: Vessel
+     * @bodyParam flag string required flag of ship. Example: ID
+     * @bodyParam picture file optional The image of ship. Example: public/example.jpg
+     * @bodyParam dwt int required dwt of ship. Example: 1000
+     * @bodyParam grossTonage int required int of ship. Example: 1000
+     * @bodyParam year int required year of ship. Example: 2023
+     * @bodyParam LOA string required LOA of ship (type float). Example: 10.05
+     * @bodyParam breadth string required breadth of ship (type float). Example: 11.05
+     * @bodyParam vesselTypeGeneric string required vessel type generic of ship. Example: Generic
+     * @bodyParam vesselTypeDetailed string required vessel type detailed of ship. Example: Detailed
+     *
+     * @responseFile status=200 scenario='Success' response/ship/updated.json
+     */
     public function update(string|int $id, UpdateShipRequest $request)
     {
         $ship = $this->repository->show($id);
@@ -68,6 +150,20 @@ class ShipController extends Controller
         );
     }
 
+    /**
+     * Delete
+     *
+     * Delete one ship
+     *
+     * @header Authorization Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv
+     *
+     * @urlParam id integer required The ID of ship. Example: 1
+
+     *
+     * @authenticated
+     *
+     * @responseFile status=200 scenario='Success' response/ship/delete.json
+     */
     public function destroy(string|int $id)
     {
         $this->repository->delete($id);

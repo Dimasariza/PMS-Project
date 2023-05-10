@@ -41,6 +41,13 @@ Route::prefix('/v1')->group(function () {
         ->apiResource('department', DepartmentController::class);
 
     Route::middleware(['auth.api', 'title:Admin'])
-        ->apiResource('ship', ShipController::class)->except('ship.update');
-    Route::middleware(['auth.api', 'title:Admin'])->post('ship/{ship}/update', [ShipController::class, 'update'])->name('ship.update');
+        ->prefix('/ship')
+        ->controller(ShipController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('ship.index');
+            Route::post('/', 'store')->name('ship.store');
+            Route::get('/{id}', 'show')->name('ship.show');
+            Route::post('/{id}/update', 'update')->name('ship.update');
+            Route::delete('/{id}', 'destroy')->name('ship.delete');
+        });
 });

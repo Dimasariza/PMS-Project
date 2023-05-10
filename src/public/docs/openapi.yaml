@@ -608,6 +608,595 @@ paths:
         required: true
         schema:
           type: integer
+  /api/v1/ship:
+    get:
+      summary: All
+      operationId: all
+      description: 'Get list of ship'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    -
+                      id: 13
+                      imoNumber: IMO123
+                      vesselName: Vessel
+                      flag: INDO
+                      picture: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                      dwt: 2023
+                      grossTonage: 1000
+                      year: 2023
+                      callsign: Callsign
+                      LOA: 10.05
+                      breadth: 10.05
+                      vesselTypeGeneric: Generic
+                      vesselTypeDetailed: Detailed
+                    -
+                      id: 14
+                      imoNumber: IMO123
+                      vesselName: Vessel
+                      flag: INDO
+                      picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                      dwt: 2023
+                      grossTonage: 1000
+                      year: 2023
+                      callsign: Callsign
+                      LOA: 10.05
+                      breadth: 10.05
+                      vesselTypeGeneric: Generic
+                      vesselTypeDetailed: Detailed
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 13
+                        imoNumber: IMO123
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 14
+                        imoNumber: IMO123
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 13
+                        imoNumber:
+                          type: string
+                          example: IMO123
+                        vesselName:
+                          type: string
+                          example: Vessel
+                        flag:
+                          type: string
+                          example: INDO
+                        picture:
+                          type: string
+                          example: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                        dwt:
+                          type: integer
+                          example: 2023
+                        grossTonage:
+                          type: integer
+                          example: 1000
+                        year:
+                          type: integer
+                          example: 2023
+                        callsign:
+                          type: string
+                          example: Callsign
+                        LOA:
+                          type: number
+                          example: 10.05
+                        breadth:
+                          type: number
+                          example: 10.05
+                        vesselTypeGeneric:
+                          type: string
+                          example: Generic
+                        vesselTypeDetailed:
+                          type: string
+                          example: Detailed
+      tags:
+        - Ship
+    post:
+      summary: Create
+      operationId: create
+      description: 'Create ship'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    id: 14
+                    imoNumber: IMO123
+                    vesselName: Vessel
+                    flag: INDO
+                    picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                    dwt: 2023
+                    grossTonage: 1000
+                    year: 2023
+                    callsign: Callsign
+                    LOA: 10.05
+                    breadth: 10.05
+                    vesselTypeGeneric: Generic
+                    vesselTypeDetailed: Detailed
+                    createdAt: '2023-05-09 20:35:32'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 14
+                      imoNumber:
+                        type: string
+                        example: IMO123
+                      vesselName:
+                        type: string
+                        example: Vessel
+                      flag:
+                        type: string
+                        example: INDO
+                      picture:
+                        type: string
+                        example: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                      dwt:
+                        type: integer
+                        example: 2023
+                      grossTonage:
+                        type: integer
+                        example: 1000
+                      year:
+                        type: integer
+                        example: 2023
+                      callsign:
+                        type: string
+                        example: Callsign
+                      LOA:
+                        type: number
+                        example: 10.05
+                      breadth:
+                        type: number
+                        example: 10.05
+                      vesselTypeGeneric:
+                        type: string
+                        example: Generic
+                      vesselTypeDetailed:
+                        type: string
+                        example: Detailed
+                      createdAt:
+                        type: string
+                        example: '2023-05-09 20:35:32'
+      tags:
+        - Ship
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                imoNumber:
+                  type: string
+                  description: 'imo_number of ship.'
+                  example: IMO69
+                vesselName:
+                  type: string
+                  description: 'vessel name of ship.'
+                  example: Vessel
+                flag:
+                  type: string
+                  description: 'flag of ship.'
+                  example: ID
+                picture:
+                  type: string
+                  format: binary
+                  description: 'The image of ship.'
+                dwt:
+                  type: integer
+                  description: 'dwt of ship.'
+                  example: 1000
+                grossTonage:
+                  type: integer
+                  description: 'int of ship.'
+                  example: 1000
+                year:
+                  type: integer
+                  description: 'year of ship.'
+                  example: 2023
+                callsign:
+                  type: string
+                  description: ''
+                  example: soluta
+                LOA:
+                  type: string
+                  description: 'LOA of ship (type float).'
+                  example: '10.05'
+                breadth:
+                  type: string
+                  description: 'breadth of ship (type float).'
+                  example: '11.05'
+                vesselTypeGeneric:
+                  type: string
+                  description: 'vessel type generic of ship.'
+                  example: Generic
+                vesselTypeDetailed:
+                  type: string
+                  description: 'vessel type detailed of ship.'
+                  example: Detailed
+              required:
+                - imoNumber
+                - vesselName
+                - flag
+                - picture
+                - dwt
+                - grossTonage
+                - year
+                - callsign
+                - LOA
+                - breadth
+                - vesselTypeGeneric
+                - vesselTypeDetailed
+  '/api/v1/ship/{id}':
+    get:
+      summary: 'Get One'
+      operationId: getOne
+      description: 'Get one ship detail'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Success
+                  data:
+                    id: 13
+                    imoNumber: IMO123
+                    vesselName: Vessel
+                    flag: INDO
+                    picture: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                    dwt: 2023
+                    grossTonage: 1000
+                    year: 2023
+                    callsign: Callsign
+                    LOA: 10.05
+                    breadth: 10.05
+                    vesselTypeGeneric: Generic
+                    vesselTypeDetailed: Detailed
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 13
+                      imoNumber:
+                        type: string
+                        example: IMO123
+                      vesselName:
+                        type: string
+                        example: Vessel
+                      flag:
+                        type: string
+                        example: INDO
+                      picture:
+                        type: string
+                        example: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                      dwt:
+                        type: integer
+                        example: 2023
+                      grossTonage:
+                        type: integer
+                        example: 1000
+                      year:
+                        type: integer
+                        example: 2023
+                      callsign:
+                        type: string
+                        example: Callsign
+                      LOA:
+                        type: number
+                        example: 10.05
+                      breadth:
+                        type: number
+                        example: 10.05
+                      vesselTypeGeneric:
+                        type: string
+                        example: Generic
+                      vesselTypeDetailed:
+                        type: string
+                        example: Detailed
+      tags:
+        - Ship
+    delete:
+      summary: Delete
+      operationId: delete
+      description: 'Delete one ship'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Deleted
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Deleted
+      tags:
+        - Ship
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of ship.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/ship/{id}/update':
+    post:
+      summary: Update
+      operationId: update
+      description: 'Update ship'
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv'
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  statusCode: 200
+                  message: Updated
+                  data:
+                    id: 14
+                    imoNumber: IMO123456123
+                    vesselName: Vessel
+                    flag: INDO
+                    picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                    dwt: 2023
+                    grossTonage: 1000
+                    year: 2023
+                    callsign: Callsign
+                    LOA: 10.05
+                    breadth: 10.05
+                    vesselTypeGeneric: Generic
+                    vesselTypeDetailed: Detailed
+                    updatedAt: '2023-05-09 20:48:51'
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Updated
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 14
+                      imoNumber:
+                        type: string
+                        example: IMO123456123
+                      vesselName:
+                        type: string
+                        example: Vessel
+                      flag:
+                        type: string
+                        example: INDO
+                      picture:
+                        type: string
+                        example: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                      dwt:
+                        type: integer
+                        example: 2023
+                      grossTonage:
+                        type: integer
+                        example: 1000
+                      year:
+                        type: integer
+                        example: 2023
+                      callsign:
+                        type: string
+                        example: Callsign
+                      LOA:
+                        type: number
+                        example: 10.05
+                      breadth:
+                        type: number
+                        example: 10.05
+                      vesselTypeGeneric:
+                        type: string
+                        example: Generic
+                      vesselTypeDetailed:
+                        type: string
+                        example: Detailed
+                      updatedAt:
+                        type: string
+                        example: '2023-05-09 20:48:51'
+      tags:
+        - Ship
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                imoNumber:
+                  type: string
+                  description: 'imo_number of ship.'
+                  example: IMO69
+                vesselName:
+                  type: string
+                  description: 'vessel name of ship.'
+                  example: Vessel
+                flag:
+                  type: string
+                  description: 'flag of ship.'
+                  example: ID
+                picture:
+                  type: string
+                  format: binary
+                  description: 'optional The image of ship.'
+                dwt:
+                  type: integer
+                  description: 'dwt of ship.'
+                  example: 1000
+                grossTonage:
+                  type: integer
+                  description: 'int of ship.'
+                  example: 1000
+                year:
+                  type: integer
+                  description: 'year of ship.'
+                  example: 2023
+                callsign:
+                  type: string
+                  description: ''
+                  example: quo
+                LOA:
+                  type: string
+                  description: 'LOA of ship (type float).'
+                  example: '10.05'
+                breadth:
+                  type: string
+                  description: 'breadth of ship (type float).'
+                  example: '11.05'
+                vesselTypeGeneric:
+                  type: string
+                  description: 'vessel type generic of ship.'
+                  example: Generic
+                vesselTypeDetailed:
+                  type: string
+                  description: 'vessel type detailed of ship.'
+                  example: Detailed
+              required:
+                - imoNumber
+                - vesselName
+                - flag
+                - dwt
+                - grossTonage
+                - year
+                - callsign
+                - LOA
+                - breadth
+                - vesselTypeGeneric
+                - vesselTypeDetailed
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of ship to update.'
+        example: 5
+        required: true
+        schema:
+          type: integer
   /api/v1/user:
     get:
       summary: All
@@ -1765,6 +2354,9 @@ tags:
   -
     name: Department
     description: "\nAPIs for department"
+  -
+    name: Ship
+    description: "\nAPIs for Ship"
   -
     name: User
     description: "\nAPIs for user in general"

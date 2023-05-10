@@ -101,6 +101,28 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-ship" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="ship">
+                    <a href="#ship">Ship</a>
+                </li>
+                                    <ul id="tocify-subheader-ship" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="ship-GETapi-v1-ship">
+                                <a href="#ship-GETapi-v1-ship">All</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ship-POSTapi-v1-ship">
+                                <a href="#ship-POSTapi-v1-ship">Create</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ship-GETapi-v1-ship--id-">
+                                <a href="#ship-GETapi-v1-ship--id-">Get One</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ship-POSTapi-v1-ship--id--update">
+                                <a href="#ship-POSTapi-v1-ship--id--update">Update</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="ship-DELETEapi-v1-ship--id-">
+                                <a href="#ship-DELETEapi-v1-ship--id-">Delete</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-user" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="user">
                     <a href="#user">User</a>
@@ -145,7 +167,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 5, 2023</li>
+        <li>Last updated: May 10, 2023</li>
     </ul>
 </div>
 
@@ -1413,6 +1435,1105 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="url">
     <br>
 <p>The ID of department. Example: <code>5</code></p>
+            </div>
+                    </form>
+
+                <h1 id="ship">Ship</h1>
+
+    <p>APIs for Ship</p>
+
+                                <h2 id="ship-GETapi-v1-ship">All</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Get list of ship</p>
+
+<span id="example-requests-GETapi-v1-ship">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:9000/api/v1/ship" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:9000/api/v1/ship"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-ship">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 13,
+            &quot;imoNumber&quot;: &quot;IMO123&quot;,
+            &quot;vesselName&quot;: &quot;Vessel&quot;,
+            &quot;flag&quot;: &quot;INDO&quot;,
+            &quot;picture&quot;: &quot;http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg&quot;,
+            &quot;dwt&quot;: 2023,
+            &quot;grossTonage&quot;: 1000,
+            &quot;year&quot;: 2023,
+            &quot;callsign&quot;: &quot;Callsign&quot;,
+            &quot;LOA&quot;: 10.05,
+            &quot;breadth&quot;: 10.05,
+            &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
+            &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;imoNumber&quot;: &quot;IMO123&quot;,
+            &quot;vesselName&quot;: &quot;Vessel&quot;,
+            &quot;flag&quot;: &quot;INDO&quot;,
+            &quot;picture&quot;: &quot;http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg&quot;,
+            &quot;dwt&quot;: 2023,
+            &quot;grossTonage&quot;: 1000,
+            &quot;year&quot;: 2023,
+            &quot;callsign&quot;: &quot;Callsign&quot;,
+            &quot;LOA&quot;: 10.05,
+            &quot;breadth&quot;: 10.05,
+            &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
+            &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-ship" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-ship"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-ship"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-ship" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-ship">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-ship" data-method="GET"
+      data-path="api/v1/ship"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-ship', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-ship"
+                    onclick="tryItOut('GETapi-v1-ship');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-ship"
+                    onclick="cancelTryOut('GETapi-v1-ship');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-ship"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/ship</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-v1-ship"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-v1-ship"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-ship"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="ship-POSTapi-v1-ship">Create</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Create ship</p>
+
+<span id="example-requests-POSTapi-v1-ship">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:9000/api/v1/ship" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
+    --form "imoNumber=IMO69" \
+    --form "vesselName=Vessel" \
+    --form "flag=ID" \
+    --form "dwt=1000" \
+    --form "grossTonage=1000" \
+    --form "year=2023" \
+    --form "callsign=soluta" \
+    --form "LOA=10.05" \
+    --form "breadth=11.05" \
+    --form "vesselTypeGeneric=Generic" \
+    --form "vesselTypeDetailed=Detailed" \
+    --form "picture=@/var/www/html/public/example.jpg" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:9000/api/v1/ship"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
+};
+
+const body = new FormData();
+body.append('imoNumber', 'IMO69');
+body.append('vesselName', 'Vessel');
+body.append('flag', 'ID');
+body.append('dwt', '1000');
+body.append('grossTonage', '1000');
+body.append('year', '2023');
+body.append('callsign', 'soluta');
+body.append('LOA', '10.05');
+body.append('breadth', '11.05');
+body.append('vesselTypeGeneric', 'Generic');
+body.append('vesselTypeDetailed', 'Detailed');
+body.append('picture', document.querySelector('input[name="picture"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-ship">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 14,
+        &quot;imoNumber&quot;: &quot;IMO123&quot;,
+        &quot;vesselName&quot;: &quot;Vessel&quot;,
+        &quot;flag&quot;: &quot;INDO&quot;,
+        &quot;picture&quot;: &quot;http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg&quot;,
+        &quot;dwt&quot;: 2023,
+        &quot;grossTonage&quot;: 1000,
+        &quot;year&quot;: 2023,
+        &quot;callsign&quot;: &quot;Callsign&quot;,
+        &quot;LOA&quot;: 10.05,
+        &quot;breadth&quot;: 10.05,
+        &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
+        &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+        &quot;createdAt&quot;: &quot;2023-05-09 20:35:32&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-ship" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-ship"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-ship"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-ship" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-ship">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-ship" data-method="POST"
+      data-path="api/v1/ship"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-ship', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-ship"
+                    onclick="tryItOut('POSTapi-v1-ship');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-ship"
+                    onclick="cancelTryOut('POSTapi-v1-ship');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-ship"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/ship</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-v1-ship"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-v1-ship"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-ship"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>imoNumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="imoNumber"                data-endpoint="POSTapi-v1-ship"
+               value="IMO69"
+               data-component="body">
+    <br>
+<p>imo_number of ship. Example: <code>IMO69</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselName</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselName"                data-endpoint="POSTapi-v1-ship"
+               value="Vessel"
+               data-component="body">
+    <br>
+<p>vessel name of ship. Example: <code>Vessel</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>flag</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="flag"                data-endpoint="POSTapi-v1-ship"
+               value="ID"
+               data-component="body">
+    <br>
+<p>flag of ship. Example: <code>ID</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>picture</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+ &nbsp;
+                <input type="file" style="display: none"
+               name="picture"                data-endpoint="POSTapi-v1-ship"
+               value=""
+               data-component="body">
+    <br>
+<p>The image of ship. Example: <code>public/example.jpg</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>dwt</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="dwt"                data-endpoint="POSTapi-v1-ship"
+               value="1000"
+               data-component="body">
+    <br>
+<p>dwt of ship. Example: <code>1000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>grossTonage</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="grossTonage"                data-endpoint="POSTapi-v1-ship"
+               value="1000"
+               data-component="body">
+    <br>
+<p>int of ship. Example: <code>1000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="year"                data-endpoint="POSTapi-v1-ship"
+               value="2023"
+               data-component="body">
+    <br>
+<p>year of ship. Example: <code>2023</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>callsign</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="callsign"                data-endpoint="POSTapi-v1-ship"
+               value="soluta"
+               data-component="body">
+    <br>
+<p>Example: <code>soluta</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>LOA</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="LOA"                data-endpoint="POSTapi-v1-ship"
+               value="10.05"
+               data-component="body">
+    <br>
+<p>LOA of ship (type float). Example: <code>10.05</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>breadth</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="breadth"                data-endpoint="POSTapi-v1-ship"
+               value="11.05"
+               data-component="body">
+    <br>
+<p>breadth of ship (type float). Example: <code>11.05</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselTypeGeneric</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselTypeGeneric"                data-endpoint="POSTapi-v1-ship"
+               value="Generic"
+               data-component="body">
+    <br>
+<p>vessel type generic of ship. Example: <code>Generic</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselTypeDetailed</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselTypeDetailed"                data-endpoint="POSTapi-v1-ship"
+               value="Detailed"
+               data-component="body">
+    <br>
+<p>vessel type detailed of ship. Example: <code>Detailed</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ship-GETapi-v1-ship--id-">Get One</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Get one ship detail</p>
+
+<span id="example-requests-GETapi-v1-ship--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:9000/api/v1/ship/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:9000/api/v1/ship/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-ship--id-">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Success&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 13,
+        &quot;imoNumber&quot;: &quot;IMO123&quot;,
+        &quot;vesselName&quot;: &quot;Vessel&quot;,
+        &quot;flag&quot;: &quot;INDO&quot;,
+        &quot;picture&quot;: &quot;http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg&quot;,
+        &quot;dwt&quot;: 2023,
+        &quot;grossTonage&quot;: 1000,
+        &quot;year&quot;: 2023,
+        &quot;callsign&quot;: &quot;Callsign&quot;,
+        &quot;LOA&quot;: 10.05,
+        &quot;breadth&quot;: 10.05,
+        &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
+        &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-ship--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-ship--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-ship--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-ship--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-ship--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-v1-ship--id-" data-method="GET"
+      data-path="api/v1/ship/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-ship--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-ship--id-"
+                    onclick="tryItOut('GETapi-v1-ship--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-ship--id-"
+                    onclick="cancelTryOut('GETapi-v1-ship--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-ship--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/ship/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-v1-ship--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-v1-ship--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-v1-ship--id-"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="GETapi-v1-ship--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of ship. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="ship-POSTapi-v1-ship--id--update">Update</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Update ship</p>
+
+<span id="example-requests-POSTapi-v1-ship--id--update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:9000/api/v1/ship/5/update" \
+    --header "Content-Type: multipart/form-data" \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
+    --form "imoNumber=IMO69" \
+    --form "vesselName=Vessel" \
+    --form "flag=ID" \
+    --form "dwt=1000" \
+    --form "grossTonage=1000" \
+    --form "year=2023" \
+    --form "callsign=quo" \
+    --form "LOA=10.05" \
+    --form "breadth=11.05" \
+    --form "vesselTypeGeneric=Generic" \
+    --form "vesselTypeDetailed=Detailed" \
+    --form "picture=@/var/www/html/public/example.jpg" </code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:9000/api/v1/ship/5/update"
+);
+
+const headers = {
+    "Content-Type": "multipart/form-data",
+    "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
+};
+
+const body = new FormData();
+body.append('imoNumber', 'IMO69');
+body.append('vesselName', 'Vessel');
+body.append('flag', 'ID');
+body.append('dwt', '1000');
+body.append('grossTonage', '1000');
+body.append('year', '2023');
+body.append('callsign', 'quo');
+body.append('LOA', '10.05');
+body.append('breadth', '11.05');
+body.append('vesselTypeGeneric', 'Generic');
+body.append('vesselTypeDetailed', 'Detailed');
+body.append('picture', document.querySelector('input[name="picture"]').files[0]);
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-ship--id--update">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Updated&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 14,
+        &quot;imoNumber&quot;: &quot;IMO123456123&quot;,
+        &quot;vesselName&quot;: &quot;Vessel&quot;,
+        &quot;flag&quot;: &quot;INDO&quot;,
+        &quot;picture&quot;: &quot;http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg&quot;,
+        &quot;dwt&quot;: 2023,
+        &quot;grossTonage&quot;: 1000,
+        &quot;year&quot;: 2023,
+        &quot;callsign&quot;: &quot;Callsign&quot;,
+        &quot;LOA&quot;: 10.05,
+        &quot;breadth&quot;: 10.05,
+        &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
+        &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+        &quot;updatedAt&quot;: &quot;2023-05-09 20:48:51&quot;
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-v1-ship--id--update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-ship--id--update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-ship--id--update"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-ship--id--update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-ship--id--update">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-v1-ship--id--update" data-method="POST"
+      data-path="api/v1/ship/{id}/update"
+      data-authed="1"
+      data-hasfiles="1"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-ship--id--update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-ship--id--update"
+                    onclick="tryItOut('POSTapi-v1-ship--id--update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-ship--id--update"
+                    onclick="cancelTryOut('POSTapi-v1-ship--id--update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-ship--id--update"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/ship/{id}/update</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="multipart/form-data"
+               data-component="header">
+    <br>
+<p>Example: <code>multipart/form-data</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-v1-ship--id--update"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="5"
+               data-component="url">
+    <br>
+<p>The ID of ship to update. Example: <code>5</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>imoNumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="imoNumber"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="IMO69"
+               data-component="body">
+    <br>
+<p>imo_number of ship. Example: <code>IMO69</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselName</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselName"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="Vessel"
+               data-component="body">
+    <br>
+<p>vessel name of ship. Example: <code>Vessel</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>flag</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="flag"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="ID"
+               data-component="body">
+    <br>
+<p>flag of ship. Example: <code>ID</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>picture</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+               name="picture"                data-endpoint="POSTapi-v1-ship--id--update"
+               value=""
+               data-component="body">
+    <br>
+<p>optional The image of ship. Example: <code>public/example.jpg</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>dwt</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="dwt"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="1000"
+               data-component="body">
+    <br>
+<p>dwt of ship. Example: <code>1000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>grossTonage</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="grossTonage"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="1000"
+               data-component="body">
+    <br>
+<p>int of ship. Example: <code>1000</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="year"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="2023"
+               data-component="body">
+    <br>
+<p>year of ship. Example: <code>2023</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>callsign</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="callsign"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="quo"
+               data-component="body">
+    <br>
+<p>Example: <code>quo</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>LOA</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="LOA"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="10.05"
+               data-component="body">
+    <br>
+<p>LOA of ship (type float). Example: <code>10.05</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>breadth</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="breadth"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="11.05"
+               data-component="body">
+    <br>
+<p>breadth of ship (type float). Example: <code>11.05</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselTypeGeneric</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselTypeGeneric"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="Generic"
+               data-component="body">
+    <br>
+<p>vessel type generic of ship. Example: <code>Generic</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>vesselTypeDetailed</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="vesselTypeDetailed"                data-endpoint="POSTapi-v1-ship--id--update"
+               value="Detailed"
+               data-component="body">
+    <br>
+<p>vessel type detailed of ship. Example: <code>Detailed</code></p>
+        </div>
+        </form>
+
+                    <h2 id="ship-DELETEapi-v1-ship--id-">Delete</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Delete one ship</p>
+
+<span id="example-requests-DELETEapi-v1-ship--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:9000/api/v1/ship/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:9000/api/v1/ship/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEapi-v1-ship--id-">
+            <blockquote>
+            <p>Example response (200, Success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;statusCode&quot;: 200,
+    &quot;message&quot;: &quot;Deleted&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-v1-ship--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-v1-ship--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-v1-ship--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-v1-ship--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-v1-ship--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-DELETEapi-v1-ship--id-" data-method="DELETE"
+      data-path="api/v1/ship/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-v1-ship--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-v1-ship--id-"
+                    onclick="tryItOut('DELETEapi-v1-ship--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-v1-ship--id-"
+                    onclick="cancelTryOut('DELETEapi-v1-ship--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-v1-ship--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/ship/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="DELETEapi-v1-ship--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="DELETEapi-v1-ship--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="DELETEapi-v1-ship--id-"
+               value="Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="DELETEapi-v1-ship--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of ship. Example: <code>1</code></p>
             </div>
                     </form>
 

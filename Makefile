@@ -23,4 +23,4 @@ migrate-fresh-seed:
 	docker exec laravel-app bash -c "php artisan migrate:fresh --seed"
 
 scribe:
-	docker exec laravel-app bash -c "php artisan scribe:generate"
+	docker exec laravel-app bash -c "php artisan scribe:generate --verbose"

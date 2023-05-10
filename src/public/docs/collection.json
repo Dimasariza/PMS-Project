@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "PMS Project API Documentation",
-        "_postman_id": "6e2b446f-4c8a-42b0-864e-4ad398a1ba54",
+        "_postman_id": "75a91f7f-915a-4940-bd6c-e6475c15ea8a",
         "description": "This is the documentation for PMS Project. If there is something wrong, please contact the developer.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -335,6 +335,366 @@
                         ],
                         "body": null,
                         "description": "Delete one department"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Deleted\"\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Ship",
+            "description": "\nAPIs for Ship",
+            "item": [
+                {
+                    "name": "All",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ship",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/ship"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Get list of ship"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 13,\n            \"imoNumber\": \"IMO123\",\n            \"vesselName\": \"Vessel\",\n            \"flag\": \"INDO\",\n            \"picture\": \"http:\/\/localhost:9000\/storage\/ships\/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg\",\n            \"dwt\": 2023,\n            \"grossTonage\": 1000,\n            \"year\": 2023,\n            \"callsign\": \"Callsign\",\n            \"LOA\": 10.05,\n            \"breadth\": 10.05,\n            \"vesselTypeGeneric\": \"Generic\",\n            \"vesselTypeDetailed\": \"Detailed\"\n        },\n        {\n            \"id\": 14,\n            \"imoNumber\": \"IMO123\",\n            \"vesselName\": \"Vessel\",\n            \"flag\": \"INDO\",\n            \"picture\": \"http:\/\/localhost:9000\/api\/v1\/assets\/ships\/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg\",\n            \"dwt\": 2023,\n            \"grossTonage\": 1000,\n            \"year\": 2023,\n            \"callsign\": \"Callsign\",\n            \"LOA\": 10.05,\n            \"breadth\": 10.05,\n            \"vesselTypeGeneric\": \"Generic\",\n            \"vesselTypeDetailed\": \"Detailed\"\n        }\n    ]\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ship",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/ship"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "imoNumber",
+                                    "value": "IMO69",
+                                    "type": "text",
+                                    "description": "imo_number of ship."
+                                },
+                                {
+                                    "key": "vesselName",
+                                    "value": "Vessel",
+                                    "type": "text",
+                                    "description": "vessel name of ship."
+                                },
+                                {
+                                    "key": "flag",
+                                    "value": "ID",
+                                    "type": "text",
+                                    "description": "flag of ship."
+                                },
+                                {
+                                    "key": "dwt",
+                                    "value": 1000,
+                                    "type": "text",
+                                    "description": "dwt of ship."
+                                },
+                                {
+                                    "key": "grossTonage",
+                                    "value": 1000,
+                                    "type": "text",
+                                    "description": "int of ship."
+                                },
+                                {
+                                    "key": "year",
+                                    "value": 2023,
+                                    "type": "text",
+                                    "description": "year of ship."
+                                },
+                                {
+                                    "key": "callsign",
+                                    "value": "soluta",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "LOA",
+                                    "value": "10.05",
+                                    "type": "text",
+                                    "description": "LOA of ship (type float)."
+                                },
+                                {
+                                    "key": "breadth",
+                                    "value": "11.05",
+                                    "type": "text",
+                                    "description": "breadth of ship (type float)."
+                                },
+                                {
+                                    "key": "vesselTypeGeneric",
+                                    "value": "Generic",
+                                    "type": "text",
+                                    "description": "vessel type generic of ship."
+                                },
+                                {
+                                    "key": "vesselTypeDetailed",
+                                    "value": "Detailed",
+                                    "type": "text",
+                                    "description": "vessel type detailed of ship."
+                                },
+                                {
+                                    "key": "picture",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "Create ship"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 14,\n        \"imoNumber\": \"IMO123\",\n        \"vesselName\": \"Vessel\",\n        \"flag\": \"INDO\",\n        \"picture\": \"http:\/\/localhost:9000\/api\/v1\/assets\/ships\/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg\",\n        \"dwt\": 2023,\n        \"grossTonage\": 1000,\n        \"year\": 2023,\n        \"callsign\": \"Callsign\",\n        \"LOA\": 10.05,\n        \"breadth\": 10.05,\n        \"vesselTypeGeneric\": \"Generic\",\n        \"vesselTypeDetailed\": \"Detailed\",\n        \"createdAt\": \"2023-05-09 20:35:32\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Get One",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ship\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/ship\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of ship."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Get one ship detail"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Success\",\n    \"data\": {\n        \"id\": 13,\n        \"imoNumber\": \"IMO123\",\n        \"vesselName\": \"Vessel\",\n        \"flag\": \"INDO\",\n        \"picture\": \"http:\/\/localhost:9000\/storage\/ships\/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg\",\n        \"dwt\": 2023,\n        \"grossTonage\": 1000,\n        \"year\": 2023,\n        \"callsign\": \"Callsign\",\n        \"LOA\": 10.05,\n        \"breadth\": 10.05,\n        \"vesselTypeGeneric\": \"Generic\",\n        \"vesselTypeDetailed\": \"Detailed\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Update",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ship\/:id\/update",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/ship\/:id\/update",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "5",
+                                    "description": "The ID of ship to update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "imoNumber",
+                                    "value": "IMO69",
+                                    "type": "text",
+                                    "description": "imo_number of ship."
+                                },
+                                {
+                                    "key": "vesselName",
+                                    "value": "Vessel",
+                                    "type": "text",
+                                    "description": "vessel name of ship."
+                                },
+                                {
+                                    "key": "flag",
+                                    "value": "ID",
+                                    "type": "text",
+                                    "description": "flag of ship."
+                                },
+                                {
+                                    "key": "dwt",
+                                    "value": 1000,
+                                    "type": "text",
+                                    "description": "dwt of ship."
+                                },
+                                {
+                                    "key": "grossTonage",
+                                    "value": 1000,
+                                    "type": "text",
+                                    "description": "int of ship."
+                                },
+                                {
+                                    "key": "year",
+                                    "value": 2023,
+                                    "type": "text",
+                                    "description": "year of ship."
+                                },
+                                {
+                                    "key": "callsign",
+                                    "value": "quo",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "LOA",
+                                    "value": "10.05",
+                                    "type": "text",
+                                    "description": "LOA of ship (type float)."
+                                },
+                                {
+                                    "key": "breadth",
+                                    "value": "11.05",
+                                    "type": "text",
+                                    "description": "breadth of ship (type float)."
+                                },
+                                {
+                                    "key": "vesselTypeGeneric",
+                                    "value": "Generic",
+                                    "type": "text",
+                                    "description": "vessel type generic of ship."
+                                },
+                                {
+                                    "key": "vesselTypeDetailed",
+                                    "value": "Detailed",
+                                    "type": "text",
+                                    "description": "vessel type detailed of ship."
+                                },
+                                {
+                                    "key": "picture",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "Update ship"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"statusCode\": 200,\n    \"message\": \"Updated\",\n    \"data\": {\n        \"id\": 14,\n        \"imoNumber\": \"IMO123456123\",\n        \"vesselName\": \"Vessel\",\n        \"flag\": \"INDO\",\n        \"picture\": \"http:\/\/localhost:9000\/api\/v1\/assets\/ships\/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg\",\n        \"dwt\": 2023,\n        \"grossTonage\": 1000,\n        \"year\": 2023,\n        \"callsign\": \"Callsign\",\n        \"LOA\": 10.05,\n        \"breadth\": 10.05,\n        \"vesselTypeGeneric\": \"Generic\",\n        \"vesselTypeDetailed\": \"Detailed\",\n        \"updatedAt\": \"2023-05-09 20:48:51\"\n    }\n}\n",
+                            "name": "Success"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/ship\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/ship\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of ship."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete one ship"
                     },
                     "response": [
                         {
