@@ -14,7 +14,7 @@ function PageHeader() {
   const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
-  const screenFontSize = isSmallScreen ? 14 : isMediumScreen ? 16 : isLargeScreen ? 18 : 18;
+  const screenFontSize = isSmallScreen ? 12 : isMediumScreen ? 14 : isLargeScreen ? 18 : 16;
 
   return (
     <Grid container justifyContent="space-between" alignItems="center">
@@ -30,7 +30,6 @@ function PageHeader() {
       <Grid item>
         <NextLink href={url + "/batera/ship-list/add-ship"} passHref>
           <Button
-            sx={{ }}
             variant="contained"
             startIcon={<AddTwoToneIcon sx={{ fontSize: screenFontSize }}   />}
           >
