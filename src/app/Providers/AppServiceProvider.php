@@ -12,6 +12,7 @@ use App\Repositories\UserTitle\UserTitleRepository;
 use App\Repositories\UserTitle\UserTitleRepositoryImpl;
 use App\Services\Auth\AuthService;
 use App\Services\Auth\AuthServiceImpl;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        Model::preventLazyLoading(! $this->app->isProduction());
+        Model::preventSilentlyDiscardingAttributes(! $this->app->isProduction());
+
         $instances = [
             [AuthService::class, AuthServiceImpl::class],
             [UserTitleRepository::class, UserTitleRepositoryImpl::class],
@@ -39,6 +43,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        
+
     }
 }
