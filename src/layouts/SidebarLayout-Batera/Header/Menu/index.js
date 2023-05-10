@@ -5,10 +5,12 @@ import {
   ListItemText,
   Menu,
   MenuItem,
-  styled
+  styled,
+  IconButton,
 } from '@mui/material';
 import { useRef, useState } from 'react';
 import Link from 'src/components/Link';
+import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 
@@ -63,7 +65,7 @@ const ListWrapper = styled(Box)(
 `
 );
 
-function HeaderMenu() {
+function HeaderMenu({setOpenSideBar}) {
   const ref = useRef(null);
   const [isOpen, setOpen] = useState(false);
 
@@ -85,6 +87,9 @@ function HeaderMenu() {
           }
         }}
       >
+        <IconButton onClick={() => setOpenSideBar(true)}>
+          <MenuTwoToneIcon/>
+        </IconButton>
         {/* <List disablePadding component={Box} display="flex">
           
         </List> */}

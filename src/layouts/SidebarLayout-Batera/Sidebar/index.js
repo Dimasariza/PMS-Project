@@ -28,7 +28,7 @@ const SidebarWrapper = styled(Box)(
 `
 );
 
-function Sidebar() {
+function Sidebar({setOpenSideBar, sidebarRef}) {
   const url = process.env.PUBLIC_URL || ""
   const { sidebarToggle, toggleSidebar } = useContext(SidebarContext);
   const closeSidebar = () => toggleSidebar();
@@ -37,6 +37,7 @@ function Sidebar() {
   return (
     <>
       <SidebarWrapper
+        ref={sidebarRef}
         sx={{
           display: {
             xs: 'none',
@@ -47,7 +48,7 @@ function Sidebar() {
           top: 0,
           background:
             theme.palette.mode === 'dark'
-              ? alpha(lighten(theme.header.background, 0.1), 0.5)
+              ? alpha(lighten(theme.header.background, 0.1), 1)
               : darken(theme.colors.alpha.black[100], 0.5),
           boxShadow:
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
@@ -66,6 +67,7 @@ function Sidebar() {
                 src={url + "/static/images/logo/logo-batera.svg"} 
                 alt="Logo Batera"
                 height={"100%"}
+                onClick={() => setOpenSideBar(false)}
               />
 
             </Box>

@@ -2,10 +2,27 @@ import { Box, alpha, lighten, useTheme } from '@mui/material';
 import PropTypes from 'prop-types';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { useState, useRef, useEffect } from 'react';
+
 
 const SidebarLayout = ({ children }) => {
   const theme = useTheme();
+  const [openSidebar, setOpenSideBar] = useState(false);
+  const sidebarRef = useRef(null);
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setOpenSideBar(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [sidebarRef]);
   return (
     <>
       <Box
@@ -35,8 +52,16 @@ const SidebarLayout = ({ children }) => {
           }
         }}
       >
-        <Header />
-        <Sidebar />
+        <Header setOpenSideBar={setOpenSideBar}/>
+        <SwipeableDrawer
+          anchor={'left'}
+          open={openSidebar}
+        >
+          <Sidebar 
+            setOpenSideBar={setOpenSideBar}
+            sidebarRef={sidebarRef}
+          />
+        </SwipeableDrawer>
         <Box
           sx={{
             position: 'relative',
@@ -44,9 +69,9 @@ const SidebarLayout = ({ children }) => {
             display: 'block',
             flex: 1,
             pt: `${theme.header.height}`,
-            [theme.breakpoints.up('lg')]: {
-              ml: `${theme.sidebar.width}`
-            }
+            // [theme.breakpoints.up('lg')]: {
+            //   ml: `${theme.sidebar.width}`
+            // }
           }}
         >
           <Box display="block">{children}</Box>
