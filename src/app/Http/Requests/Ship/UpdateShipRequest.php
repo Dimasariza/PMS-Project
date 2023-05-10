@@ -25,7 +25,7 @@ class UpdateShipRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imo_number' => ['required', 'string', 'max:255'],
+            'imoNumber' => ['required', 'string', 'max:255'],
             'vesselName' => ['required', 'string', 'max:255'],
             'flag' => ['required', 'string', 'max:255'],
             'picture' => ['nullable', 'image', 'mimes:jpg,png,jpeg', 'max:1024'],
@@ -33,10 +33,23 @@ class UpdateShipRequest extends FormRequest
             'grossTonage' => ['required', 'int'],
             'year' => ['nullable', 'int', 'min:1908'],
             'callsign' => ['required', 'string'],
-            'LOA' => ['required', 'float'],
-            'breadth' => ['required', 'float'],
-            'vesselTypeGeneric' => ['required', 'string', 'max;255'],
+            'LOA' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],
+            'breadth' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],
+            'vesselTypeGeneric' => ['required', 'string', 'max:255'],
             'vesselTypeDetailed' => ['required', 'string', 'max:255'],
+        ];
+    }
+
+    /**
+     * Get the custom error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'LOA.regex' => 'LOA must be a float type',
+            'breadth.regex' => 'breadth must be a float type',
         ];
     }
 }

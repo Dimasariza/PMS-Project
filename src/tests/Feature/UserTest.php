@@ -27,7 +27,7 @@ class UserTest extends TestCase
 
     public function test_create_user_with_document()
     {
-        Storage::fake('local');
+        Storage::fake('public');
         $response = $this->withHeader('Authorization', "Bearer {$this->authToken}")->post(route('user.store'), [
             'username' => 'someusername',
             'fullname' => 'Some Username',
@@ -40,7 +40,7 @@ class UserTest extends TestCase
             'document' => UploadedFile::fake()->image('docs.jpg', 400, 400),
         ]);
 
-        Storage::disk('local')->assertExists("users/{$this->getFilename($response->json('data.document'))}");
+        Storage::disk('public')->assertExists("users/{$this->getFilename($response->json('data.document'))}");
 
         $response->assertStatus(200)
             ->assertJsonIsObject('data')
@@ -83,7 +83,7 @@ class UserTest extends TestCase
             'document' => UploadedFile::fake()->image('supa.jpg', 400, 400),
         ]);
 
-        Storage::disk('local')->assertExists("users/{$this->getFilename($resp->json('data.document'))}");
+        Storage::disk('public')->assertExists("users/{$this->getFilename($resp->json('data.document'))}");
 
         $resp->assertStatus(200)
             ->assertJsonIsObject('data')
@@ -164,7 +164,7 @@ class UserTest extends TestCase
             'status' => true,
         ]);
 
-        Storage::disk('local')->assertExists("users/{$this->getFilename($resp->json('data.document'))}");
+        Storage::disk('public')->assertExists("users/{$this->getFilename($resp->json('data.document'))}");
 
         $resp->assertStatus(200)
             ->assertJsonIsObject('data')

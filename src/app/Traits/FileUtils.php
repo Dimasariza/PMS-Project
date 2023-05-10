@@ -7,27 +7,27 @@ use Illuminate\Support\Facades\Storage;
 
 trait FileUtils
 {
-    protected function storeFile(string $path, ?UploadedFile $file): string
+    protected function storeFile(string $path, ?UploadedFile $request): string
     {
-        if (! $file) {
+        if (! $request) {
             return '';
         }
 
-        $uploaded = $file->store($path);
+        $uploaded = $request->store($path, ['disk' => 'public']);
 
-        return $uploaded;
+        return Storage::url($uploaded);
     }
 
     protected function deleteFile(string $path, string $filename): bool
     {
-        if (! Storage::exists("{$path}/{$filename}")) {
+        if (! Storage::exists("public/{$path}/{$filename}")) {
             return false;
         }
 
-        return Storage::delete("{$path}/{$filename}");
+        return Storage::delete("public/{$path}/{$filename}");
     }
 
-    protected function replaceFile(string $path, string $fileBefore, ?UploadedFile $fileAfter)
+    protected function replaceFile(string $path, string $fileBefore, ?UploadedFile $fileAfter): ?string
     {
         if (is_null($fileAfter)) {
             return null;

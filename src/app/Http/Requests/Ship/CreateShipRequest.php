@@ -33,10 +33,23 @@ class CreateShipRequest extends FormRequest
             'grossTonage' => ['required', 'int'],
             'year' => ['nullable', 'int', 'min:1908'],
             'callsign' => ['required', 'string'],
-            'LOA' => ['required', 'float'],
-            'breadth' => ['required', 'float'],
+            'LOA' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],
+            'breadth' => ['required', 'regex:/^\d*(\.\d{1,2})?$/'],
             'vesselTypeGeneric' => ['required', 'string'],
             'vesselTypeDetailed' => ['required', 'string'],
+        ];
+    }
+
+    /**
+     * Get the custom error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'LOA.regex' => 'LOA must be a float type',
+            'breadth.regex' => 'breadth must be a float type',
         ];
     }
 }

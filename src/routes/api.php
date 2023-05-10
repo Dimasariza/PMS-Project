@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ShipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTitleController;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,8 @@ Route::prefix('/v1')->group(function () {
 
     Route::middleware(['auth.api', 'title:Admin'])
         ->apiResource('department', DepartmentController::class);
+
+    Route::middleware(['auth.api', 'title:Admin'])
+        ->apiResource('ship', ShipController::class)->except('ship.update');
+    Route::middleware(['auth.api', 'title:Admin'])->post('ship/{ship}/update', [ShipController::class, 'update'])->name('ship.update');
 });

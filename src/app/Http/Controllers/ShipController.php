@@ -33,7 +33,7 @@ class ShipController extends Controller
 
     public function store(CreateShipRequest $request)
     {
-        $url = $this->storeFile('ship', $request->validated('picture'));
+        $url = $this->storeFile('ships', $request->validated('picture'));
         $dto = InsertShipDTO::fromRequest($request, $url);
 
         return $this->successResponse(
@@ -53,7 +53,10 @@ class ShipController extends Controller
     public function update(string|int $id, UpdateShipRequest $request)
     {
         $ship = $this->repository->show($id);
-        $url = $this->replaceFile('ship', $ship->document, $request->validated('picture'));
+
+        $url = $request->validated('picture') != null
+        ? $this->replaceFile('ships', $ship->picture, $request->validated('picture'))
+        : $ship->picture;
 
         $dto = UpdateShipDTO::fromRequest($request, $url);
 

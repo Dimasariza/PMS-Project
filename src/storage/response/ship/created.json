@@ -1,0 +1,20 @@
+{
+    "statusCode": 200,
+    "message": "Success",
+    "data": {
+        "id": 14,
+        "imoNumber": "IMO123",
+        "vesselName": "Vessel",
+        "flag": "INDO",
+        "picture": "http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg",
+        "dwt": 2023,
+        "grossTonage": 1000,
+        "year": 2023,
+        "callsign": "Callsign",
+        "LOA": 10.05,
+        "breadth": 10.05,
+        "vesselTypeGeneric": "Generic",
+        "vesselTypeDetailed": "Detailed",
+        "createdAt": "2023-05-09 20:35:32"
+    }
+}
