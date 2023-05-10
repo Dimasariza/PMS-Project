@@ -5,8 +5,8 @@ namespace App\Repositories\UserTitle;
 use App\DTO\UserTitle\UserTitleDTO;
 use App\Models\UserTitle;
 use App\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 class UserTitleRepositoryImpl extends BaseRepository implements UserTitleRepository
@@ -21,9 +21,9 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
      *
      * @return array
      */
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return $this->model->all(['id', 'title_name', 'access']);
+        return $this->model::query()->paginate(10, ['id', 'title_name', 'access']);
     }
 
     /**

@@ -6,6 +6,7 @@ use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
 use App\Http\Requests\Ship\CreateShipRequest;
 use App\Http\Requests\Ship\UpdateShipRequest;
+use App\Http\Resources\Ship\ShipCollection;
 use App\Http\Resources\Ship\ShipCreatedResource;
 use App\Http\Resources\Ship\ShipResource;
 use App\Http\Resources\Ship\ShipUpdatedResource;
@@ -42,9 +43,7 @@ class ShipController extends Controller
     public function index()
     {
         return $this->successResponse(
-            ShipResource::collection(
-                $this->repository->getAll(),
-            )
+            new ShipCollection($this->repository->getAll())
         );
     }
 

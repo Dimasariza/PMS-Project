@@ -1,68 +1,342 @@
 {
     "statusCode": 200,
     "message": "Success",
-    "data": [
-        {
-            "id": 1,
-            "username": "mac73",
-            "fullname": "Cory Lakin",
-            "email": "napoleon.daugherty@example.com",
-            "workPlace": "office",
-            "status": true,
-            "document": "q5kPi6lZcXZ2epP6apHT",
-            "createdAt": "2023-04-27 12:12:17",
-            "updatedAt": "2023-04-27 12:12:17",
-            "department": {
-                "id": 3,
-                "name": "Osvaldo Rice",
-                "code": "IL",
-                "workPlace": "8142 April Falls\nJamelberg, WY 17000-8540"
-            },
-            "title": {
-                "id": 3,
-                "name": "Chief Officer",
-                "access": {
-                    "stock": false,
-                    "users": true,
-                    "jobList": true,
-                    "shipList": false,
-                    "dataSheet": true,
-                    "department": true,
-                    "shipDetails": false
-                },
-                "createdAt": "2023-04-27 12:12:15"
-            }
-        },
-        {
-            "id": 2,
-            "username": "igreen",
-            "fullname": "Leanna Torphy",
-            "email": "phyllis.conn@example.com",
-            "workPlace": "office",
-            "status": false,
-            "document": "XNkthvsxloY6OgXXLfq6",
-            "createdAt": "2023-04-27 12:12:17",
-            "updatedAt": "2023-04-27 12:12:17",
-            "department": {
-                "id": 2,
-                "name": "Prof. Antwan Hermann Sr.",
-                "code": "VI",
-                "workPlace": "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
-            },
-            "title": {
+    "data": {
+        "results": [
+            {
                 "id": 1,
-                "name": "Captain",
-                "access": {
-                    "stock": true,
-                    "users": true,
-                    "jobList": true,
-                    "shipList": true,
-                    "dataSheet": true,
-                    "department": true,
-                    "shipDetails": true
+                "username": "zack86",
+                "fullname": "Mr. Israel Gleason",
+                "email": "selmer83@example.com",
+                "workPlace": "office",
+                "status": true,
+                "document": "http://localhost:9000/eXW3zjrEUTZclnGKXn9f",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 1,
+                    "name": "Ole Gutkowski",
+                    "code": "CC",
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
                 },
-                "createdAt": "2023-04-27 12:12:15"
+                "title": {
+                    "id": 5,
+                    "name": "Second Engineer",
+                    "access": {
+                        "inbox": true,
+                        "stock": false,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": false,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": false
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 2,
+                "username": "lula94",
+                "fullname": "Drew Champlin",
+                "email": "funk.tracy@example.org",
+                "workPlace": "ship",
+                "status": false,
+                "document": "http://localhost:9000/2veVhNX7msCmRefSp6ev",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 2,
+                    "name": "Dr. Darryl Carroll I",
+                    "code": "NR",
+                    "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                },
+                "title": {
+                    "id": 4,
+                    "name": "Admin",
+                    "access": {
+                        "inbox": true,
+                        "stock": true,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": true,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": true
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 3,
+                "username": "wsteuber",
+                "fullname": "Una Rosenbaum Jr.",
+                "email": "mack81@example.com",
+                "workPlace": "ship",
+                "status": false,
+                "document": "http://localhost:9000/1uViIzaLpwhc5hOk9dMT",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 4,
+                    "name": "Miss Daisy Lakin",
+                    "code": "KH",
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                },
+                "title": {
+                    "id": 1,
+                    "name": "Captain",
+                    "access": {
+                        "inbox": true,
+                        "stock": true,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": true,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": true
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 4,
+                "username": "margarete.fahey",
+                "fullname": "Ms. Daniela Reichel Jr.",
+                "email": "bailee.greenfelder@example.com",
+                "workPlace": "ship",
+                "status": true,
+                "document": "http://localhost:9000/GhIUL6Cobk3YuUz7phxO",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 1,
+                    "name": "Ole Gutkowski",
+                    "code": "CC",
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                },
+                "title": {
+                    "id": 5,
+                    "name": "Second Engineer",
+                    "access": {
+                        "inbox": true,
+                        "stock": false,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": false,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": false
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 5,
+                "username": "kayleigh86",
+                "fullname": "Thalia Cummerata",
+                "email": "fvolkman@example.org",
+                "workPlace": "ship",
+                "status": false,
+                "document": "http://localhost:9000/MJzuwrehVhbzmsnjvko7",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 1,
+                    "name": "Ole Gutkowski",
+                    "code": "CC",
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                },
+                "title": {
+                    "id": 1,
+                    "name": "Captain",
+                    "access": {
+                        "inbox": true,
+                        "stock": true,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": true,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": true
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 6,
+                "username": "marcus21",
+                "fullname": "Nichole Bogan",
+                "email": "janice90@example.org",
+                "workPlace": "ship",
+                "status": false,
+                "document": "http://localhost:9000/BW8ZL1FMFrEa2sYw9Mkl",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 4,
+                    "name": "Miss Daisy Lakin",
+                    "code": "KH",
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                },
+                "title": {
+                    "id": 3,
+                    "name": "Chief Officer",
+                    "access": {
+                        "inbox": true,
+                        "stock": false,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": false,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": false
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 7,
+                "username": "halvorson.dixie",
+                "fullname": "Domenico McDermott",
+                "email": "chaley@example.org",
+                "workPlace": "office",
+                "status": false,
+                "document": "http://localhost:9000/FLVcrfcYYBXoE4yDyOJg",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 3,
+                    "name": "Prof. Rosalind Paucek Sr.",
+                    "code": "BB",
+                    "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                },
+                "title": {
+                    "id": 5,
+                    "name": "Second Engineer",
+                    "access": {
+                        "inbox": true,
+                        "stock": false,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": false,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": false
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 8,
+                "username": "shanahan.kade",
+                "fullname": "Prof. Daniella Lynch II",
+                "email": "pfannerstill.tyreek@example.net",
+                "workPlace": "ship",
+                "status": false,
+                "document": "http://localhost:9000/EKFhDPU1C6CZ2lhjrPFW",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 1,
+                    "name": "Ole Gutkowski",
+                    "code": "CC",
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                },
+                "title": {
+                    "id": 4,
+                    "name": "Admin",
+                    "access": {
+                        "inbox": true,
+                        "stock": true,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": true,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": true
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 9,
+                "username": "kieran27",
+                "fullname": "Sigurd Cassin",
+                "email": "abigail.hamill@example.org",
+                "workPlace": "office",
+                "status": false,
+                "document": "http://localhost:9000/y8Dh7ZeNfBJ4ljhmo2Bz",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 4,
+                    "name": "Miss Daisy Lakin",
+                    "code": "KH",
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                },
+                "title": {
+                    "id": 2,
+                    "name": "Chief Engineer",
+                    "access": {
+                        "inbox": true,
+                        "stock": false,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": false,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": false
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
+            },
+            {
+                "id": 10,
+                "username": "price81",
+                "fullname": "Hilda Langworth Sr.",
+                "email": "laisha99@example.org",
+                "workPlace": "ship",
+                "status": true,
+                "document": "http://localhost:9000/Hxa27XYcdpd83k9EQOAm",
+                "createdAt": "2023-04-30 19:08:53",
+                "updatedAt": "2023-04-30 19:08:53",
+                "department": {
+                    "id": 1,
+                    "name": "Ole Gutkowski",
+                    "code": "CC",
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                },
+                "title": {
+                    "id": 1,
+                    "name": "Captain",
+                    "access": {
+                        "inbox": true,
+                        "stock": true,
+                        "users": true,
+                        "jobList": true,
+                        "shipList": true,
+                        "dataSheet": true,
+                        "department": true,
+                        "shipDetails": true
+                    },
+                    "createdAt": "2023-04-30 19:08:51"
+                }
             }
+        ],
+        "links": {
+            "current": "http://localhost:9000/api/v1/user?page=1",
+            "prev": null,
+            "next": "http://localhost:9000/api/v1/user?page=2",
+            "first": "http://localhost:9000/api/v1/user?page=1",
+            "last": "http://localhost:9000/api/v1/user?page=2",
+            "path": "http://localhost:9000/api/v1/user"
+        },
+        "metadata": {
+            "currentPage": 1,
+            "lastPage": 2,
+            "dataPerPage": 10,
+            "totalData": 17
         }
-    ]
+    }
 }

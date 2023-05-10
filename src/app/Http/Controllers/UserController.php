@@ -6,6 +6,7 @@ use App\DTO\User\InsertUserDTO;
 use App\DTO\User\UpdateUserDTO;
 use App\Http\Requests\User\InsertUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
+use App\Http\Resources\User\UserCollection;
 use App\Http\Resources\User\UserCreatedResource;
 use App\Http\Resources\User\UserResource;
 use App\Http\Resources\User\UserUpdatedResource;
@@ -42,7 +43,7 @@ class UserController extends Controller
     public function index()
     {
         return $this->successResponse(
-            UserResource::collection(
+            new UserCollection(
                 $this->repository->getAll(),
             )
         );

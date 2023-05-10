@@ -6,6 +6,7 @@ use {{ namespacedModel }};
 use {{ rootNamespace }}Http\Controllers\Controller;
 use App\Http\Requests\{{ model }}\Create{{ model }}Request;
 use App\Http\Requests\{{ model }}\Update{{ model }}Request;
+use App\Http\Resources\{{ model }}\{{ model }}Collection;
 use App\Http\Resources\{{ model }}\{{ model }}CreatedResource;
 use App\Http\Resources\{{ model }}\{{ model }}Resource;
 use App\Http\Resources\{{ model }}\{{ model }}UpdatedResource;
@@ -32,7 +33,7 @@ class {{ class }} extends Controller
     public function index()
     {
         return $this->successResponse(
-            {{ model }}Resource::collection(
+            new {{ model }}Collection(
                 $this->repository->getAll(),
             )
         );

@@ -1,71 +1,92 @@
 {
     "statusCode": 200,
     "message": "Success",
-    "data": [
-        {
-            "id": 1,
-            "name": "Captain",
-            "access": {
-                "stock": true,
-                "users": true,
-                "jobList": true,
-                "shipList": true,
-                "dataSheet": true,
-                "department": true,
-                "shipDetails": true
+    "data": {
+        "results": [
+            {
+                "id": 1,
+                "name": "Captain",
+                "access": {
+                    "inbox": true,
+                    "stock": true,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": true,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": true
+                }
+            },
+            {
+                "id": 2,
+                "name": "Chief Engineer",
+                "access": {
+                    "inbox": true,
+                    "stock": false,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": false,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": false
+                }
+            },
+            {
+                "id": 3,
+                "name": "Chief Officer",
+                "access": {
+                    "inbox": true,
+                    "stock": false,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": false,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": false
+                }
+            },
+            {
+                "id": 4,
+                "name": "Admin",
+                "access": {
+                    "inbox": true,
+                    "stock": true,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": true,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": true
+                }
+            },
+            {
+                "id": 5,
+                "name": "Second Engineer",
+                "access": {
+                    "inbox": true,
+                    "stock": false,
+                    "users": true,
+                    "jobList": true,
+                    "shipList": false,
+                    "dataSheet": true,
+                    "department": true,
+                    "shipDetails": false
+                }
             }
+        ],
+        "links": {
+            "current": "http://localhost:9000/api/v1/user_title?page=1",
+            "prev": null,
+            "next": null,
+            "first": "http://localhost:9000/api/v1/user_title?page=1",
+            "last": "http://localhost:9000/api/v1/user_title?page=1",
+            "path": "http://localhost:9000/api/v1/user_title"
         },
-        {
-            "id": 2,
-            "name": "Chief Engineer",
-            "access": {
-                "stock": false,
-                "users": true,
-                "jobList": true,
-                "shipList": false,
-                "dataSheet": true,
-                "department": true,
-                "shipDetails": false
-            }
-        },
-        {
-            "id": 3,
-            "name": "Chief Officer",
-            "access": {
-                "stock": false,
-                "users": true,
-                "jobList": true,
-                "shipList": false,
-                "dataSheet": true,
-                "department": true,
-                "shipDetails": false
-            }
-        },
-        {
-            "id": 4,
-            "name": "Admin",
-            "access": {
-                "stock": true,
-                "users": true,
-                "jobList": true,
-                "shipList": true,
-                "dataSheet": true,
-                "department": true,
-                "shipDetails": true
-            }
-        },
-        {
-            "id": 5,
-            "name": "Second Engineer",
-            "access": {
-                "stock": false,
-                "users": true,
-                "jobList": true,
-                "shipList": false,
-                "dataSheet": true,
-                "department": true,
-                "shipDetails": false
-            }
+        "metadata": {
+            "currentPage": 1,
+            "lastPage": 1,
+            "dataPerPage": 10,
+            "totalData": 5
         }
-    ]
+    }
 }

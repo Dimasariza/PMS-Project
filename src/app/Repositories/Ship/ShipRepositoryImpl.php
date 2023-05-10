@@ -6,8 +6,8 @@ use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
 use App\Models\Ship;
 use App\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 class ShipRepositoryImpl extends BaseRepository implements ShipRepository
@@ -17,9 +17,9 @@ class ShipRepositoryImpl extends BaseRepository implements ShipRepository
     ) {
     }
 
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return $this->model->all();
+        return $this->model::query()->paginate(10);
     }
 
     public function create(InsertShipDTO $dto): stdClass

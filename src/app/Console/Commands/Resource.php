@@ -31,5 +31,6 @@ class Resource extends Command
         Artisan::call('make:resource', ['name' => "{$model}/{$model}Resource"]);
         Artisan::call('make:resource', ['name' => "{$model}/{$model}CreatedResource"]);
         Artisan::call('make:resource', ['name' => "{$model}/{$model}UpdatedResource"]);
+        Artisan::call('make:resource', ['name' => "{$model}/{$model}Collection --collection"]);
     }
 }

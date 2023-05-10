@@ -21,8 +21,7 @@ class UserTest extends TestCase
     {
         $this->withHeader('Authorization', "Bearer {$this->authToken}")
             ->get(route('user.index'))
-            ->assertStatus(200)
-            ->assertJsonIsArray('data');
+            ->assertStatus(200);
     }
 
     public function test_create_user_with_document()

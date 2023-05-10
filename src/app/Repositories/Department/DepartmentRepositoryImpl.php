@@ -5,8 +5,8 @@ namespace App\Repositories\Department;
 use App\DTO\Department\DepartmentDTO;
 use App\Models\Department;
 use App\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepository
@@ -16,9 +16,9 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
     ) {
     }
 
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return $this->model->all(['id', 'department_name', 'department_code', 'work_place']);
+        return $this->model::query()->paginate(10, ['id', 'department_name', 'department_code', 'work_place']);
     }
 
     public function create(DepartmentDTO $dto): stdClass

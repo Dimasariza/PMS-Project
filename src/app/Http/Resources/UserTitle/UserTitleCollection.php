@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Http\Resources\UserTitle;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class {{ class }} extends ResourceCollection
+class UserTitleCollection extends ResourceCollection
 {
     public static $wrap = null;
 
@@ -29,7 +29,7 @@ class {{ class }} extends ResourceCollection
             'metadata' => [
                 'currentPage' => $this->currentPage(),
                 'lastPage' => $this->lastPage(),
-                'maxDataPerPage' => $this->perPage(),
+                'dataPerPage' => $this->perPage(),
                 'totalData' => $this->total(),
             ],
         ];

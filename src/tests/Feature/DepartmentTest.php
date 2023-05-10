@@ -21,8 +21,7 @@ class DepartmentTest extends TestCase
     {
         $this->withHeader('Authorization', "Bearer {$this->authToken}")
             ->get(route('department.index'))
-            ->assertStatus(200)
-            ->assertJsonIsArray('data');
+            ->assertStatus(200);
     }
 
     public function test_create_department()

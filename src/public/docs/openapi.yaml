@@ -263,51 +263,7 @@ paths:
                   statusCode: 200
                   message: Success
                   data:
-                    -
-                      id: 1
-                      name: 'Ole Gutkowski'
-                      code: CC
-                      workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                    -
-                      id: 2
-                      name: 'Dr. Darryl Carroll I'
-                      code: NR
-                      workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
-                    -
-                      id: 3
-                      name: 'Prof. Rosalind Paucek Sr.'
-                      code: BB
-                      workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
-                    -
-                      id: 4
-                      name: 'Miss Daisy Lakin'
-                      code: KH
-                      workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                    -
-                      id: 5
-                      name: 'Marques Dach'
-                      code: NZ
-                      workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
-                    -
-                      id: 6
-                      name: Samsudin
-                      code: SB-12324
-                      workPlace: ship
-                    -
-                      id: 7
-                      name: Samsudin
-                      code: SB-1234
-                      workPlace: ship
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 200
-                  message:
-                    type: string
-                    example: Success
-                  data:
-                    type: array
-                    example:
+                    results:
                       -
                         id: 1
                         name: 'Ole Gutkowski'
@@ -343,21 +299,127 @@ paths:
                         name: Samsudin
                         code: SB-1234
                         workPlace: ship
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                        name:
-                          type: string
-                          example: 'Ole Gutkowski'
-                        code:
-                          type: string
-                          example: CC
-                        workPlace:
-                          type: string
-                          example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                      -
+                        id: 9
+                        name: 'Project Department'
+                        code: SB-789
+                        workPlace: ship
+                    links:
+                      current: 'http://localhost:9000/api/v1/department?page=1'
+                      prev: null
+                      next: null
+                      first: 'http://localhost:9000/api/v1/department?page=1'
+                      last: 'http://localhost:9000/api/v1/department?page=1'
+                      path: 'http://localhost:9000/api/v1/department'
+                    metadata:
+                      currentPage: 1
+                      lastPage: 1
+                      dataPerPage: 10
+                      totalData: 8
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: 'Ole Gutkowski'
+                            code: CC
+                            workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                          -
+                            id: 2
+                            name: 'Dr. Darryl Carroll I'
+                            code: NR
+                            workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                          -
+                            id: 3
+                            name: 'Prof. Rosalind Paucek Sr.'
+                            code: BB
+                            workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                          -
+                            id: 4
+                            name: 'Miss Daisy Lakin'
+                            code: KH
+                            workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                          -
+                            id: 5
+                            name: 'Marques Dach'
+                            code: NZ
+                            workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
+                          -
+                            id: 6
+                            name: Samsudin
+                            code: SB-12324
+                            workPlace: ship
+                          -
+                            id: 7
+                            name: Samsudin
+                            code: SB-1234
+                            workPlace: ship
+                          -
+                            id: 9
+                            name: 'Project Department'
+                            code: SB-789
+                            workPlace: ship
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: 'Ole Gutkowski'
+                            code:
+                              type: string
+                              example: CC
+                            workPlace:
+                              type: string
+                              example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                      links:
+                        type: object
+                        properties:
+                          current:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/department?page=1'
+                          prev:
+                            type: string
+                            example: null
+                          next:
+                            type: string
+                            example: null
+                          first:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/department?page=1'
+                          last:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/department?page=1'
+                          path:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/department'
+                      metadata:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          lastPage:
+                            type: integer
+                            example: 1
+                          dataPerPage:
+                            type: integer
+                            example: 10
+                          totalData:
+                            type: integer
+                            example: 8
       tags:
         - Department
     post:
@@ -632,44 +694,7 @@ paths:
                   statusCode: 200
                   message: Success
                   data:
-                    -
-                      id: 13
-                      imoNumber: IMO123
-                      vesselName: Vessel
-                      flag: INDO
-                      picture: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
-                      dwt: 2023
-                      grossTonage: 1000
-                      year: 2023
-                      callsign: Callsign
-                      LOA: 10.05
-                      breadth: 10.05
-                      vesselTypeGeneric: Generic
-                      vesselTypeDetailed: Detailed
-                    -
-                      id: 14
-                      imoNumber: IMO123
-                      vesselName: Vessel
-                      flag: INDO
-                      picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
-                      dwt: 2023
-                      grossTonage: 1000
-                      year: 2023
-                      callsign: Callsign
-                      LOA: 10.05
-                      breadth: 10.05
-                      vesselTypeGeneric: Generic
-                      vesselTypeDetailed: Detailed
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 200
-                  message:
-                    type: string
-                    example: Success
-                  data:
-                    type: array
-                    example:
+                    results:
                       -
                         id: 13
                         imoNumber: IMO123
@@ -685,11 +710,11 @@ paths:
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
                       -
-                        id: 14
-                        imoNumber: IMO123
+                        id: 15
+                        imoNumber: IMO123456123
                         vesselName: Vessel
                         flag: INDO
-                        picture: 'http://localhost:9000/api/v1/assets/ships/4ZjPRSrbdxG7r7U6I8GU4VrjBpitB2EvzojSvl75.jpg'
+                        picture: 'http://localhost:9000/storage/ships/ZHtKSJmzKOXgOGMuXvfsoIov3iVzrUCvzDLZJ3bf.jpg'
                         dwt: 2023
                         grossTonage: 1000
                         year: 2023
@@ -698,48 +723,333 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 13
-                        imoNumber:
-                          type: string
-                          example: IMO123
-                        vesselName:
-                          type: string
-                          example: Vessel
-                        flag:
-                          type: string
-                          example: INDO
-                        picture:
-                          type: string
-                          example: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
-                        dwt:
-                          type: integer
-                          example: 2023
-                        grossTonage:
-                          type: integer
-                          example: 1000
-                        year:
-                          type: integer
-                          example: 2023
-                        callsign:
-                          type: string
-                          example: Callsign
-                        LOA:
-                          type: number
-                          example: 10.05
-                        breadth:
-                          type: number
-                          example: 10.05
-                        vesselTypeGeneric:
-                          type: string
-                          example: Generic
-                        vesselTypeDetailed:
-                          type: string
-                          example: Detailed
+                      -
+                        id: 16
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/pDJLrbUL1J3rZRlmdw7yaeAyFRmLHlUCTFzBgizI.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 17
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: ID
+                        picture: 'http://localhost:9000/storage/ships/CXhWXXpZuNkdyMQMADf6k3u4ZLWN0mD8o1b2QVda.png'
+                        dwt: 1000
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: voluptatem
+                        LOA: 10.05
+                        breadth: 11.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 18
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/w7Ae66x35Oo2kXLLpRRho6qTP7GqkqQrBaeM7lDv.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 19
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/QZW6javy1lm6rz2r0U5ZduQUfVIlkxKYgKTJBAuN.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 20
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/kjIEETiwJGZ16kb4ZG6bSI0HFufoaEWzHzMMjKuH.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 21
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/fvbaO9lZ7OXVujICYb8bIAqS677YfTGVj8RdkrV3.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                      -
+                        id: 22
+                        imoNumber: IMO69
+                        vesselName: Vessel
+                        flag: INDO
+                        picture: 'http://localhost:9000/storage/ships/4lIrpDlSyN7MBGGiqG6ACFivfqhlPmruUKzQf1e9.jpg'
+                        dwt: 2023
+                        grossTonage: 1000
+                        year: 2023
+                        callsign: Callsign
+                        LOA: 10.05
+                        breadth: 10.05
+                        vesselTypeGeneric: Generic
+                        vesselTypeDetailed: Detailed
+                    links:
+                      current: 'http://localhost:9000/api/v1/ship?page=1'
+                      prev: null
+                      next: 'http://localhost:9000/api/v1/ship?page=2'
+                      first: 'http://localhost:9000/api/v1/ship?page=1'
+                      last: 'http://localhost:9000/api/v1/ship?page=2'
+                      path: 'http://localhost:9000/api/v1/ship'
+                    metadata:
+                      currentPage: 1
+                      lastPage: 2
+                      dataPerPage: 10
+                      totalData: 13
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        example:
+                          -
+                            id: 13
+                            imoNumber: IMO123
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 15
+                            imoNumber: IMO123456123
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/ZHtKSJmzKOXgOGMuXvfsoIov3iVzrUCvzDLZJ3bf.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 16
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/pDJLrbUL1J3rZRlmdw7yaeAyFRmLHlUCTFzBgizI.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 17
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: ID
+                            picture: 'http://localhost:9000/storage/ships/CXhWXXpZuNkdyMQMADf6k3u4ZLWN0mD8o1b2QVda.png'
+                            dwt: 1000
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: voluptatem
+                            LOA: 10.05
+                            breadth: 11.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 18
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/w7Ae66x35Oo2kXLLpRRho6qTP7GqkqQrBaeM7lDv.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 19
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/QZW6javy1lm6rz2r0U5ZduQUfVIlkxKYgKTJBAuN.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 20
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/kjIEETiwJGZ16kb4ZG6bSI0HFufoaEWzHzMMjKuH.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 21
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/fvbaO9lZ7OXVujICYb8bIAqS677YfTGVj8RdkrV3.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                          -
+                            id: 22
+                            imoNumber: IMO69
+                            vesselName: Vessel
+                            flag: INDO
+                            picture: 'http://localhost:9000/storage/ships/4lIrpDlSyN7MBGGiqG6ACFivfqhlPmruUKzQf1e9.jpg'
+                            dwt: 2023
+                            grossTonage: 1000
+                            year: 2023
+                            callsign: Callsign
+                            LOA: 10.05
+                            breadth: 10.05
+                            vesselTypeGeneric: Generic
+                            vesselTypeDetailed: Detailed
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 13
+                            imoNumber:
+                              type: string
+                              example: IMO123
+                            vesselName:
+                              type: string
+                              example: Vessel
+                            flag:
+                              type: string
+                              example: INDO
+                            picture:
+                              type: string
+                              example: 'http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg'
+                            dwt:
+                              type: integer
+                              example: 2023
+                            grossTonage:
+                              type: integer
+                              example: 1000
+                            year:
+                              type: integer
+                              example: 2023
+                            callsign:
+                              type: string
+                              example: Callsign
+                            LOA:
+                              type: number
+                              example: 10.05
+                            breadth:
+                              type: number
+                              example: 10.05
+                            vesselTypeGeneric:
+                              type: string
+                              example: Generic
+                            vesselTypeDetailed:
+                              type: string
+                              example: Detailed
+                      links:
+                        type: object
+                        properties:
+                          current:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/ship?page=1'
+                          prev:
+                            type: string
+                            example: null
+                          next:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/ship?page=2'
+                          first:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/ship?page=1'
+                          last:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/ship?page=2'
+                          path:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/ship'
+                      metadata:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          lastPage:
+                            type: integer
+                            example: 2
+                          dataPerPage:
+                            type: integer
+                            example: 10
+                          totalData:
+                            type: integer
+                            example: 13
       tags:
         - Ship
     post:
@@ -871,7 +1181,7 @@ paths:
                 callsign:
                   type: string
                   description: ''
-                  example: soluta
+                  example: nobis
                 LOA:
                   type: string
                   description: 'LOA of ship (type float).'
@@ -1159,7 +1469,7 @@ paths:
                 callsign:
                   type: string
                   description: ''
-                  example: quo
+                  example: vero
                 LOA:
                   type: string
                   description: 'LOA of ship (type float).'
@@ -1221,60 +1531,299 @@ paths:
                   statusCode: 200
                   message: Success
                   data:
-                    -
-                      id: 1
-                      username: mac73
-                      fullname: 'Cory Lakin'
-                      email: napoleon.daugherty@example.com
-                      workPlace: office
-                      status: true
-                      document: q5kPi6lZcXZ2epP6apHT
-                      createdAt: '2023-04-27 12:12:17'
-                      updatedAt: '2023-04-27 12:12:17'
-                      department:
-                        id: 3
-                        name: 'Osvaldo Rice'
-                        code: IL
-                        workPlace: "8142 April Falls\nJamelberg, WY 17000-8540"
-                      title:
-                        id: 3
-                        name: 'Chief Officer'
-                        access:
-                          stock: false
-                          users: true
-                          jobList: true
-                          shipList: false
-                          dataSheet: true
-                          department: true
-                          shipDetails: false
-                        createdAt: '2023-04-27 12:12:15'
-                    -
-                      id: 2
-                      username: igreen
-                      fullname: 'Leanna Torphy'
-                      email: phyllis.conn@example.com
-                      workPlace: office
-                      status: false
-                      document: XNkthvsxloY6OgXXLfq6
-                      createdAt: '2023-04-27 12:12:17'
-                      updatedAt: '2023-04-27 12:12:17'
-                      department:
-                        id: 2
-                        name: 'Prof. Antwan Hermann Sr.'
-                        code: VI
-                        workPlace: "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
-                      title:
+                    results:
+                      -
                         id: 1
-                        name: Captain
-                        access:
-                          stock: true
-                          users: true
-                          jobList: true
-                          shipList: true
-                          dataSheet: true
-                          department: true
-                          shipDetails: true
-                        createdAt: '2023-04-27 12:12:15'
+                        username: zack86
+                        fullname: 'Mr. Israel Gleason'
+                        email: selmer83@example.com
+                        workPlace: office
+                        status: true
+                        document: 'http://localhost:9000/eXW3zjrEUTZclnGKXn9f'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 1
+                          name: 'Ole Gutkowski'
+                          code: CC
+                          workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        title:
+                          id: 5
+                          name: 'Second Engineer'
+                          access:
+                            inbox: true
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 2
+                        username: lula94
+                        fullname: 'Drew Champlin'
+                        email: funk.tracy@example.org
+                        workPlace: ship
+                        status: false
+                        document: 'http://localhost:9000/2veVhNX7msCmRefSp6ev'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 2
+                          name: 'Dr. Darryl Carroll I'
+                          code: NR
+                          workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                        title:
+                          id: 4
+                          name: Admin
+                          access:
+                            inbox: true
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 3
+                        username: wsteuber
+                        fullname: 'Una Rosenbaum Jr.'
+                        email: mack81@example.com
+                        workPlace: ship
+                        status: false
+                        document: 'http://localhost:9000/1uViIzaLpwhc5hOk9dMT'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 4
+                          name: 'Miss Daisy Lakin'
+                          code: KH
+                          workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                        title:
+                          id: 1
+                          name: Captain
+                          access:
+                            inbox: true
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 4
+                        username: margarete.fahey
+                        fullname: 'Ms. Daniela Reichel Jr.'
+                        email: bailee.greenfelder@example.com
+                        workPlace: ship
+                        status: true
+                        document: 'http://localhost:9000/GhIUL6Cobk3YuUz7phxO'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 1
+                          name: 'Ole Gutkowski'
+                          code: CC
+                          workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        title:
+                          id: 5
+                          name: 'Second Engineer'
+                          access:
+                            inbox: true
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 5
+                        username: kayleigh86
+                        fullname: 'Thalia Cummerata'
+                        email: fvolkman@example.org
+                        workPlace: ship
+                        status: false
+                        document: 'http://localhost:9000/MJzuwrehVhbzmsnjvko7'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 1
+                          name: 'Ole Gutkowski'
+                          code: CC
+                          workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        title:
+                          id: 1
+                          name: Captain
+                          access:
+                            inbox: true
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 6
+                        username: marcus21
+                        fullname: 'Nichole Bogan'
+                        email: janice90@example.org
+                        workPlace: ship
+                        status: false
+                        document: 'http://localhost:9000/BW8ZL1FMFrEa2sYw9Mkl'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 4
+                          name: 'Miss Daisy Lakin'
+                          code: KH
+                          workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                        title:
+                          id: 3
+                          name: 'Chief Officer'
+                          access:
+                            inbox: true
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 7
+                        username: halvorson.dixie
+                        fullname: 'Domenico McDermott'
+                        email: chaley@example.org
+                        workPlace: office
+                        status: false
+                        document: 'http://localhost:9000/FLVcrfcYYBXoE4yDyOJg'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 3
+                          name: 'Prof. Rosalind Paucek Sr.'
+                          code: BB
+                          workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                        title:
+                          id: 5
+                          name: 'Second Engineer'
+                          access:
+                            inbox: true
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 8
+                        username: shanahan.kade
+                        fullname: 'Prof. Daniella Lynch II'
+                        email: pfannerstill.tyreek@example.net
+                        workPlace: ship
+                        status: false
+                        document: 'http://localhost:9000/EKFhDPU1C6CZ2lhjrPFW'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 1
+                          name: 'Ole Gutkowski'
+                          code: CC
+                          workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        title:
+                          id: 4
+                          name: Admin
+                          access:
+                            inbox: true
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 9
+                        username: kieran27
+                        fullname: 'Sigurd Cassin'
+                        email: abigail.hamill@example.org
+                        workPlace: office
+                        status: false
+                        document: 'http://localhost:9000/y8Dh7ZeNfBJ4ljhmo2Bz'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 4
+                          name: 'Miss Daisy Lakin'
+                          code: KH
+                          workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                        title:
+                          id: 2
+                          name: 'Chief Engineer'
+                          access:
+                            inbox: true
+                            stock: false
+                            users: true
+                            jobList: true
+                            shipList: false
+                            dataSheet: true
+                            department: true
+                            shipDetails: false
+                          createdAt: '2023-04-30 19:08:51'
+                      -
+                        id: 10
+                        username: price81
+                        fullname: 'Hilda Langworth Sr.'
+                        email: laisha99@example.org
+                        workPlace: ship
+                        status: true
+                        document: 'http://localhost:9000/Hxa27XYcdpd83k9EQOAm'
+                        createdAt: '2023-04-30 19:08:53'
+                        updatedAt: '2023-04-30 19:08:53'
+                        department:
+                          id: 1
+                          name: 'Ole Gutkowski'
+                          code: CC
+                          workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        title:
+                          id: 1
+                          name: Captain
+                          access:
+                            inbox: true
+                            stock: true
+                            users: true
+                            jobList: true
+                            shipList: true
+                            dataSheet: true
+                            department: true
+                            shipDetails: true
+                          createdAt: '2023-04-30 19:08:51'
+                    links:
+                      current: 'http://localhost:9000/api/v1/user?page=1'
+                      prev: null
+                      next: 'http://localhost:9000/api/v1/user?page=2'
+                      first: 'http://localhost:9000/api/v1/user?page=1'
+                      last: 'http://localhost:9000/api/v1/user?page=2'
+                      path: 'http://localhost:9000/api/v1/user'
+                    metadata:
+                      currentPage: 1
+                      lastPage: 2
+                      dataPerPage: 10
+                      totalData: 17
                 properties:
                   statusCode:
                     type: integer
@@ -1283,143 +1832,411 @@ paths:
                     type: string
                     example: Success
                   data:
-                    type: array
-                    example:
-                      -
-                        id: 1
-                        username: mac73
-                        fullname: 'Cory Lakin'
-                        email: napoleon.daugherty@example.com
-                        workPlace: office
-                        status: true
-                        document: q5kPi6lZcXZ2epP6apHT
-                        createdAt: '2023-04-27 12:12:17'
-                        updatedAt: '2023-04-27 12:12:17'
-                        department:
-                          id: 3
-                          name: 'Osvaldo Rice'
-                          code: IL
-                          workPlace: "8142 April Falls\nJamelberg, WY 17000-8540"
-                        title:
-                          id: 3
-                          name: 'Chief Officer'
-                          access:
-                            stock: false
-                            users: true
-                            jobList: true
-                            shipList: false
-                            dataSheet: true
-                            department: true
-                            shipDetails: false
-                          createdAt: '2023-04-27 12:12:15'
-                      -
-                        id: 2
-                        username: igreen
-                        fullname: 'Leanna Torphy'
-                        email: phyllis.conn@example.com
-                        workPlace: office
-                        status: false
-                        document: XNkthvsxloY6OgXXLfq6
-                        createdAt: '2023-04-27 12:12:17'
-                        updatedAt: '2023-04-27 12:12:17'
-                        department:
-                          id: 2
-                          name: 'Prof. Antwan Hermann Sr.'
-                          code: VI
-                          workPlace: "664 Kuhic Parks\nAnthonyville, CA 81454-3650"
-                        title:
-                          id: 1
-                          name: Captain
-                          access:
-                            stock: true
-                            users: true
-                            jobList: true
-                            shipList: true
-                            dataSheet: true
-                            department: true
-                            shipDetails: true
-                          createdAt: '2023-04-27 12:12:15'
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                        username:
-                          type: string
-                          example: mac73
-                        fullname:
-                          type: string
-                          example: 'Cory Lakin'
-                        email:
-                          type: string
-                          example: napoleon.daugherty@example.com
-                        workPlace:
-                          type: string
-                          example: office
-                        status:
-                          type: boolean
-                          example: true
-                        document:
-                          type: string
-                          example: q5kPi6lZcXZ2epP6apHT
-                        createdAt:
-                          type: string
-                          example: '2023-04-27 12:12:17'
-                        updatedAt:
-                          type: string
-                          example: '2023-04-27 12:12:17'
-                        department:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            username: zack86
+                            fullname: 'Mr. Israel Gleason'
+                            email: selmer83@example.com
+                            workPlace: office
+                            status: true
+                            document: 'http://localhost:9000/eXW3zjrEUTZclnGKXn9f'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 1
+                              name: 'Ole Gutkowski'
+                              code: CC
+                              workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              id: 5
+                              name: 'Second Engineer'
+                              access:
+                                inbox: true
+                                stock: false
+                                users: true
+                                jobList: true
+                                shipList: false
+                                dataSheet: true
+                                department: true
+                                shipDetails: false
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 2
+                            username: lula94
+                            fullname: 'Drew Champlin'
+                            email: funk.tracy@example.org
+                            workPlace: ship
+                            status: false
+                            document: 'http://localhost:9000/2veVhNX7msCmRefSp6ev'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 2
+                              name: 'Dr. Darryl Carroll I'
+                              code: NR
+                              workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                            title:
+                              id: 4
+                              name: Admin
+                              access:
+                                inbox: true
+                                stock: true
+                                users: true
+                                jobList: true
+                                shipList: true
+                                dataSheet: true
+                                department: true
+                                shipDetails: true
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 3
+                            username: wsteuber
+                            fullname: 'Una Rosenbaum Jr.'
+                            email: mack81@example.com
+                            workPlace: ship
+                            status: false
+                            document: 'http://localhost:9000/1uViIzaLpwhc5hOk9dMT'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 4
+                              name: 'Miss Daisy Lakin'
+                              code: KH
+                              workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                            title:
+                              id: 1
+                              name: Captain
+                              access:
+                                inbox: true
+                                stock: true
+                                users: true
+                                jobList: true
+                                shipList: true
+                                dataSheet: true
+                                department: true
+                                shipDetails: true
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 4
+                            username: margarete.fahey
+                            fullname: 'Ms. Daniela Reichel Jr.'
+                            email: bailee.greenfelder@example.com
+                            workPlace: ship
+                            status: true
+                            document: 'http://localhost:9000/GhIUL6Cobk3YuUz7phxO'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 1
+                              name: 'Ole Gutkowski'
+                              code: CC
+                              workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              id: 5
+                              name: 'Second Engineer'
+                              access:
+                                inbox: true
+                                stock: false
+                                users: true
+                                jobList: true
+                                shipList: false
+                                dataSheet: true
+                                department: true
+                                shipDetails: false
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 5
+                            username: kayleigh86
+                            fullname: 'Thalia Cummerata'
+                            email: fvolkman@example.org
+                            workPlace: ship
+                            status: false
+                            document: 'http://localhost:9000/MJzuwrehVhbzmsnjvko7'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 1
+                              name: 'Ole Gutkowski'
+                              code: CC
+                              workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              id: 1
+                              name: Captain
+                              access:
+                                inbox: true
+                                stock: true
+                                users: true
+                                jobList: true
+                                shipList: true
+                                dataSheet: true
+                                department: true
+                                shipDetails: true
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 6
+                            username: marcus21
+                            fullname: 'Nichole Bogan'
+                            email: janice90@example.org
+                            workPlace: ship
+                            status: false
+                            document: 'http://localhost:9000/BW8ZL1FMFrEa2sYw9Mkl'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 4
+                              name: 'Miss Daisy Lakin'
+                              code: KH
+                              workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                            title:
+                              id: 3
+                              name: 'Chief Officer'
+                              access:
+                                inbox: true
+                                stock: false
+                                users: true
+                                jobList: true
+                                shipList: false
+                                dataSheet: true
+                                department: true
+                                shipDetails: false
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 7
+                            username: halvorson.dixie
+                            fullname: 'Domenico McDermott'
+                            email: chaley@example.org
+                            workPlace: office
+                            status: false
+                            document: 'http://localhost:9000/FLVcrfcYYBXoE4yDyOJg'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 3
+                              name: 'Prof. Rosalind Paucek Sr.'
+                              code: BB
+                              workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                            title:
+                              id: 5
+                              name: 'Second Engineer'
+                              access:
+                                inbox: true
+                                stock: false
+                                users: true
+                                jobList: true
+                                shipList: false
+                                dataSheet: true
+                                department: true
+                                shipDetails: false
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 8
+                            username: shanahan.kade
+                            fullname: 'Prof. Daniella Lynch II'
+                            email: pfannerstill.tyreek@example.net
+                            workPlace: ship
+                            status: false
+                            document: 'http://localhost:9000/EKFhDPU1C6CZ2lhjrPFW'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 1
+                              name: 'Ole Gutkowski'
+                              code: CC
+                              workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              id: 4
+                              name: Admin
+                              access:
+                                inbox: true
+                                stock: true
+                                users: true
+                                jobList: true
+                                shipList: true
+                                dataSheet: true
+                                department: true
+                                shipDetails: true
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 9
+                            username: kieran27
+                            fullname: 'Sigurd Cassin'
+                            email: abigail.hamill@example.org
+                            workPlace: office
+                            status: false
+                            document: 'http://localhost:9000/y8Dh7ZeNfBJ4ljhmo2Bz'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 4
+                              name: 'Miss Daisy Lakin'
+                              code: KH
+                              workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                            title:
+                              id: 2
+                              name: 'Chief Engineer'
+                              access:
+                                inbox: true
+                                stock: false
+                                users: true
+                                jobList: true
+                                shipList: false
+                                dataSheet: true
+                                department: true
+                                shipDetails: false
+                              createdAt: '2023-04-30 19:08:51'
+                          -
+                            id: 10
+                            username: price81
+                            fullname: 'Hilda Langworth Sr.'
+                            email: laisha99@example.org
+                            workPlace: ship
+                            status: true
+                            document: 'http://localhost:9000/Hxa27XYcdpd83k9EQOAm'
+                            createdAt: '2023-04-30 19:08:53'
+                            updatedAt: '2023-04-30 19:08:53'
+                            department:
+                              id: 1
+                              name: 'Ole Gutkowski'
+                              code: CC
+                              workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              id: 1
+                              name: Captain
+                              access:
+                                inbox: true
+                                stock: true
+                                users: true
+                                jobList: true
+                                shipList: true
+                                dataSheet: true
+                                department: true
+                                shipDetails: true
+                              createdAt: '2023-04-30 19:08:51'
+                        items:
                           type: object
                           properties:
                             id:
                               type: integer
-                              example: 3
-                            name:
+                              example: 1
+                            username:
                               type: string
-                              example: 'Osvaldo Rice'
-                            code:
+                              example: zack86
+                            fullname:
                               type: string
-                              example: IL
+                              example: 'Mr. Israel Gleason'
+                            email:
+                              type: string
+                              example: selmer83@example.com
                             workPlace:
                               type: string
-                              example: "8142 April Falls\nJamelberg, WY 17000-8540"
-                        title:
-                          type: object
-                          properties:
-                            id:
-                              type: integer
-                              example: 3
-                            name:
+                              example: office
+                            status:
+                              type: boolean
+                              example: true
+                            document:
                               type: string
-                              example: 'Chief Officer'
-                            access:
-                              type: object
-                              properties:
-                                stock:
-                                  type: boolean
-                                  example: false
-                                users:
-                                  type: boolean
-                                  example: true
-                                jobList:
-                                  type: boolean
-                                  example: true
-                                shipList:
-                                  type: boolean
-                                  example: false
-                                dataSheet:
-                                  type: boolean
-                                  example: true
-                                department:
-                                  type: boolean
-                                  example: true
-                                shipDetails:
-                                  type: boolean
-                                  example: false
+                              example: 'http://localhost:9000/eXW3zjrEUTZclnGKXn9f'
                             createdAt:
                               type: string
-                              example: '2023-04-27 12:12:15'
+                              example: '2023-04-30 19:08:53'
+                            updatedAt:
+                              type: string
+                              example: '2023-04-30 19:08:53'
+                            department:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 1
+                                name:
+                                  type: string
+                                  example: 'Ole Gutkowski'
+                                code:
+                                  type: string
+                                  example: CC
+                                workPlace:
+                                  type: string
+                                  example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            title:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 5
+                                name:
+                                  type: string
+                                  example: 'Second Engineer'
+                                access:
+                                  type: object
+                                  properties:
+                                    inbox:
+                                      type: boolean
+                                      example: true
+                                    stock:
+                                      type: boolean
+                                      example: false
+                                    users:
+                                      type: boolean
+                                      example: true
+                                    jobList:
+                                      type: boolean
+                                      example: true
+                                    shipList:
+                                      type: boolean
+                                      example: false
+                                    dataSheet:
+                                      type: boolean
+                                      example: true
+                                    department:
+                                      type: boolean
+                                      example: true
+                                    shipDetails:
+                                      type: boolean
+                                      example: false
+                                createdAt:
+                                  type: string
+                                  example: '2023-04-30 19:08:51'
+                      links:
+                        type: object
+                        properties:
+                          current:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user?page=1'
+                          prev:
+                            type: string
+                            example: null
+                          next:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user?page=2'
+                          first:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user?page=1'
+                          last:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user?page=2'
+                          path:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user'
+                      metadata:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          lastPage:
+                            type: integer
+                            example: 2
+                          dataPerPage:
+                            type: integer
+                            example: 10
+                          totalData:
+                            type: integer
+                            example: 17
       tags:
         - User
     post:
@@ -1960,75 +2777,12 @@ paths:
                   statusCode: 200
                   message: Success
                   data:
-                    -
-                      id: 1
-                      name: Captain
-                      access:
-                        stock: true
-                        users: true
-                        jobList: true
-                        shipList: true
-                        dataSheet: true
-                        department: true
-                        shipDetails: true
-                    -
-                      id: 2
-                      name: 'Chief Engineer'
-                      access:
-                        stock: false
-                        users: true
-                        jobList: true
-                        shipList: false
-                        dataSheet: true
-                        department: true
-                        shipDetails: false
-                    -
-                      id: 3
-                      name: 'Chief Officer'
-                      access:
-                        stock: false
-                        users: true
-                        jobList: true
-                        shipList: false
-                        dataSheet: true
-                        department: true
-                        shipDetails: false
-                    -
-                      id: 4
-                      name: Admin
-                      access:
-                        stock: true
-                        users: true
-                        jobList: true
-                        shipList: true
-                        dataSheet: true
-                        department: true
-                        shipDetails: true
-                    -
-                      id: 5
-                      name: 'Second Engineer'
-                      access:
-                        stock: false
-                        users: true
-                        jobList: true
-                        shipList: false
-                        dataSheet: true
-                        department: true
-                        shipDetails: false
-                properties:
-                  statusCode:
-                    type: integer
-                    example: 200
-                  message:
-                    type: string
-                    example: Success
-                  data:
-                    type: array
-                    example:
+                    results:
                       -
                         id: 1
                         name: Captain
                         access:
+                          inbox: true
                           stock: true
                           users: true
                           jobList: true
@@ -2040,6 +2794,7 @@ paths:
                         id: 2
                         name: 'Chief Engineer'
                         access:
+                          inbox: true
                           stock: false
                           users: true
                           jobList: true
@@ -2051,6 +2806,7 @@ paths:
                         id: 3
                         name: 'Chief Officer'
                         access:
+                          inbox: true
                           stock: false
                           users: true
                           jobList: true
@@ -2062,6 +2818,7 @@ paths:
                         id: 4
                         name: Admin
                         access:
+                          inbox: true
                           stock: true
                           users: true
                           jobList: true
@@ -2073,6 +2830,7 @@ paths:
                         id: 5
                         name: 'Second Engineer'
                         access:
+                          inbox: true
                           stock: false
                           users: true
                           jobList: true
@@ -2080,39 +2838,163 @@ paths:
                           dataSheet: true
                           department: true
                           shipDetails: false
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: integer
-                          example: 1
-                        name:
-                          type: string
-                          example: Captain
-                        access:
+                    links:
+                      current: 'http://localhost:9000/api/v1/user_title?page=1'
+                      prev: null
+                      next: null
+                      first: 'http://localhost:9000/api/v1/user_title?page=1'
+                      last: 'http://localhost:9000/api/v1/user_title?page=1'
+                      path: 'http://localhost:9000/api/v1/user_title'
+                    metadata:
+                      currentPage: 1
+                      lastPage: 1
+                      dataPerPage: 10
+                      totalData: 5
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        example:
+                          -
+                            id: 1
+                            name: Captain
+                            access:
+                              inbox: true
+                              stock: true
+                              users: true
+                              jobList: true
+                              shipList: true
+                              dataSheet: true
+                              department: true
+                              shipDetails: true
+                          -
+                            id: 2
+                            name: 'Chief Engineer'
+                            access:
+                              inbox: true
+                              stock: false
+                              users: true
+                              jobList: true
+                              shipList: false
+                              dataSheet: true
+                              department: true
+                              shipDetails: false
+                          -
+                            id: 3
+                            name: 'Chief Officer'
+                            access:
+                              inbox: true
+                              stock: false
+                              users: true
+                              jobList: true
+                              shipList: false
+                              dataSheet: true
+                              department: true
+                              shipDetails: false
+                          -
+                            id: 4
+                            name: Admin
+                            access:
+                              inbox: true
+                              stock: true
+                              users: true
+                              jobList: true
+                              shipList: true
+                              dataSheet: true
+                              department: true
+                              shipDetails: true
+                          -
+                            id: 5
+                            name: 'Second Engineer'
+                            access:
+                              inbox: true
+                              stock: false
+                              users: true
+                              jobList: true
+                              shipList: false
+                              dataSheet: true
+                              department: true
+                              shipDetails: false
+                        items:
                           type: object
                           properties:
-                            stock:
-                              type: boolean
-                              example: true
-                            users:
-                              type: boolean
-                              example: true
-                            jobList:
-                              type: boolean
-                              example: true
-                            shipList:
-                              type: boolean
-                              example: true
-                            dataSheet:
-                              type: boolean
-                              example: true
-                            department:
-                              type: boolean
-                              example: true
-                            shipDetails:
-                              type: boolean
-                              example: true
+                            id:
+                              type: integer
+                              example: 1
+                            name:
+                              type: string
+                              example: Captain
+                            access:
+                              type: object
+                              properties:
+                                inbox:
+                                  type: boolean
+                                  example: true
+                                stock:
+                                  type: boolean
+                                  example: true
+                                users:
+                                  type: boolean
+                                  example: true
+                                jobList:
+                                  type: boolean
+                                  example: true
+                                shipList:
+                                  type: boolean
+                                  example: true
+                                dataSheet:
+                                  type: boolean
+                                  example: true
+                                department:
+                                  type: boolean
+                                  example: true
+                                shipDetails:
+                                  type: boolean
+                                  example: true
+                      links:
+                        type: object
+                        properties:
+                          current:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user_title?page=1'
+                          prev:
+                            type: string
+                            example: null
+                          next:
+                            type: string
+                            example: null
+                          first:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user_title?page=1'
+                          last:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user_title?page=1'
+                          path:
+                            type: string
+                            example: 'http://localhost:9000/api/v1/user_title'
+                      metadata:
+                        type: object
+                        properties:
+                          currentPage:
+                            type: integer
+                            example: 1
+                          lastPage:
+                            type: integer
+                            example: 1
+                          dataPerPage:
+                            type: integer
+                            example: 10
+                          totalData:
+                            type: integer
+                            example: 5
       tags:
         - 'User Title'
     post:

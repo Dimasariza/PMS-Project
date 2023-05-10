@@ -4,12 +4,12 @@ namespace App\Repositories\Ship;
 
 use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 interface ShipRepository
 {
-    public function getAll(): Collection;
+    public function getAll(): LengthAwarePaginator;
 
     public function create(InsertShipDTO $dto): stdClass;
 

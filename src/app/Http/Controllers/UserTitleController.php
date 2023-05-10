@@ -6,6 +6,7 @@ use App\DTO\UserTitle\UserTitleDTO;
 use App\Http\Requests\UserTitle\InsertUserTitleRequest;
 use App\Http\Requests\UserTitle\UpdateUserTitleRequest;
 use App\Http\Resources\UserTitle\UpdatedUserTitleResource;
+use App\Http\Resources\UserTitle\UserTitleCollection;
 use App\Http\Resources\UserTitle\UserTitleResource;
 use App\Repositories\UserTitle\UserTitleRepository;
 use App\Traits\APIResponse;
@@ -40,7 +41,7 @@ class UserTitleController extends Controller
     public function index()
     {
         return $this->successResponse(
-            UserTitleResource::collection(
+            new UserTitleCollection(
                 $this->repository->getAll()
             )
         );

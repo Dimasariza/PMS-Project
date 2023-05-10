@@ -3,12 +3,12 @@
 namespace App\Repositories\Department;
 
 use App\DTO\Department\DepartmentDTO;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 interface DepartmentRepository
 {
-    public function getAll(): Collection;
+    public function getAll(): LengthAwarePaginator;
 
     public function create(DepartmentDTO $dto): stdClass;
 

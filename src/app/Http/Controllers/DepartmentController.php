@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\DTO\Department\DepartmentDTO;
 use App\Http\Requests\Department\CreateDepartmentRequest;
 use App\Http\Requests\Department\UpdateDepartmentRequest;
+use App\Http\Resources\Department\DepartmentCollection;
 use App\Http\Resources\Department\DepartmentCreatedResource;
 use App\Http\Resources\Department\DepartmentResource;
 use App\Http\Resources\Department\DepartmentUpdatedResource;
@@ -40,9 +41,11 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return $this->successResponse(DepartmentResource::collection(
-            $this->repository->getAll()
-        ));
+        return $this->successResponse(
+            new DepartmentCollection(
+                $this->repository->getAll()
+            )
+        );
     }
 
     /**

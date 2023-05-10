@@ -6,7 +6,7 @@ use App\DTO\User\InsertUserDTO;
 use App\DTO\User\UpdateUserDTO;
 use App\Models\User;
 use App\Repositories\BaseRepository;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 class UserRepositoryImpl extends BaseRepository implements UserRepository
@@ -16,9 +16,9 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
     ) {
     }
 
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return $this->model::with(['department', 'user_title'])->get();
+        return $this->model::with(['department', 'user_title'])->paginate(10);
     }
 
     public function create(InsertUserDTO $dto): stdClass
