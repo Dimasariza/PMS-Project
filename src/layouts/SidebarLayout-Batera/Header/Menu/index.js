@@ -81,10 +81,7 @@ function HeaderMenu({setOpenSideBar}) {
     <>
       <ListWrapper
         sx={{
-          display: {
-            xs: 'none',
-            md: 'block'
-          }
+          display: 'block'
         }}
       >
         <IconButton onClick={() => setOpenSideBar(true)}>

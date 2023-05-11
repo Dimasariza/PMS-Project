@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import SidebarLayout from 'src/layouts/HeaderOnlyLayout-Batera';
+import SidebarLayout from 'src/layouts/SidebarLayout-Batera';
 import PageHeader from 'src/batera/content/dashboards/ship-details/update-ship/PageHeader.js';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';

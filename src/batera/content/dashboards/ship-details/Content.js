@@ -67,12 +67,12 @@ function Content() {
   const GridInfoDetails = ({title, value}) => {
     return(
       <>
-        <Grid item xs={4} sm={4} md={4} textAlign={{ sm: 'left' }}>
+        <Grid item xs={6} sm={8} md={6} lg={4} textAlign={{ sm: 'left' }}>
           <Box pr={3} pb={2}>
             {title}
           </Box>
         </Grid>
-        <Grid item xs={8} sm={8} md={8}>
+        <Grid item xs={6} sm={4} md={6} lg={8}>
           <Box sx={{ maxWidth: { xs: 'auto', sm: 300 } }}>
             <Text color="black">
               <b>{value}</b>
@@ -118,10 +118,15 @@ function Content() {
         <Divider />
         <CardContent sx={{ p: 4 }}>
           <div style={{
-            display: 'flex'
+            display: 'flex',
+            boxSizing: 'border-box', 
           }}>
             <Typography variant="subtitle2" sx={{
-              width: '60%',
+              width:{
+                xs: '100%',
+                sm: '50%',
+                md: '50%'
+              }
             }}>
               <Grid container spacing={0}>
                 <GridInfoDetails title={"Vessel name:"} value={shipInfo.vesselName}/>
@@ -134,21 +139,31 @@ function Content() {
                 <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA_Breadth}/>
                 <GridInfoDetails title={"Vessel Type - Generic:"} value={shipInfo.vesselTypeGeneric}/>
                 <GridInfoDetails title={"Vessel Type - Detailed:"} value={shipInfo.vesselTypeDetailed}/>
-                <div style={{
-                  width: '50%',
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: '5%',
-                  padding: '1%',
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}>
+                <Typography 
+                  sx={{
+                    width:{
+                      xs: '100%',
+                      sm: '100%',
+                      md: '61%',
+                      lg: '55%',
+                    },
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap:{
+                      xs: '2%',
+                      sm: '5%'
+                    },
+                    paddingTop: '1%',
+                    paddingBottom: '1%',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
                   <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                    <Button variant="contained" color="primary" style={{width: '45%'}}>
+                    <Button variant="contained" color="primary" style={{width: '48%', textAlign: 'center'}}>
                       Update Ship
                     </Button>
                   </NextLink>
-                  <Button variant="contained" color="primary" onClick={handleClickOpen} style={{width: '45%', backgroundColor: '#FF5AD9'}}>
+                  <Button variant="contained" color="primary" onClick={handleClickOpen} style={{width: '48%', textAlign: 'center', backgroundColor: '#FF5AD9'}}>
                     Delete Ship
                   </Button>
                   <DeleteModal
@@ -157,12 +172,20 @@ function Content() {
                     onClose={handleClose}
                     shipName={shipInfo.vesselName}
                   />
-                </div>
+                </Typography>
               </Grid>
             </Typography>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '40%', boxSizing: 'border-box'}}>
+            <Typography sx={{
+              width:'50%',
+              display: {
+                xs: 'none',
+                sm: 'flex',
+              },
+              alignItems: 'center',
+              justifyContent: 'center',
+              }}>
                 <Avatar variant="rounded" src={url + shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
-              </div>
+            </Typography>
           </div>
         </CardContent>
       </Card>

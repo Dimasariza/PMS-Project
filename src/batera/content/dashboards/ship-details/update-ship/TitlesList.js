@@ -1,17 +1,13 @@
 import { Card } from '@mui/material';
-import TitlesTable from './TitlesTable';
-import { subDays } from 'date-fns';
 import {
   Divider,
   CardHeader,
   TextField,
   Avatar,
-  IconButton,
-  Box
 } from '@mui/material';
 import { useState } from 'react';
-import { styled } from '@mui/material/styles';
-import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
+import { useMediaQuery } from '@mui/material';
+import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUpload';
 
 function TitlesList() {
   const url = process.env.PUBLIC_URL || ""
@@ -28,49 +24,37 @@ function TitlesList() {
     breadth: '',
     vesselTypeGeneric: '',
     vesselTypeDetailed: '',
+    vesselImage: '',
   });
 
   const handleUpdate = (key) => (event) => {
-    setInputedUser((prev) => ({
-      ...prev,
-      [key]: event.target.value,
-    }));
+    if(key == 'vesselImage'){
+      setInputedUser((prev) => ({
+        ...prev,
+        [key]: event,
+      }));
+    }else{
+      setInputedUser((prev) => ({
+        ...prev,
+        [key]: event.target.value,
+      }));
+    }
   };
 
-  const Input = styled('input')({
-    display: 'none'
-  });
-  
-  const ButtonUploadWrapper = styled(Box)(
-    ({ theme }) => `
-      position: relative;
-      width: ${theme.spacing(4)};
-      height: ${theme.spacing(4)};
-  
-      .MuiIconButton-root {
-        border-radius: 100%;
-        background: ${theme.colors.primary.main};
-        color: ${theme.palette.primary.contrastText};
-        box-shadow: ${theme.colors.shadows.primary};
-        width: 200%;
-        height: 200%;
-        padding: 0;
-    
-        &:hover {
-          background: ${theme.colors.primary.dark};
-        }
-      }
-  `
-  );
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
+  const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+
+  const screenState = isSmallScreen ? 0 : isMediumScreen ? 1 : isLargeScreen ? 3 : 2;
 
   return (
     <>
       <div style={{display: 'flex', flexDirection: 'row', gap: '2vh'}}>
-        <div style={{width: '50%'}}>
+        <div style={{width: (screenState >= 2 ) ? '50%' : '100%'}}>
           <Card 
             sx={{paddingBottom: '2%'}} >
             <CardHeader
-                title="Update Ship"
+                title="Add Ship"
               />
             <Divider />
             <div style={{display: 'flex', flexDirection: 'column', paddingLeft: '1vw', paddingRight: '1vw', width: '100%', gap: '2vh'}}>
@@ -160,35 +144,12 @@ function TitlesList() {
               />
             </div>
           </Card>
+          <div style={{display: (screenState < 2 ) ? 'block' : 'none', width: (screenState < 2 ) ? '100%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px', marginTop: '5%'}}>
+            <PictureUpload picLink={'/static/images/ship-card/ship1.jpg'} handleUpdate={handleUpdate}/>
+          </div>
         </div>
-        <div style={{width: '50%', height: '50vh'}}>
-          <Card sx={{ height: '100%' }}>
-            <CardHeader
-                title="Update Ship Picture"
-              />
-            <Divider />
-            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '80%', boxSizing: 'border-box'}}>
-              <div style={{ minWidth: '50%', minHeight: '50%', maxHeight: '80%', maxWidth: '80%', boxSizing: 'border-box'}}>
-                <Avatar variant="rounded" src={url + '/static/images/ship-card/ship1.jpg'} sx={{ width: '100%', height: '100%', boxSizing: 'border-box' }}/>
-              </div>
-              <div style={{position: 'relative', top: '38%', left: '9%'}}>
-                <ButtonUploadWrapper>
-                  <Input
-                    accept="image/*"
-                    id="icon-button-file"
-                    name="icon-button-file"
-                    type="file"
-                  />
-                  <label htmlFor="icon-button-file">
-                    <IconButton component="span" color="primary">
-                      <UploadTwoToneIcon sx={{ width: '80%', height: '80%' }}/>
-                    </IconButton>
-                  </label>
-                </ButtonUploadWrapper>
-              </div>
-            </div>
-          </Card>
-          
+        <div style={{display: (screenState >= 2 ) ? 'block' : 'none', width: (screenState >= 2 ) ? '50%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px'}}>
+          <PictureUpload picLink={'/static/images/ship-card/ship1.jpg'} handleUpdate={handleUpdate}/>
         </div>
       </div>
       

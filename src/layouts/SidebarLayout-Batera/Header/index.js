@@ -78,15 +78,15 @@ function Header({setOpenSideBar}) {
         <HeaderMenu setOpenSideBar={setOpenSideBar}/>
       </Stack>
       <Box display="flex" alignItems="center">
-        <HeaderButtons />
-        <Box
+        {/* <HeaderButtons /> */}
+        {/* <Box
           component="span"
           sx={{
             ml: 2,
             display: { lg: 'none', xs: 'inline-block' }
           }}
         >
-        </Box>
+        </Box> */}
       </Box>
     </HeaderWrapper>
   );

@@ -15,11 +15,10 @@ import {
 
 import SidebarMenu from './SidebarMenu';
 import Logo from 'src/components/LogoSign';
+import { useMediaQuery } from '@mui/material';
 
 const SidebarWrapper = styled(Box)(
   ({ theme }) => `
-        width: ${theme.sidebar.width};
-        min-width: ${theme.sidebar.width};
         color: ${theme.colors.alpha.trueWhite[70]};
         position: relative;
         z-index: 7;
@@ -40,8 +39,12 @@ function Sidebar({setOpenSideBar, sidebarRef}) {
         ref={sidebarRef}
         sx={{
           display: {
-            xs: 'none',
+            xs: 'inline-block',
             lg: 'inline-block'
+          },
+          width: {
+            xs: '210px',
+            sm: theme.sidebar.width,
           },
           position: 'fixed',
           left: 0,
@@ -54,12 +57,12 @@ function Sidebar({setOpenSideBar, sidebarRef}) {
             theme.palette.mode === 'dark' ? theme.sidebar.boxShadow : 'none'
         }}
       >
-        <Scrollbar>
+        <Scrollbar >
           <Box mt={3}>
             <Box
               mx={2}
               sx={{
-                width: '100%'
+                width: '100%',
               }}
             >
 

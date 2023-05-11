@@ -8,22 +8,6 @@ import { useEffect, useRef, useState } from 'react';
 
 const UploadButton = ({ onUpload }) => {
 
-  const [height, setHeight] = useState(0);
-  const buttonRef = useRef(null);
-
-  useEffect(() => {
-    // Update the height when the component mounts and on window resize
-    function updateHeight() {
-      console.log("Use Effect Triggered", buttonRef.current, buttonRef.current.offsetHeight);
-      if (buttonRef.current) {
-        setHeight(buttonRef.current.offsetHeight);
-      }
-    }
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
-    return () => window.removeEventListener('resize', updateHeight);
-  }, []);
-
   const theme = useTheme();
   const styles = {
     button: {
@@ -31,9 +15,19 @@ const UploadButton = ({ onUpload }) => {
       color: theme.palette.primary.contrastText,
       boxShadow: theme.colors.shadows.primary,
       borderRadius: '50%',
-      height: '70%',
+      height: {
+        xs: '70%',
+        sm: '70%',
+        md: '70%',
+        lg: '70%',
+      },
       aspectRatio: '1/1', // The button is round
-      width: `${height}px`, // The width is 80% of the height
+      width: {
+        xs: '70%',
+        sm: '70%',
+        md: '70%',
+        lg: '70%',
+      }, // The width is 80% of the height
     },
     icon: {
       fontSize: '40',
@@ -65,7 +59,7 @@ const UploadButton = ({ onUpload }) => {
 
   return (
     <div style={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', padding: '1%', height: '20%'}}>
-      <IconButton style={styles.button} color="primary" onClick={handleButtonClick} ref={buttonRef}>
+      <IconButton style={styles.button} color="primary" onClick={handleButtonClick}>
         <UploadTwoToneIcon style={styles.icon} />
       </IconButton>
       <Input

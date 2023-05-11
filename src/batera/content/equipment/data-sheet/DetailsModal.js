@@ -105,7 +105,7 @@ function DetailsModal(props) {
                 </Button>
               </NextLink>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
-                Approve Job
+                Delete Job
               </Button>
             </div>
           </CardContent>
