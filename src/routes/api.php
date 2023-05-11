@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\JobListController;
 use App\Http\Controllers\ShipController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserTitleController;
@@ -50,4 +51,7 @@ Route::prefix('/v1')->group(function () {
             Route::post('/{id}/update', 'update')->name('ship.update');
             Route::delete('/{id}', 'destroy')->name('ship.delete');
         });
+
+    Route::middleware(['auth.api', 'title:Admin'])
+        ->apiResource('job_list', JobListController::class);
 });

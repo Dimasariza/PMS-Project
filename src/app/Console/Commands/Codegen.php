@@ -31,6 +31,8 @@ class Codegen extends Command
 
         if ($single) {
             $this->generateForSingle($model);
+
+            return;
         }
 
         $this->generate($model);

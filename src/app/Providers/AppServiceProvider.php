@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\Department\DepartmentRepository;
 use App\Repositories\Department\DepartmentRepositoryImpl;
+use App\Repositories\JobList\JobListRepository;
+use App\Repositories\JobList\JobListRepositoryImpl;
 use App\Repositories\Ship\ShipRepository;
 use App\Repositories\Ship\ShipRepositoryImpl;
 use App\Repositories\User\UserRepository;
@@ -31,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
             [UserRepository::class, UserRepositoryImpl::class],
             [DepartmentRepository::class, DepartmentRepositoryImpl::class],
             [ShipRepository::class, ShipRepositoryImpl::class],
+            [JobListRepository::class, JobListRepositoryImpl::class],
         ];
 
         foreach ($instances as $instance) {

@@ -4,19 +4,18 @@ namespace App\Repositories\{{ model }};
 
 use App\DTO\{{ model }}\Insert{{ model }}DTO;
 use App\DTO\{{ model }}\Update{{ model }}DTO;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
-use stdClass;
 
 interface {{ model }}Repository
 {
     public function getAll(): LengthAwarePaginator;
 
-    public function create(Insert{{ model }}DTO $dto): stdClass;
+    public function create(Insert{{ model }}DTO $dto): Model;
 
-    public function show(string|int $id): stdClass;
+    public function show(string|int $id): Model;
 
-    public function update(int|string $id, Update{{ model }}DTO $dto): stdClass;
+    public function update(int|string $id, Update{{ model }}DTO $dto): Model;
 
     public function delete(string|int $id): void;
 }

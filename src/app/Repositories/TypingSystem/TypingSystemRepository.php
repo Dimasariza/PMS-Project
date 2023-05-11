@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Repositories\{{ model }};
+namespace App\Repositories\TypingSystem;
 
-use App\DTO\{{ model }}\{{ model }}DTO;
+use App\DTO\TypingSystem\TypingSystemDTO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-interface {{ model }}Repository
+interface TypingSystemRepository
 {
     public function getAll(): LengthAwarePaginator;
 
-    public function create({{ model }}DTO $dto): Model;
+    public function create(TypingSystemDTO $dto): Model;
 
     public function show(string|int $id): Model;
 
-    public function update(int|string $id, {{ model }}DTO $dto): Model;
+    public function update(int|string $id, TypingSystemDTO $dto): Model;
 
     public function delete(string|int $id): void;
 }

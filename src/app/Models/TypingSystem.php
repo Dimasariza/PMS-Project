@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TypingSystem extends Model
@@ -28,4 +29,14 @@ class TypingSystem extends Model
         'running_hours',
         'serial_number',
     ];
+
+    /**
+     * One typing system belongs to one ship
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ship(): BelongsTo
+    {
+        return $this->belongsTo(Ship::class, 'ship_id')->withTrashed();
+    }
 }

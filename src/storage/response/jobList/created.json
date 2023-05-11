@@ -1,0 +1,47 @@
+{
+    "statusCode": 201,
+    "message": "Created",
+    "data": {
+        "id": 2,
+        "componentName": "Name",
+        "componentCode": "Code123",
+        "partName": "Bumper",
+        "jobType": "scheduled",
+        "jobName": "Mang Kesbor",
+        "approvedJob": true,
+        "personInCharge": "hehe",
+        "status": "ngab owi",
+        "level": "Memprihantinkan",
+        "createdAt": "1970-01-01 00:00:00",
+        "isDeleted": false,
+        "department": {
+            "id": 1,
+            "name": "Ole Gutkowski",
+            "code": "CC",
+            "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+            "isDeleted": true
+        },
+        "ship": {
+            "id": 13,
+            "imoNumber": "IMO123",
+            "vesselName": "Vessel",
+            "flag": "INDO",
+            "picture": "http://localhost:9000/storage/ships/rXRYdBrWlTeAhIl6lRADGuWObuR37L3lccRuBEPr.jpg",
+            "dwt": 2023,
+            "grossTonage": 1000,
+            "year": 2023,
+            "callsign": "Callsign",
+            "LOA": 10.05,
+            "breadth": 10.05,
+            "vesselTypeGeneric": "Generic",
+            "vesselTypeDetailed": "Detailed",
+            "isDeleted": false
+        },
+        "typingSystem": {
+            "id": 1,
+            "systemName": "Something",
+            "running_hours": 255,
+            "serial_number": "AB-SH-300"
+        }
+    }
+}

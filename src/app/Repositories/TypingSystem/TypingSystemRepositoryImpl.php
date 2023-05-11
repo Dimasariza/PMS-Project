@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Repositories\{{ model }};
+namespace App\Repositories\TypingSystem;
 
-use App\DTO\{{ model }}\Insert{{ model }}DTO;
-use App\DTO\{{ model }}\Update{{ model }}DTO;
-use App\Models\{{ model }};
+use App\DTO\TypingSystem\TypingSystemDTO;
+use App\Models\TypingSystem;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Repository
+class TypingSystemRepositoryImpl extends BaseRepository implements TypingSystemRepository
 {
     public function __construct(
-        protected {{ model }} $model
+        protected TypingSystem $model,
     ) {
     }
 
@@ -22,7 +21,7 @@ class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Rep
         return $this->model::query()->paginate(10);
     }
 
-    public function create(Insert{{ model }}DTO $dto): Model
+    public function create(TypingSystemDTO $dto): Model
     {
         $result = $this->model->create($dto->build());
 
@@ -33,17 +32,17 @@ class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Rep
     {
         $result = $this->model->findOr(
             id: $id,
-            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            callback: fn () => throw new ModelNotFoundException('Unknown TypingSystem')
         );
 
         return $result;
     }
 
-    public function update(int|string $id, Update{{ model }}DTO $dto): Model
+    public function update(int|string $id, TypingSystemDTO $dto): Model
     {
         $result = $this->model->findOr(
             id: $id,
-            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            callback: fn () => throw new ModelNotFoundException('Unknown TypingSystem')
         );
 
         $result->update($dto->build());
@@ -55,7 +54,7 @@ class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Rep
     {
         $result = $this->model->findOr(
             id: $id,
-            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            callback: fn () => throw new ModelNotFoundException('Unknown TypingSystem')
         );
 
         $result->delete();

@@ -2,25 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Ship;
 use App\Enums\JobType;
-use App\Models\Department;
-use App\Models\TypingSystem;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class JobList extends Model
 {
     use HasFactory, SoftDeletes;
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
 
     /**
      * The attributes that should be cast.
@@ -29,6 +19,7 @@ class JobList extends Model
      */
     protected $casts = [
         'job_type' => JobType::class,
+        'approved_job' => 'boolean'
     ];
 
     /**
@@ -78,6 +69,6 @@ class JobList extends Model
      */
     public function typingSystem(): BelongsTo
     {
-        return $this->belongsTo(TypingSystem::class, 'ship_id')->withTrashed();
+        return $this->belongsTo(TypingSystem::class, 'typing_system_id')->withTrashed();
     }
 }
