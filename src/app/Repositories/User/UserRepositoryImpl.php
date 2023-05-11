@@ -24,6 +24,7 @@ class UserRepositoryImpl extends BaseRepository implements UserRepository
     public function create(InsertUserDTO $dto): Model
     {
         $result = $this->model->create($dto->build())->load(['department', 'user_title']);
+
         return $result;
     }
 

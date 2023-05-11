@@ -56,14 +56,14 @@ class DepartmentTest extends TestCase
             'departmentCode' => 'SB000',
             'workPlace' => WorkPlace::Ship,
         ], ['Authorization' => "Bearer {$this->authToken}"])
-        ->assertStatus(422)
-        ->assertSimilarJson([
-            'statusCode' => 422,
-            'message' => 'Bad input',
-            'errors' => [
-                'departmentCode' => 'The department code has already been taken.',
-            ]
-        ]);
+            ->assertStatus(422)
+            ->assertSimilarJson([
+                'statusCode' => 422,
+                'message' => 'Bad input',
+                'errors' => [
+                    'departmentCode' => 'The department code has already been taken.',
+                ],
+            ]);
     }
 
     public function test_get_one_department()
@@ -80,7 +80,7 @@ class DepartmentTest extends TestCase
             route('department.show', ['department' => $id]),
             ['Authorization' => "Bearer {$this->authToken}"]
         )->assertStatus(200)
-        ->assertJson(fn (AssertableJson $json) => $json
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->where('message', 'Success')
                 ->where('statusCode', 200)
                 ->where('data.id', $id)
@@ -89,7 +89,7 @@ class DepartmentTest extends TestCase
                 ->where('data.workPlace', 'ship')
                 ->where('data.isDeleted', false)
                 ->etc()
-        );
+            );
     }
 
     public function test_update_department_same_code()
@@ -107,8 +107,8 @@ class DepartmentTest extends TestCase
             'departmentCode' => 'SB000',
             'workPlace' => WorkPlace::Ship,
         ], ['Authorization' => "Bearer {$this->authToken}"])
-        ->assertStatus(200)
-        ->assertJson(fn (AssertableJson $json) => $json
+            ->assertStatus(200)
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->where('message', 'Updated')
                 ->where('statusCode', 200)
                 ->where('data.id', $id)
@@ -117,7 +117,7 @@ class DepartmentTest extends TestCase
                 ->where('data.workPlace', 'ship')
                 ->where('data.isDeleted', false)
                 ->etc()
-        );
+            );
     }
 
     public function test_update_department_different_code()
@@ -135,8 +135,8 @@ class DepartmentTest extends TestCase
             'departmentCode' => 'SB001',
             'workPlace' => WorkPlace::Ship,
         ], ['Authorization' => "Bearer {$this->authToken}"])
-        ->assertStatus(200)
-        ->assertJson(fn (AssertableJson $json) => $json
+            ->assertStatus(200)
+            ->assertJson(fn (AssertableJson $json) => $json
                 ->where('message', 'Updated')
                 ->where('statusCode', 200)
                 ->where('data.id', $id)
@@ -145,7 +145,7 @@ class DepartmentTest extends TestCase
                 ->where('data.workPlace', 'ship')
                 ->where('data.isDeleted', false)
                 ->etc()
-        );
+            );
     }
 
     public function test_update_department_different_code_but_unique_constrained()
@@ -169,14 +169,14 @@ class DepartmentTest extends TestCase
             'departmentCode' => 'SB001',
             'workPlace' => WorkPlace::Ship,
         ], ['Authorization' => "Bearer {$this->authToken}"])
-        ->assertStatus(422)
-        ->assertExactJson([
-            'statusCode' => 422,
-            'message' => 'Bad input',
-            "errors" => [
-                "departmentCode" => "The department code has already been taken."
-            ],
-        ]);
+            ->assertStatus(422)
+            ->assertExactJson([
+                'statusCode' => 422,
+                'message' => 'Bad input',
+                'errors' => [
+                    'departmentCode' => 'The department code has already been taken.',
+                ],
+            ]);
     }
 
     public function test_delete_department()
@@ -193,10 +193,10 @@ class DepartmentTest extends TestCase
             uri: route('department.destroy', ['department' => $id]),
             headers: ['Authorization' => "Bearer {$this->authToken}"]
         )->assertStatus(200)
-        ->assertExactJson([
-            'message' => 'Deleted',
-            'statusCode' => 200
-        ]);
+            ->assertExactJson([
+                'message' => 'Deleted',
+                'statusCode' => 200,
+            ]);
     }
 
     public function test_update_on_deleted_department()
@@ -219,10 +219,10 @@ class DepartmentTest extends TestCase
             'departmentCode' => 'SB001',
             'workPlace' => WorkPlace::Ship,
         ], ['Authorization' => "Bearer {$this->authToken}"])
-        ->assertStatus(400)
-        ->assertExactJson([
-            'statusCode' => 400,
-            'message' => 'Unknown department'
-        ]);
+            ->assertStatus(400)
+            ->assertExactJson([
+                'statusCode' => 400,
+                'message' => 'Unknown department',
+            ]);
     }
 }

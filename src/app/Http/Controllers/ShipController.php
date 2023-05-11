@@ -92,7 +92,6 @@ class ShipController extends Controller
      *
      * @urlParam id integer required The ID of ship. Example: 1
      *
-     *
      * @authenticated
      *
      * @responseFile status=200 scenario='Success' response/ship/find_one.json
@@ -113,7 +112,6 @@ class ShipController extends Controller
      * @header Content-Type multipart/form-data
      *
      * @urlParam id integer required The ID of ship to update. Example: 5
-     *
      *
      * @authenticated
      *

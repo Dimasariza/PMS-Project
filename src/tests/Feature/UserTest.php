@@ -191,13 +191,13 @@ class UserTest extends TestCase
             'status' => true,
             'document' => UploadedFile::fake()->image('docs.jpg', 400, 400),
         ])->assertStatus(422)
-        ->assertSimilarJson([
-            'statusCode' => 422,
-            'message' => 'Bad input',
-            'errors' => [
-                'departmentId' => 'The selected department id is invalid.',
-            ],
-        ]);
+            ->assertSimilarJson([
+                'statusCode' => 422,
+                'message' => 'Bad input',
+                'errors' => [
+                    'departmentId' => 'The selected department id is invalid.',
+                ],
+            ]);
     }
 
     private function getFilename(string $name): string
