@@ -18,7 +18,7 @@ class DepartmentRepositoryImpl extends BaseRepository implements DepartmentRepos
 
     public function getAll(): LengthAwarePaginator
     {
-        return $this->model::query()->paginate(10, ['id', 'department_name', 'department_code', 'work_place']);
+        return $this->model::query()->paginate(10, ['id', 'department_name', 'department_code', 'work_place', 'deleted_at']);
     }
 
     public function create(DepartmentDTO $dto): Model
