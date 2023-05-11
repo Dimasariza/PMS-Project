@@ -18,6 +18,8 @@ import Dialog from '@mui/material/Dialog';
 import Text from 'src/components/Text';
 import { useState } from 'react';
 import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
+import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
+import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
 
 const url = process.env.PUBLIC_URL || ""
 
@@ -33,105 +35,20 @@ function DetailsModal(props) {
   };
 
   
-    // const handleUpdate = (key) => (event) => {
-    //   setDepartmentList((prev) => ({
-    //     ...prev,
-    //     [key]: event.target.value,
-    //   }));
-    // };
-
-    // <TextField
-    //   sx={{ width: '100%', paddingBottom: '2%'}}
-    //   required
-    //   id="outlined-required"
-    //   label="Job Name"
-    // />
-
-    // <TextField
-    //   sx={{ width: '100%', paddingBottom: '2%'}}
-    //   id="outlined-select-currency-native"
-    //   select
-    //   label="Department"
-    //   value={filledJob.department}
-    //   onChange={handleUpdate('department')}
-    //   SelectProps={{
-    //     native: true
-    //   }}
-    // >
-    //   {departmentList.map((option) => (
-    //     <option key={option} value={option}>
-    //       {option}
-    //     </option>
-    //   ))}
-    // </TextField>
-
-  const GridInfoDetails = ({title, value}) => {
-    return(
-      <>
-        <Grid item xs={4} sm={4} md={7} textAlign={{ sm: 'left' }}>
-          <Box pr={3} pb={2} minHeight={'5vh'}>
-            {title}
-          </Box>
-        </Grid>
-        <Grid item xs={8} sm={8} md={5}>
-          <Box minHeight={'5vh'}>
-            <Text color="black" width='100%'>
-              <b>{value}</b>
-            </Text>
-          </Box>
-        </Grid>
-      </>
-    );
-  }
-
-  const GridInfoDetailsEditable = ({title, value, handleEntryUpdate}) => {
-    const [activateEdit, setActivateEdit] = useState(false);
-    const [inputValue, setInputValue] = useState(value);
-    return(
-      <>
-        <Grid item xs={4} sm={4} md={7} textAlign={{ sm: 'left' }}>
-          <Box pr={3} pb={2} minHeight={'5vh'}>
-            {title}
-          </Box>
-        </Grid>
-        <Grid item xs={8} sm={8} md={5}>
-          <Box minHeight={'5vh'}>
-            <div style={{display: activateEdit ? 'none' : 'block'}} onClick={() => setActivateEdit((prev) => {return !prev})}>
-              <Text color="black" width='100%'>
-                <b>{value}</b>
-              </Text>
-            </div>
-            <div style={{display: activateEdit ? 'block' : 'none'}}>
-              <TextField
-                sx={{ width: '50%', paddingBottom: '2%'}}
-                required
-                id="standard-required"
-                variant="standard"
-                defaultValue={value}
-                onChange={(event) => setInputValue(event.target.value)}
-              />
-              <IconButton onClick={() => {
-                setActivateEdit(false);
-                handleEntryUpdate(inputValue);
-                }}>
-                <CheckTwoToneIcon />
-              </IconButton>
-              <IconButton onClick={() => setActivateEdit(false)}>
-                <CloseTwoToneIcon />
-              </IconButton>
-            </div>
-          </Box>
-        </Grid>
-      </>
-    );
-  }
 
   return (
     <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
       <div>
         <Card>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center", padding: '2% 2% 2% 3%'}}>
-            <Typography align='left' variant="h3" style={{ width: '100%', height: '100%', fontWeight: 'bold' }}>
+            <Typography align='left' variant="h3" style={{ width: '100%', height: '100%', fontWeight: 'bold' }} 
+              sx={{
+                fontSize:{
+                  xs: '15px',
+                  sm: '25px'
+                }
+              }}
+            >
               Scheduled Job Details
             </Typography>
             <IconButton align='right'  onClick={handleClose} variant="contained" color='primary' style={{height:'50%', backgroundColor: '#FF5AD9'}}>
@@ -149,6 +66,10 @@ function DetailsModal(props) {
               
             }}>
               <Typography variant="subtitle2" sx={{
+                display: {
+                  xs: 'none',
+                  sm: 'block'
+                },
                 width: '50%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
@@ -158,9 +79,29 @@ function DetailsModal(props) {
                 </Grid>
               </Typography>
               <Typography variant="subtitle2" sx={{
+                display: {
+                  xs: 'none',
+                  sm: 'block'
+                },
                 width: '50%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
+                  <GridInfoDetails title={"System:"} value={selectedValue.system}/>
+                  <GridInfoDetails title={"Component:"} value={selectedValue.component}/>
+                  <GridInfoDetails title={"Part:"} value={selectedValue.part}/>
+                </Grid>
+              </Typography>
+              <Typography variant="subtitle2" sx={{
+                display: {
+                  xs: 'block',
+                  sm: 'none'
+                },
+                width: '100%',
+              }}>
+                <Grid container spacing={0} alignItems="stretch">
+                  <GridInfoDetailsEditable title={"Job Name:"} value={selectedValue.jobName} handleEntryUpdate={(value) => handleUpdate('jobName', value)}/>
+                  <GridInfoDetails title={"Component Code:"} value={selectedValue.componentCode}/>
+                  <GridInfoDetails title={"Department:"} value={selectedValue.department}/>
                   <GridInfoDetails title={"System:"} value={selectedValue.system}/>
                   <GridInfoDetails title={"Component:"} value={selectedValue.component}/>
                   <GridInfoDetails title={"Part:"} value={selectedValue.part}/>

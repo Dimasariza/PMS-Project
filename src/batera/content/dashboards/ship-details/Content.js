@@ -139,6 +139,17 @@ function Content() {
                 <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA_Breadth}/>
                 <GridInfoDetails title={"Vessel Type - Generic:"} value={shipInfo.vesselTypeGeneric}/>
                 <GridInfoDetails title={"Vessel Type - Detailed:"} value={shipInfo.vesselTypeDetailed}/>
+                <Typography sx={{
+                  width:'100%',
+                  display: {
+                    xs: 'flex',
+                    sm: 'none',
+                  },
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  }}>
+                    <Avatar variant="rounded" src={url + shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                </Typography>
                 <Typography 
                   sx={{
                     width:{
