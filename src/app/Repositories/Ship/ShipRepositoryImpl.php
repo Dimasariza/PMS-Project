@@ -6,9 +6,9 @@ use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
 use App\Models\Ship;
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
-use stdClass;
 
 class ShipRepositoryImpl extends BaseRepository implements ShipRepository
 {
@@ -22,40 +22,40 @@ class ShipRepositoryImpl extends BaseRepository implements ShipRepository
         return $this->model::query()->paginate(10);
     }
 
-    public function create(InsertShipDTO $dto): stdClass
+    public function create(InsertShipDTO $dto): Model
     {
         $result = $this->model->create($dto->build());
 
-        return $this->format($result->toArray());
+        return $result;
     }
 
-    public function show(string|int $id): stdClass
+    public function show(string|int $id): Model
     {
         $ship = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown ship')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown ship')
         );
 
-        return $this->format($ship->toArray());
+        return $ship;
     }
 
-    public function update(int|string $id, UpdateShipDTO $dto): stdClass
+    public function update(int|string $id, UpdateShipDTO $dto): Model
     {
         $ship = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown ship')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown ship')
         );
 
         $ship->update($dto->build());
 
-        return $this->format($ship->toArray());
+        return $ship;
     }
 
     public function delete(string|int $id): void
     {
         $ship = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown ship')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown ship')
         );
 
         $ship->delete();

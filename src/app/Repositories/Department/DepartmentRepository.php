@@ -3,18 +3,18 @@
 namespace App\Repositories\Department;
 
 use App\DTO\Department\DepartmentDTO;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
-use stdClass;
 
 interface DepartmentRepository
 {
     public function getAll(): LengthAwarePaginator;
 
-    public function create(DepartmentDTO $dto): stdClass;
+    public function create(DepartmentDTO $dto): Model;
 
-    public function show(string|int $id): stdClass;
+    public function show(string|int $id): Model;
 
-    public function update(int|string $id, DepartmentDTO $dto): stdClass;
+    public function update(int|string $id, DepartmentDTO $dto): Model;
 
     public function delete(string|int $id): void;
 }

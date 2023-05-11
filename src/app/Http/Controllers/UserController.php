@@ -100,7 +100,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         return $this->successResponse(
-            UserCreatedResource::make(
+            UserResource::make(
                 $this->repository->show($id)
             )
         );

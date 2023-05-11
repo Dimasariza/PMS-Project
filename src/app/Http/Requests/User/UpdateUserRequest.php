@@ -5,6 +5,7 @@ namespace App\Http\Requests\User;
 use App\Enums\WorkPlace;
 use App\Traits\FailedValidation;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 
 class UpdateUserRequest extends FormRequest
@@ -28,7 +29,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'fullname' => ['required', 'string', 'max:255'],
-            'departmentId' => ['required', 'exists:departments,id'],
+            'departmentId' => ['required', Rule::exists('departments', 'id')->withoutTrashed()],
             'userTitleId' => ['required', 'exists:user_titles,id'],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
             'status' => ['required', 'boolean'],

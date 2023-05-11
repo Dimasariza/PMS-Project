@@ -29,6 +29,7 @@ class ShipUpdatedResource extends JsonResource
             'vesselTypeGeneric' => $this->vessel_type_generic,
             'vesselTypeDetailed' => $this->vessel_type_detailed,
             'updatedAt' => date('Y-m-d H:i:s', strtotime($this->updated_at)),
+            'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
     }
 }

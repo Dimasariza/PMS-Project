@@ -4,11 +4,12 @@ namespace App\Repositories\{{ model }};
 
 use App\DTO\{{ model }}\{{ model }}DTO;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use stdClass;
 
 interface {{ model }}Repository
 {
-    public function getAll(): Collection;
+    public function getAll(): LengthAwarePaginator;
 
     public function create({{ model }}DTO $dto): stdClass;
 

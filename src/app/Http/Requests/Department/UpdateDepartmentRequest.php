@@ -29,7 +29,7 @@ class UpdateDepartmentRequest extends FormRequest
     {
         return [
             'departmentName' => ['required', 'string', 'max:255'],
-            'departmentCode' => ['required', 'string', 'max:255', Rule::unique('departments', 'department_code')->ignore($this->department)],
+            'departmentCode' => ['required', 'string', 'max:255', Rule::unique('departments', 'department_code')->ignore($this->department)->withoutTrashed()],
             'workPlace' => ['required', new Enum(WorkPlace::class)],
         ];
     }

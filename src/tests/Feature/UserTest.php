@@ -173,6 +173,33 @@ class UserTest extends TestCase
         $this->assertEquals($imgBefore, $resp->json('data.document'));
     }
 
+    public function test_insert_user_on_deleted_department()
+    {
+        $this->deleteJson(
+            uri: route('department.destroy', ['department' => 1]),
+            headers: ['Authorization' => "Bearer {$this->authToken}"]
+        );
+
+        $this->withHeader('Authorization', "Bearer {$this->authToken}")->post(route('user.store'), [
+            'username' => 'someusername',
+            'fullname' => 'Some Username',
+            'departmentId' => 1,
+            'email' => 'someemail@example.com',
+            'password' => 'somepassword',
+            'userTitleId' => 1,
+            'workPlace' => 'office',
+            'status' => true,
+            'document' => UploadedFile::fake()->image('docs.jpg', 400, 400),
+        ])->assertStatus(422)
+        ->assertSimilarJson([
+            'statusCode' => 422,
+            'message' => 'Bad input',
+            'errors' => [
+                'departmentId' => 'The selected department id is invalid.',
+            ],
+        ]);
+    }
+
     private function getFilename(string $name): string
     {
         $exploded = explode('/', $name);

@@ -24,10 +24,8 @@ class UserResource extends JsonResource
             'workPlace' => $this->work_place,
             'status' => $this->status == 1 ? true : false,
             'document' => $this->when(! is_null($this->document) || $this->document !== '', asset($this->document)),
-            'createdAt' => $this->when(! is_null($this->created_at), date('Y-m-d H:i:s', strtotime($this->created_at))),
-            'updatedAt' => $this->when(! is_null($this->updated_at), date('Y-m-d H:i:s', strtotime($this->updated_at))),
             'department' => DepartmentResource::make($this->whenLoaded('department')),
-            'title' => UserTitleResource::make($this->whenLoaded('user_title')),
+            'userTitle' => UserTitleResource::make($this->whenLoaded('user_title')),
         ];
     }
 }

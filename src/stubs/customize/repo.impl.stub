@@ -7,8 +7,9 @@ use App\DTO\{{ model }}\Update{{ model }}DTO;
 use App\Models\{{ model }};
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use stdClass;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Repository
 {
@@ -17,45 +18,45 @@ class {{ model }}RepositoryImpl extends BaseRepository implements {{ model }}Rep
     ) {
     }
 
-    public function getAll(): Collection
+    public function getAll(): LengthAwarePaginator
     {
-        return $this->model->all();
+        return $this->model::queyr()->paginate(10);
     }
 
-    public function create(Insert{{ model }}DTO $dto): stdClass
+    public function create(Insert{{ model }}DTO $dto): Model
     {
         $result = $this->model->create($dto->build());
 
-        return $this->format($result->toArray());
+        return $result;
     }
 
-    public function show(string|int $id): stdClass
+    public function show(string|int $id): Model
     {
         $result = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
         );
 
-        return $this->format($result->toArray());
+        return $result;
     }
 
-    public function update(int|string $id, Update{{ model }}DTO $dto): stdClass
+    public function update(int|string $id, Update{{ model }}DTO $dto): Model
     {
         $result = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
         );
 
         $result->update($dto->build());
 
-        return $this->format($result->toArray());
+        return $result;
     }
 
     public function delete(string|int $id): void
     {
         $result = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown {{ model }}')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown {{ model }}')
         );
 
         $result->delete();

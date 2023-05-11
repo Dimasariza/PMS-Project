@@ -38,6 +38,7 @@ class DepartmentTest extends TestCase
                 ->where('data.name', 'Some Deps')
                 ->where('data.code', 'SB000')
                 ->where('data.workPlace', 'ship')
+                ->where('data.isDeleted', false)
                 ->etc()
             );
     }
@@ -86,6 +87,7 @@ class DepartmentTest extends TestCase
                 ->where('data.name', 'Some Deps')
                 ->where('data.code', 'SB000')
                 ->where('data.workPlace', 'ship')
+                ->where('data.isDeleted', false)
                 ->etc()
         );
     }
@@ -113,6 +115,7 @@ class DepartmentTest extends TestCase
                 ->where('data.name', 'Some Deps #2')
                 ->where('data.code', 'SB000')
                 ->where('data.workPlace', 'ship')
+                ->where('data.isDeleted', false)
                 ->etc()
         );
     }
@@ -140,6 +143,7 @@ class DepartmentTest extends TestCase
                 ->where('data.name', 'Some Deps #2')
                 ->where('data.code', 'SB001')
                 ->where('data.workPlace', 'ship')
+                ->where('data.isDeleted', false)
                 ->etc()
         );
     }
@@ -192,6 +196,33 @@ class DepartmentTest extends TestCase
         ->assertExactJson([
             'message' => 'Deleted',
             'statusCode' => 200
+        ]);
+    }
+
+    public function test_update_on_deleted_department()
+    {
+        $in = $this->postJson(route('department.store'), [
+            'departmentName' => 'Some Deps',
+            'departmentCode' => 'SB000',
+            'workPlace' => WorkPlace::Ship,
+        ], ['Authorization' => "Bearer {$this->authToken}"]);
+
+        $id = $in->json('data.id');
+
+        $this->deleteJson(
+            uri: route('department.destroy', ['department' => $id]),
+            headers: ['Authorization' => "Bearer {$this->authToken}"]
+        );
+
+        $this->putJson(route('department.update', ['department' => $id]), [
+            'departmentName' => 'Some Deps #2',
+            'departmentCode' => 'SB001',
+            'workPlace' => WorkPlace::Ship,
+        ], ['Authorization' => "Bearer {$this->authToken}"])
+        ->assertStatus(400)
+        ->assertExactJson([
+            'statusCode' => 400,
+            'message' => 'Unknown department'
         ]);
     }
 }

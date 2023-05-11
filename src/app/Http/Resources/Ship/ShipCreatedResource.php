@@ -29,6 +29,7 @@ class ShipCreatedResource extends JsonResource
             'vesselTypeGeneric' => $this->vessel_type_generic,
             'vesselTypeDetailed' => $this->vessel_type_detailed,
             'createdAt' => date('Y-m-d H:i:s', strtotime($this->created_at)),
+            'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
     }
 }

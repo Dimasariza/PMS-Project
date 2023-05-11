@@ -28,6 +28,7 @@ class ShipResource extends JsonResource
             'breadth' => $this->breadth,
             'vesselTypeGeneric' => $this->vessel_type_generic,
             'vesselTypeDetailed' => $this->vessel_type_detailed,
+            'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
     }
 }

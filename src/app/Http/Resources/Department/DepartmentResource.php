@@ -19,6 +19,7 @@ class DepartmentResource extends JsonResource
             'name' => $this->department_name,
             'code' => $this->department_code,
             'workPlace' => $this->work_place,
+            'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
     }
 }

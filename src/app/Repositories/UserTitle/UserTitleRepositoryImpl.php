@@ -5,9 +5,9 @@ namespace App\Repositories\UserTitle;
 use App\DTO\UserTitle\UserTitleDTO;
 use App\Models\UserTitle;
 use App\Repositories\BaseRepository;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
-use stdClass;
 
 class UserTitleRepositoryImpl extends BaseRepository implements UserTitleRepository
 {
@@ -26,36 +26,22 @@ class UserTitleRepositoryImpl extends BaseRepository implements UserTitleReposit
         return $this->model::query()->paginate(10, ['id', 'title_name', 'access']);
     }
 
-    /**
-     * Create new user title
-     *
-     * @param  App\DTO\UserTitle\UserTitleDTO  $dto
-     */
-    public function create(UserTitleDTO $dto): stdClass
+    public function create(UserTitleDTO $dto): Model
     {
         $result = $this->model->create($dto->build());
 
-        return $this->format($result->toArray());
+        return $result;
     }
 
-    /**
-     * Update an user title
-     *
-     * @param  App\DTO\UserTitle\UserTitleDTO  $dto
-     *
-     * @throws Illuminate\Database\Eloquent\ModelNotFoundException
-     */
-    public function update(int|string $id, UserTitleDTO $dto): stdClass
+    public function update(int|string $id, UserTitleDTO $dto): Model
     {
         $userTitle = $this->model->findOr(
-            $id,
-            fn () => throw new ModelNotFoundException('Unknown user title')
+            id: $id,
+            callback: fn () => throw new ModelNotFoundException('Unknown user title')
         );
 
         $userTitle->update($dto->build());
 
-        return $this->format(
-            $userTitle->toArray(),
-        );
+        return $userTitle;
     }
 }

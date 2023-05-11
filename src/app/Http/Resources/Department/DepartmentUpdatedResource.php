@@ -20,6 +20,7 @@ class DepartmentUpdatedResource extends JsonResource
             'code' => $this->department_code,
             'workPlace' => $this->work_place,
             'updatedAt' => date('Y-m-d H:i:s', strtotime($this->updated_at)),
+            'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
     }
 }
