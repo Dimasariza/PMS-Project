@@ -5,6 +5,7 @@
         "id": 8,
         "name": "Samsudin",
         "code": "SB-1232455",
-        "workPlace": "ship"
+        "workPlace": "ship",
+        "isDeleted": false
     }
 }

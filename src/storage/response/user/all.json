@@ -17,9 +17,10 @@
                     "id": 1,
                     "name": "Ole Gutkowski",
                     "code": "CC",
-                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 5,
                     "name": "Second Engineer",
                     "access": {
@@ -49,9 +50,10 @@
                     "id": 2,
                     "name": "Dr. Darryl Carroll I",
                     "code": "NR",
-                    "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                    "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 4,
                     "name": "Admin",
                     "access": {
@@ -81,9 +83,10 @@
                     "id": 4,
                     "name": "Miss Daisy Lakin",
                     "code": "KH",
-                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 1,
                     "name": "Captain",
                     "access": {
@@ -110,12 +113,13 @@
                 "createdAt": "2023-04-30 19:08:53",
                 "updatedAt": "2023-04-30 19:08:53",
                 "department": {
-                    "id": 1,
+                    "id": 18,
                     "name": "Ole Gutkowski",
                     "code": "CC",
-                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                    "isDeleted": true
                 },
-                "title": {
+                "userTitle": {
                     "id": 5,
                     "name": "Second Engineer",
                     "access": {
@@ -145,9 +149,10 @@
                     "id": 1,
                     "name": "Ole Gutkowski",
                     "code": "CC",
-                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 1,
                     "name": "Captain",
                     "access": {
@@ -177,9 +182,10 @@
                     "id": 4,
                     "name": "Miss Daisy Lakin",
                     "code": "KH",
-                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 3,
                     "name": "Chief Officer",
                     "access": {
@@ -209,9 +215,10 @@
                     "id": 3,
                     "name": "Prof. Rosalind Paucek Sr.",
                     "code": "BB",
-                    "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                    "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 5,
                     "name": "Second Engineer",
                     "access": {
@@ -241,9 +248,10 @@
                     "id": 1,
                     "name": "Ole Gutkowski",
                     "code": "CC",
-                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 4,
                     "name": "Admin",
                     "access": {
@@ -273,9 +281,10 @@
                     "id": 4,
                     "name": "Miss Daisy Lakin",
                     "code": "KH",
-                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                    "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 2,
                     "name": "Chief Engineer",
                     "access": {
@@ -305,9 +314,10 @@
                     "id": 1,
                     "name": "Ole Gutkowski",
                     "code": "CC",
-                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                    "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                    "isDeleted": false
                 },
-                "title": {
+                "userTitle": {
                     "id": 1,
                     "name": "Captain",
                     "access": {

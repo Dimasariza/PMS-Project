@@ -14,7 +14,8 @@
             "id": 1,
             "name": "Tobin Goodwin",
             "code": "JM",
-            "workPlace": "65118 Conn Street\nYundtview, MN 81843"
+            "workPlace": "65118 Conn Street\nYundtview, MN 81843",
+            "isDeleted": false
         },
         "userTitle": {
             "id": 1,

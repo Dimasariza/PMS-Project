@@ -16,7 +16,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 15,
@@ -31,7 +32,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 16,
@@ -46,7 +48,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 17,
@@ -61,7 +64,8 @@
                 "LOA": 10.05,
                 "breadth": 11.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 18,
@@ -76,7 +80,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 19,
@@ -91,7 +96,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 20,
@@ -106,7 +112,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 21,
@@ -121,7 +128,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             },
             {
                 "id": 22,
@@ -136,7 +144,8 @@
                 "LOA": 10.05,
                 "breadth": 10.05,
                 "vesselTypeGeneric": "Generic",
-                "vesselTypeDetailed": "Detailed"
+                "vesselTypeDetailed": "Detailed",
+                "isDeleted": false
             }
         ],
         "links": {

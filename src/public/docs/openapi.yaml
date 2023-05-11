@@ -269,41 +269,49 @@ paths:
                         name: 'Ole Gutkowski'
                         code: CC
                         workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                        isDeleted: false
                       -
                         id: 2
                         name: 'Dr. Darryl Carroll I'
                         code: NR
                         workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                        isDeleted: false
                       -
                         id: 3
                         name: 'Prof. Rosalind Paucek Sr.'
                         code: BB
                         workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                        isDeleted: false
                       -
                         id: 4
                         name: 'Miss Daisy Lakin'
                         code: KH
                         workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                        isDeleted: false
                       -
                         id: 5
                         name: 'Marques Dach'
                         code: NZ
                         workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
+                        isDeleted: false
                       -
                         id: 6
                         name: Samsudin
                         code: SB-12324
                         workPlace: ship
+                        isDeleted: false
                       -
                         id: 7
                         name: Samsudin
                         code: SB-1234
                         workPlace: ship
+                        isDeleted: false
                       -
                         id: 9
                         name: 'Project Department'
                         code: SB-789
                         workPlace: ship
+                        isDeleted: false
                     links:
                       current: 'http://localhost:9000/api/v1/department?page=1'
                       prev: null
@@ -334,41 +342,49 @@ paths:
                             name: 'Ole Gutkowski'
                             code: CC
                             workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            isDeleted: false
                           -
                             id: 2
                             name: 'Dr. Darryl Carroll I'
                             code: NR
                             workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                            isDeleted: false
                           -
                             id: 3
                             name: 'Prof. Rosalind Paucek Sr.'
                             code: BB
                             workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                            isDeleted: false
                           -
                             id: 4
                             name: 'Miss Daisy Lakin'
                             code: KH
                             workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                            isDeleted: false
                           -
                             id: 5
                             name: 'Marques Dach'
                             code: NZ
                             workPlace: "97424 Jammie Drive\nBashirianland, DC 29308"
+                            isDeleted: false
                           -
                             id: 6
                             name: Samsudin
                             code: SB-12324
                             workPlace: ship
+                            isDeleted: false
                           -
                             id: 7
                             name: Samsudin
                             code: SB-1234
                             workPlace: ship
+                            isDeleted: false
                           -
                             id: 9
                             name: 'Project Department'
                             code: SB-789
                             workPlace: ship
+                            isDeleted: false
                         items:
                           type: object
                           properties:
@@ -384,6 +400,9 @@ paths:
                             workPlace:
                               type: string
                               example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                            isDeleted:
+                              type: boolean
+                              example: false
                       links:
                         type: object
                         properties:
@@ -450,6 +469,7 @@ paths:
                     code: SB-1232455
                     workPlace: ship
                     createdAt: '2023-05-05 06:20:26'
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -475,6 +495,9 @@ paths:
                       createdAt:
                         type: string
                         example: '2023-05-05 06:20:26'
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Department
       requestBody:
@@ -528,6 +551,7 @@ paths:
                     name: Samsudin
                     code: SB-1232455
                     workPlace: ship
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -550,6 +574,9 @@ paths:
                       workPlace:
                         type: string
                         example: ship
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Department
     put:
@@ -580,6 +607,7 @@ paths:
                     code: SB-1232455
                     workPlace: ship
                     updatedAt: '2023-05-05 06:33:34'
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -605,6 +633,9 @@ paths:
                       updatedAt:
                         type: string
                         example: '2023-05-05 06:33:34'
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Department
       requestBody:
@@ -709,6 +740,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 15
                         imoNumber: IMO123456123
@@ -723,6 +755,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 16
                         imoNumber: IMO69
@@ -737,6 +770,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 17
                         imoNumber: IMO69
@@ -751,6 +785,7 @@ paths:
                         breadth: 11.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 18
                         imoNumber: IMO69
@@ -765,6 +800,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 19
                         imoNumber: IMO69
@@ -779,6 +815,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 20
                         imoNumber: IMO69
@@ -793,6 +830,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 21
                         imoNumber: IMO69
@@ -807,6 +845,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                       -
                         id: 22
                         imoNumber: IMO69
@@ -821,6 +860,7 @@ paths:
                         breadth: 10.05
                         vesselTypeGeneric: Generic
                         vesselTypeDetailed: Detailed
+                        isDeleted: false
                     links:
                       current: 'http://localhost:9000/api/v1/ship?page=1'
                       prev: null
@@ -860,6 +900,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 15
                             imoNumber: IMO123456123
@@ -874,6 +915,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 16
                             imoNumber: IMO69
@@ -888,6 +930,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 17
                             imoNumber: IMO69
@@ -902,6 +945,7 @@ paths:
                             breadth: 11.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 18
                             imoNumber: IMO69
@@ -916,6 +960,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 19
                             imoNumber: IMO69
@@ -930,6 +975,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 20
                             imoNumber: IMO69
@@ -944,6 +990,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 21
                             imoNumber: IMO69
@@ -958,6 +1005,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                           -
                             id: 22
                             imoNumber: IMO69
@@ -972,6 +1020,7 @@ paths:
                             breadth: 10.05
                             vesselTypeGeneric: Generic
                             vesselTypeDetailed: Detailed
+                            isDeleted: false
                         items:
                           type: object
                           properties:
@@ -1014,6 +1063,9 @@ paths:
                             vesselTypeDetailed:
                               type: string
                               example: Detailed
+                            isDeleted:
+                              type: boolean
+                              example: false
                       links:
                         type: object
                         properties:
@@ -1089,6 +1141,7 @@ paths:
                     vesselTypeGeneric: Generic
                     vesselTypeDetailed: Detailed
                     createdAt: '2023-05-09 20:35:32'
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -1141,6 +1194,9 @@ paths:
                       createdAt:
                         type: string
                         example: '2023-05-09 20:35:32'
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Ship
       requestBody:
@@ -1181,7 +1237,7 @@ paths:
                 callsign:
                   type: string
                   description: ''
-                  example: nobis
+                  example: sint
                 LOA:
                   type: string
                   description: 'LOA of ship (type float).'
@@ -1248,6 +1304,7 @@ paths:
                     breadth: 10.05
                     vesselTypeGeneric: Generic
                     vesselTypeDetailed: Detailed
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -1297,6 +1354,9 @@ paths:
                       vesselTypeDetailed:
                         type: string
                         example: Detailed
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Ship
     delete:
@@ -1377,6 +1437,7 @@ paths:
                     vesselTypeGeneric: Generic
                     vesselTypeDetailed: Detailed
                     updatedAt: '2023-05-09 20:48:51'
+                    isDeleted: false
                 properties:
                   statusCode:
                     type: integer
@@ -1429,6 +1490,9 @@ paths:
                       updatedAt:
                         type: string
                         example: '2023-05-09 20:48:51'
+                      isDeleted:
+                        type: boolean
+                        example: false
       tags:
         - Ship
       requestBody:
@@ -1469,7 +1533,7 @@ paths:
                 callsign:
                   type: string
                   description: ''
-                  example: vero
+                  example: non
                 LOA:
                   type: string
                   description: 'LOA of ship (type float).'
@@ -1547,7 +1611,8 @@ paths:
                           name: 'Ole Gutkowski'
                           code: CC
                           workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 5
                           name: 'Second Engineer'
                           access:
@@ -1575,7 +1640,8 @@ paths:
                           name: 'Dr. Darryl Carroll I'
                           code: NR
                           workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 4
                           name: Admin
                           access:
@@ -1603,7 +1669,8 @@ paths:
                           name: 'Miss Daisy Lakin'
                           code: KH
                           workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 1
                           name: Captain
                           access:
@@ -1627,11 +1694,12 @@ paths:
                         createdAt: '2023-04-30 19:08:53'
                         updatedAt: '2023-04-30 19:08:53'
                         department:
-                          id: 1
+                          id: 18
                           name: 'Ole Gutkowski'
                           code: CC
                           workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                        title:
+                          isDeleted: true
+                        userTitle:
                           id: 5
                           name: 'Second Engineer'
                           access:
@@ -1659,7 +1727,8 @@ paths:
                           name: 'Ole Gutkowski'
                           code: CC
                           workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 1
                           name: Captain
                           access:
@@ -1687,7 +1756,8 @@ paths:
                           name: 'Miss Daisy Lakin'
                           code: KH
                           workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 3
                           name: 'Chief Officer'
                           access:
@@ -1715,7 +1785,8 @@ paths:
                           name: 'Prof. Rosalind Paucek Sr.'
                           code: BB
                           workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 5
                           name: 'Second Engineer'
                           access:
@@ -1743,7 +1814,8 @@ paths:
                           name: 'Ole Gutkowski'
                           code: CC
                           workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 4
                           name: Admin
                           access:
@@ -1771,7 +1843,8 @@ paths:
                           name: 'Miss Daisy Lakin'
                           code: KH
                           workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 2
                           name: 'Chief Engineer'
                           access:
@@ -1799,7 +1872,8 @@ paths:
                           name: 'Ole Gutkowski'
                           code: CC
                           workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                        title:
+                          isDeleted: false
+                        userTitle:
                           id: 1
                           name: Captain
                           access:
@@ -1852,7 +1926,8 @@ paths:
                               name: 'Ole Gutkowski'
                               code: CC
                               workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 5
                               name: 'Second Engineer'
                               access:
@@ -1880,7 +1955,8 @@ paths:
                               name: 'Dr. Darryl Carroll I'
                               code: NR
                               workPlace: "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 4
                               name: Admin
                               access:
@@ -1908,7 +1984,8 @@ paths:
                               name: 'Miss Daisy Lakin'
                               code: KH
                               workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 1
                               name: Captain
                               access:
@@ -1932,11 +2009,12 @@ paths:
                             createdAt: '2023-04-30 19:08:53'
                             updatedAt: '2023-04-30 19:08:53'
                             department:
-                              id: 1
+                              id: 18
                               name: 'Ole Gutkowski'
                               code: CC
                               workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                              isDeleted: true
+                            userTitle:
                               id: 5
                               name: 'Second Engineer'
                               access:
@@ -1964,7 +2042,8 @@ paths:
                               name: 'Ole Gutkowski'
                               code: CC
                               workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 1
                               name: Captain
                               access:
@@ -1992,7 +2071,8 @@ paths:
                               name: 'Miss Daisy Lakin'
                               code: KH
                               workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 3
                               name: 'Chief Officer'
                               access:
@@ -2020,7 +2100,8 @@ paths:
                               name: 'Prof. Rosalind Paucek Sr.'
                               code: BB
                               workPlace: "55329 Ernesto Alley\nDanikaberg, GA 24670"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 5
                               name: 'Second Engineer'
                               access:
@@ -2048,7 +2129,8 @@ paths:
                               name: 'Ole Gutkowski'
                               code: CC
                               workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 4
                               name: Admin
                               access:
@@ -2076,7 +2158,8 @@ paths:
                               name: 'Miss Daisy Lakin'
                               code: KH
                               workPlace: "252 Bethany Route\nWest Zackery, WY 31105-5244"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 2
                               name: 'Chief Engineer'
                               access:
@@ -2104,7 +2187,8 @@ paths:
                               name: 'Ole Gutkowski'
                               code: CC
                               workPlace: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                              isDeleted: false
+                            userTitle:
                               id: 1
                               name: Captain
                               access:
@@ -2162,7 +2246,10 @@ paths:
                                 workPlace:
                                   type: string
                                   example: "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
-                            title:
+                                isDeleted:
+                                  type: boolean
+                                  example: false
+                            userTitle:
                               type: object
                               properties:
                                 id:
@@ -2275,6 +2362,7 @@ paths:
                       name: 'Tobin Goodwin'
                       code: JM
                       workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                      isDeleted: false
                     userTitle:
                       id: 1
                       titleName: Captain
@@ -2336,6 +2424,9 @@ paths:
                           workPlace:
                             type: string
                             example: "65118 Conn Street\nYundtview, MN 81843"
+                          isDeleted:
+                            type: boolean
+                            example: false
                       userTitle:
                         type: object
                         properties:
@@ -2463,6 +2554,7 @@ paths:
                       name: 'Tobin Goodwin'
                       code: JM
                       workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                      isDeleted: false
                     userTitle:
                       id: 1
                       titleName: Captain
@@ -2524,6 +2616,9 @@ paths:
                           workPlace:
                             type: string
                             example: "65118 Conn Street\nYundtview, MN 81843"
+                          isDeleted:
+                            type: boolean
+                            example: false
                       userTitle:
                         type: object
                         properties:
@@ -2608,6 +2703,7 @@ paths:
                       name: 'Tobin Goodwin'
                       code: JM
                       workPlace: "65118 Conn Street\nYundtview, MN 81843"
+                      isDeleted: false
                     userTitle:
                       id: 1
                       titleName: Captain
@@ -2669,6 +2765,9 @@ paths:
                           workPlace:
                             type: string
                             example: "65118 Conn Street\nYundtview, MN 81843"
+                          isDeleted:
+                            type: boolean
+                            example: false
                       userTitle:
                         type: object
                         properties:

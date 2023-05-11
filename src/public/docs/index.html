@@ -167,7 +167,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: May 10, 2023</li>
+        <li>Last updated: May 11, 2023</li>
     </ul>
 </div>
 
@@ -633,49 +633,57 @@ fetch(url, {
                 &quot;id&quot;: 1,
                 &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                 &quot;code&quot;: &quot;CC&quot;,
-                &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 2,
                 &quot;name&quot;: &quot;Dr. Darryl Carroll I&quot;,
                 &quot;code&quot;: &quot;NR&quot;,
-                &quot;workPlace&quot;: &quot;3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070&quot;
+                &quot;workPlace&quot;: &quot;3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 3,
                 &quot;name&quot;: &quot;Prof. Rosalind Paucek Sr.&quot;,
                 &quot;code&quot;: &quot;BB&quot;,
-                &quot;workPlace&quot;: &quot;55329 Ernesto Alley\nDanikaberg, GA 24670&quot;
+                &quot;workPlace&quot;: &quot;55329 Ernesto Alley\nDanikaberg, GA 24670&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 4,
                 &quot;name&quot;: &quot;Miss Daisy Lakin&quot;,
                 &quot;code&quot;: &quot;KH&quot;,
-                &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;
+                &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 5,
                 &quot;name&quot;: &quot;Marques Dach&quot;,
                 &quot;code&quot;: &quot;NZ&quot;,
-                &quot;workPlace&quot;: &quot;97424 Jammie Drive\nBashirianland, DC 29308&quot;
+                &quot;workPlace&quot;: &quot;97424 Jammie Drive\nBashirianland, DC 29308&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 6,
                 &quot;name&quot;: &quot;Samsudin&quot;,
                 &quot;code&quot;: &quot;SB-12324&quot;,
-                &quot;workPlace&quot;: &quot;ship&quot;
+                &quot;workPlace&quot;: &quot;ship&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 7,
                 &quot;name&quot;: &quot;Samsudin&quot;,
                 &quot;code&quot;: &quot;SB-1234&quot;,
-                &quot;workPlace&quot;: &quot;ship&quot;
+                &quot;workPlace&quot;: &quot;ship&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 9,
                 &quot;name&quot;: &quot;Project Department&quot;,
                 &quot;code&quot;: &quot;SB-789&quot;,
-                &quot;workPlace&quot;: &quot;ship&quot;
+                &quot;workPlace&quot;: &quot;ship&quot;,
+                &quot;isDeleted&quot;: false
             }
         ],
         &quot;links&quot;: {
@@ -843,7 +851,8 @@ fetch(url, {
         &quot;name&quot;: &quot;Samsudin&quot;,
         &quot;code&quot;: &quot;SB-1232455&quot;,
         &quot;workPlace&quot;: &quot;ship&quot;,
-        &quot;createdAt&quot;: &quot;2023-05-05 06:20:26&quot;
+        &quot;createdAt&quot;: &quot;2023-05-05 06:20:26&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -1015,7 +1024,8 @@ fetch(url, {
         &quot;id&quot;: 8,
         &quot;name&quot;: &quot;Samsudin&quot;,
         &quot;code&quot;: &quot;SB-1232455&quot;,
-        &quot;workPlace&quot;: &quot;ship&quot;
+        &quot;workPlace&quot;: &quot;ship&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -1128,7 +1138,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost:9000/api/v1/department/1" \
+    "http://localhost:9000/api/v1/department/2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: Bearer 3|iMxzfuvnFX02IwrhZ8ysPCbwz359xXtR5Rts6QBv" \
@@ -1142,7 +1152,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9000/api/v1/department/1"
+    "http://localhost:9000/api/v1/department/2"
 );
 
 const headers = {
@@ -1179,7 +1189,8 @@ fetch(url, {
         &quot;name&quot;: &quot;Samsudin Jaya&quot;,
         &quot;code&quot;: &quot;SB-1232455&quot;,
         &quot;workPlace&quot;: &quot;ship&quot;,
-        &quot;updatedAt&quot;: &quot;2023-05-05 06:33:34&quot;
+        &quot;updatedAt&quot;: &quot;2023-05-05 06:33:34&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -1275,10 +1286,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="PUTapi-v1-department--id-"
-               value="1"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the department. Example: <code>1</code></p>
+<p>The ID of the department. Example: <code>2</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1526,7 +1537,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 15,
@@ -1541,7 +1553,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 16,
@@ -1556,7 +1569,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 17,
@@ -1571,7 +1585,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 11.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 18,
@@ -1586,7 +1601,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 19,
@@ -1601,7 +1617,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 20,
@@ -1616,7 +1633,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 21,
@@ -1631,7 +1649,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             },
             {
                 &quot;id&quot;: 22,
@@ -1646,7 +1665,8 @@ fetch(url, {
                 &quot;LOA&quot;: 10.05,
                 &quot;breadth&quot;: 10.05,
                 &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+                &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+                &quot;isDeleted&quot;: false
             }
         ],
         &quot;links&quot;: {
@@ -1773,7 +1793,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "dwt=1000" \
     --form "grossTonage=1000" \
     --form "year=2023" \
-    --form "callsign=nobis" \
+    --form "callsign=sint" \
     --form "LOA=10.05" \
     --form "breadth=11.05" \
     --form "vesselTypeGeneric=Generic" \
@@ -1799,7 +1819,7 @@ body.append('flag', 'ID');
 body.append('dwt', '1000');
 body.append('grossTonage', '1000');
 body.append('year', '2023');
-body.append('callsign', 'nobis');
+body.append('callsign', 'sint');
 body.append('LOA', '10.05');
 body.append('breadth', '11.05');
 body.append('vesselTypeGeneric', 'Generic');
@@ -1837,7 +1857,8 @@ fetch(url, {
         &quot;breadth&quot;: 10.05,
         &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
         &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
-        &quot;createdAt&quot;: &quot;2023-05-09 20:35:32&quot;
+        &quot;createdAt&quot;: &quot;2023-05-09 20:35:32&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -2006,10 +2027,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="callsign"                data-endpoint="POSTapi-v1-ship"
-               value="nobis"
+               value="sint"
                data-component="body">
     <br>
-<p>Example: <code>nobis</code></p>
+<p>Example: <code>sint</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>LOA</code></b>&nbsp;&nbsp;
@@ -2117,7 +2138,8 @@ fetch(url, {
         &quot;LOA&quot;: 10.05,
         &quot;breadth&quot;: 10.05,
         &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
-        &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;
+        &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -2240,7 +2262,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "dwt=1000" \
     --form "grossTonage=1000" \
     --form "year=2023" \
-    --form "callsign=vero" \
+    --form "callsign=non" \
     --form "LOA=10.05" \
     --form "breadth=11.05" \
     --form "vesselTypeGeneric=Generic" \
@@ -2266,7 +2288,7 @@ body.append('flag', 'ID');
 body.append('dwt', '1000');
 body.append('grossTonage', '1000');
 body.append('year', '2023');
-body.append('callsign', 'vero');
+body.append('callsign', 'non');
 body.append('LOA', '10.05');
 body.append('breadth', '11.05');
 body.append('vesselTypeGeneric', 'Generic');
@@ -2304,7 +2326,8 @@ fetch(url, {
         &quot;breadth&quot;: 10.05,
         &quot;vesselTypeGeneric&quot;: &quot;Generic&quot;,
         &quot;vesselTypeDetailed&quot;: &quot;Detailed&quot;,
-        &quot;updatedAt&quot;: &quot;2023-05-09 20:48:51&quot;
+        &quot;updatedAt&quot;: &quot;2023-05-09 20:48:51&quot;,
+        &quot;isDeleted&quot;: false
     }
 }</code>
  </pre>
@@ -2485,10 +2508,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                name="callsign"                data-endpoint="POSTapi-v1-ship--id--update"
-               value="vero"
+               value="non"
                data-component="body">
     <br>
-<p>Example: <code>vero</code></p>
+<p>Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>LOA</code></b>&nbsp;&nbsp;
@@ -2747,9 +2770,10 @@ fetch(url, {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                     &quot;code&quot;: &quot;CC&quot;,
-                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 5,
                     &quot;name&quot;: &quot;Second Engineer&quot;,
                     &quot;access&quot;: {
@@ -2779,9 +2803,10 @@ fetch(url, {
                     &quot;id&quot;: 2,
                     &quot;name&quot;: &quot;Dr. Darryl Carroll I&quot;,
                     &quot;code&quot;: &quot;NR&quot;,
-                    &quot;workPlace&quot;: &quot;3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070&quot;
+                    &quot;workPlace&quot;: &quot;3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 4,
                     &quot;name&quot;: &quot;Admin&quot;,
                     &quot;access&quot;: {
@@ -2811,9 +2836,10 @@ fetch(url, {
                     &quot;id&quot;: 4,
                     &quot;name&quot;: &quot;Miss Daisy Lakin&quot;,
                     &quot;code&quot;: &quot;KH&quot;,
-                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;
+                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Captain&quot;,
                     &quot;access&quot;: {
@@ -2840,12 +2866,13 @@ fetch(url, {
                 &quot;createdAt&quot;: &quot;2023-04-30 19:08:53&quot;,
                 &quot;updatedAt&quot;: &quot;2023-04-30 19:08:53&quot;,
                 &quot;department&quot;: {
-                    &quot;id&quot;: 1,
+                    &quot;id&quot;: 18,
                     &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                     &quot;code&quot;: &quot;CC&quot;,
-                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                    &quot;isDeleted&quot;: true
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 5,
                     &quot;name&quot;: &quot;Second Engineer&quot;,
                     &quot;access&quot;: {
@@ -2875,9 +2902,10 @@ fetch(url, {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                     &quot;code&quot;: &quot;CC&quot;,
-                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Captain&quot;,
                     &quot;access&quot;: {
@@ -2907,9 +2935,10 @@ fetch(url, {
                     &quot;id&quot;: 4,
                     &quot;name&quot;: &quot;Miss Daisy Lakin&quot;,
                     &quot;code&quot;: &quot;KH&quot;,
-                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;
+                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 3,
                     &quot;name&quot;: &quot;Chief Officer&quot;,
                     &quot;access&quot;: {
@@ -2939,9 +2968,10 @@ fetch(url, {
                     &quot;id&quot;: 3,
                     &quot;name&quot;: &quot;Prof. Rosalind Paucek Sr.&quot;,
                     &quot;code&quot;: &quot;BB&quot;,
-                    &quot;workPlace&quot;: &quot;55329 Ernesto Alley\nDanikaberg, GA 24670&quot;
+                    &quot;workPlace&quot;: &quot;55329 Ernesto Alley\nDanikaberg, GA 24670&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 5,
                     &quot;name&quot;: &quot;Second Engineer&quot;,
                     &quot;access&quot;: {
@@ -2971,9 +3001,10 @@ fetch(url, {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                     &quot;code&quot;: &quot;CC&quot;,
-                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 4,
                     &quot;name&quot;: &quot;Admin&quot;,
                     &quot;access&quot;: {
@@ -3003,9 +3034,10 @@ fetch(url, {
                     &quot;id&quot;: 4,
                     &quot;name&quot;: &quot;Miss Daisy Lakin&quot;,
                     &quot;code&quot;: &quot;KH&quot;,
-                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;
+                    &quot;workPlace&quot;: &quot;252 Bethany Route\nWest Zackery, WY 31105-5244&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 2,
                     &quot;name&quot;: &quot;Chief Engineer&quot;,
                     &quot;access&quot;: {
@@ -3035,9 +3067,10 @@ fetch(url, {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Ole Gutkowski&quot;,
                     &quot;code&quot;: &quot;CC&quot;,
-                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;
+                    &quot;workPlace&quot;: &quot;83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325&quot;,
+                    &quot;isDeleted&quot;: false
                 },
-                &quot;title&quot;: {
+                &quot;userTitle&quot;: {
                     &quot;id&quot;: 1,
                     &quot;name&quot;: &quot;Captain&quot;,
                     &quot;access&quot;: {
@@ -3235,7 +3268,8 @@ fetch(url, {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Tobin Goodwin&quot;,
             &quot;code&quot;: &quot;JM&quot;,
-            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;,
+            &quot;isDeleted&quot;: false
         },
         &quot;userTitle&quot;: {
             &quot;id&quot;: 1,
@@ -3507,7 +3541,8 @@ fetch(url, {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Tobin Goodwin&quot;,
             &quot;code&quot;: &quot;JM&quot;,
-            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;,
+            &quot;isDeleted&quot;: false
         },
         &quot;userTitle&quot;: {
             &quot;id&quot;: 1,
@@ -3696,7 +3731,8 @@ fetch(url, {
             &quot;id&quot;: 1,
             &quot;name&quot;: &quot;Tobin Goodwin&quot;,
             &quot;code&quot;: &quot;JM&quot;,
-            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;
+            &quot;workPlace&quot;: &quot;65118 Conn Street\nYundtview, MN 81843&quot;,
+            &quot;isDeleted&quot;: false
         },
         &quot;userTitle&quot;: {
             &quot;id&quot;: 1,

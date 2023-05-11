@@ -44,49 +44,57 @@ endpoints:
                           "id": 1,
                           "name": "Ole Gutkowski",
                           "code": "CC",
-                          "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325"
+                          "workPlace": "83294 Gia Hills Suite 087\nNorth Patriciafurt, RI 68325",
+                          "isDeleted": false
                       },
                       {
                           "id": 2,
                           "name": "Dr. Darryl Carroll I",
                           "code": "NR",
-                          "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070"
+                          "workPlace": "3635 Evelyn Corners Suite 127\nSouth Alexandreville, OR 40070",
+                          "isDeleted": false
                       },
                       {
                           "id": 3,
                           "name": "Prof. Rosalind Paucek Sr.",
                           "code": "BB",
-                          "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670"
+                          "workPlace": "55329 Ernesto Alley\nDanikaberg, GA 24670",
+                          "isDeleted": false
                       },
                       {
                           "id": 4,
                           "name": "Miss Daisy Lakin",
                           "code": "KH",
-                          "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244"
+                          "workPlace": "252 Bethany Route\nWest Zackery, WY 31105-5244",
+                          "isDeleted": false
                       },
                       {
                           "id": 5,
                           "name": "Marques Dach",
                           "code": "NZ",
-                          "workPlace": "97424 Jammie Drive\nBashirianland, DC 29308"
+                          "workPlace": "97424 Jammie Drive\nBashirianland, DC 29308",
+                          "isDeleted": false
                       },
                       {
                           "id": 6,
                           "name": "Samsudin",
                           "code": "SB-12324",
-                          "workPlace": "ship"
+                          "workPlace": "ship",
+                          "isDeleted": false
                       },
                       {
                           "id": 7,
                           "name": "Samsudin",
                           "code": "SB-1234",
-                          "workPlace": "ship"
+                          "workPlace": "ship",
+                          "isDeleted": false
                       },
                       {
                           "id": 9,
                           "name": "Project Department",
                           "code": "SB-789",
-                          "workPlace": "ship"
+                          "workPlace": "ship",
+                          "isDeleted": false
                       }
                   ],
                   "links": {
@@ -176,7 +184,8 @@ endpoints:
                   "name": "Samsudin",
                   "code": "SB-1232455",
                   "workPlace": "ship",
-                  "createdAt": "2023-05-05 06:20:26"
+                  "createdAt": "2023-05-05 06:20:26",
+                  "isDeleted": false
               }
           }
         headers: []
@@ -233,7 +242,8 @@ endpoints:
                   "id": 8,
                   "name": "Samsudin",
                   "code": "SB-1232455",
-                  "workPlace": "ship"
+                  "workPlace": "ship",
+                  "isDeleted": false
               }
           }
         headers: []
@@ -270,11 +280,11 @@ endpoints:
         name: id
         description: 'The ID of the department.'
         required: true
-        example: 1
+        example: 2
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 2
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -316,7 +326,8 @@ endpoints:
                   "name": "Samsudin Jaya",
                   "code": "SB-1232455",
                   "workPlace": "ship",
-                  "updatedAt": "2023-05-05 06:33:34"
+                  "updatedAt": "2023-05-05 06:33:34",
+                  "isDeleted": false
               }
           }
         headers: []

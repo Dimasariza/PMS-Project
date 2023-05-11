@@ -51,7 +51,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 15,
@@ -66,7 +67,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 16,
@@ -81,7 +83,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 17,
@@ -96,7 +99,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 11.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 18,
@@ -111,7 +115,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 19,
@@ -126,7 +131,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 20,
@@ -141,7 +147,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 21,
@@ -156,7 +163,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       },
                       {
                           "id": 22,
@@ -171,7 +179,8 @@ endpoints:
                           "LOA": 10.05,
                           "breadth": 10.05,
                           "vesselTypeGeneric": "Generic",
-                          "vesselTypeDetailed": "Detailed"
+                          "vesselTypeDetailed": "Detailed",
+                          "isDeleted": false
                       }
                   ],
                   "links": {
@@ -276,7 +285,7 @@ endpoints:
         name: callsign
         description: ''
         required: true
-        example: nobis
+        example: sint
         type: string
         custom: []
       LOA:
@@ -314,7 +323,7 @@ endpoints:
       dwt: 1000
       grossTonage: 1000
       year: 2023
-      callsign: nobis
+      callsign: sint
       LOA: '10.05'
       breadth: '11.05'
       vesselTypeGeneric: Generic
@@ -342,7 +351,8 @@ endpoints:
                   "breadth": 10.05,
                   "vesselTypeGeneric": "Generic",
                   "vesselTypeDetailed": "Detailed",
-                  "createdAt": "2023-05-09 20:35:32"
+                  "createdAt": "2023-05-09 20:35:32",
+                  "isDeleted": false
               }
           }
         headers: []
@@ -408,7 +418,8 @@ endpoints:
                   "LOA": 10.05,
                   "breadth": 10.05,
                   "vesselTypeGeneric": "Generic",
-                  "vesselTypeDetailed": "Detailed"
+                  "vesselTypeDetailed": "Detailed",
+                  "isDeleted": false
               }
           }
         headers: []
@@ -505,7 +516,7 @@ endpoints:
         name: callsign
         description: ''
         required: true
-        example: vero
+        example: non
         type: string
         custom: []
       LOA:
@@ -543,7 +554,7 @@ endpoints:
       dwt: 1000
       grossTonage: 1000
       year: 2023
-      callsign: vero
+      callsign: non
       LOA: '10.05'
       breadth: '11.05'
       vesselTypeGeneric: Generic
@@ -571,7 +582,8 @@ endpoints:
                   "breadth": 10.05,
                   "vesselTypeGeneric": "Generic",
                   "vesselTypeDetailed": "Detailed",
-                  "updatedAt": "2023-05-09 20:48:51"
+                  "updatedAt": "2023-05-09 20:48:51",
+                  "isDeleted": false
               }
           }
         headers: []

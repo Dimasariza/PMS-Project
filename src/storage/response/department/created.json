@@ -6,6 +6,7 @@
         "name": "Samsudin",
         "code": "SB-1232455",
         "workPlace": "ship",
-        "createdAt": "2023-05-05 06:20:26"
+        "createdAt": "2023-05-05 06:20:26",
+        "isDeleted": false
     }
 }

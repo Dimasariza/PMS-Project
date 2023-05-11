@@ -15,6 +15,7 @@
         "breadth": 10.05,
         "vesselTypeGeneric": "Generic",
         "vesselTypeDetailed": "Detailed",
-        "createdAt": "2023-05-09 20:35:32"
+        "createdAt": "2023-05-09 20:35:32",
+        "isDeleted": false
     }
 }
