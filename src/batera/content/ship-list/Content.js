@@ -54,7 +54,7 @@ function Content() {
   }
 
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-  const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
+  const isMediumScreen = useMediaQuery((theme) => (theme.breakpoints.between('sm', 'md') || theme.breakpoints.equals('sm') || theme.breakpoints.equals('lg')));
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const entriesPerRow = isSmallScreen ? 1 : isMediumScreen ? 2 : isLargeScreen ? 4 : 3;
