@@ -32,6 +32,8 @@ const HeaderWrapper = styled(Box)(
         width: 100%;
         @media (max-height: 600px) {
           height: 18%;
+          max-height: 150px;
+          min-height: 100px;
         }
         @media (min-height: 601px) and (max-height: 800px) {
             height: 12%;

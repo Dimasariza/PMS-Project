@@ -11,7 +11,7 @@ import {
 import { useRef, useState } from 'react';
 import Link from 'src/components/Link';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
-
+import NextLink from 'next/link';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 
 const ListWrapper = styled(Box)(
@@ -84,9 +84,11 @@ function HeaderMenu({setOpenSideBar}) {
           display: 'block'
         }}
       >
-        <IconButton onClick={() => setOpenSideBar(true)}>
-          <MenuTwoToneIcon/>
-        </IconButton>
+        {/* <NextLink href="/" passHref> */}
+          <IconButton onClick={() => {setOpenSideBar(true); console.log("Its clicked")}}>
+            <MenuTwoToneIcon/>
+          </IconButton>
+        {/* </NextLink> */}
         {/* <List disablePadding component={Box} display="flex">
           
         </List> */}

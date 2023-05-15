@@ -52,9 +52,19 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
     <>
       <Card sx={{ 
         width: cardSizes[entriesPerRow - 1].cardWidth, 
-        height: '35vh', minHeight: 300, 
+        height: '35vh', 
+        aspectRatio: '1/1',
+        minHeight: {
+          xs: 300
+        }, 
+        maxHeight: {
+          xs: 300,
+          sm: 350
+        }, 
         background: '#FFFFFF', 
-        padding: cardSizes[entriesPerRow - 1].padding, boxSizing: 'border-box' }}>
+        padding: cardSizes[entriesPerRow - 1].padding, boxSizing: 'border-box' 
+        
+        }}>
           <CardMedia
             sx={{ height: cardSizes[entriesPerRow - 1].imageHeight }}
             image={url + shipInfo.image}
