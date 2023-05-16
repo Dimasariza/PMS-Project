@@ -6,6 +6,7 @@ use App\DTO\Ship\InsertShipDTO;
 use App\DTO\Ship\UpdateShipDTO;
 use App\Http\Requests\Ship\CreateShipRequest;
 use App\Http\Requests\Ship\UpdateShipRequest;
+use App\Http\Resources\JobList\JobListCollection;
 use App\Http\Resources\Ship\ShipCollection;
 use App\Http\Resources\Ship\ShipCreatedResource;
 use App\Http\Resources\Ship\ShipResource;
@@ -98,9 +99,12 @@ class ShipController extends Controller
      */
     public function show(string|int $id)
     {
-        return $this->successResponse(
-            ShipResource::make($this->repository->show($id)),
-        );
+        $results = $this->repository->show($id);
+
+        return $this->successResponse([
+            'ship' => ShipResource::make($results->ship),
+            'jobLists' => new JobListCollection($results->jobLists)
+        ]);
     }
 
     /**

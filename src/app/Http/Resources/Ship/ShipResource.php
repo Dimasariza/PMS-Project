@@ -14,7 +14,7 @@ class ShipResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $arr = [
             'id' => $this->id,
             'imoNumber' => $this->imo_number,
             'vesselName' => $this->vessel_name,
@@ -30,5 +30,7 @@ class ShipResource extends JsonResource
             'vesselTypeDetailed' => $this->vessel_type_detailed,
             'isDeleted' => is_null($this->deleted_at) ? false : true,
         ];
+
+        return $arr;
     }
 }

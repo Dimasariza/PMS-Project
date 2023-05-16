@@ -13,7 +13,7 @@ interface ShipRepository
 
     public function create(InsertShipDTO $dto): Model;
 
-    public function show(string|int $id): Model;
+    public function show(string|int $id);
 
     public function update(int|string $id, UpdateShipDTO $dto): Model;
 

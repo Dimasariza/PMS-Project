@@ -9,6 +9,7 @@ use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Pagination\LengthAwarePaginator;
+use stdClass;
 
 class ShipRepositoryImpl extends BaseRepository implements ShipRepository
 {
@@ -29,14 +30,21 @@ class ShipRepositoryImpl extends BaseRepository implements ShipRepository
         return $result;
     }
 
-    public function show(string|int $id): Model
+    public function show(string|int $id)
     {
         $ship = $this->model->findOr(
             id: $id,
             callback: fn () => throw new ModelNotFoundException('Unknown ship')
         );
 
-        return $ship;
+        $jobLists = $ship->jobLists()->paginate(10);
+
+        $results = new stdClass();
+
+        $results->jobLists = $jobLists;
+        $results->ship = $ship;
+
+        return $results;
     }
 
     public function update(int|string $id, UpdateShipDTO $dto): Model
