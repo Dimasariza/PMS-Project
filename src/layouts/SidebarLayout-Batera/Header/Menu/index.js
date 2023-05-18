@@ -85,7 +85,7 @@ function HeaderMenu({setOpenSideBar}) {
         }}
       >
         {/* <NextLink href="/" passHref> */}
-          <IconButton onClick={() => {setOpenSideBar(true); console.log("Its clicked")}}>
+          <IconButton title='' onClick={() => {setOpenSideBar(true); console.log("Its clicked")}}>
             <MenuTwoToneIcon/>
           </IconButton>
         {/* </NextLink> */}
