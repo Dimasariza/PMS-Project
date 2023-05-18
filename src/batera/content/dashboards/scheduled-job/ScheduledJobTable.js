@@ -78,7 +78,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
               <TableCell align="left">Component Code</TableCell>
               <TableCell align="left">Department</TableCell>
               <TableCell align="left">System</TableCell>
-              <TableCell align="left">Component</TableCell>
+              <TableCell align="left">Component Name</TableCell>
               <TableCell align="left">Part</TableCell>
             </TableRow>
           </TableHead>
@@ -104,7 +104,6 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {schedule.jobName}
                     </Typography>

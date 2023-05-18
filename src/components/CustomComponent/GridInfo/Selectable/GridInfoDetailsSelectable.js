@@ -19,7 +19,7 @@ import {
   import { useState } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
-const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7]}) => {
+const GridInfoDetailsSelectable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], options=['A', 'B']}) => {
     const [activateEdit, setActivateEdit] = useState(false);
     const [inputValue, setInputValue] = useState(value);
     return(
@@ -31,7 +31,32 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
         </Grid>
         <Grid item xs={gridSizes[3]} sm={gridSizes[4]} md={gridSizes[5]}>
           <Box minHeight={'5vh'}>
-            <div style={{display: activateEdit ? 'none' : 'block'}} onClick={() => setActivateEdit((prev) => {return !prev})}>
+            <div >
+              <TextField
+                id="outlined-select-currency-native"
+                select
+                value={inputValue}
+                onChange={(value) => {
+                  handleEntryUpdate(value);
+                  setActivateEdit(value)
+                }}
+                SelectProps={{
+                  native: true
+                }}
+                size="small"
+                sx={{
+                  width: '100%', 
+                  marginBottom: '5%'
+                }}
+              >
+                {options.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </TextField>
+            </div>
+            {/* <div style={{display: activateEdit ? 'none' : 'block'}} onClick={() => setActivateEdit((prev) => {return !prev})}>
               <Text color="black" width='100%'>
                 <b>{value}</b>
               </Text>
@@ -63,11 +88,11 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 }, paddingBottom: '2%'}} onClick={() => setActivateEdit(false)}>
                 <CloseTwoToneIcon />
               </IconButton>
-            </div>
+            </div> */}
           </Box>
         </Grid>
       </>
     );
   }
 
-  export default GridInfoDetailsEditable;
+  export default GridInfoDetailsSelectable;

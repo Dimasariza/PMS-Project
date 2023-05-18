@@ -162,7 +162,6 @@ const UsersTable = ({ usersList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {user.name}
                     </Typography>

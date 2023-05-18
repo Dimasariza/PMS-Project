@@ -16,11 +16,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Text from 'src/components/Text';
 import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
+import GridInfoDetailsSelectable from 'src/components/CustomComponent/GridInfo/Selectable/GridInfoDetailsSelectable';
 
 const url = process.env.PUBLIC_URL || ""
 
 function DetailsModal(props) {
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open, handleUpdate, confirmUpdate  } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -82,7 +83,7 @@ function DetailsModal(props) {
                 width: '50%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetails title={"Department:"} value={selectedValue.department}/>
+                  <GridInfoDetailsSelectable title={"Department:"} value={selectedValue.department} handleEntryUpdate={(value) => handleUpdate('department', value)} gridSizes={customSizing}/>
                   <GridInfoDetails title={"Status Part:"} value={selectedValue.statusPart}/>
                 </Grid>
               </Typography>
@@ -97,7 +98,7 @@ function DetailsModal(props) {
                   <GridInfoDetails title={"Equipment Code:"} value={selectedValue.equipmentCode} gridSizes={customSizing}/>
                   <GridInfoDetails title={"Category:"} value={selectedValue.category} gridSizes={customSizing}/>
                   <GridInfoDetails title={"Equipment:"} value={selectedValue.equipment} gridSizes={customSizing}/>
-                  <GridInfoDetails title={"Department:"} value={selectedValue.department} gridSizes={customSizing}/>
+                  <GridInfoDetailsSelectable title={"Department:"} value={selectedValue.department} handleEntryUpdate={(value) => handleUpdate('department', value)} gridSizes={customSizing}/>
                   <GridInfoDetails title={"Status Part:"} value={selectedValue.statusPart} gridSizes={customSizing}/>
                 </Grid>
               </Typography>
@@ -111,11 +112,9 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Update
-                </Button>
-              </NextLink>
+              <Button variant="contained" color="primary" style={{width: '45%'}} onClick={() => {confirmUpdate(0); handleClose();}}>
+                Update
+              </Button>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
                 Delete
               </Button>
@@ -130,8 +129,6 @@ function DetailsModal(props) {
 DetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  shipName: PropTypes.string.isRequired,
 };
 
 export default DetailsModal;

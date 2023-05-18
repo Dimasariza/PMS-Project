@@ -167,7 +167,6 @@ const TitlesTable = ({ titleList, handleUpdate, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                       onClick={() => handleOpen(title)}
                     >
                       {title.titleName}

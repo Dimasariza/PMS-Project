@@ -120,7 +120,6 @@ const InboxTable = ({ inboxList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {mail.job}
                     </Typography>

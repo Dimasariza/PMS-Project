@@ -133,7 +133,6 @@ const ApprovedTable = ({ approvedList, handleOpen }) => {
                         color="text.primary"
                         gutterBottom
                         noWrap
-                        style={{textDecoration: 'underline'}}
                       >
                         {item.checker}
                       </Typography>

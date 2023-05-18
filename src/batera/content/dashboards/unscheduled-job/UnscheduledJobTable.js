@@ -104,7 +104,6 @@ const UnscheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {schedule.jobName}
                     </Typography>

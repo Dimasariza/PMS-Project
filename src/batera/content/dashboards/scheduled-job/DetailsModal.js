@@ -103,7 +103,7 @@ function DetailsModal(props) {
                   <GridInfoDetails title={"Component Code:"} value={selectedValue.componentCode}/>
                   <GridInfoDetails title={"Department:"} value={selectedValue.department}/>
                   <GridInfoDetails title={"System:"} value={selectedValue.system}/>
-                  <GridInfoDetails title={"Component:"} value={selectedValue.component}/>
+                  <GridInfoDetails title={"Component Name:"} value={selectedValue.component}/>
                   <GridInfoDetails title={"Part:"} value={selectedValue.part}/>
                 </Grid>
               </Typography>
@@ -117,11 +117,9 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Approve
-                </Button>
-              </NextLink>
+              <Button variant="contained" color="primary" style={{width: '45%'}}>
+                Approve
+              </Button>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
                 Update
               </Button>

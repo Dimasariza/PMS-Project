@@ -188,7 +188,6 @@ const DepartmentsTable = ({ departmentList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {department.departmentName}
                     </Typography>

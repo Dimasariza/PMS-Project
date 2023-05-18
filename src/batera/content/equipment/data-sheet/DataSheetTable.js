@@ -105,7 +105,6 @@ const DataSheetTable = ({ dataSheetList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {dataSheet.dataSheetCode}
                     </Typography>

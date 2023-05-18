@@ -84,7 +84,7 @@ const StockTable = ({ stockList, handleOpen }) => {
           <TableBody>
             {paginatedList.map((stock, index) => {
               return (
-                <TableRow hover key={stock.id}  onClick={() => handleOpen(stock)}>
+                <TableRow hover key={index}  onClick={() => handleOpen(stock)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -103,7 +103,6 @@ const StockTable = ({ stockList, handleOpen }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
-                      style={{textDecoration: 'underline'}}
                     >
                       {stock.equipmentCode}
                     </Typography>

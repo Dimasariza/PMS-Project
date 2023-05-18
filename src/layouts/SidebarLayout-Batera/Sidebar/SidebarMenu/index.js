@@ -174,25 +174,6 @@ function SidebarMenu() {
   return (
     <>
       <MenuWrapper>
-        {/* <List component="div">
-          <SubMenuWrapper>
-            <List component="div">
-              <ListItem component="div">
-                <NextLink href="/" passHref>
-                  <Button
-                    className={currentRoute === '="/' ? 'active' : ''}
-                    disableRipple
-                    component="a"
-                    onClick={closeSidebar}
-                    startIcon={<DesignServicesTwoToneIcon />}
-                  >
-                    Overview UWU
-                  </Button>
-                </NextLink>
-              </ListItem>
-            </List>
-          </SubMenuWrapper>
-        </List> */}
         <List
           component="div"
           subheader={
