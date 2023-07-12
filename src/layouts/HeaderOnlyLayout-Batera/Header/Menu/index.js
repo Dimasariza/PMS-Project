@@ -10,8 +10,6 @@ import {
 import { useRef, useState } from 'react';
 import Link from 'src/components/Link';
 
-import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
-
 const ListWrapper = styled(Box)(
   ({ theme }) => `
         .MuiTouchRipple-root {

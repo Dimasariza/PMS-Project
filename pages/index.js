@@ -4,7 +4,11 @@ import Link from 'src/components/Link';
 import Head from 'next/head';
 import TextField from '@mui/material/TextField';
 import NextLink from 'next/link';
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { SidebarContext } from 'src/contexts/SidebarContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 
 const OverviewWrapper = styled(Box)(
   ({ theme }) => `
@@ -20,6 +24,33 @@ const OverviewWrapper = styled(Box)(
 
 function Login() {
   const url = process.env.PUBLIC_URL || ""
+  const baseURL = "http://localhost:8000";
+  const localURL = '/127.0.0.1:8000/api/v1/auth/login';
+  const router = useRouter();
+
+  const { user, handleLoginData } = useContext(SidebarContext);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(false);
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
+        username: username,
+        password: password
+      });
+      router.push('/batera/ship-list');
+      handleLoginData(response.data.data);
+      // Handle the response data and tokens as per your requirements
+    } catch (error) {
+      setLoginError(true)
+    }
+  }
+
+  useEffect(() =>{
+    console.log(user)
+  } , [user])
+
   return (
     <OverviewWrapper>
       <Head>
@@ -43,6 +74,8 @@ function Login() {
               required
               id="outlined-required"
               label="Username"
+              value={username}
+              onChange={(event) => {setUsername(event.target.value)}}
             />
             <TextField
               sx={{ width: '100%' }}
@@ -51,9 +84,22 @@ function Login() {
               required
               type="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(event) => {setPassword(event.target.value)}}
             />
 
-            <NextLink href= {url + "/batera/ship-list"} passHref>
+            {loginError && <p style={{ color: 'red' }}>Login failed. Please check your credentials.</p>}
+            {/* <button onClick={handleLogin}>Login</button> */}
+            <Button
+                sx={{ width: '100%' }}
+                variant="contained"
+                className="text-3xl font-bold underline"
+                onClick={() => {handleLogin()}}
+              >
+                Login
+            </Button>
+
+            {/* <NextLink href= {url + "/batera/ship-list"} passHref>
               <Button
                 sx={{ width: '100%' }}
                 component={Link}
@@ -62,7 +108,7 @@ function Login() {
               >
                 Login
               </Button>
-            </NextLink >
+            </NextLink > */}
 
             {/* <NextLink href= {url + "/dashboards/tasks"} passHref>
               <Button
