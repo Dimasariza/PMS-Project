@@ -8,41 +8,73 @@ import {
   CardMedia,
   CardContent
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import ShipCard from './ShipCard';
 import { useMediaQuery } from '@mui/material';
+import Box from '@mui/material/Box';
+import axios from 'axios';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 function Content() {
+  const { user } = useContext(SidebarContext);
   const [shipList, setShipList] = useState([
-    {
-      id: '1',
-      shipName: 'MV. AXES',
-      image: "/static/images/ship-card/ship1.jpg",
-    },
-    {
-      id: '2',
-      shipName: 'MV. AXES',
-      image: "/static/images/ship-card/ship2.jpg",
-    },
-    {
-      id: '3',
-      shipName: 'MV. AXES',
-      image: "/static/images/ship-card/ship3.jpg",
-    },
-    {
-      id: '4',
-      shipName: 'MV. AXES',
-      image: "/static/images/ship-card/ship4.jpg",
-    },
-    {
-      id: '5',
-      shipName: 'MV. AXES',
-      image: "/static/images/ship-card/ship1.jpg",
-    },
+    // {
+    //   id: '1',
+    //   shipName: 'MV. AXES 1',
+    //   image: "/static/images/ship-card/ship1.jpg",
+    // },
+    // {
+    //   id: '2',
+    //   shipName: 'MV. AXES 2',
+    //   image: "/static/images/ship-card/ship2.jpg",
+    // },
+    // {
+    //   id: '3',
+    //   shipName: 'MV. AXES 3',
+    //   image: "/static/images/ship-card/ship3.jpg",
+    // },
+    // {
+    //   id: '4',
+    //   shipName: 'MV. AXES 4',
+    //   image: "/static/images/ship-card/ship4.jpg",
+    // },
+    // {
+    //   id: '5',
+    //   shipName: 'MV. AXES 5',
+    //   image: "/static/images/ship-card/ship1.jpg",
+    // },
   ]);
+
+  const retriveData = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/v1/ship', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.results;
+      const convertedResults = []
+      results.map((ship, index) => {
+        convertedResults.push({
+          id: ship.id,
+          shipName: ship.vesselName,
+          image: ship.picture,
+        });
+      })
+      setShipList(convertedResults)
+      console.log(convertedResults)
+      
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  useEffect(() =>{
+    retriveData()
+  }, [])
 
   function handleUpdate(id, key, value) {
     setTitleList((prevTitleList) => {
@@ -71,7 +103,7 @@ function Content() {
   }
 
   return (
-    <>
+    <Box width={'100%'} height={'100%'} >
       {
         shipList.map((ship, index) => {
           if(index % entriesPerRow === 0){
@@ -81,7 +113,7 @@ function Content() {
           }
         }) 
       }
-    </>
+    </Box>
   );
 }
 

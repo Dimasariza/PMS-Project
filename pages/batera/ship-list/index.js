@@ -16,16 +16,17 @@ function Users() {
       <PageTitleWrapper>
         <PageHeader />
       </PageTitleWrapper>
-      <Container maxWidth="lg">
+      <Container width={'100%'} height={'100%'}>
         <Grid
           container
           direction="row"
           justifyContent="center"
           alignItems="stretch"
-          spacing={3}
+          width={'100%'}
+          height={'100%'}
         >
-          <Grid item xs={12}>
-            <Content />
+          <Grid item xs={12} width={'100%'} height={'100%'} >
+            <Content width={'100%'} height={'100%'} />
           </Grid>
         </Grid>
       </Container>

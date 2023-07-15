@@ -8,16 +8,19 @@ import {
   CardMedia,
   CardContent
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import NextLink from 'next/link';
 import Link from 'src/components/Link';
+import axios from 'axios';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 const ShipCard = ({ shipInfo, entriesPerRow }) => {
   const url = process.env.PUBLIC_URL || ""
-
+  const { user } = useContext(SidebarContext);
+  const [ shipImage, setShipImage] = useState()
   const [cardSizes, setCardSizes] = useState([{
     cardWidth: '100%',
     imageHeight: '80%',
@@ -48,6 +51,27 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
   },
   ]);
 
+  // useEffect(() => {
+  //   const fetchImage = async () => {
+  //     try {
+  //       const response = await axios.get(shipInfo.image, {
+  //         responseType: 'arraybuffer',
+  //         headers: {
+  //           Authorization: `Bearer ${user.token}`,
+  //         },
+  //       });
+
+  //       const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+  //       const imageDataUrl = `data:${response.headers['content-type']};base64,${base64Image}`;
+  //       setShipImage(imageDataUrl);
+  //     } catch (error) {
+  //       console.error('Error fetching image:', error);
+  //     }
+  //   };
+
+  //   fetchImage();
+  // }, []);
+
   return (
     <>
       <Card sx={{ 
@@ -67,7 +91,7 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
         }}>
           <CardMedia
             sx={{ height: cardSizes[entriesPerRow - 1].imageHeight }}
-            image={url + shipInfo.image}
+            image={shipInfo.image}
             title={shipInfo.shipName}
           />
           <CardContent sx={{ height: cardSizes[entriesPerRow - 1].textHeight }}>

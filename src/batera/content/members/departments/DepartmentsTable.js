@@ -158,7 +158,7 @@ const DepartmentsTable = ({ departmentList, handleOpen }) => {
           <TableBody>
             {paginatedDepartmentList.map((department, index) => {
               return (
-                <TableRow hover key={department.id} onClick={() => handleOpen(department)}>
+                <TableRow hover key={"department|"+department.id+"|"+department.departmentName} onClick={() => handleOpen(department)}>
                   <TableCell>
                     <Typography
                       variant="body1"

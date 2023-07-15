@@ -33,6 +33,10 @@ function Login() {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
 
+  useEffect(() => {
+    sessionStorage.clear()
+  }, [])
+
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
@@ -46,10 +50,6 @@ function Login() {
       setLoginError(true)
     }
   }
-
-  useEffect(() =>{
-    console.log(user)
-  } , [user])
 
   return (
     <OverviewWrapper>

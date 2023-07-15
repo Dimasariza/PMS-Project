@@ -8,6 +8,7 @@ import {
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUpload';
+import { useEffect } from 'react';
 
 function TitlesList() {
   const url = process.env.PUBLIC_URL || ""
@@ -46,6 +47,15 @@ function TitlesList() {
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const screenState = isSmallScreen ? 0 : isMediumScreen ? 1 : isLargeScreen ? 3 : 2;
+
+  const [shownPic, setShowPic] = useState('/static/images/ship-card/ship1.jpg')
+  useEffect(() => {
+    if(inputedUser.vesselImage == ''){
+      setShowPic('/static/images/ship-card/ship1.jpg')
+    }else{
+      setShowPic(URL.createObjectURL(inputedUser.vesselImage))
+    }
+  }, [inputedUser])
 
   return (
     <>
@@ -145,11 +155,11 @@ function TitlesList() {
             </div>
           </Card>
           <div style={{display: (screenState < 2 ) ? 'block' : 'none', width: (screenState < 2 ) ? '100%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px', marginTop: '5%'}}>
-            <PictureUpload picLink={'/static/images/ship-card/ship1.jpg'} handleUpdate={handleUpdate}/>
+            <PictureUpload picLink={shownPic} handleUpdate={handleUpdate}/>
           </div>
         </div>
         <div style={{display: (screenState >= 2 ) ? 'block' : 'none', width: (screenState >= 2 ) ? '50%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px'}}>
-          <PictureUpload picLink={'/static/images/ship-card/ship1.jpg'} handleUpdate={handleUpdate}/>
+          <PictureUpload picLink={shownPic} handleUpdate={handleUpdate}/>
         </div>
       </div>
       

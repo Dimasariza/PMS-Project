@@ -1,6 +1,7 @@
 import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
+import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 
 
 function PageHeader() {
@@ -20,7 +21,16 @@ function PageHeader() {
           Ship List/Add Ship
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid item >
+        <NextLink href={url + "/batera/ship-list"} passHref>
+          <Button
+              sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
+              variant="contained"
+              startIcon={<ArrowBackTwoToneIcon fontSize="small" />}
+            >
+              Back
+          </Button>
+        </NextLink>
         <NextLink href={url + "/batera/ship-list"} passHref>
           <Button
             sx={{ mt: { xs: 2, md: 0 } }}

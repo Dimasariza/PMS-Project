@@ -1,8 +1,7 @@
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
+import axios from 'axios';
 
 export const SidebarContext = createContext({});
-
-
 
 export function SidebarProvider({ children }) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
@@ -24,6 +23,36 @@ export function SidebarProvider({ children }) {
     // Add more properties as needed
   });
 
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await axios.post('http://127.0.0.1:8000/api/v1/auth/login', {
+  //       username: username,
+  //       password: password
+  //     });
+  //     router.push('/batera/ship-list');
+  //     handleLoginData(response.data.data);
+  //     // Handle the response data and tokens as per your requirements
+  //   } catch (error) {
+  //     setLoginError(true)
+  //   }
+  // }
+
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+  }
+
+  // useEffect(() => {
+  //   const userId = sessionStorage.getItem("userId");
+  //   const token = sessionStorage.getItem("token")
+  //   setUser((prevUser) => ({
+  //     ...prevUser,
+  //     token: token,
+  //   }));
+
+  //   console.log('token is ' + token)
+    
+  // }, [])
+
   const handleLoginData = (data) => {
     // Perform login logic here and update the state accordingly
     // For example, after successful login:
@@ -31,8 +60,8 @@ export function SidebarProvider({ children }) {
       id: data.id,
       fullName: data.fullname,
       username: data.username,
+      access: data.title.access,
       token: data.token,
-      access: data.title.access
       // Set other properties as needed
     });
     // console.log(user)
