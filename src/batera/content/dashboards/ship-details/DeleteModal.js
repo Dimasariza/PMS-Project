@@ -8,11 +8,17 @@ import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
+import { useState, useEffect, useContext } from 'react';
+import { SidebarContext } from 'src/contexts/SidebarContext';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 const url = process.env.PUBLIC_URL || ""
 
 function DeleteModal(props) {
-  const { onClose, selectedValue, open, shipName } = props;
+  const {user} = useContext(SidebarContext);
+  const { onClose, selectedValue, open, shipName, shipID } = props;
+  const router = useRouter()
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -21,6 +27,23 @@ function DeleteModal(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
+
+  
+  const deleteData = async (id) => {
+    try {
+      const response = await axios.delete(`http://127.0.0.1:8000/api/v1/ship/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(response)
+      router.push("/batera/ship-list")
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  useState(() =>{ console.log(shipID)}, [])
 
   return (
     <Dialog onClose={handleClose} open={open}>
@@ -39,11 +62,11 @@ function DeleteModal(props) {
           {"Are you sure you want to delete " + shipName+"?"}
         </Typography>
         <div style={{display: 'flex', padding: '1%', gap: '2%', justifyContent: 'center', alignItems: 'center'}}>
-          <NextLink href= {url + "/batera/ship-list"} passHref>
-            <Button variant="contained" color="primary" style={{backgroundColor: '#FF5AD9'}}>
-              Yes
-            </Button>
-          </NextLink>
+          <Button variant="contained" color="primary" style={{backgroundColor: '#FF5AD9'}} onClick={()=>{
+            deleteData(shipID);
+            }}>
+            Yes
+          </Button>
           <Button variant="contained" color="primary" onClick={handleClose} style={{}}>
             No
           </Button>

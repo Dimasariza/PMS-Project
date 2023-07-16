@@ -10,7 +10,8 @@ import {
   IconButton
 } from '@mui/material';
 import SummaryTable from './SummaryTable';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 import Text from 'src/components/Text';
 import NextLink from 'next/link';
@@ -18,8 +19,13 @@ import PropTypes from 'prop-types';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import DeleteModal from './DeleteModal'
+import { useRouter } from 'next/router';
+import axios from 'axios';
 
 function Content() {
+  const router = useRouter();
+  const {user} = useContext(SidebarContext)
+  const { id } = router.query;
   const url = process.env.PUBLIC_URL || ""
   const [summaryList, setSummaryList] = useState([
     {
@@ -63,6 +69,39 @@ function Content() {
       vesselImage: "/static/images/ship-card/ship1.jpg"
     }
   );
+
+  
+  const retriveData = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/v1/ship/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.ship;
+      const convertedResults = {
+          vesselName: results.vesselName,
+          IMO: results.imoNumber,
+          yearBuilt: results.year,
+          flag: results.flag,
+          DWT: results.dwt,
+          grossTonage: results.grossTonage,
+          callSign: results.callsign,
+          LOA_Breadth: results.LOA + ' X ' + results.breadth,
+          vesselTypeGeneric: results.vesselTypeGeneric,
+          vesselTypeDetailed: results.vesselTypeDetailed,
+          vesselImage: results.picture
+        }
+      setShipInfo(convertedResults)
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  useEffect(() =>{
+    retriveData()
+  }, [])
+  
 
   const GridInfoDetails = ({title, value}) => {
     return(
@@ -182,6 +221,7 @@ function Content() {
                     open={open}
                     onClose={handleClose}
                     shipName={shipInfo.vesselName}
+                    shipID={id}
                   />
                 </Typography>
               </Grid>

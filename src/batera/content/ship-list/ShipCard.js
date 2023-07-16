@@ -101,7 +101,7 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
           </CardContent>
           <CardActions sx={{ height: cardSizes[entriesPerRow - 1].actionHeight }}>
             <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
-              <NextLink href= {url + "/batera/dashboards/ship-details"} passHref>
+              <NextLink href= {`/batera/dashboards/ship-details?id=${shipInfo.id}`} passHref>
                 <Button 
                   size="small" 
                   component={Link}

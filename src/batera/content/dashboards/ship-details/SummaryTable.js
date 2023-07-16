@@ -144,7 +144,7 @@ const SummaryTable = ({ summaryList }) => {
           <TableBody>
             {paginatedSummaryList.map((summary, index) => {
               return (
-                <TableRow hover key={summary.id}>
+                <TableRow hover key={summary.id+"|"+ summary.deck+"|"+summary.machine+"|"+summary.electrical}>
                   <TableCell>
                     <Typography
                       variant="body1"
