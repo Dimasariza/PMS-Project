@@ -148,7 +148,7 @@ const TitlesTable = ({ titleList, handleUpdate, handleOpen }) => {
           <TableBody>
             {paginatedTitleList.map((title, index) => {
               return (
-                <TableRow hover key={title.id} >
+                <TableRow hover key={title.titleName} >
                   <TableCell>
                     <Typography
                       variant="body1"
