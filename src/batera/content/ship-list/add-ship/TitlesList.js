@@ -10,52 +10,13 @@ import { useMediaQuery } from '@mui/material';
 import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUpload';
 import { useEffect } from 'react';
 
-function TitlesList() {
+function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setShowPic}) {
   const url = process.env.PUBLIC_URL || ""
-  const [inputedUser, setInputedUser] = useState(
-  {
-    vesselName: '',
-    IMO_Number: '',
-    yearBuilt: '',
-    flag: '',
-    DWT: '',
-    grossTonage: '',
-    callSign: '',
-    LOA: '',
-    breadth: '',
-    vesselTypeGeneric: '',
-    vesselTypeDetailed: '',
-    vesselImage: '',
-  });
-
-  const handleUpdate = (key) => (event) => {
-    if(key == 'vesselImage'){
-      setInputedUser((prev) => ({
-        ...prev,
-        [key]: event,
-      }));
-    }else{
-      setInputedUser((prev) => ({
-        ...prev,
-        [key]: event.target.value,
-      }));
-    }
-  };
-
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const screenState = isSmallScreen ? 0 : isMediumScreen ? 1 : isLargeScreen ? 3 : 2;
-
-  const [shownPic, setShowPic] = useState('/static/images/ship-card/ship1.jpg')
-  useEffect(() => {
-    if(inputedUser.vesselImage == ''){
-      setShowPic('/static/images/ship-card/ship1.jpg')
-    }else{
-      setShowPic(URL.createObjectURL(inputedUser.vesselImage))
-    }
-  }, [inputedUser])
 
   return (
     <>
@@ -88,6 +49,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Year Built"
                 onChange={handleUpdate('yearBuilt')}
+                type={"number"}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -102,13 +64,15 @@ function TitlesList() {
                 id="outlined-required"
                 label="DWT"
                 onChange={handleUpdate('DWT')}
+                type={"number"}
               />
               <TextField
                 sx={{ width: '100%'}}
                 required
                 id="outlined-required"
                 label="Gross Tonages"
-                onChange={handleUpdate('grossTonages')}
+                onChange={handleUpdate('grossTonage')}
+                type={"number"}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -116,6 +80,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="DWT"
                 onChange={handleUpdate('DWT')}
+                type={"number"}
               />
               <TextField
                 sx={{ width: '100%'}}
