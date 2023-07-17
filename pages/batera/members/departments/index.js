@@ -14,7 +14,7 @@ function Department() {
         <title>Department</title>
       </Head>
       <PageTitleWrapper>
-        <PageHeader />
+        <PageHeader  />
       </PageTitleWrapper>
       <Container maxWidth="lg">
         <Grid

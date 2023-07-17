@@ -2,7 +2,7 @@ import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
 import { useRouter } from 'next/router';
-
+import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 
 function PageHeader({postData}) {
   const router = useRouter()
@@ -23,6 +23,15 @@ function PageHeader({postData}) {
         </Typography>
       </Grid>
       <Grid item>
+      <NextLink href={url + "/batera/members/title-settings"} passHref>
+          <Button
+              sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
+              variant="contained"
+              startIcon={<ArrowBackTwoToneIcon fontSize="small" />}
+            >
+              Back
+          </Button>
+        </NextLink>
         <Button
           sx={{ mt: { xs: 2, md: 0 } }}
           variant="contained"

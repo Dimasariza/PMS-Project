@@ -9,11 +9,15 @@ import {
   IconButton,
   Box
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { styled } from '@mui/material/styles';
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
+import axios from 'axios';
+import { SidebarContext } from 'src/contexts/SidebarContext';
+import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUpload';
 
-function TitlesList() {
+function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
+  const {user} = useContext(SidebarContext)
   const url = process.env.PUBLIC_URL || ""
   const [departmentList, setDepartmentList] = useState([
     {
@@ -66,24 +70,6 @@ function TitlesList() {
     }
   ]);
 
-  const [inputedUser, setInputedUser] = useState(
-  {
-    fullName: '',
-    userName: '',
-    title: '',
-    email: '',
-    workplace: '',
-    status: '',
-    department: '',
-  });
-
-  const handleUpdate = (key) => (event) => {
-    setInputedUser((prev) => ({
-      ...prev,
-      [key]: event.target.value,
-    }));
-  };
-
   const Input = styled('input')({
     display: 'none'
   });
@@ -117,6 +103,87 @@ function TitlesList() {
       setFile(files[0]);
     }
   };
+
+  const retriveTitleData = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/v1/user_title', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.results;
+      const convertedResults = []
+      results.map((value, index) => {
+        convertedResults.push({
+          id: value.id,
+          titleName: value.name,
+        });
+      })
+      setTitleList(convertedResults)
+      setInputedUser((prev) => ({
+        ...prev,
+        ['title']: results[0].id,
+      }));
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  const retriveDepartmentData = async ()=>{
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/v1/department', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.results;
+      const convertedResults = []
+      results.map((value, index) => {
+        convertedResults.push({
+          id: value.id,
+          departmentName: value.name,
+        });
+      })
+      setDepartmentList(convertedResults)
+      setInputedUser((prev) => ({
+        ...prev,
+        ['department']: results[0].id,
+      }));
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  useEffect(() => {
+    retriveTitleData();
+    retriveDepartmentData();
+    setInputedUser((prev) => ({
+      ...prev,
+      ['workplace']: workplaceList[0].value,
+    }));
+  }, [])
+
+  const [workplaceList, setWorkplaceList] = useState([
+    {
+      workplace: 'Ship',
+      value: 'ship'
+    },
+    {
+      workplace: 'Office',
+      value: 'office'
+    }
+  ]);
+
+  
+
+  const [shownPic, setShowPic] = useState(url + '/static/images/avatars/4.jpg')
+  useEffect(() => {
+    if(inputedUser.document == ''){
+      setShowPic(url + '/static/images/avatars/4.jpg')
+    }else{
+      setShowPic(URL.createObjectURL(inputedUser.document))
+    }
+  }, [inputedUser])
 
   return (
     <>
@@ -155,7 +222,7 @@ function TitlesList() {
                 helperText="Please select new user's department"
               >
                 {titleList.map((option) => (
-                  <option key={option.titleName} value={option.titleName}>
+                  <option key={option.titleName+"|"+option.id} value={option.id}>
                     {option.titleName}
                   </option>
                 ))}
@@ -166,7 +233,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Email"
-                onChange={handleUpdate('fullName')}
+                onChange={handleUpdate('email')}
               />
 
               <TextField
@@ -182,7 +249,7 @@ function TitlesList() {
                 helperText="Please select new user's department"
               >
                 {departmentList.map((option) => (
-                  <option key={option.departmentName} value={option.departmentName}>
+                  <option key={option.departmentName+"|"+option.id} value={option.id}>
                     {option.departmentName}
                   </option>
                 ))}
@@ -200,8 +267,8 @@ function TitlesList() {
                 }}
                 helperText="Please select new user's workplace"
               >
-                {departmentList.map((option) => (
-                  <option key={option.workplace} value={option.workplace}>
+                {workplaceList.map((option) => (
+                  <option key={option.workplace} value={option.value}>
                     {option.workplace}
                   </option>
                 ))}
@@ -214,13 +281,14 @@ function TitlesList() {
                 required
                 type="password"
                 autoComplete="current-password"
+                onChange={handleUpdate('password')}
               />
 
             </div>
           </Card>
         </div>
-        {/* <div style={{width: '50%', height: '50vh'}}>
-          <Card sx={{ height: '100%' }}>
+        <div style={{width: '50%', height: '50vh'}}>
+          {/* <Card sx={{ height: '100%' }}>
             <CardHeader
                 title="Add Profile Picture"
               />
@@ -229,13 +297,14 @@ function TitlesList() {
               <div style={{ minWidth: '50%', minHeight: '50%', maxHeight: '80%', maxWidth: '80%', boxSizing: 'border-box'}}>
                 <Avatar variant="rounded" src={url + '/static/images/avatars/4.jpg'} sx={{ width: '100%', height: '100%', boxSizing: 'border-box' }}/>
               </div>
-              <div style={{position: 'relative', top: '38%', left: '9%'}}>
+              <div style={{position: 'relative', top: '43%', left: '0%'}}>
                 <ButtonUploadWrapper>
                   <Input
                     accept="image/*"
                     id="icon-button-file"
                     name="icon-button-file"
                     type="file"
+                    
                   />
                   <label htmlFor="icon-button-file">
                     <IconButton component="span" color="primary">
@@ -245,8 +314,9 @@ function TitlesList() {
                 </ButtonUploadWrapper>
               </div>
             </div>
-          </Card>
-        </div> */}
+          </Card> */}
+          <PictureUpload title={"Add User Photo"} target = {'document'}  picLink={shownPic} handleUpdate={handleUpdate}/>
+        </div>
       </div>
       
     </>

@@ -152,7 +152,7 @@ const UsersTable = ({ usersList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {index+1}
+                      {(page * limit) + index+1}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">

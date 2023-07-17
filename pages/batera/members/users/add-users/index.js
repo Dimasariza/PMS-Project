@@ -4,17 +4,73 @@ import PageHeader from 'src/batera/content/members/users/add-users/PageHeader';
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
-
 import TitlesList from 'src/batera/content/members/users/add-users/TitlesList';
+import { useState, useContext, useEffect } from 'react';
+import axios from 'axios';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 function Users() {
+  const {user} = useContext(SidebarContext)
+  const [inputedUser, setInputedUser] = useState(
+    {
+      fullName: '',
+      userName: '',
+      title: '',
+      email: '',
+      workplace: '',
+      status: '',
+      department: '',
+      password: '',
+      document: '',
+    });
+  
+    
+    const handleUpdate = (key) => (event) => {
+      if(key == 'document'){
+        setInputedUser((prev) => ({
+          ...prev,
+          [key]: event,
+        }));
+      }else{
+        setInputedUser((prev) => ({
+          ...prev,
+          [key]: event.target.value,
+        }));
+      }
+    };
+
+    const postData = async () => {
+      const formData = new FormData();
+      formData.append("username", inputedUser.userName)
+      formData.append("fullname", inputedUser.fullName)
+      formData.append("departmentId", inputedUser.department)
+      formData.append("email", inputedUser.email)
+      formData.append("password", inputedUser.password)
+      formData.append("userTitleId", inputedUser.title)
+      formData.append("workPlace", inputedUser.workplace)
+      formData.append("status", 0)
+      formData.append("document", inputedUser.document)
+      try {
+        const response = await axios.post(`http://127.0.0.1:8000/api/v1/user`, 
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
+        console.log(response)
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
   return (
     <>
       <Head>
         <title>Add User</title>
       </Head>
       <PageTitleWrapper>
-        <PageHeader />
+        <PageHeader postData={postData} />
       </PageTitleWrapper>
       <Container maxWidth="lg">
         <Grid
@@ -25,7 +81,7 @@ function Users() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <TitlesList />
+            <TitlesList inputedUser={inputedUser} setInputedUser={setInputedUser} handleUpdate={handleUpdate} />
           </Grid>
         </Grid>
       </Container>
