@@ -6,31 +6,9 @@ import {
   CardHeader,
   TextField
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
-function TitlesList() {
-  const [departmentList, setDepartmentList] = useState(
-  {
-    departmentCode: '',
-    departmentName: '',
-    workplace: '',
-  });
-
-  const [workplaceList, setWorkplaceList] = useState([
-    {
-      workplace: 'Ship',
-    },
-    {
-      workplace: 'Office',
-    }
-  ]);
-
-  const handleUpdate = (key) => (event) => {
-    setDepartmentList((prev) => ({
-      ...prev,
-      [key]: event.target.value,
-    }));
-  };
+function TitlesList({departmentList, setDepartmentList, workplaceList, setWorkplaceList, handleUpdate}) {
 
   return (
     <>
@@ -46,12 +24,14 @@ function TitlesList() {
               required
               id="outlined-required"
               label="Department Code"
+              onChange={handleUpdate('departmentCode')}
             />
             <TextField
               sx={{ width: '100%', paddingBottom: '2%'}}
               required
               id="outlined-required"
               label="Department Name"
+              onChange={handleUpdate('departmentName')}
             />
             <TextField
               sx={{ width: '100%'}}
@@ -66,7 +46,7 @@ function TitlesList() {
               helperText="Please select new user's workplace"
             >
               {workplaceList.map((option) => (
-                <option key={option.workplace} value={option.workplace}>
+                <option key={option.workplace} value={option.value}>
                   {option.workplace}
                 </option>
               ))}

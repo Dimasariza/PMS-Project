@@ -16,11 +16,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Text from 'src/components/Text';
 import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
+import { useRouter } from 'next/router';
 
 const url = process.env.PUBLIC_URL || ""
 
 function DetailsModal(props) {
-  const { onClose, selectedValue, open } = props;
+  const router = useRouter();
+  const { onClose, selectedValue, open, deleteData, updateData } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -78,12 +80,19 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Update
-                </Button>
-              </NextLink>
-              <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
+              
+              <Button variant="contained" color="primary" style={{width: '45%'}}
+                onClick={() => {
+
+                handleClose()
+                }}
+              >
+                Update
+              </Button>
+              <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {
+                deleteData(selectedValue.id);
+                handleClose()
+                }}>
                 Delete
               </Button>
             </div>
