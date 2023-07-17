@@ -1,9 +1,11 @@
 import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
+import { useRouter } from 'next/router';
 
 
-function PageHeader() {
+function PageHeader({postData}) {
+  const router = useRouter()
   const user = {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg'
@@ -21,15 +23,14 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/members/title-settings"} passHref>
-          <Button
-            sx={{ mt: { xs: 2, md: 0 } }}
-            variant="contained"
-            startIcon={<SaveTwoToneIcon fontSize="small" />}
-          >
-            Save Title
-          </Button>
-        </NextLink>
+        <Button
+          sx={{ mt: { xs: 2, md: 0 } }}
+          variant="contained"
+          startIcon={<SaveTwoToneIcon fontSize="small" />}
+          onClick={() => {postData(); router.push("/batera/members/title-settings")}}
+        >
+          Save Title
+        </Button>
       </Grid>
     </Grid>
   );

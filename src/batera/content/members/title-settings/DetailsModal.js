@@ -20,7 +20,7 @@ import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/Grid
 const url = process.env.PUBLIC_URL || ""
 
 function DetailsModal(props) {
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open, deleteData } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -31,13 +31,13 @@ function DetailsModal(props) {
   };
 
   return (
-    <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
-      <div>
-        <Card>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center", padding: '2% 2% 2% 3%'}}>
+    <Dialog onClose={handleClose} open={open} maxWidth={'lg'} >
+      <div style={{width: '100%'}}>
+        <Card sx={{width: '100%'}}>
+          <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center", padding: '2% 2% 2% 3%'}}>
             <Typography align='left' variant="h3" style={{ width: '100%', height: '100%', fontWeight: 'bold' }}
               sx={{
-                fontSize:'15px'
+                fontSize:'25px'
               }}
             >
               Titles Details
@@ -61,6 +61,7 @@ function DetailsModal(props) {
               }}>
                 <Grid container spacing={0} alignItems="stretch">
                   <GridInfoDetails title={"Title Name:"} value={selectedValue.titleName} />
+                  <GridInfoDetails title={""} value={''} />
                 </Grid>
               </Typography>
             </div>
@@ -78,7 +79,9 @@ function DetailsModal(props) {
                   Update
                 </Button>
               </NextLink>
-              <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
+              <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}
+                onClick={() => {deleteData(selectedValue.id);}}
+              >
                 Delete
               </Button>
             </div>

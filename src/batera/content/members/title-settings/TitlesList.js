@@ -101,6 +101,7 @@ function TitlesList() {
       const convertedResults = []
       results.map((value, index) => {
         convertedResults.push({
+          id: value.id,
           titleName: value.name,
           shipList: value.access.shipList,
           shipDetails: value.access.shipDetails,
@@ -132,6 +133,21 @@ function TitlesList() {
     });
   }
 
+  const deleteData = async (id) => {
+    console.log("Try delete", id)
+    try {
+      const response = await axios.delete(`http://127.0.0.1:8000/api/v1/user_title/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(response)
+      retriveData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState({
     id: '6',
@@ -157,7 +173,7 @@ function TitlesList() {
   };
 
   return (
-    <div>
+    <div style={{width: '100%', height: '100%'}}>
       <Card>
         <TitlesTable titleList={titleList} handleUpdate={handleUpdate} handleOpen={handleClickOpen}/>
       </Card>
@@ -165,6 +181,7 @@ function TitlesList() {
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
+        deleteData={deleteData}
       />
     </div>
   );

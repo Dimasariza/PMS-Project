@@ -157,7 +157,7 @@ const TitlesTable = ({ titleList, handleUpdate, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {index + 1}
+                      {(page * limit) + index + 1}
                     </Typography>
                   </TableCell>
                   <TableCell>

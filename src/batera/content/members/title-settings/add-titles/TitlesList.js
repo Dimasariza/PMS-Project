@@ -8,31 +8,8 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 
-function TitlesList() {
-  const [titleList, setTitleList] = useState([
-    {
-      id: '1',
-      titleName: 'Admin',
-      shipList: true,
-      shipDetails: true,
-      jobList: true,
-      dataSheet: true,
-      stock: true,
-      users: true,
-      department: true,
-      notification: true,
-      inbox: true,
-    },
-  ]);
-
-  function handleUpdate(id, key, value) {
-    setTitleList((prevTitleList) => {
-      const updatedTitleList = prevTitleList.map((title) =>
-        title.id === id ? { ...title, [key]: value } : title
-      );
-      return updatedTitleList;
-    });
-  }
+function TitlesList({titleList, setTitleList, handleUpdate, handleUpdateName}) {
+  
 
   return (
     <>
@@ -47,6 +24,7 @@ function TitlesList() {
             required
             id="outlined-required"
             label="Title Name"
+            onChange={handleUpdateName('titleName')}
           />
         </Card>
       </div>

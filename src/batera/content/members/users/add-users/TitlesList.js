@@ -121,7 +121,7 @@ function TitlesList() {
   return (
     <>
       <div style={{display: 'flex', flexDirection: 'row', gap: '2vh'}}>
-        <div style={{width: '50%'}}>
+        <div style={{width: '100%'}}>
           <Card >
             <CardHeader
                 title="Add User"
@@ -208,7 +208,7 @@ function TitlesList() {
               </TextField>
               
               <TextField
-                sx={{ width: '100%' }}
+                sx={{ width: '100%', marginBottom: '3%' }}
                 id="outlined-password-input"
                 label="Password"
                 required
@@ -219,7 +219,7 @@ function TitlesList() {
             </div>
           </Card>
         </div>
-        <div style={{width: '50%', height: '50vh'}}>
+        {/* <div style={{width: '50%', height: '50vh'}}>
           <Card sx={{ height: '100%' }}>
             <CardHeader
                 title="Add Profile Picture"
@@ -246,8 +246,7 @@ function TitlesList() {
               </div>
             </div>
           </Card>
-          
-        </div>
+        </div> */}
       </div>
       
     </>
