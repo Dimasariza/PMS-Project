@@ -21,6 +21,7 @@ import Dialog from '@mui/material/Dialog';
 import DeleteModal from './DeleteModal'
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import DetailsModal from './DetailsModal';
 
 function Content() {
   const router = useRouter();
@@ -87,12 +88,14 @@ function Content() {
           DWT: results.dwt,
           grossTonage: results.grossTonage,
           callSign: results.callsign,
-          LOA_Breadth: results.LOA + ' X ' + results.breadth,
+          LOA: results.LOA,
+          breadth: results.breadth,
           vesselTypeGeneric: results.vesselTypeGeneric,
           vesselTypeDetailed: results.vesselTypeDetailed,
           vesselImage: results.picture
         }
       setShipInfo(convertedResults)
+      setSelectedValue(convertedResults)
     } catch (error) {
       // setLoginError(true)
     }
@@ -123,21 +126,86 @@ function Content() {
   }
 
   
-  const [open, setOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState({uwu: 'uwu'});
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [selectedValue, setSelectedValue] = useState({
+      vesselName: 'MV.AXES',
+      IMO: '123xxx1980',
+      yearBuilt: '1980',
+      flag: 'Indonesia',
+      DWT: '15.000',
+      grossTonage: '11.900',
+      callSign: 'AX VII',
+      LOA: '149.6',
+      breadth: '23.1',
+      vesselTypeGeneric: 'Cargo',
+      vesselTypeDetailed: 'Container Ship',
+      vesselImage: "/static/images/ship-card/ship1.jpg"
+  });
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenDeleteModal = () => {
+    setOpenDeleteModal(true);
   };
 
-  const handleClose = (value) => {
-    setOpen(false);
+  const handleCloseDeleteModal = (value) => {
+    setOpenDeleteModal(false);
     setSelectedValue(value);
+  };
+
+  const handleClickOpenEditModal = () => {
+    setOpenEditModal(true);
+  };
+
+  const handleCloseEditModal = (value) => {
+    setOpenEditModal(false);
+    setSelectedValue(value);
+  };
+
+  const handleUpdate = (key,value) => {
+    setSelectedValue((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   const handleListItemClick = (value) => {
     onClose(value);
   };
+
+  const confirmUpdate = () => {
+    setShipInfo(selectedValue);
+    postData()
+  };
+
+  const postData = async () => {
+    const formData = new FormData();
+    formData.append("imoNumber", selectedValue.IMO_Number)
+    formData.append("vesselName", selectedValue.vesselName)
+    formData.append("flag", selectedValue.flag)
+    formData.append("picture", selectedValue.vesselImage)
+    formData.append("dwt", parseInt(selectedValue.DWT))
+    formData.append("grossTonage", parseInt(selectedValue.grossTonage))
+    formData.append("year", parseInt(selectedValue.yearBuilt))
+    formData.append("callsign", selectedValue.callSign)
+    formData.append("LOA", parseFloat(selectedValue.LOA))
+    formData.append("breadth", parseFloat(selectedValue.breadth))
+    formData.append("vesselTypeGeneric", selectedValue.vesselTypeGeneric)
+    formData.append("vesselTypeDetailed", selectedValue.vesselTypeDetailed)
+    // console.log(inputedUser)
+    try {
+      const response = await axios.post(`http://127.0.0.1:8000/api/v1/ship/${id}/update`, 
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(response)
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -175,7 +243,7 @@ function Content() {
                 <GridInfoDetails title={"DWT:"} value={shipInfo.DWT}/>
                 <GridInfoDetails title={"Gross Tonage:"} value={shipInfo.grossTonage}/>
                 <GridInfoDetails title={"Call Sign:"} value={shipInfo.callSign}/>
-                <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA_Breadth}/>
+                <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA + " X " + shipInfo.breadth+" m"}/>
                 <GridInfoDetails title={"Vessel Type - Generic:"} value={shipInfo.vesselTypeGeneric}/>
                 <GridInfoDetails title={"Vessel Type - Detailed:"} value={shipInfo.vesselTypeDetailed}/>
                 <Typography sx={{
@@ -208,20 +276,25 @@ function Content() {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                    <Button variant="contained" color="primary" style={{width: '48%', textAlign: 'center'}}>
-                      Update Ship
-                    </Button>
-                  </NextLink>
-                  <Button variant="contained" color="primary" onClick={handleClickOpen} style={{width: '48%', textAlign: 'center', backgroundColor: '#FF5AD9'}}>
+                  <Button variant="contained" color="primary" onClick={handleClickOpenEditModal} style={{width: '48%', textAlign: 'center'}}>
+                    Update Ship
+                  </Button>
+                  <Button variant="contained" color="primary" onClick={handleClickOpenDeleteModal} style={{width: '48%', textAlign: 'center', backgroundColor: '#FF5AD9'}}>
                     Delete Ship
                   </Button>
                   <DeleteModal
+                    onClose={handleCloseDeleteModal}
                     selectedValue={selectedValue}
-                    open={open}
-                    onClose={handleClose}
+                    open={openDeleteModal}
                     shipName={shipInfo.vesselName}
                     shipID={id}
+                  />
+                  <DetailsModal
+                    onClose={handleCloseEditModal}
+                    selectedValue={selectedValue}
+                    open={openEditModal}
+                    handleUpdate={handleUpdate}
+                    confirmUpdate={confirmUpdate}
                   />
                 </Typography>
               </Grid>

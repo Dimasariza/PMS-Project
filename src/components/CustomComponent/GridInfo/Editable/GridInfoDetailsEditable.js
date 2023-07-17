@@ -19,7 +19,7 @@ import {
   import { useState } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
-const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7]}) => {
+const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], typeIsNumber=false}) => {
     const [activateEdit, setActivateEdit] = useState(false);
     const [inputValue, setInputValue] = useState(value);
     return(
@@ -47,6 +47,7 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 variant="standard"
                 defaultValue={value}
                 onChange={(event) => setInputValue(event.target.value)}
+                type={typeIsNumber ? 'number' : 'text'}
               />
               <IconButton sx={{ width: {
                 xs:'20%',
