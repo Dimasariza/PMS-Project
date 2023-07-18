@@ -18,6 +18,7 @@ import Text from 'src/components/Text';
 import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
 import { useRouter } from 'next/router';
 import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
+import GridInfoDetailsSelectable from 'src/components/CustomComponent/GridInfo/Selectable/GridInfoDetailsSelectable';
 
 const url = process.env.PUBLIC_URL || ""
 
@@ -68,7 +69,18 @@ function DetailsModal(props) {
                 <Grid container spacing={0} alignItems="stretch">
                   <GridInfoDetailsEditable title={"Department Code:"} value={selectedValue.departmentCode} handleEntryUpdate={(value) => handleUpdate('departmentCode', value)}/>
                   <GridInfoDetailsEditable title={"Department Name:"} value={selectedValue.departmentName} handleEntryUpdate={(value) => handleUpdate('departmentName', value)}/>
-                  <GridInfoDetailsEditable title={"Workplace:"} value={selectedValue.workplace} handleEntryUpdate={(value) => handleUpdate('workplace', value)}/>
+                  <GridInfoDetailsSelectable title={"Workplace:"} value={selectedValue.workplace} handleEntryUpdate={(value) => {console.log("Try handle update"); handleUpdate('workplace', value)}}
+                    options={[
+                      {
+                        text: 'Office',
+                        value: 'office'
+                      },
+                      {
+                        text: 'Ship',
+                        value: 'ship'
+                      }
+                    ]}
+                  />
                 </Grid>
               </Typography>
             </div>

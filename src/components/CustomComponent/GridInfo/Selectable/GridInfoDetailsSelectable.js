@@ -16,12 +16,17 @@ import {
   import DialogTitle from '@mui/material/DialogTitle';
   import Dialog from '@mui/material/Dialog';
   import Text from 'src/components/Text';
-  import { useState } from 'react';
+  import { useState, useEffect } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
-const GridInfoDetailsSelectable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], options=['A', 'B']}) => {
-    const [activateEdit, setActivateEdit] = useState(false);
-    const [inputValue, setInputValue] = useState(value);
+const GridInfoDetailsSelectable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], 
+    options=[
+      {text: 'A', value: 'A'}, 
+      {text: 'B', value: 'B' }]
+    }) => {
+    // useEffect(() => {
+      
+    // }, [value])
     return(
       <>
         <Grid item xs={gridSizes[0]} sm={gridSizes[1]} md={gridSizes[2]} textAlign={{ sm: 'left' }}>
@@ -35,10 +40,13 @@ const GridInfoDetailsSelectable = ({title, value, handleEntryUpdate, gridSizes=[
               <TextField
                 id="outlined-select-currency-native"
                 select
-                value={inputValue}
-                onChange={(value) => {
-                  handleEntryUpdate(value);
-                  setActivateEdit(value)
+                value={value}
+                onChange={(event) => {
+                  console.log("ON CHANGE Grid")
+                  console.log(event.target.value)
+                  handleEntryUpdate(event.target.value)
+                  // handleEntryUpdate(value);
+                  // setActivateEdit(value)
                 }}
                 SelectProps={{
                   native: true
@@ -50,8 +58,8 @@ const GridInfoDetailsSelectable = ({title, value, handleEntryUpdate, gridSizes=[
                 }}
               >
                 {options.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                  <option key={option.text} value={option.value}>
+                    {option.text}
                   </option>
                 ))}
               </TextField>
