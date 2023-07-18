@@ -151,14 +151,12 @@ function TitlesList() {
   }
 
   const deleteData = async (id) => {
-    console.log("Try delete", id)
     try {
       const response = await axios.delete(`http://127.0.0.1:8000/api/v1/user_title/${id}`, {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
       });
-      console.log(response)
       retriveData()
     } catch (error) {
       console.log(error)
@@ -167,7 +165,6 @@ function TitlesList() {
 
   const updateData = async (data) => {
     try {
-      console.log(data)
       const sendData = {
         "titleName": data.titleName,
         "titleAccess": {
@@ -181,7 +178,6 @@ function TitlesList() {
             "inbox": data.inbox
         }
       }
-      console.log(sendData)
       const response = await axios.put(`http://127.0.0.1:8000/api/v1/user_title/${data.id}`, 
       sendData,
       {

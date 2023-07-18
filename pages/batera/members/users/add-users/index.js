@@ -48,7 +48,7 @@ function Users() {
       formData.append("password", inputedUser.password)
       formData.append("userTitleId", inputedUser.title)
       formData.append("workPlace", inputedUser.workplace)
-      formData.append("status", 0)
+      formData.append("status", 1)
       formData.append("document", inputedUser.document)
       try {
         const response = await axios.post(`http://127.0.0.1:8000/api/v1/user`, 

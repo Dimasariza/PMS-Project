@@ -65,7 +65,7 @@ const applyPagination = (usersList, page, limit) => {
   return usersList.slice(page * limit, page * limit + limit);
 };
 
-const UsersTable = ({ usersList, handleOpen }) => {
+const UsersTable = ({ usersList, handleOpen, getDeptName, getTitleName }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -185,7 +185,7 @@ const UsersTable = ({ usersList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.title}
+                      {getTitleName(user.title)}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -218,7 +218,7 @@ const UsersTable = ({ usersList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.status}
+                      {user.status ? 'Active' : 'Inactive'}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -229,7 +229,7 @@ const UsersTable = ({ usersList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {user.department}
+                      {getDeptName(user.department)}
                     </Typography>
                   </TableCell>
                 </TableRow>

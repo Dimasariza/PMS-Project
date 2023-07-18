@@ -79,6 +79,20 @@ function UsersList() {
     department: 'Engine',
   });
 
+  const [deptOptionValue, setDeptOptionValue] = useState([
+    {
+      text: 'departmentName',
+      value: 'id',
+    }
+  ]);
+
+  const [titleOptionValue, setTitleOptionValue] = useState([
+    {
+      text: 'titleName',
+      value: 'id',
+    }
+  ]);
+
   
   const retriveData = async () => {
     try {
@@ -95,11 +109,11 @@ function UsersList() {
           name: value.fullname,
           userName: value.username,
           password: 'password123',
-          title: value.userTitle.name,
+          title: value.userTitle.id,
           email: value.email,
           workplace: value.workPlace,
-          status: value.status ? 'Active' : 'Inactive',
-          department: value.department.name,
+          status: value.status,
+          department: value.department.id,
         });
       })
       setUserList(convertedResults)
@@ -108,8 +122,52 @@ function UsersList() {
     }
   }
 
+  const retriveDeptOptData = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/v1/department', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.results;
+      const convertedResults = []
+      results.map((value, index) => {
+        convertedResults.push({
+          text: value.name,
+          value: value.id,
+        });
+      })
+      setDeptOptionValue(convertedResults)
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
+  const retriveTitleOptData = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/v1/user_title', {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      const results = response.data.data.results;
+      const convertedResults = []
+      results.map((value, index) => {
+        convertedResults.push({
+          text: value.name,
+          value: value.id,
+        });
+      })
+      setTitleOptionValue(convertedResults)
+    } catch (error) {
+      // setLoginError(true)
+    }
+  }
+
   useEffect(() => {
     retriveData()
+    retriveDeptOptData()
+    retriveTitleOptData()
   }, [])
 
   const handleClickOpen = (value) => {
@@ -122,15 +180,100 @@ function UsersList() {
     setSelectedValue(value);
   };
 
+  function handleUpdate(key, value) {
+    setSelectedValue((prev) => {
+      return {...prev, [key] : value}
+    })
+    // setTitleList((prevTitleList) => {
+    //   const updatedTitleList = prevTitleList.map((title) =>
+    //     title.id === selectedValue.id ? { ...title, [key]: value } : title
+    //   );
+    //   return updatedTitleList;
+    // });
+    // titleList.forEach((title) =>{
+    //   if(title.id === selectedValue.id){
+    //     updateData(title)
+    //   } 
+    // })
+  }
+
+  function handleUpdateSelected(id) {
+    setUserList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === id ? { selectedValue } : title
+      );
+      return updatedTitleList;
+    });
+  }
+
+  const deleteData = async (id) => {
+    try {
+      const response = await axios.delete(`http://127.0.0.1:8000/api/v1/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      retriveData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateData = async (data) => {
+    try {
+      const formData = new FormData();
+      formData.append("fullname", data.name)
+      formData.append("userTitleId", data.title)
+      formData.append("workPlace", data.workplace)
+      formData.append("status", data.status ? '1' : '0')
+      formData.append("departmentId", data.department)
+      const response = await axios.post(`http://127.0.0.1:8000/api/v1/user/${data.id}/update`, 
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      handleUpdateSelected(data.id)
+      console.log(response)
+      retriveData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getDeptName = (target) =>{
+    for (let i = 0; i < deptOptionValue.length; i++) {
+      const dept = deptOptionValue[i];
+      if (dept.value === target) {
+        return dept.text;
+      }
+    }
+  }
+
+  const getTitleName = (target) => {
+    for (let i = 0; i < titleOptionValue.length; i++) {
+      const title = titleOptionValue[i];
+      if (title.value === target) {
+        return title.text;
+      }
+    }
+  }
+
   return (
     <>
       <Card>
-        <UsersTable usersList={usersList} handleOpen={handleClickOpen}/>
+        <UsersTable usersList={usersList} handleOpen={handleClickOpen} getDeptName={getDeptName} getTitleName={getTitleName}/>
       </Card>
       <DetailsModal
         selectedValue={selectedValue}
         open={open}
         onClose={handleClose}
+        handleUpdate={handleUpdate}
+        updateData={updateData}
+        deleteData={deleteData}
+        deptOptionValue={deptOptionValue}
+        titleOptionValue={titleOptionValue}
       />
     </>
   );

@@ -198,14 +198,14 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
               <TextField
                 sx={{ width: '100%'}}
                 required
-                id="outlined-required"
+                // id="outlined-required"
                 label="User Name"
                 onChange={handleUpdate('userName')}
               />
               <TextField
                 sx={{ width: '100%'}}
                 required
-                id="outlined-required"
+                // id="outlined-required"
                 label="Full Name"
                 onChange={handleUpdate('fullName')}
               />
@@ -231,7 +231,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
               <TextField
                 sx={{ width: '100%'}}
                 required
-                id="outlined-required"
+                // id="outlined-required"
                 label="Email"
                 onChange={handleUpdate('email')}
               />
