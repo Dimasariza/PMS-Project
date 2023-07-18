@@ -100,11 +100,11 @@ import {
                     vesselTypeGeneric: results.vesselTypeGeneric,
                     vesselTypeDetailed: results.vesselTypeDetailed,
                     vesselImage: results.picture */}
-                    <GridInfoDetailsEditable title={"Call Sign:"} typeIsNumber={true} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', value)}/>
+                    <GridInfoDetailsEditable title={"Call Sign:"} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', value)}/>
                     <GridInfoDetailsEditable title={"LOA:"} typeIsNumber={true} value={selectedValue.LOA} handleEntryUpdate={(value) => handleUpdate('LOA', value)}/>
                     <GridInfoDetailsEditable title={"Breadth:"} typeIsNumber={true} value={selectedValue.breadth} handleEntryUpdate={(value) => handleUpdate('breadth', value)}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Generic:"} typeIsNumber={true} value={selectedValue.vesselTypeGeneric} handleEntryUpdate={(value) => handleUpdate('vesselTypeGeneric', value)}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Detailed:"} typeIsNumber={true} value={selectedValue.vesselTypeDetailed} handleEntryUpdate={(value) => handleUpdate('vesselTypeDetailed', value)}/>
+                    <GridInfoDetailsEditable title={"Vessel Type Generic:"} value={selectedValue.vesselTypeGeneric} handleEntryUpdate={(value) => handleUpdate('vesselTypeGeneric', value)}/>
+                    <GridInfoDetailsEditable title={"Vessel Type Detailed:"} value={selectedValue.vesselTypeDetailed} handleEntryUpdate={(value) => handleUpdate('vesselTypeDetailed', value)}/>
                   </Grid>
                 </Typography>
                 <Typography variant="subtitle2" sx={{
