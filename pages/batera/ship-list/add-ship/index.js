@@ -9,9 +9,11 @@ import TitlesList from 'src/batera/content/ship-list/add-ship/TitlesList';
 import axios from 'axios';
 import { useContext } from 'react';
 import { SidebarContext } from 'src/contexts/SidebarContext';
+import { useRouter } from 'next/router';
 
 function Users() {
   const {user} = useContext(SidebarContext)
+  const router = useRouter()
   const [inputedUser, setInputedUser] = useState(
     {
       vesselName: '',
@@ -74,6 +76,7 @@ function Users() {
             Authorization: `Bearer ${user.token}`,
           },
         });
+        router.push('/batera/ship-list')
         console.log(response)
         
       } catch (error) {

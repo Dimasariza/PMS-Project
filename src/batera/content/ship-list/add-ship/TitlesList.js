@@ -78,16 +78,9 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setSho
                 sx={{ width: '100%'}}
                 required
                 id="outlined-required"
-                label="DWT"
-                onChange={handleUpdate('DWT')}
-                type={"number"}
-              />
-              <TextField
-                sx={{ width: '100%'}}
-                required
-                id="outlined-required"
                 label="Call Sign"
                 onChange={handleUpdate('callSign')}
+                type={'text'}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -95,6 +88,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setSho
                 id="outlined-required"
                 label="LOA (m)"
                 onChange={handleUpdate('LOA')}
+                type={'number'}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -102,6 +96,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setSho
                 id="outlined-required"
                 label="Breadth (m)"
                 onChange={handleUpdate('breadth')}
+                type={'number'}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -109,6 +104,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setSho
                 id="outlined-required"
                 label="Vessel Type Generic"
                 onChange={handleUpdate('vesselTypeGeneric')}
+                type={'text'}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -116,6 +112,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate, shownPic, setSho
                 id="outlined-required"
                 label="Vessel Type Detailed"
                 onChange={handleUpdate('vesselTypeDetailed')}
+                type={'text'}
               />
             </div>
           </Card>
