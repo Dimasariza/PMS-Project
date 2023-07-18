@@ -45,6 +45,30 @@ function DepartmentsList() {
         },
       });
       console.log(response)
+      handleLocalDelete(id)
+      retriveData()
+    } catch (error) {
+      console.log(error)
+      // setLoginError(true)
+    }
+  }
+
+  const updateData = async (data) => {
+    try {
+      const sendData = {
+        "departmentName": data.departmentName,
+        "departmentCode": data.departmentCode,
+        "workPlace": data.workplace,
+      }
+      const response = await axios.put(`http://127.0.0.1:8000/api/v1/department/${data.id}`, 
+      sendData,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(response)
+      handleLocalUpdate(data)
       retriveData()
     } catch (error) {
       console.log(error)
@@ -73,6 +97,42 @@ function DepartmentsList() {
     setSelectedValue(value);
   };
 
+  const handleUpdate = (key, value) => {
+    setDepartmentList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === selectedValue.id ? { ...title, [key]: value } : title
+      );
+      return updatedTitleList;
+    });
+    setSelectedValue((prev) => {
+      return {...prev, [key] : value}
+    })
+  };
+
+  const handleLocalUpdate = (newData) => {
+    setDepartmentList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === newData.id ? { newData } : title
+      );
+      return updatedTitleList;
+    });
+  };
+
+  const handleLocalDelete = (id) => {
+    setDepartmentList((prevTitleList) => {
+      const updatedTitleList = [];
+      prevTitleList.forEach((title) => {
+        if (title.id === id) {
+          // Ignore the item with the specified id
+          return;
+        }
+        updatedTitleList.push(title);
+      });
+      return updatedTitleList;
+    });
+  };
+  
+
   return (
     <>
       <Card>
@@ -83,6 +143,8 @@ function DepartmentsList() {
         open={open}
         onClose={handleClose}
         deleteData={deleteData}
+        handleUpdate={handleUpdate}
+        updateData={updateData}
       />
     </>
   );

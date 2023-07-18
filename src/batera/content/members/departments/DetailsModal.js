@@ -17,12 +17,13 @@ import Dialog from '@mui/material/Dialog';
 import Text from 'src/components/Text';
 import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
 import { useRouter } from 'next/router';
+import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
 
 const url = process.env.PUBLIC_URL || ""
 
 function DetailsModal(props) {
   const router = useRouter();
-  const { onClose, selectedValue, open, deleteData, updateData } = props;
+  const { onClose, selectedValue, open, deleteData, updateData, handleUpdate } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -65,9 +66,9 @@ function DetailsModal(props) {
                 width: '100%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetails title={"Department Code:"} value={selectedValue.departmentCode}/>
-                  <GridInfoDetails title={"Department Name:"} value={selectedValue.departmentName}/>
-                  <GridInfoDetails title={"Workplace:"} value={selectedValue.workplace}/>
+                  <GridInfoDetailsEditable title={"Department Code:"} value={selectedValue.departmentCode} handleEntryUpdate={(value) => handleUpdate('departmentCode', value)}/>
+                  <GridInfoDetailsEditable title={"Department Name:"} value={selectedValue.departmentName} handleEntryUpdate={(value) => handleUpdate('departmentName', value)}/>
+                  <GridInfoDetailsEditable title={"Workplace:"} value={selectedValue.workplace} handleEntryUpdate={(value) => handleUpdate('workplace', value)}/>
                 </Grid>
               </Typography>
             </div>
@@ -83,8 +84,8 @@ function DetailsModal(props) {
               
               <Button variant="contained" color="primary" style={{width: '45%'}}
                 onClick={() => {
-
-                handleClose()
+                  updateData(selectedValue)
+                  handleClose()
                 }}
               >
                 Update
