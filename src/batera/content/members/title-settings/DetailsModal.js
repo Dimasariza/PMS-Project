@@ -16,11 +16,12 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Text from 'src/components/Text';
 import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
+import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
 
 const url = process.env.PUBLIC_URL || ""
 
 function DetailsModal(props) {
-  const { onClose, selectedValue, open, deleteData } = props;
+  const { onClose, selectedValue, open, deleteData, handleUpdate, updateData } = props;
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -60,8 +61,7 @@ function DetailsModal(props) {
                 width: '100%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetails title={"Title Name:"} value={selectedValue.titleName} />
-                  <GridInfoDetails title={""} value={''} />
+                  <GridInfoDetailsEditable title={"Title Name:"} value={selectedValue.titleName} handleEntryUpdate={(value) => handleUpdate('titleName', value)}/>
                 </Grid>
               </Typography>
             </div>
@@ -74,11 +74,11 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
+              <Button variant="contained" color="primary" style={{width: '45%'}}
+                onClick={() => {updateData(selectedValue)}}
+              >
                   Update
                 </Button>
-              </NextLink>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}
                 onClick={() => {deleteData(selectedValue.id);}}
               >

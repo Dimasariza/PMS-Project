@@ -108,7 +108,7 @@ function TitlesList() {
           jobList: value.access.jobList,
           dataSheet: value.access.dataSheet,
           stock: value.access.stock,
-          users: value.access.user,
+          users: value.access.users,
           department: value.access.department,
           notification: value.access.inbox,
           inbox: value.access.inbox,
@@ -131,12 +131,60 @@ function TitlesList() {
       );
       return updatedTitleList;
     });
+    titleList.forEach((title) =>{
+      if(title.id === id){
+        updateData(title)
+      } 
+    })
+  }
+
+  function handleUpdateSelected(key, value) {
+    setTitleList((prevTitleList) => {
+      const updatedTitleList = prevTitleList.map((title) =>
+        title.id === selectedValue.id ? { ...title, [key]: value } : title
+      );
+      return updatedTitleList;
+    });
+    setSelectedValue((prev) => {
+      return {...prev, [key] : value}
+    })
   }
 
   const deleteData = async (id) => {
     console.log("Try delete", id)
     try {
       const response = await axios.delete(`http://127.0.0.1:8000/api/v1/user_title/${id}`, {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      console.log(response)
+      retriveData()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateData = async (data) => {
+    try {
+      console.log(data)
+      const sendData = {
+        "titleName": data.titleName,
+        "titleAccess": {
+            "shipList": data.shipList,
+            "shipDetails": data.shipDetails,
+            "jobList": data.jobList,
+            "dataSheet": data.dataSheet,
+            "stock": data.stock,
+            "users": data.users,
+            "department": data.department,
+            "inbox": data.inbox
+        }
+      }
+      console.log(sendData)
+      const response = await axios.put(`http://127.0.0.1:8000/api/v1/user_title/${data.id}`, 
+      sendData,
+      {
         headers: {
           Authorization: `Bearer ${user.token}`,
         },
@@ -182,6 +230,8 @@ function TitlesList() {
         open={open}
         onClose={handleClose}
         deleteData={deleteData}
+        updateData={updateData}
+        handleUpdate={handleUpdateSelected}
       />
     </div>
   );
