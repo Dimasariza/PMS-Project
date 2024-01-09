@@ -34,6 +34,34 @@ return [
     */
 
     'mailers' => [
+        'mailjet' => [
+            'transport' => 'smtp',
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
+            'key' => env('MAILJET_APIKEY'),
+            'secret' => env('MAILJET_APISECRET'),
+            'transactional' => [
+                'call' => true,
+                'options' => [
+                    'url' => 'api.mailjet.com',
+                    'version' => 'v3.1',
+                    'call' => true,
+                    'secured' => true
+                ]
+            ],
+            'common' => [
+                'call' => true,
+                'options' => [
+                    'url' => 'api.mailjet.com',
+                    'version' => 'v3',
+                    'call' => true,
+                    'secured' => true
+                ]
+            ]
+        ],
         'smtp' => [
             'transport' => 'smtp',
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
