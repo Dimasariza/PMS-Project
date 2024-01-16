@@ -12,45 +12,119 @@ import { useRouter } from 'next/router';
 function Users() {
   const router = useRouter()
   const [inputedUser, setInputedUser] = useState(
-    {
-      vesselName: '',
-      IMO_Number: '',
-      yearBuilt: '',
-      flag: '',
-      DWT: '',
-      grossTonage: '',
-      callSign: '',
-      LOA: '',
-      breadth: '',
-      vesselTypeGeneric: '',
-      vesselTypeDetailed: '',
-      vesselImage: '',
-    });
-  
-    const handleUpdate = (key) => (event) => {
-      if(key == 'vesselImage'){
-        setInputedUser((prev) => ({
+  {
+    vesselName: '',
+    IMO_Number: '',
+    yearBuilt: '',
+    flag: '',
+    DWT: '',
+    grossTonage: '',
+    callSign: '',
+    LOA: '',
+    breadth: '',
+    vesselTypeGeneric: '',
+    vesselTypeDetailed: '',
+    vesselImage: '',
+  });
+
+  const [errorState, setErrorState] = useState(
+  {
+    vesselName: null,
+    IMO_Number: null,
+    yearBuilt: null,
+    flag: null,
+    DWT: null,
+    grossTonage: null,
+    callSign: null,
+    LOA: null,
+    breadth: null,
+    vesselTypeGeneric: null,
+    vesselTypeDetailed: null,
+    vesselImage: null,
+  });
+
+  const handleUpdate = (key, minYear, maxDigit) => (event) => {
+    // console.log("Incoming ", key, "value", event);
+    if(key == 'vesselImage'){
+      if(event === undefined || event === null){
+        setErrorState((prev) => ({
           ...prev,
-          [key]: event,
+          [key]: 'Gambar tidak boleh kosong',
         }));
       }else{
-        setInputedUser((prev) => ({
+        const selectedFile = event;
+        if (selectedFile) {
+          const fileSizeInKB = selectedFile.size / 1024;
+
+          if (fileSizeInKB > 1024) {
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: "Ukuran gambar tidak boleh melebihi 1 MB",
+            }));
+          } else {
+            setInputedUser((prev) => ({
+              ...prev,
+              [key]: event,
+            }));
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: null,
+            }));
+          }
+        }
+      }
+    }else{
+      if(event === undefined || event === null){
+        setErrorState((prev) => ({
           ...prev,
-          [key]: event.target.value,
+          [key]: `Kolom ${capitalizeFirstLetter(key)} belum diisi`,
         }));
-      }
-    };
-
-    const [shownPic, setShowPic] = useState('')
-    useEffect(() => {
-      if(inputedUser.vesselImage == ''){
-        setShowPic('')
       }else{
-        setShowPic(URL.createObjectURL(inputedUser.vesselImage))
+        if(minYear != undefined && event.target.value < minYear && event.target.value > 1000){
+          setInputedUser((prev) => ({
+            ...prev,
+            [key]: 1908,
+          }));
+          setErrorState((prev) => ({
+            ...prev,
+            [key]: `Tahun minimal 1908`,
+          }));
+        }else if(maxDigit != undefined && event.target.value > Math.pow(10, maxDigit) - 1){
+          setErrorState((prev) => ({
+            ...prev,
+            [key]: `${capitalizeFirstLetter(key)} maximal ${maxDigit} digit`,
+          }));
+        }else{
+          setInputedUser((prev) => ({
+            ...prev,
+            [key]: event.target.value,
+          }));
+          setErrorState((prev) => ({
+            ...prev,
+            [key]: null,
+          }));
+        }
       }
-    }, [inputedUser])
+      
+    }
+  };
 
-    const postData = async () => {
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const [shownPic, setShowPic] = useState('')
+  useEffect(() => {
+    if(inputedUser.vesselImage == ''){
+      setShowPic('')
+    }else{
+      setShowPic(URL.createObjectURL(inputedUser.vesselImage))
+    }
+  }, [inputedUser])
+
+  const postData = async () => {
+    if(checkAllErrorCleared()){
+      console.log("Result clear")
       const formData = new FormData();
       formData.append("imoNumber", inputedUser.IMO_Number)
       formData.append("vesselName", inputedUser.vesselName)
@@ -64,7 +138,7 @@ function Users() {
       formData.append("breadth", parseFloat(inputedUser.breadth))
       formData.append("vesselTypeGeneric", inputedUser.vesselTypeGeneric)
       formData.append("vesselTypeDetailed", inputedUser.vesselTypeDetailed)
-
+      console.log(inputedUser);
       try {
         const url = process.env.NEXT_PUBLIC_API_URL + "/ship" 
         const response = await axios.post(url, 
@@ -72,9 +146,35 @@ function Users() {
 
         router.replace('/ship-list')
       } catch (error) {
-
+        console.log(error)
       }
+    }else{
+
+      console.log("Result not clear")
     }
+    
+  }
+
+  const checkAllErrorCleared = () => {
+    var cheker = true;
+    Object.keys(inputedUser).forEach(key => {
+      if (inputedUser[key] !== '') {
+        console.log(key, ' is ', inputedUser[key], true);
+
+
+      } else {
+        setErrorState(prev => ({
+          ...prev,
+          [key]: `${capitalizeFirstLetter(key)} tidak boleh kosong`,
+        }));
+        console.log(key, ' is ', inputedUser[key], false);
+        cheker = false;
+      }
+    });
+    return cheker;
+  }
+
+
   return (
     <>
       <Head>
@@ -94,6 +194,7 @@ function Users() {
           <Grid item xs={12}>
             <TitlesList 
               inputedUser={inputedUser} 
+              errorState={errorState}
               setInputedUser={setInputedUser} 
               handleUpdate={handleUpdate} 
               shownPic={shownPic} 

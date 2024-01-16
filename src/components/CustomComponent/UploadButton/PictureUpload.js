@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import UploadButton from "./UploadButton";
 
-const PictureUpload = ({title="Add Ship Picture", target = 'vesselImage', handleUpdate, picLink}) => {
+const PictureUpload = ({title="Add Ship Picture", target = 'vesselImage', handleUpdate, picLink, error}) => {
     return (
         <>
             <Card sx={{ height: '100%' }}>
@@ -21,6 +21,11 @@ const PictureUpload = ({title="Add Ship Picture", target = 'vesselImage', handle
                         }}
                     />
                 </div>  
+                {error != null && (
+                    <div style={{ color: 'red', width: '100%', textAlign: 'center', fontSize: '16px', fontWeight: 'bold'}}>
+                        {error}
+                    </div>
+                )}
             </Card>
             <div style={{ position : 'relative', bottom : '5rem', right : '1rem' }}>
                 <UploadButton onUpload={handleUpdate(target)} />

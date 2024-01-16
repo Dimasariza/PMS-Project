@@ -55,7 +55,9 @@ function Login() {
                             id="outlined-required"
                             label="Username"
                             value={username}
+                            variant='outlined'
                             onChange={(event) => {setUsername(event.target.value)}}
+                            InputLabelProps={{ shrink: true }}
                         />
                     
                         <TextField
@@ -66,7 +68,9 @@ function Login() {
                             type="password"
                             autoComplete="current-password"
                             value={password}
+                            variant='outlined'
                             onChange={(event) => {setPassword(event.target.value)}}
+                            InputLabelProps={{ shrink: true }}
                         />
 
                         {errorMessage && <p style={{ color: 'red' }}>Login failed. Please check your credentials.</p>}
