@@ -95,14 +95,32 @@ function Users() {
             [key]: `${capitalizeFirstLetter(key)} maximal ${maxDigit} digit`,
           }));
         }else{
-          setInputedUser((prev) => ({
-            ...prev,
-            [key]: event.target.value,
-          }));
-          setErrorState((prev) => ({
-            ...prev,
-            [key]: null,
-          }));
+          if((maxDigit != undefined || minYear != undefined )){
+            if(checkIfNumber(event.target.value)){
+              setInputedUser((prev) => ({
+                ...prev,
+                [key]: event.target.value,
+              }));
+              setErrorState((prev) => ({
+                ...prev,
+                [key]: null,
+              }));
+            }else{
+              setErrorState((prev) => ({
+                ...prev,
+                [key]: `${capitalizeFirstLetter(key)} hanya boleh diisi dengan angka`,
+              }));
+            }
+          }else{
+            setInputedUser((prev) => ({
+              ...prev,
+              [key]: event.target.value,
+            }));
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: null,
+            }));
+          }
         }
       }
       
@@ -121,6 +139,20 @@ function Users() {
       setShowPic(URL.createObjectURL(inputedUser.vesselImage))
     }
   }, [inputedUser])
+
+  const checkIfNumber = (newValue) =>{
+    const floatValue = parseFloat(newValue);
+    const isFloat = !isNaN(floatValue);
+
+    // Check if the value is convertible to an integer
+    const intValue = parseInt(newValue, 10); // Assuming base 10
+    const isInt = !isNaN(intValue);
+    if (isFloat || isInt) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   const postData = async () => {
     if(checkAllErrorCleared()){
