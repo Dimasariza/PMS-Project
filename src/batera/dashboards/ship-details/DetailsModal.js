@@ -24,7 +24,7 @@ import {
   const url = process.env.PUBLIC_URL || ""
   
   function DetailsModal(props) {
-    const { onClose, selectedValue, open, handleUpdate, confirmUpdate } = props;
+    const { onClose, selectedValue, open, handleUpdate, confirmUpdate, errorState } = props;
   
     const handleClose = () => {
       onClose(selectedValue);
@@ -79,12 +79,12 @@ import {
                   DWT: results.dwt,
                   grossTonage: results.grossTonage, */}
                   <Grid container spacing={0} alignItems="stretch">
-                    <GridInfoDetailsEditable title={"Vessel Name:"} value={selectedValue.vesselName} handleEntryUpdate={(value) => handleUpdate('vesselName', value)}/>
-                    <GridInfoDetailsEditable title={"IMO:"} value={selectedValue.IMO} handleEntryUpdate={(value) => handleUpdate('IMO', value)}/>
-                    <GridInfoDetailsEditable title={"Year:"} typeIsNumber={true} value={selectedValue.yearBuilt} handleEntryUpdate={(value) => handleUpdate('yearBuilt', value)}/>
-                    <GridInfoDetailsEditable title={"Flag:"} value={selectedValue.flag} handleEntryUpdate={(value) => handleUpdate('flag', value)}/>
-                    <GridInfoDetailsEditable title={"DWT:"} typeIsNumber={true} value={selectedValue.DWT} handleEntryUpdate={(value) => handleUpdate('DWT', value)}/>
-                    <GridInfoDetailsEditable title={"Gross Tonage:"} typeIsNumber={true} value={selectedValue.grossTonage} handleEntryUpdate={(value) => handleUpdate('grossTonage', value)}/>
+                    <GridInfoDetailsEditable title={"Vessel Name:"} value={selectedValue.vesselName} handleEntryUpdate={(value) => handleUpdate('vesselName', undefined, undefined, value)} errorState={errorState['vesselName']}/>
+                    <GridInfoDetailsEditable title={"IMO:"} value={selectedValue.IMO} handleEntryUpdate={(value) => handleUpdate('IMO', undefined, undefined, value)} errorState={errorState['IMO']}/>
+                    <GridInfoDetailsEditable title={"Year:"} typeIsNumber={true} value={selectedValue.yearBuilt} handleEntryUpdate={(value) => handleUpdate('yearBuilt', 1908, 4, value)} errorState={errorState['yearBuilt']}/>
+                    <GridInfoDetailsEditable title={"Flag:"} value={selectedValue.flag} handleEntryUpdate={(value) => handleUpdate('flag', undefined, undefined, value)} errorState={errorState['flag']}/>
+                    <GridInfoDetailsEditable title={"DWT:"} typeIsNumber={true} value={selectedValue.DWT} handleEntryUpdate={(value) => handleUpdate('DWT', undefined, 7, value)} errorState={errorState['DWT']}/>
+                    <GridInfoDetailsEditable title={"Gross Tonage:"} typeIsNumber={true} value={selectedValue.grossTonage} handleEntryUpdate={(value) => handleUpdate('grossTonage', undefined, 7, value)} errorState={errorState['grossTonage']}/>
                   </Grid>
                 </Typography>
                 <Typography variant="subtitle2" sx={{
@@ -100,11 +100,11 @@ import {
                     vesselTypeGeneric: results.vesselTypeGeneric,
                     vesselTypeDetailed: results.vesselTypeDetailed,
                     vesselImage: results.picture */}
-                    <GridInfoDetailsEditable title={"Call Sign:"} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', value)}/>
-                    <GridInfoDetailsEditable title={"LOA:"} typeIsNumber={true} value={selectedValue.LOA} handleEntryUpdate={(value) => handleUpdate('LOA', value)}/>
-                    <GridInfoDetailsEditable title={"Breadth:"} typeIsNumber={true} value={selectedValue.breadth} handleEntryUpdate={(value) => handleUpdate('breadth', value)}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Generic:"} value={selectedValue.vesselTypeGeneric} handleEntryUpdate={(value) => handleUpdate('vesselTypeGeneric', value)}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Detailed:"} value={selectedValue.vesselTypeDetailed} handleEntryUpdate={(value) => handleUpdate('vesselTypeDetailed', value)}/>
+                    <GridInfoDetailsEditable title={"Call Sign:"} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', undefined, undefined, value)} errorState={errorState['callSign']}/>
+                    <GridInfoDetailsEditable title={"LOA:"} typeIsNumber={true} value={selectedValue.LOA} handleEntryUpdate={(value) => handleUpdate('LOA', undefined, 6, value)} errorState={errorState['LOA']}/>
+                    <GridInfoDetailsEditable title={"Breadth:"} typeIsNumber={true} value={selectedValue.breadth} handleEntryUpdate={(value) => handleUpdate('breadth', undefined, 6, value)} errorState={errorState['breadth']}/>
+                    <GridInfoDetailsEditable title={"Vessel Type Generic:"} value={selectedValue.vesselTypeGeneric} handleEntryUpdate={(value) => handleUpdate('vesselTypeGeneric', undefined, undefined, value)} errorState={errorState['vesselTypeGeneric']}/>
+                    <GridInfoDetailsEditable title={"Vessel Type Detailed:"} value={selectedValue.vesselTypeDetailed} handleEntryUpdate={(value) => handleUpdate('vesselTypeDetailed', undefined, undefined, value)} errorState={errorState['vesselTypeDetailed']}/>
                   </Grid>
                 </Typography>
                 <Typography variant="subtitle2" sx={{

@@ -51,7 +51,7 @@ const getStatusLabel = (cryptoOrderStatus) => {
 
 const applyFilters = (summaryList, filters) => {
   // Check if summaryList is empty
-  console.log(summaryList.length)
+  // console.log(summaryList.length)
   if (summaryList.length === 0) {
     return [];
   }

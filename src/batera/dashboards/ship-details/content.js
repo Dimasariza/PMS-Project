@@ -79,9 +79,25 @@ function Content() {
         .catch(error => console.log(error))
   }
 
-  const processRetrivedData = (results) => {
+  const processRetrivedData = async (results) => {
     console.log(results)
     var shipData = results.ship
+
+    const imageUrl = shipData.picture;
+    // console.log(imageUrl)
+
+    // const response = await axios.get(imageUrl);
+    // const imageData = new Blob([response.data]); // Create a Blob from the array buffer
+    // const dataUrl = URL.createObjectURL(imageData);
+
+    // console.log(dataUrl)
+
+
+    // const imageResponse = await fetch(url + shipData.picture);
+    // const imageData = await imageResponse.blob();
+    // const formData = new FormData();
+    // formData.append("image", imageData);
+
     const convertedResults = {
       vesselName: shipData.vesselName,
       IMO: shipData.imoNumber,
@@ -94,7 +110,7 @@ function Content() {
       breadth: shipData.breadth,
       vesselTypeGeneric: shipData.vesselTypeGeneric,
       vesselTypeDetailed: shipData.vesselTypeDetailed,
-      vesselImage: shipData.picture
+      vesselImage: imageUrl
     }
     setShipInfo(convertedResults)
     setSelectedValue(convertedResults)
@@ -159,31 +175,165 @@ function Content() {
 
   const handleCloseEditModal = (value) => {
     setOpenEditModal(false);
-    setSelectedValue(value);
-  };
-
-  const handleUpdate = (key,value) => {
-    setSelectedValue((prev) => ({
-      ...prev,
-      [key]: value,
+    // setSelectedValue(value);
+    setSelectedValue(prevValue => ({
+      ...prevValue, // Spread the previous value to retain existing properties
+      ...value, // Update with the new values (excluding vesselImage)
+      vesselImage: prevValue.vesselImage, // Retain the old vesselImage
     }));
   };
+
+  const [errorState, setErrorState] = useState(
+    {
+      vesselName: null,
+      IMO: null,
+      yearBuilt: null,
+      flag: null,
+      DWT: null,
+      grossTonage: null,
+      callSign: null,
+      LOA: null,
+      breadth: null,
+      vesselTypeGeneric: null,
+      vesselTypeDetailed: null,
+      vesselImage: null
+    });
+
+  const handleUpdate = (key, minYear, maxDigit, value) => {
+    // console.log("Incoming ", key, "value", event);
+    if(key == 'vesselImage'){
+      if(value === undefined || value === null){
+        setErrorState((prev) => ({
+          ...prev,
+          [key]: 'Gambar tidak boleh kosong',
+        }));
+      }else{
+        const selectedFile = value;
+        if (selectedFile) {
+          const fileSizeInKB = selectedFile.size / 1024;
+          if (fileSizeInKB > 1024) {
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: "Ukuran gambar tidak boleh melebihi 1 MB",
+            }));
+          } else {
+            setSelectedValue((prev) => ({
+              ...prev,
+              [key]: value,
+            }));
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: null,
+            }));
+          }
+        }
+      }
+    }else{
+      if(value === undefined || value === null){
+        setErrorState((prev) => ({
+          ...prev,
+          [key]: `Kolom ${capitalizeFirstLetter(key)} belum diisi`,
+        }));
+      }else{
+        if(minYear != undefined && value < minYear && value > 1000){
+          setSelectedValue((prev) => ({
+            ...prev,
+            [key]: 1908,
+          }));
+          setErrorState((prev) => ({
+            ...prev,
+            [key]: `Tahun minimal 1908`,
+          }));
+        }else if(maxDigit != undefined && value > Math.pow(10, maxDigit) - 1){
+          setErrorState((prev) => ({
+            ...prev,
+            [key]: `${capitalizeFirstLetter(key)} maximal ${maxDigit} digit`,
+          }));
+        }else{
+          if((maxDigit != undefined || minYear != undefined )){
+            if(checkIfNumber(value)){
+              setSelectedValue((prev) => ({
+                ...prev,
+                [key]: value,
+              }));
+              setErrorState((prev) => ({
+                ...prev,
+                [key]: null,
+              }));
+            }else{
+              setErrorState((prev) => ({
+                ...prev,
+                [key]: `${capitalizeFirstLetter(key)} hanya boleh diisi dengan angka`,
+              }));
+            }
+          }else{
+            setSelectedValue((prev) => ({
+              ...prev,
+              [key]: value,
+            }));
+            setErrorState((prev) => ({
+              ...prev,
+              [key]: null,
+            }));
+          }
+        }
+      }
+    }
+  };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const checkIfNumber = (newValue) =>{
+    const floatValue = parseFloat(newValue);
+    const isFloat = !isNaN(floatValue);
+
+    // Check if the value is convertible to an integer
+    const intValue = parseInt(newValue, 10); // Assuming base 10
+    const isInt = !isNaN(intValue);
+    if (isFloat || isInt) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   const handleListItemClick = (value) => {
     onClose(value);
   };
 
   const confirmUpdate = () => {
+    console.log(selectedValue);
     setShipInfo(selectedValue);
     postData()
   };
 
   const postData = async () => {
+    const imageResponse = await fetch(url + selectedValue.vesselImage, { mode: 'no-cors'});
+    const imageData = await imageResponse.blob();
+
+    console.log(imageData)
+    // const formData = new FormData();
+    // formData.append("image", imageData);
+
+    // var result
+    // axios.get(url + selectedValue.vesselImage, { responseType: 'blob' })
+    // .then(response => {
+    //   // The response object contains the server's response as a blob
+    //   // You can create a new FormData object and append the blob to it
+    //   let formData = new FormData();
+    //   formData.append('file', response.data, 'filename.png');
+    //   result = formData
+    // })
+    // .catch(error => console.error(error));
+    // console.log(result);
+
     const formData = new FormData();
     formData.append("imoNumber", selectedValue.IMO_Number)
     formData.append("vesselName", selectedValue.vesselName)
     formData.append("flag", selectedValue.flag)
-    formData.append("picture", selectedValue.vesselImage)
+    formData.append("picture", imageData)
     formData.append("dwt", parseInt(selectedValue.DWT))
     formData.append("grossTonage", parseInt(selectedValue.grossTonage))
     formData.append("year", parseInt(selectedValue.yearBuilt))
@@ -263,7 +413,7 @@ function Content() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   }}>
-                    <Avatar variant="rounded" src={url + shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                    <Avatar variant="rounded" src={shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
                 </Typography>
                 <Typography 
                   sx={{
@@ -303,6 +453,7 @@ function Content() {
                     open={openEditModal}
                     handleUpdate={handleUpdate}
                     confirmUpdate={confirmUpdate}
+                    errorState={errorState}
                   />
                 </Typography>
               </Grid>

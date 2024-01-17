@@ -16,12 +16,15 @@ import {
   import DialogTitle from '@mui/material/DialogTitle';
   import Dialog from '@mui/material/Dialog';
   import Text from 'src/components/Text';
-  import { useState } from 'react';
+  import { useEffect, useState } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
-const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], typeIsNumber=false}) => {
+const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], typeIsNumber=false, errorState}) => {
     const [activateEdit, setActivateEdit] = useState(false);
     const [inputValue, setInputValue] = useState(value);
+    useEffect(() => {
+      setInputValue(value)
+    }, [value])
     return(
       <>
         <Grid item xs={gridSizes[0]} sm={gridSizes[1]} md={gridSizes[2]} textAlign={{ sm: 'left' }}>
@@ -32,9 +35,23 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
         <Grid item xs={gridSizes[3]} sm={gridSizes[4]} md={gridSizes[5]}>
           <Box minHeight={'5vh'}>
             <div style={{display: activateEdit ? 'none' : 'block'}} onClick={() => setActivateEdit((prev) => {return !prev})}>
-              <Text color="black" width='100%'>
+              {/* <Text color="black" width='100%'>
                 <b>{value}</b>
-              </Text>
+              </Text> */}
+              <TextField
+                sx={{ width: '100%' }}
+                required
+                id="standard-required"
+                variant="standard"
+                value={value}
+                onChange={(event) => setInputValue(event.target.value)}
+                type={typeIsNumber ? 'number' : 'text'}
+                error={errorState != null}
+                helperText={errorState}
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
             </div>
             <div style={{display: activateEdit ? 'block' : 'none'}}>
               <TextField
@@ -45,9 +62,11 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 required
                 id="standard-required"
                 variant="standard"
-                defaultValue={value}
+                value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
                 type={typeIsNumber ? 'number' : 'text'}
+                error={errorState != null}
+                helperText={errorState}
               />
               <IconButton sx={{ width: {
                 xs:'20%',
