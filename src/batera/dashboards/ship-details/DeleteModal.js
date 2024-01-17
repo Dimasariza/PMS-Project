@@ -14,9 +14,11 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 
 const url = process.env.PUBLIC_URL || ""
-function DeleteModal(props) {
 
-  const { onClose, open, shipName, shipID } = props;
+function DeleteModal(props) {
+  const {user} = useContext(SidebarContext);
+  const { onClose, selectedValue, open, shipName, shipID } = props;
+  const router = useRouter()
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -26,9 +28,34 @@ function DeleteModal(props) {
     onClose(value);
   };
 
+  
+  const deleteData = async (id) => {
+    try {
+      const url = process.env.NEXT_PUBLIC_API_URL + "/ship/"+id
+      const response = await axios.delete(url);
+      // console.log(response)
+      router.replace('/ship-list')
+    } catch (error) {
+      console.log(error)
+    }
+    // try {
+    //   const response = await axios.delete(`http://127.0.0.1:8000/api/v1/ship/${id}`, {
+    //     headers: {
+    //       Authorization: `Bearer ${user.token}`,
+    //     },
+    //   });
+    //   console.log(response)
+    //   router.replace('/ship-list')
+    // } catch (error) {
+    //   // setLoginError(true)
+    // }
+  }
+
+  // useState(() =>{ console.log(shipID)}, [])
+
   return (
     <Dialog onClose={handleClose} open={open}>
-      {/* <DialogTitle>
+      <DialogTitle>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center"}}>
           <Typography align='left' variant="h6" style={{ fontWeight: 'bold' }}>
             Delete Ship
@@ -44,7 +71,7 @@ function DeleteModal(props) {
         </Typography>
         <div style={{display: 'flex', padding: '1%', gap: '2%', justifyContent: 'center', alignItems: 'center'}}>
           <Button variant="contained" color="primary" style={{backgroundColor: '#FF5AD9'}} onClick={()=>{
-            // deleteData(shipID);
+            deleteData(shipID);
             }}>
             Yes
           </Button>
@@ -53,7 +80,7 @@ function DeleteModal(props) {
           </Button>
           
         </div>
-      </div> */}
+      </div>
     </Dialog>
   );
 }

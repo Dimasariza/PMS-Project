@@ -9,22 +9,22 @@ import {
     CardHeader,
     Divider,
     TextField
-} from '@mui/material';
-import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
-import NextLink from 'next/link';
-import PropTypes from 'prop-types';
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
-import Text from 'src/components/Text';
-import { useState } from 'react';
-import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
-import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
-import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
+  } from '@mui/material';
+  import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
+  import NextLink from 'next/link';
+  import PropTypes from 'prop-types';
+  import DialogTitle from '@mui/material/DialogTitle';
+  import Dialog from '@mui/material/Dialog';
+  import Text from 'src/components/Text';
+  import { useState } from 'react';
+  import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
+  import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
+  import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
   
-const url = process.env.PUBLIC_URL || ""
+  const url = process.env.PUBLIC_URL || ""
   
-function DetailsModal(props) {
-    const { onClose, open, handleUpdate, confirmUpdate } = props;
+  function DetailsModal(props) {
+    const { onClose, selectedValue, open, handleUpdate, confirmUpdate } = props;
   
     const handleClose = () => {
       onClose(selectedValue);
@@ -34,9 +34,11 @@ function DetailsModal(props) {
       onClose(value);
     };
   
+    
+  
     return (
       <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
-        {/* <div>
+        <div>
           <Card>
             <div style={{display: 'flex', flexDirection: 'row', justifyContent:"space-between", alignItems:"center", padding: '2% 2% 2% 3%'}}>
               <Typography align='left' variant="h3" style={{ width: '100%', height: '100%', fontWeight: 'bold' }} 
@@ -70,6 +72,12 @@ function DetailsModal(props) {
                   },
                   width: '50%',
                 }}>
+                  {/* vesselName: results.vesselName,
+                  IMO: results.imoNumber,
+                  yearBuilt: results.year,
+                  flag: results.flag,
+                  DWT: results.dwt,
+                  grossTonage: results.grossTonage, */}
                   <Grid container spacing={0} alignItems="stretch">
                     <GridInfoDetailsEditable title={"Vessel Name:"} value={selectedValue.vesselName} handleEntryUpdate={(value) => handleUpdate('vesselName', value)}/>
                     <GridInfoDetailsEditable title={"IMO:"} value={selectedValue.IMO} handleEntryUpdate={(value) => handleUpdate('IMO', value)}/>
@@ -87,6 +95,11 @@ function DetailsModal(props) {
                   width: '50%',
                 }}>
                   <Grid container spacing={0} alignItems="stretch">
+                    {/* callSign: results.callsign,
+                    LOA_Breadth: results.LOA + ' X ' + results.breadth,
+                    vesselTypeGeneric: results.vesselTypeGeneric,
+                    vesselTypeDetailed: results.vesselTypeDetailed,
+                    vesselImage: results.picture */}
                     <GridInfoDetailsEditable title={"Call Sign:"} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', value)}/>
                     <GridInfoDetailsEditable title={"LOA:"} typeIsNumber={true} value={selectedValue.LOA} handleEntryUpdate={(value) => handleUpdate('LOA', value)}/>
                     <GridInfoDetailsEditable title={"Breadth:"} typeIsNumber={true} value={selectedValue.breadth} handleEntryUpdate={(value) => handleUpdate('breadth', value)}/>
@@ -120,22 +133,25 @@ function DetailsModal(props) {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
+                {/* <Button variant="contained" color="primary" style={{width: '45%'}}>
+                  Approve
+                </Button> */}
                 <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
                   Update
                 </Button>
               </div>
             </CardContent>
           </Card>
-        </div> */}
+        </div>
       </Dialog>
     );
   }
   
-DetailsModal.propTypes = {
-onClose: PropTypes.func.isRequired,
-open: PropTypes.bool.isRequired,
-// selectedValue: PropTypes.string.isRequired,
-// shipName: PropTypes.string.isRequired,
-};
-
-export default DetailsModal;
+  DetailsModal.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    // selectedValue: PropTypes.string.isRequired,
+    // shipName: PropTypes.string.isRequired,
+  };
+  
+  export default DetailsModal;

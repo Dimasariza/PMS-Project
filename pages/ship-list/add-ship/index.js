@@ -55,7 +55,6 @@ function Users() {
         const selectedFile = event;
         if (selectedFile) {
           const fileSizeInKB = selectedFile.size / 1024;
-
           if (fileSizeInKB > 1024) {
             setErrorState((prev) => ({
               ...prev,
@@ -123,7 +122,6 @@ function Users() {
           }
         }
       }
-      
     }
   };
 
@@ -170,7 +168,6 @@ function Users() {
       formData.append("breadth", parseFloat(inputedUser.breadth))
       formData.append("vesselTypeGeneric", inputedUser.vesselTypeGeneric)
       formData.append("vesselTypeDetailed", inputedUser.vesselTypeDetailed)
-      console.log(inputedUser);
       try {
         const url = process.env.NEXT_PUBLIC_API_URL + "/ship" 
         const response = await axios.post(url, 
