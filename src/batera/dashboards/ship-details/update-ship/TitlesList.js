@@ -64,6 +64,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Vessel Name"
                 onChange={handleUpdate('vesselName')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -71,6 +72,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="IMO Number"
                 onChange={handleUpdate('IMO_Number')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -78,6 +80,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Year Built"
                 onChange={handleUpdate('yearBuilt')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -85,6 +88,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Flag"
                 onChange={handleUpdate('flag')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -92,6 +96,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="DWT"
                 onChange={handleUpdate('DWT')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -99,6 +104,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Gross Tonages"
                 onChange={handleUpdate('grossTonages')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -106,6 +112,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="DWT"
                 onChange={handleUpdate('DWT')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -113,6 +120,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Call Sign"
                 onChange={handleUpdate('callSign')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -120,6 +128,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="LOA (m)"
                 onChange={handleUpdate('LOA')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -127,6 +136,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Breadth (m)"
                 onChange={handleUpdate('breadth')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -134,6 +144,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Vessel Type Generic"
                 onChange={handleUpdate('vesselTypeGeneric')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -141,6 +152,7 @@ function TitlesList() {
                 id="outlined-required"
                 label="Vessel Type Detailed"
                 onChange={handleUpdate('vesselTypeDetailed')}
+                InputLabelProps={{ shrink: true }}
               />
             </div>
           </Card>

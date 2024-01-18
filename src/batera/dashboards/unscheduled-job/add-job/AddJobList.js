@@ -64,6 +64,7 @@ function AddJobList() {
               required
               id="outlined-required"
               label="Job Name"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -76,6 +77,7 @@ function AddJobList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {departmentList.map((option) => (
                 <option key={option} value={option}>
@@ -94,6 +96,7 @@ function AddJobList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {systemList.map((option) => (
                 <option key={option} value={option}>
@@ -107,6 +110,7 @@ function AddJobList() {
               required
               id="outlined-required"
               label="Brand"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -114,6 +118,7 @@ function AddJobList() {
               required
               id="outlined-required"
               label="Component Name"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -121,6 +126,7 @@ function AddJobList() {
               required
               id="outlined-required"
               label="Part Name"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -128,6 +134,7 @@ function AddJobList() {
               required
               id="outlined-required"
               label="Person In Charge"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -140,6 +147,7 @@ function AddJobList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {statusList.map((option) => (
                 <option key={option} value={option}>
@@ -158,6 +166,7 @@ function AddJobList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {levelList.map((option) => (
                 <option key={option} value={option}>

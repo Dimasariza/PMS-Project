@@ -1,9 +1,9 @@
 import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
+import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 
-
-function PageHeader() {
+function PageHeader({postData}) {
   const user = {
     name: 'Catherine Pike',
     avatar: '/static/images/avatars/1.jpg'
@@ -21,15 +21,23 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/equipment/data-sheet"} passHref>
+        <NextLink href="/equipment/data-sheet" passHref>
           <Button
-            sx={{ mt: { xs: 2, md: 0 } }}
-            variant="contained"
-            startIcon={<SaveTwoToneIcon fontSize="small" />}
-          >
-            Save Data Sheet
+              sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
+              variant="contained"
+              startIcon={<ArrowBackTwoToneIcon fontSize="small" />}
+            >
+              Back
           </Button>
         </NextLink>
+        <Button
+          sx={{ mt: { xs: 2, md: 0 } }}
+          variant="contained"
+          startIcon={<SaveTwoToneIcon fontSize="small" />}
+          onClick={() => {postData()}}
+        >
+          Save Data Sheet
+        </Button>
       </Grid>
     </Grid>
   );

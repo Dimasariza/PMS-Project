@@ -21,7 +21,7 @@ function PageHeader() {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/equipment/data-sheet/add-data-sheet"} passHref>
+        <NextLink href={url + "/equipment/data-sheet/add-data-sheet"} passHref>
           <Button
             sx={{ mt: { xs: 2, md: 0 } }}
             variant="contained"

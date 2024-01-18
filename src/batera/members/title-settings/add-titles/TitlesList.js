@@ -13,19 +13,22 @@ function TitlesList({titleList, setTitleList, handleUpdate, handleUpdateName}) {
 
   return (
     <>
-      <div style={{paddingBottom: '2vh'}}>
-        <Card >
+      <div style={{ paddingBottom: '2vh'}}>
+        <Card sx={{ width: '100%', padding: '1%', gap: '5%'}}>
           <CardHeader
               title="Add Title"
             />
           <Divider />
-          <TextField
-            sx={{ width: '100%', padding: '1%' }}
-            required
-            id="outlined-required"
-            label="Title Name"
-            onChange={handleUpdateName('titleName')}
-          />
+          <div style={{display: 'flex', flexDirection: 'column', gap: '15%', height: '100%', width: '100%'}}>
+            <TextField
+              sx={{ width: '100%' }}
+              required
+              id="outlined-required"
+              label="Title Name"
+              onChange={handleUpdateName('titleName')}
+              InputLabelProps={{ shrink: true }}
+            />
+          </div>
         </Card>
       </div>
       <Card>

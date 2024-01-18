@@ -50,6 +50,7 @@ function AddStockList() {
               onChange={handleUpdate('equipmentCode')}
               id="outlined-required"
               label="Equipment Code"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -58,6 +59,7 @@ function AddStockList() {
               onChange={handleUpdate('equipmentName')}
               id="outlined-required"
               label="Equipment Name"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -70,6 +72,7 @@ function AddStockList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {departmentList.map((option) => (
                 <option key={option} value={option}>
@@ -88,6 +91,7 @@ function AddStockList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {statusPart.map((option) => (
                 <option key={option} value={option}>
@@ -102,6 +106,7 @@ function AddStockList() {
               id="outlined-required"
               onChange={handleUpdate('category')}
               label="Category"
+              InputLabelProps={{ shrink: true }}
             />
           </div>
         </Card>

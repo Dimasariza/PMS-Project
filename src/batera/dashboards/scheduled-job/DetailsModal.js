@@ -34,8 +34,6 @@ function DetailsModal(props) {
     onClose(value);
   };
 
-  
-
   return (
     <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
       <div>
@@ -120,9 +118,9 @@ function DetailsModal(props) {
               <Button variant="contained" color="primary" style={{width: '45%'}}>
                 Approve
               </Button>
-              <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
+              {/* <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
                 Update
-              </Button>
+              </Button> */}
             </div>
           </CardContent>
         </Card>

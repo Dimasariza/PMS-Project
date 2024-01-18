@@ -201,6 +201,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                 // id="outlined-required"
                 label="User Name"
                 onChange={handleUpdate('userName')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -208,6 +209,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                 // id="outlined-required"
                 label="Full Name"
                 onChange={handleUpdate('fullName')}
+                InputLabelProps={{ shrink: true }}
               />
               <TextField
                 sx={{ width: '100%'}}
@@ -219,7 +221,8 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                 SelectProps={{
                   native: true
                 }}
-                helperText="Please select new user's department"
+                helperText="Please select new user's title"
+                InputLabelProps={{ shrink: true }}
               >
                 {titleList.map((option) => (
                   <option key={option.titleName+"|"+option.id} value={option.id}>
@@ -234,6 +237,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                 // id="outlined-required"
                 label="Email"
                 onChange={handleUpdate('email')}
+                InputLabelProps={{ shrink: true }}
               />
 
               <TextField
@@ -247,6 +251,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                   native: true
                 }}
                 helperText="Please select new user's department"
+                InputLabelProps={{ shrink: true }}
               >
                 {departmentList.map((option) => (
                   <option key={option.departmentName+"|"+option.id} value={option.id}>
@@ -266,6 +271,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                   native: true
                 }}
                 helperText="Please select new user's workplace"
+                InputLabelProps={{ shrink: true }}
               >
                 {workplaceList.map((option) => (
                   <option key={option.workplace} value={option.value}>
@@ -282,6 +288,7 @@ function TitlesList({inputedUser, setInputedUser, handleUpdate}) {
                 type="password"
                 autoComplete="current-password"
                 onChange={handleUpdate('password')}
+                InputLabelProps={{ shrink: true }}
               />
 
             </div>

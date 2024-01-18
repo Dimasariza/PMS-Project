@@ -109,11 +109,9 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Update
-                </Button>
-              </NextLink>
+              <Button variant="contained" color="primary" style={{width: '45%'}}>
+                Update
+              </Button>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
                 Delete
               </Button>

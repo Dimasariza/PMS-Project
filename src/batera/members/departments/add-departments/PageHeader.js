@@ -19,7 +19,7 @@ function PageHeader({postData}) {
         </Typography>
       </Grid>
       <Grid item>
-      <NextLink href={url + "/batera/members/departments"} passHref>
+      <NextLink href={url + "/members/departments"} passHref>
           <Button
               sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
               variant="contained"
@@ -32,7 +32,7 @@ function PageHeader({postData}) {
           sx={{ mt: { xs: 2, md: 0 } }}
           variant="contained"
           startIcon={<SaveTwoToneIcon fontSize="small" />}
-          onClick={() => {postData(); router.push("/batera/members/departments") }}
+          onClick={() => {postData()}}
         >
           Save Department
         </Button>

@@ -25,6 +25,7 @@ function TitlesList({departmentList, setDepartmentList, workplaceList, setWorkpl
               id="outlined-required"
               label="Department Code"
               onChange={handleUpdate('departmentCode')}
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               sx={{ width: '100%', paddingBottom: '2%'}}
@@ -32,6 +33,7 @@ function TitlesList({departmentList, setDepartmentList, workplaceList, setWorkpl
               id="outlined-required"
               label="Department Name"
               onChange={handleUpdate('departmentName')}
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               sx={{ width: '100%'}}
@@ -43,6 +45,7 @@ function TitlesList({departmentList, setDepartmentList, workplaceList, setWorkpl
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
               helperText="Please select new user's workplace"
             >
               {workplaceList.map((option) => (

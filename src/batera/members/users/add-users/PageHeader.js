@@ -17,7 +17,7 @@ function PageHeader({postData}) {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href={url + "/batera/members/users"} passHref>
+        <NextLink href={url + "/members/users"} passHref>
           <Button
               sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
               variant="contained"

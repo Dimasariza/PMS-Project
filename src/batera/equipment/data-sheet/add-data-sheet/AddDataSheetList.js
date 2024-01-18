@@ -60,6 +60,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('dataSheetCode')}
               id="outlined-required"
               label="Data Sheet Code"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -68,6 +69,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('jobName')}
               id="outlined-required"
               label="Job Name"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -80,6 +82,7 @@ function AddDataSheetList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {departmentList.map((option) => (
                 <option key={option} value={option}>
@@ -98,6 +101,7 @@ function AddDataSheetList() {
               SelectProps={{
                 native: true
               }}
+              InputLabelProps={{ shrink: true }}
             >
               {systemList.map((option) => (
                 <option key={option} value={option}>
@@ -112,6 +116,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('brand')}
               id="outlined-required"
               label="Brand"
+              InputLabelProps={{ shrink: true }}
             />
 
             <TextField
@@ -120,6 +125,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('component')}
               id="outlined-required"
               label="Component Name"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -128,6 +134,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('part')}
               id="outlined-required"
               label="Part Name"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -136,6 +143,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('maintenance')}
               id="outlined-required"
               label="Maintenance Interval"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -144,6 +152,7 @@ function AddDataSheetList() {
               onChange={handleUpdate('serialNumber')}
               id="outlined-required"
               label="Serial Number"
+              InputLabelProps={{ shrink: true }}
             /> 
 
             <TextField
@@ -153,6 +162,7 @@ function AddDataSheetList() {
               type='file'
               id="outlined-required"
               helperText="Data Sheet File"
+              InputLabelProps={{ shrink: true }}
             /> 
           </div>
         </Card>

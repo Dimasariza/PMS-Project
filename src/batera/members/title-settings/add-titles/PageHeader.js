@@ -23,7 +23,7 @@ function PageHeader({postData}) {
         </Typography>
       </Grid>
       <Grid item>
-      <NextLink href={url + "/batera/members/title-settings"} passHref>
+      <NextLink href={url + "/members/title-settings"} passHref>
           <Button
               sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
               variant="contained"
@@ -36,7 +36,7 @@ function PageHeader({postData}) {
           sx={{ mt: { xs: 2, md: 0 } }}
           variant="contained"
           startIcon={<SaveTwoToneIcon fontSize="small" />}
-          onClick={() => {postData(); router.push("/batera/members/title-settings")}}
+          onClick={() => {postData()}}
         >
           Save Title
         </Button>
