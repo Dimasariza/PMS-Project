@@ -4,6 +4,7 @@ export const SidebarContext = createContext({});
 
 export function SidebarProvider({ children }) {
   const [sidebarToggle, setSidebarToggle] = useState(false);
+  const [shipID, setShipId] = useState(false);
 
   const toggleSidebar = () => {
     setSidebarToggle(!sidebarToggle);
@@ -15,7 +16,7 @@ export function SidebarProvider({ children }) {
 
   return (
     <SidebarContext.Provider
-      value={{ sidebarToggle, toggleSidebar, closeSidebar }}
+      value={{ sidebarToggle, toggleSidebar, closeSidebar, shipID, setShipId }}
     >
       {children}
     </SidebarContext.Provider>

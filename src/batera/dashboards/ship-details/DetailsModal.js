@@ -34,8 +34,6 @@ import {
       onClose(value);
     };
   
-    
-  
     return (
       <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
         <div>

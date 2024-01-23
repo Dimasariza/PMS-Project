@@ -8,8 +8,14 @@ import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import NextLink from 'next/link';
+import { SidebarContext } from 'src/contexts/SidebarContext';
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
+
 
 const ShipCard = ({ shipInfo, entriesPerRow }) => {
+    const router = useRouter();
+    const { setShipId } = useContext(SidebarContext);
     const [cardSizes, setCardSizes] = useState([{
             cardWidth: '100%',
             imageHeight: '80%',
@@ -40,6 +46,11 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
         },
     ]);
 
+    const openDetails = (incomingID) => {
+        setShipId(incomingID)
+        router.push(`/dashboards/ship-details?id=${shipInfo.id}`)
+    }
+
     return (
         <>
         <Card sx={{ 
@@ -68,17 +79,16 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
             </CardContent>
             <CardActions sx={{ height: cardSizes[entriesPerRow - 1].actionHeight }}>
                 <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
-                <NextLink href= {`/dashboards/ship-details?id=${shipInfo.id}`} passHref>
-                    <Button 
+                <Button 
                     size="small" 
                     width='50%' 
                     variant="contained" 
                     color="primary"
                     className="text-3xl font-bold underline"
-                    >
-                        See Details
-                    </Button>
-                </NextLink >
+                    onClick={() => {openDetails(shipInfo.id)}}
+                >
+                    See Details
+                </Button>
                 </div>
             </CardActions>
             </Card>

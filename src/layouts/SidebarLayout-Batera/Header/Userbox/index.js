@@ -22,6 +22,8 @@ import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
 import AccountBoxTwoToneIcon from '@mui/icons-material/AccountBoxTwoTone';
 import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 import AccountTreeTwoToneIcon from '@mui/icons-material/AccountTreeTwoTone';
+import { signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -59,10 +61,12 @@ const UserBoxDescription = styled(Typography)(
 );
 
 function HeaderUserbox() {
+  const router = useRouter();
+  const { data : session } = useSession() 
   const user = {
-    name: 'Catherine Pike',
+    name: session.user.name,
     avatar: '/static/images/avatars/1.jpg',
-    jobtitle: 'Project Manager'
+    jobtitle: session.user.title.name
   };
 
   const ref = useRef(null);
@@ -74,6 +78,11 @@ function HeaderUserbox() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: 'http://localhost:6464/' });
+    // router.replace('/'); // Redirect to the login page
   };
 
   return (
@@ -116,7 +125,7 @@ function HeaderUserbox() {
         </MenuUserBox>
         <Divider sx={{ mb: 0 }} />
         <List sx={{ p: 1 }} component="nav">
-          <NextLink href="/management/profile" passHref>
+          {/* <NextLink href="/management/profile" passHref>
             <ListItem button>
               <AccountBoxTwoToneIcon fontSize="small" />
               <ListItemText primary="My Profile" />
@@ -133,12 +142,12 @@ function HeaderUserbox() {
               <AccountTreeTwoToneIcon fontSize="small" />
               <ListItemText primary="Account Settings" />
             </ListItem>
-          </NextLink>
+          </NextLink> */}
         </List>
         <Divider />
         <Box sx={{ m: 1 }}>
 
-          <Button color="primary" fullWidth>
+          <Button color="primary" fullWidth onClick={() => {handleLogout()}}>
             <LockOpenTwoToneIcon sx={{ mr: 1 }} />
             Sign out
           </Button>

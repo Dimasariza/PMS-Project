@@ -166,68 +166,68 @@ const SubMenuWrapper = styled(Box)(
 );
 
 function SidebarMenu() {
-  const { closeSidebar } = useContext(SidebarContext);
+  const { closeSidebar, shipID } = useContext(SidebarContext);
   const { pathname } = useRouter();
   const sideBarMenu = [
-    { menu : "Dashboards", subMenu : [
+    { menu: "Dashboards", subMenu: [
       {
-        title : "Ships Details",
-        href : "/dashboards/ship-details",
-        icon : <DirectionsBoatFilledTwoToneIcon />
+        title: "Ships Details",
+        href: `/dashboards/ship-details?id=${shipID}`,
+        icon: <DirectionsBoatFilledTwoToneIcon />
       },
       {
-        title : "Scheduled Job",
-        href : "/dashboards/scheduled-job",
-        icon : <CalendarMonthTwoToneIcon />
+        title: "Scheduled Job",
+        href: `/dashboards/scheduled-job?id=${shipID}`,
+        icon: <CalendarMonthTwoToneIcon />
       },
       {
-        title : "Unscheduled Job",
-        href : "/dashboards/unscheduled-job",
-        icon : <ScheduleTwoToneIcon />
+        title: "Unscheduled Job",
+        href: `/dashboards/unscheduled-job?id=${shipID}`,
+        icon: <ScheduleTwoToneIcon />
       },
     ]},
-    { menu : "EQUIPMENT", subMenu : [
+    { menu: "EQUIPMENT", subMenu: [
       {
-        title : "Data Sheet",
-        href : "/equipment/data-sheet",
-        icon : <TocTwoToneIcon />
+        title: "Data Sheet",
+        href: `/equipment/data-sheet?id=${shipID}`,
+        icon: <TocTwoToneIcon />
       },
       {
-        title : "Stock",
-        href : "/equipment/stock",
-        icon : <HomeRepairServiceTwoToneIcon />
+        title: "Stock",
+        href: `/equipment/stock?id=${shipID}`,
+        icon: <HomeRepairServiceTwoToneIcon />
       },
     ]}, 
-    { menu : "Members", subMenu : [
+    { menu: "Members", subMenu: [
       {
-        title : "Title Settings",
-        href : "/members/title-settings",
-        icon : <BuildCircleTwoToneIcon />
+        title: "Title Settings",
+        href: `/members/title-settings?id=${shipID}`,
+        icon: <BuildCircleTwoToneIcon />
       },
       {
-        title : "Users",
-        href : "/members/users",
-        icon : <AccountCircleTwoToneIcon />
+        title: "Users",
+        href: `/members/users?id=${shipID}`,
+        icon: <AccountCircleTwoToneIcon />
       },
       {
-        title : "Departments",
-        href : "/members/departments",
-        icon : <EngineeringTwoToneIcon />
-      },
-    ]},
-    { menu : "Notifications", subMenu : [
-      {
-        title : "Inbox",
-        href : "/notification/inbox",
-        icon : <MailTwoToneIcon />
-      },
-      {
-        title : "Approvesd",
-        href : "/notification/approved",
-        icon : <CheckBoxTwoToneIcon />
+        title: "Departments",
+        href: `/members/departments?id=${shipID}`,
+        icon: <EngineeringTwoToneIcon />
       },
     ]},
-  ] 
+    { menu: "Notifications", subMenu: [
+      {
+        title: "Inbox",
+        href: `/notification/inbox?id=${shipID}`,
+        icon: <MailTwoToneIcon />
+      },
+      {
+        title: "Approved",
+        href: `/notification/approved?id=${shipID}`,
+        icon: <CheckBoxTwoToneIcon />
+      },
+    ]},
+  ];
   return (
     <MenuWrapper>
       {
