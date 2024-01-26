@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import TitlesList from 'src/batera/ship-list/add-ship/TitlesList';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import {CheckInput, checkAllErrorCleared} from 'src/components/CustomComponent/InputChecker/InputChecker.js'
 
 function Users() {
   const router = useRouter()
@@ -43,90 +44,13 @@ function Users() {
     vesselImage: null,
   });
 
-  const handleUpdate = (key, minYear, maxDigit) => (event) => {
-    // console.log("Incoming ", key, "value", event);
-    if(key == 'vesselImage'){
-      if(event === undefined || event === null){
-        setErrorState((prev) => ({
-          ...prev,
-          [key]: 'Gambar tidak boleh kosong',
-        }));
-      }else{
-        const selectedFile = event;
-        if (selectedFile) {
-          const fileSizeInKB = selectedFile.size / 1024;
-          if (fileSizeInKB > 1024) {
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: "Ukuran gambar tidak boleh melebihi 1 MB",
-            }));
-          } else {
-            setInputedUser((prev) => ({
-              ...prev,
-              [key]: event,
-            }));
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: null,
-            }));
-          }
-        }
-      }
-    }else{
-      if(event === undefined || event === null){
-        setErrorState((prev) => ({
-          ...prev,
-          [key]: `Kolom ${capitalizeFirstLetter(key)} belum diisi`,
-        }));
-      }else{
-        if(minYear != undefined && event.target.value < minYear && event.target.value > 1000){
-          setInputedUser((prev) => ({
-            ...prev,
-            [key]: 1908,
-          }));
-          setErrorState((prev) => ({
-            ...prev,
-            [key]: `Tahun minimal 1908`,
-          }));
-        }else if(maxDigit != undefined && event.target.value > Math.pow(10, maxDigit) - 1){
-          setErrorState((prev) => ({
-            ...prev,
-            [key]: `${capitalizeFirstLetter(key)} maximal ${maxDigit} digit`,
-          }));
-        }else{
-          if((maxDigit != undefined || minYear != undefined )){
-            if(checkIfNumber(event.target.value)){
-              setInputedUser((prev) => ({
-                ...prev,
-                [key]: event.target.value,
-              }));
-              setErrorState((prev) => ({
-                ...prev,
-                [key]: null,
-              }));
-            }else{
-              setErrorState((prev) => ({
-                ...prev,
-                [key]: `${capitalizeFirstLetter(key)} hanya boleh diisi dengan angka`,
-              }));
-            }
-          }else{
-            setInputedUser((prev) => ({
-              ...prev,
-              [key]: event.target.value,
-            }));
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: null,
-            }));
-          }
-        }
-      }
+  const handleUpdate = (key, inputType) => (event) => {
+    // console.log(event)
+    var value = event
+    if(key != 'vesselImage'){
+      value = event.target.value
     }
-  };
-
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    CheckInput(key, value, inputType, setInputedUser, setErrorState)
   };
 
   const [shownPic, setShowPic] = useState('')
@@ -138,22 +62,8 @@ function Users() {
     }
   }, [inputedUser])
 
-  const checkIfNumber = (newValue) =>{
-    const floatValue = parseFloat(newValue);
-    const isFloat = !isNaN(floatValue);
-
-    // Check if the value is convertible to an integer
-    const intValue = parseInt(newValue, 10); // Assuming base 10
-    const isInt = !isNaN(intValue);
-    if (isFloat || isInt) {
-      return true
-    } else {
-      return false
-    }
-  }
-
   const postData = async () => {
-    if(checkAllErrorCleared()){
+    if(checkAllErrorCleared(inputedUser, setErrorState)){
       console.log("Result clear")
       const formData = new FormData();
       formData.append("imoNumber", inputedUser.IMO_Number)
@@ -181,28 +91,7 @@ function Users() {
 
       console.log("Result not clear")
     }
-    
   }
-
-  const checkAllErrorCleared = () => {
-    var cheker = true;
-    Object.keys(inputedUser).forEach(key => {
-      if (inputedUser[key] !== '') {
-        console.log(key, ' is ', inputedUser[key], true);
-
-
-      } else {
-        setErrorState(prev => ({
-          ...prev,
-          [key]: `${capitalizeFirstLetter(key)} tidak boleh kosong`,
-        }));
-        console.log(key, ' is ', inputedUser[key], false);
-        cheker = false;
-      }
-    });
-    return cheker;
-  }
-
 
   return (
     <>

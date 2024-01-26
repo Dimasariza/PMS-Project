@@ -27,16 +27,16 @@ function TitlesList({handleUpdate, inputedUser, errorState, shownPic}) {
               [
                 { label : "Vessel Name", onChange : "vesselName" },
                 { label : "IMO Number", onChange : "IMO_Number" },
-                { label : "Year Built", onChange : "yearBuilt", type : "number", minYear : 1908, maxDigit : 4 },
+                { label : "Year Built", onChange : "yearBuilt", type : "year"},
                 { label : "Flag", onChange : "flag" },
-                { label : "DWT", onChange : "DWT", type : "number", maxDigit : 7 },
-                { label : "Gross Tonages", onChange : "grossTonage", type : "number", maxDigit : 7 },
+                { label : "DWT", onChange : "DWT", type : "int"},
+                { label : "Gross Tonages", onChange : "grossTonage", type : "int"},
                 { label : "Call Sign", onChange : "callSign" },
-                { label : "LOA (m)", onChange : "LOA", type : "number", maxDigit : 6 },
-                { label : "Breadth (m)", onChange : "breadth", type : "number", maxDigit : 6 },
+                { label : "LOA (m)", onChange : "LOA", type : "float"},
+                { label : "Breadth (m)", onChange : "breadth", type : "float"},
                 { label : "Vessel Type Generic", onChange : "vesselTypeGeneric" },
                 { label : "Vessel Type Detailed", onChange : "vesselTypeDetailed" },
-              ].map(({label, onChange, type, minYear,  maxDigit}, index) => 
+              ].map(({label, onChange, type="string"}, index) => 
                 
                   <TextField
                     error={errorState[onChange] != null}
@@ -45,8 +45,8 @@ function TitlesList({handleUpdate, inputedUser, errorState, shownPic}) {
                     required
                     id="outlined-required"
                     label={label}
-                    onChange={handleUpdate(onChange, minYear, maxDigit)}
-                    type={type ?? "text"}
+                    onChange={handleUpdate(onChange, type)}
+                    type={type === 'int' || type === 'year' || type === 'float' ? 'number' : 'text'}
                     variant='outlined'
                     helperText={errorState[onChange] != null ? errorState[onChange] : null}
                     value={inputedUser[onChange]}

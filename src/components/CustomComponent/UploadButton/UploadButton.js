@@ -5,37 +5,9 @@ import {
 import UploadTwoToneIcon from '@mui/icons-material/UploadTwoTone';
 import { styled } from '@mui/material/styles';
 import { useRef, useState } from 'react';
+import Button from '@mui/material/Button';
 
 const UploadButton = ({ onUpload }) => {
-  const theme = useTheme();
-  const styles = {
-    button: {
-      backgroundColor: theme.colors.primary.main,
-      color: theme.palette.primary.contrastText,
-      boxShadow: theme.colors.shadows.primary,
-      borderRadius: '50%',
-      height: {
-        xs: '70%',
-        sm: '70%',
-        md: '70%',
-        lg: '70%',
-      },
-      aspectRatio: '1/1', // The button is round
-      width: {
-        xs: '70%',
-        sm: '70%',
-        md: '70%',
-        lg: '70%',
-      }, // The width is 80% of the height
-    },
-    icon: {
-      fontSize: '40',
-    },
-    input: {
-      display: 'none',
-    },
-  };
-
   const [fileName, setFileName] = useState('');
   const inputRef = useRef(null);
 
@@ -56,12 +28,14 @@ const UploadButton = ({ onUpload }) => {
   });
 
   return (
-    <div style={{display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', padding: '1%', height: '20%'}}>
-      <IconButton style={styles.button} color="primary" onClick={handleButtonClick}>
-        <UploadTwoToneIcon style={styles.icon} />
-      </IconButton>
+    <div style={{display : "flex", justifyContent : "center", flexDirection : 'row', boxSizing: 'border-box'}}>
+      {/* <IconButton color="primary" variant="contained" onClick={handleButtonClick}>
+        <UploadTwoToneIcon />
+      </IconButton> */}
+      <Button variant="contained" color="primary" onClick={handleButtonClick} endIcon={<UploadTwoToneIcon />}>
+        Upload
+      </Button>
       <Input
-        style={styles.input}
         type="file"
         ref={inputRef}
         onChange={handleFileSelect}
