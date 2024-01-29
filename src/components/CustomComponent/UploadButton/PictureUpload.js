@@ -4,16 +4,29 @@ import {
   CardHeader,
   Avatar,
 } from '@mui/material';
+import { useEffect, useState } from 'react';
 import UploadButton from "./UploadButton";
 
 const PictureUpload = ({title="Add Ship Picture", target = 'vesselImage', handleUpdate, picLink, error}) => {
+    const [shownPic, setShowPic] = useState('')
+    useEffect(() => {
+      if(picLink == ''){
+        setShowPic('')
+      }else{
+        if (picLink instanceof File) {
+          setShowPic(URL.createObjectURL(picLink));
+        } else if (typeof picLink === 'string') {
+          setShowPic(picLink);
+        }
+      }
+    }, [picLink])
     return (
         <>
             <Card sx={{ height: '100%', boxSizing: 'border-box' }}>
                 <CardHeader title={title} />
                 <Divider />
                 <div style={{padding: '5%', width: '100%', height: '80%',  display : "flex", justifyContent : "center", alignItems: 'center', flexDirection : 'column', boxSizing: 'border-box' }}>
-                    <Avatar variant="rounded" src={picLink} 
+                    <Avatar variant="rounded" src={shownPic} 
                         sx={{
                             width: '80%',
                             height: '80%',

@@ -72,8 +72,8 @@ function CheckIfInputNull(key, inputValue, setValue, setError,
         }));
     }
 ){
-    // console.log((inputValue))
     if(inputValue == null || inputValue == ''){
+        console.log((inputValue, " is null, return error"))
         setValue((prev) => ({
             ...prev,
             [key]: inputValue,
@@ -83,6 +83,7 @@ function CheckIfInputNull(key, inputValue, setValue, setError,
             [key]: `Kolom ${capitalizeFirstLetter(key)} belum diisi`,
         }));
     }else{
+        console.log((inputValue, " is acceptable"))
         nextStep(key, inputValue, setValue, setError)
     }
 }  
@@ -182,13 +183,13 @@ export  function checkAllErrorCleared(inputValue, setError ){
     var cheker = true;
     Object.keys(inputValue).forEach(key => {
       if (inputValue[key] !== '') {
-        console.log(key, ' is ', inputValue[key], true);
+        // console.log(key, ' is ', inputValue[key], true);
       } else {
         setError(prev => ({
           ...prev,
           [key]: `${capitalizeFirstLetter(key)} tidak boleh kosong`,
         }));
-        console.log(key, ' is ', inputValue[key], false);
+        // console.log(key, ' is ', inputValue[key], false);
         cheker = false;
       }
     });

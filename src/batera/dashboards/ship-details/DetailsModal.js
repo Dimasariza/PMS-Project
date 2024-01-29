@@ -16,23 +16,76 @@ import {
   import DialogTitle from '@mui/material/DialogTitle';
   import Dialog from '@mui/material/Dialog';
   import Text from 'src/components/Text';
-  import { useState } from 'react';
+  import { useState, useEffect } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
   import GridInfoDetailsEditable from 'src/components/CustomComponent/GridInfo/Editable/GridInfoDetailsEditable';
   import GridInfoDetails from 'src/components/CustomComponent/GridInfo/Static/GridInfoDetailsStatic';
+  import {CheckInput, checkAllErrorCleared} from 'src/components/CustomComponent/InputChecker/InputChecker.js'
+  import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUpload';
   
   const url = process.env.PUBLIC_URL || ""
   
   function DetailsModal(props) {
-    const { onClose, selectedValue, open, handleUpdate, confirmUpdate, errorState } = props;
+    const { onClose, open, confirmUpdate, defaultFormValue } = props;
+
+    const defaultErrorState = {
+      vesselName: null,
+      IMO_Number: null,
+      yearBuilt: null,
+      flag: null,
+      DWT: null,
+      grossTonage: null,
+      callSign: null,
+      LOA: null,
+      breadth: null,
+      vesselTypeGeneric: null,
+      vesselTypeDetailed: null,
+      vesselImage: null
+    }
+
+    useEffect(() => {
+      if(open){
+        setErrorState(defaultErrorState)
+        setSelectedValue(defaultFormValue)
+      }
+    }, [open])
+
+    const [errorState, setErrorState] = useState(defaultErrorState);
+  
+    const [selectedValue, setSelectedValue] = useState({
+        vesselName: 'MV.AXES',
+        IMO_Number: '123xxx1980',
+        yearBuilt: '1980',
+        flag: 'Indonesia',
+        DWT: '15.000',
+        grossTonage: '11.900',
+        callSign: 'AX VII',
+        LOA: '149.6',
+        breadth: '23.1',
+        vesselTypeGeneric: 'Cargo',
+        vesselTypeDetailed: 'Container Ship',
+        vesselImage: "/static/images/ship-card/ship1.jpg"
+    });
+
+    const handleUpdate = (key, inputType, incomingValue) => {
+      CheckInput(key, incomingValue, inputType, setSelectedValue, setErrorState)
+      console.log(selectedValue)
+    };
   
     const handleClose = () => {
-      onClose(selectedValue);
+      onClose();
     };
-  
-    const handleListItemClick = (value) => {
-      onClose(value);
-    };
+
+    const confirm = () => {
+      if(checkAllErrorCleared(selectedValue, setErrorState)){
+        confirmUpdate(selectedValue);
+        handleClose();
+      }
+    }
+
+    const updateImage = (target, type="image") => (event) =>{
+      handleUpdate(target, type, event)
+    }
   
     return (
       <Dialog onClose={handleClose} open={open} maxWidth={'md'} >
@@ -59,8 +112,8 @@ import {
                 width: '100%',
                 display: 'flex',
                 flexDirection: 'row',
-                gap: '5%',
-                padding: '1%',
+                // gap: '5%',
+                // padding: '1%',
                 
               }}>
                 <Typography variant="subtitle2" sx={{
@@ -77,12 +130,25 @@ import {
                   DWT: results.dwt,
                   grossTonage: results.grossTonage, */}
                   <Grid container spacing={0} alignItems="stretch">
-                    <GridInfoDetailsEditable title={"Vessel Name:"} value={selectedValue.vesselName} handleEntryUpdate={(value) => handleUpdate('vesselName', undefined, undefined, value)} errorState={errorState['vesselName']}/>
-                    <GridInfoDetailsEditable title={"IMO:"} value={selectedValue.IMO} handleEntryUpdate={(value) => handleUpdate('IMO', undefined, undefined, value)} errorState={errorState['IMO']}/>
-                    <GridInfoDetailsEditable title={"Year:"} typeIsNumber={true} value={selectedValue.yearBuilt} handleEntryUpdate={(value) => handleUpdate('yearBuilt', 1908, 4, value)} errorState={errorState['yearBuilt']}/>
-                    <GridInfoDetailsEditable title={"Flag:"} value={selectedValue.flag} handleEntryUpdate={(value) => handleUpdate('flag', undefined, undefined, value)} errorState={errorState['flag']}/>
-                    <GridInfoDetailsEditable title={"DWT:"} typeIsNumber={true} value={selectedValue.DWT} handleEntryUpdate={(value) => handleUpdate('DWT', undefined, 7, value)} errorState={errorState['DWT']}/>
-                    <GridInfoDetailsEditable title={"Gross Tonage:"} typeIsNumber={true} value={selectedValue.grossTonage} handleEntryUpdate={(value) => handleUpdate('grossTonage', undefined, 7, value)} errorState={errorState['grossTonage']}/>
+                  {
+                    [
+                      { label : "Vessel Name", onChange : "vesselName" },
+                      { label : "IMO Number", onChange : "IMO_Number" },
+                      { label : "Year Built", onChange : "yearBuilt", type : "year"},
+                      { label : "Flag", onChange : "flag" },
+                      { label : "DWT", onChange : "DWT", type : "int"},
+                      { label : "Gross Tonages", onChange : "grossTonage", type : "int"},
+                    ].map(({label, onChange, type="string"}, index) => 
+                      <GridInfoDetailsEditable 
+                        key={onChange}
+                        title={label} 
+                        type={type}
+                        value={selectedValue[onChange]} 
+                        handleEntryUpdate={(value) => {handleUpdate(onChange, type, value);}} 
+                        errorState={errorState[onChange]}
+                      />
+                    )
+                  }
                   </Grid>
                 </Typography>
                 <Typography variant="subtitle2" sx={{
@@ -93,19 +159,27 @@ import {
                   width: '50%',
                 }}>
                   <Grid container spacing={0} alignItems="stretch">
-                    {/* callSign: results.callsign,
-                    LOA_Breadth: results.LOA + ' X ' + results.breadth,
-                    vesselTypeGeneric: results.vesselTypeGeneric,
-                    vesselTypeDetailed: results.vesselTypeDetailed,
-                    vesselImage: results.picture */}
-                    <GridInfoDetailsEditable title={"Call Sign:"} value={selectedValue.callSign} handleEntryUpdate={(value) => handleUpdate('callSign', undefined, undefined, value)} errorState={errorState['callSign']}/>
-                    <GridInfoDetailsEditable title={"LOA:"} typeIsNumber={true} value={selectedValue.LOA} handleEntryUpdate={(value) => handleUpdate('LOA', undefined, 6, value)} errorState={errorState['LOA']}/>
-                    <GridInfoDetailsEditable title={"Breadth:"} typeIsNumber={true} value={selectedValue.breadth} handleEntryUpdate={(value) => handleUpdate('breadth', undefined, 6, value)} errorState={errorState['breadth']}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Generic:"} value={selectedValue.vesselTypeGeneric} handleEntryUpdate={(value) => handleUpdate('vesselTypeGeneric', undefined, undefined, value)} errorState={errorState['vesselTypeGeneric']}/>
-                    <GridInfoDetailsEditable title={"Vessel Type Detailed:"} value={selectedValue.vesselTypeDetailed} handleEntryUpdate={(value) => handleUpdate('vesselTypeDetailed', undefined, undefined, value)} errorState={errorState['vesselTypeDetailed']}/>
+                    {
+                      [
+                        { label : "Call Sign", onChange : "callSign" },
+                        { label : "LOA (m)", onChange : "LOA", type : "float"},
+                        { label : "Breadth (m)", onChange : "breadth", type : "float"},
+                        { label : "Vessel Type Generic", onChange : "vesselTypeGeneric" },
+                        { label : "Vessel Type Detailed", onChange : "vesselTypeDetailed" },
+                      ].map(({label, onChange, type="string"}, index) => 
+                        <GridInfoDetailsEditable 
+                          key={onChange}
+                          title={label} 
+                          type={type}
+                          value={selectedValue[onChange]} 
+                          handleEntryUpdate={(value) => {handleUpdate(onChange, type, value);}} 
+                          errorState={errorState[onChange]}
+                        />
+                      )
+                    }
                   </Grid>
                 </Typography>
-                <Typography variant="subtitle2" sx={{
+                {/* <Typography variant="subtitle2" sx={{
                   display: {
                     xs: 'block',
                     sm: 'none'
@@ -120,21 +194,19 @@ import {
                     <GridInfoDetails title={"Component Name:"} value={selectedValue.component}/>
                     <GridInfoDetails title={"Part:"} value={selectedValue.part}/>
                   </Grid>
-                </Typography>
+                </Typography> */}
               </div>
               <div style={{
                 width: '100%',
                 display: 'flex',
-                flexDirection: 'row',
-                gap: '5%',
+                flexDirection: 'column',
+                gap: '1%',
                 padding: '1%',
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-                {/* <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Approve
-                </Button> */}
-                <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
+                <PictureUpload title={"Current Ship Image"} picLink={selectedValue['vesselImage']} handleUpdate={updateImage} error={errorState['vesselImage']}/>
+                <Button variant="contained" color="primary" style={{marginTop: '1%', width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirm();}}>
                   Update
                 </Button>
               </div>

@@ -17,11 +17,11 @@ const url = process.env.PUBLIC_URL || ""
 
 function DeleteModal(props) {
   const {user} = useContext(SidebarContext);
-  const { onClose, selectedValue, open, shipName, shipID } = props;
+  const { onClose, open, shipName, shipID } = props;
   const router = useRouter()
 
   const handleClose = () => {
-    onClose(selectedValue);
+    onClose();
   };
 
   const handleListItemClick = (value) => {
@@ -38,20 +38,7 @@ function DeleteModal(props) {
     } catch (error) {
       console.log(error)
     }
-    // try {
-    //   const response = await axios.delete(`http://127.0.0.1:8000/api/v1/ship/${id}`, {
-    //     headers: {
-    //       Authorization: `Bearer ${user.token}`,
-    //     },
-    //   });
-    //   console.log(response)
-    //   router.replace('/ship-list')
-    // } catch (error) {
-    //   // setLoginError(true)
-    // }
   }
-
-  // useState(() =>{ console.log(shipID)}, [])
 
   return (
     <Dialog onClose={handleClose} open={open}>

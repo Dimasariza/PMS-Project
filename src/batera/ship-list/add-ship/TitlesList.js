@@ -9,7 +9,7 @@ import PictureUpload from 'src/components/CustomComponent/UploadButton/PictureUp
 import * as React from 'react';
 
 
-function TitlesList({handleUpdate, inputedUser, errorState, shownPic}) {
+function TitlesList({handleUpdate, inputedUser, errorState}) {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery((theme) => theme.breakpoints.between('sm', 'md'));
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up('lg'));
@@ -58,12 +58,12 @@ function TitlesList({handleUpdate, inputedUser, errorState, shownPic}) {
         </Card>
 
         <div style={{display: (screenState < 2 ) ? 'block' : 'none', width: (screenState < 2 ) ? '100%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px', marginTop: '5%'}}>
-          <PictureUpload picLink={shownPic} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
+          <PictureUpload picLink={inputedUser['vesselImage']} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
         </div>
       </div>
 
       <div style={{display: (screenState >= 2 ) ? 'block' : 'none', width: (screenState >= 2 ) ? '50%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px'}}>
-        <PictureUpload picLink={shownPic} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
+        <PictureUpload picLink={inputedUser['vesselImage']} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
       </div>
         
     </div>

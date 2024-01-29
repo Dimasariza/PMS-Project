@@ -19,7 +19,7 @@ import {
   import { useEffect, useState } from 'react';
   import CheckTwoToneIcon from '@mui/icons-material/CheckTwoTone';
 
-const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], typeIsNumber=false, errorState}) => {
+const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,6,5,6,6,7], type, errorState}) => {
     const [activateEdit, setActivateEdit] = useState(false);
     const [inputValue, setInputValue] = useState(value);
     useEffect(() => {
@@ -45,7 +45,7 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 variant="standard"
                 value={value}
                 onChange={(event) => setInputValue(event.target.value)}
-                type={typeIsNumber ? 'number' : 'text'}
+                type={type === 'int' || type === 'year' || type === 'float' ? 'number' : 'text'}
                 error={errorState != null}
                 helperText={errorState}
                 InputProps={{
@@ -64,7 +64,7 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 variant="standard"
                 value={inputValue}
                 onChange={(event) => setInputValue(event.target.value)}
-                type={typeIsNumber ? 'number' : 'text'}
+                type={type === 'int' || type === 'year' || type === 'float' ? 'number' : 'text'}
                 error={errorState != null}
                 helperText={errorState}
               />
@@ -72,15 +72,21 @@ const GridInfoDetailsEditable = ({title, value, handleEntryUpdate, gridSizes=[6,
                 xs:'20%',
                 md:'12%'
               }, paddingBottom: '2%'}} onClick={() => {
-                setActivateEdit(false);
-                handleEntryUpdate(inputValue);
+                  setActivateEdit(false);
+                  console.log(inputValue, "confirm")
+                  handleEntryUpdate(inputValue);
+                  setInputValue(value)
                 }}>
                 <CheckTwoToneIcon />
               </IconButton>
               <IconButton sx={{ width: {
                 xs:'20%',
                 md:'12%'
-                }, paddingBottom: '2%'}} onClick={() => setActivateEdit(false)}>
+                }, paddingBottom: '2%'}} onClick={() => {
+                  console.log(inputValue, "cancel")
+                  setActivateEdit(false)
+                  setInputValue(value)
+                }}>
                 <CloseTwoToneIcon />
               </IconButton>
             </div>

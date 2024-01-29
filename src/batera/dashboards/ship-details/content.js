@@ -23,6 +23,8 @@ function Content() {
   const {user} = useContext(SidebarContext)
   const id = router.query?.id
   const url = process.env.PUBLIC_URL || ""
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [summaryList, setSummaryList] = useState([
     {
       jobStatus: 'On Progress',
@@ -53,7 +55,7 @@ function Content() {
   const [shipInfo, setShipInfo] = useState(
     {
       vesselName: 'MV.AXES',
-      IMO: '123xxx1980',
+      IMO_Number: '123xxx1980',
       yearBuilt: '1980',
       flag: 'Indonesia',
       DWT: '15.000',
@@ -65,15 +67,9 @@ function Content() {
       vesselImage: "/static/images/ship-card/ship1.jpg"
     }
   );
-
   
   const retriveData = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "/ship/" + id
-    // const response = await axios.get(url, {
-    //   headers: {
-    //     Authorization: `Bearer ${user.token}`,
-    //   },
-    // });
     await axios.get(url)
         .then(resp => processRetrivedData(resp.data.data))
         .catch(error => console.log(error))
@@ -100,7 +96,7 @@ function Content() {
 
     const convertedResults = {
       vesselName: shipData.vesselName,
-      IMO: shipData.imoNumber,
+      IMO_Number: shipData.imoNumber,
       yearBuilt: shipData.year,
       flag: shipData.flag,
       DWT: shipData.dwt,
@@ -113,8 +109,6 @@ function Content() {
       vesselImage: imageUrl
     }
     setShipInfo(convertedResults)
-    setSelectedValue(convertedResults)
-
     setSummaryList(results.jobLists.results) 
   }
 
@@ -122,6 +116,65 @@ function Content() {
       if(router.isReady) retriveData()
   }, [router.isReady])
   
+  const handleClickOpenDeleteModal = () => {
+    setOpenDeleteModal(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setOpenDeleteModal(false);
+  };
+
+  const handleClickOpenEditModal = () => {
+    setOpenEditModal(true);
+  };
+
+  const handleCloseEditModal = (value) => {
+    setOpenEditModal(false);
+    // setSelectedValue(value);
+    // setSelectedValue(prevValue => ({
+    //   ...prevValue, // Spread the previous value to retain existing properties
+    //   ...value, // Update with the new values (excluding vesselImage)
+    //   vesselImage: prevValue.vesselImage, // Retain the old vesselImage
+    // }));
+  };
+
+  
+
+  const handleListItemClick = (value) => {
+    onClose(value);
+  };
+
+  const confirmUpdate = (selectedValue) => {
+    if(selectedValue != null){
+      setShipInfo(selectedValue);
+      postData(selectedValue)
+    }
+  };
+
+  const postData = async (selectedValue) => {
+    console.log(selectedValue);
+    const formData = new FormData();
+    formData.append("imoNumber", selectedValue.IMO_Number)
+    formData.append("vesselName", selectedValue.vesselName)
+    formData.append("flag", selectedValue.flag)
+    formData.append("dwt", parseInt(selectedValue.DWT))
+    formData.append("grossTonage", parseInt(selectedValue.grossTonage))
+    formData.append("year", parseInt(selectedValue.yearBuilt))
+    formData.append("callsign", selectedValue.callSign)
+    formData.append("LOA", parseFloat(selectedValue.LOA))
+    formData.append("breadth", parseFloat(selectedValue.breadth))
+    formData.append("vesselTypeGeneric", selectedValue.vesselTypeGeneric)
+    formData.append("vesselTypeDetailed", selectedValue.vesselTypeDetailed)
+    formData.append("picture", selectedValue.vesselImage);
+
+    try {
+      const url = process.env.NEXT_PUBLIC_API_URL + "/ship/"+id+"/update" 
+      const response = await axios.post(url, 
+      formData);
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const GridInfoDetails = ({title, value}) => {
     return(
@@ -140,229 +193,6 @@ function Content() {
         </Grid>
       </>
     );
-  }
-
-  
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
-  const [selectedValue, setSelectedValue] = useState({
-      vesselName: 'MV.AXES',
-      IMO: '123xxx1980',
-      yearBuilt: '1980',
-      flag: 'Indonesia',
-      DWT: '15.000',
-      grossTonage: '11.900',
-      callSign: 'AX VII',
-      LOA: '149.6',
-      breadth: '23.1',
-      vesselTypeGeneric: 'Cargo',
-      vesselTypeDetailed: 'Container Ship',
-      vesselImage: "/static/images/ship-card/ship1.jpg"
-  });
-
-  const handleClickOpenDeleteModal = () => {
-    setOpenDeleteModal(true);
-  };
-
-  const handleCloseDeleteModal = (value) => {
-    setOpenDeleteModal(false);
-    setSelectedValue(value);
-  };
-
-  const handleClickOpenEditModal = () => {
-    setOpenEditModal(true);
-  };
-
-  const handleCloseEditModal = (value) => {
-    setOpenEditModal(false);
-    // setSelectedValue(value);
-    setSelectedValue(prevValue => ({
-      ...prevValue, // Spread the previous value to retain existing properties
-      ...value, // Update with the new values (excluding vesselImage)
-      vesselImage: prevValue.vesselImage, // Retain the old vesselImage
-    }));
-  };
-
-  const [errorState, setErrorState] = useState(
-    {
-      vesselName: null,
-      IMO: null,
-      yearBuilt: null,
-      flag: null,
-      DWT: null,
-      grossTonage: null,
-      callSign: null,
-      LOA: null,
-      breadth: null,
-      vesselTypeGeneric: null,
-      vesselTypeDetailed: null,
-      vesselImage: null
-    });
-
-  const handleUpdate = (key, minYear, maxDigit, value) => {
-    // console.log("Incoming ", key, "value", event);
-    if(key == 'vesselImage'){
-      if(value === undefined || value === null){
-        setErrorState((prev) => ({
-          ...prev,
-          [key]: 'Gambar tidak boleh kosong',
-        }));
-      }else{
-        const selectedFile = value;
-        if (selectedFile) {
-          const fileSizeInKB = selectedFile.size / 1024;
-          if (fileSizeInKB > 1024) {
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: "Ukuran gambar tidak boleh melebihi 1 MB",
-            }));
-          } else {
-            setSelectedValue((prev) => ({
-              ...prev,
-              [key]: value,
-            }));
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: null,
-            }));
-          }
-        }
-      }
-    }else{
-      if(value === undefined || value === null){
-        setErrorState((prev) => ({
-          ...prev,
-          [key]: `Kolom ${capitalizeFirstLetter(key)} belum diisi`,
-        }));
-      }else{
-        if(minYear != undefined && value < minYear && value > 1000){
-          setSelectedValue((prev) => ({
-            ...prev,
-            [key]: 1908,
-          }));
-          setErrorState((prev) => ({
-            ...prev,
-            [key]: `Tahun minimal 1908`,
-          }));
-        }else if(maxDigit != undefined && value > Math.pow(10, maxDigit) - 1){
-          setErrorState((prev) => ({
-            ...prev,
-            [key]: `${capitalizeFirstLetter(key)} maximal ${maxDigit} digit`,
-          }));
-        }else{
-          if((maxDigit != undefined || minYear != undefined )){
-            if(checkIfNumber(value)){
-              setSelectedValue((prev) => ({
-                ...prev,
-                [key]: value,
-              }));
-              setErrorState((prev) => ({
-                ...prev,
-                [key]: null,
-              }));
-            }else{
-              setErrorState((prev) => ({
-                ...prev,
-                [key]: `${capitalizeFirstLetter(key)} hanya boleh diisi dengan angka`,
-              }));
-            }
-          }else{
-            setSelectedValue((prev) => ({
-              ...prev,
-              [key]: value,
-            }));
-            setErrorState((prev) => ({
-              ...prev,
-              [key]: null,
-            }));
-          }
-        }
-      }
-    }
-  };
-
-  const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-
-  const checkIfNumber = (newValue) =>{
-    const floatValue = parseFloat(newValue);
-    const isFloat = !isNaN(floatValue);
-
-    // Check if the value is convertible to an integer
-    const intValue = parseInt(newValue, 10); // Assuming base 10
-    const isInt = !isNaN(intValue);
-    if (isFloat || isInt) {
-      return true
-    } else {
-      return false
-    }
-  }
-
-  const handleListItemClick = (value) => {
-    onClose(value);
-  };
-
-  const confirmUpdate = () => {
-    console.log(selectedValue);
-    setShipInfo(selectedValue);
-    postData()
-  };
-
-  const postData = async () => {
-    const imageResponse = await fetch(url + selectedValue.vesselImage, { mode: 'no-cors'});
-    const imageData = await imageResponse.blob();
-
-    console.log(imageData)
-    // const formData = new FormData();
-    // formData.append("image", imageData);
-
-    // var result
-    // axios.get(url + selectedValue.vesselImage, { responseType: 'blob' })
-    // .then(response => {
-    //   // The response object contains the server's response as a blob
-    //   // You can create a new FormData object and append the blob to it
-    //   let formData = new FormData();
-    //   formData.append('file', response.data, 'filename.png');
-    //   result = formData
-    // })
-    // .catch(error => console.error(error));
-    // console.log(result);
-
-    const formData = new FormData();
-    formData.append("imoNumber", selectedValue.IMO_Number)
-    formData.append("vesselName", selectedValue.vesselName)
-    formData.append("flag", selectedValue.flag)
-    formData.append("picture", imageData)
-    formData.append("dwt", parseInt(selectedValue.DWT))
-    formData.append("grossTonage", parseInt(selectedValue.grossTonage))
-    formData.append("year", parseInt(selectedValue.yearBuilt))
-    formData.append("callsign", selectedValue.callSign)
-    formData.append("LOA", parseFloat(selectedValue.LOA))
-    formData.append("breadth", parseFloat(selectedValue.breadth))
-    formData.append("vesselTypeGeneric", selectedValue.vesselTypeGeneric)
-    formData.append("vesselTypeDetailed", selectedValue.vesselTypeDetailed)
-    try {
-      const url = process.env.NEXT_PUBLIC_API_URL + "/ship/"+id+"/update" 
-      const response = await axios.post(url, 
-      formData);
-    } catch (error) {
-      console.log(error)
-    }
-
-    // try {
-    //   const response = await axios.post(`http://127.0.0.1:8000/api/v1/ship/${id}/update`, 
-    //   formData,
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${user.token}`,
-    //     },
-    //   });
-    //   console.log(response)
-      
-    // } catch (error) {
-    //   console.log(error)
-    // }
   }
 
   return (
@@ -395,7 +225,7 @@ function Content() {
             }}>
               <Grid container spacing={0}>
                 <GridInfoDetails title={"Vessel name:"} value={shipInfo.vesselName}/>
-                <GridInfoDetails title={"IMO Number:"} value={shipInfo.IMO}/>
+                <GridInfoDetails title={"IMO Number:"} value={shipInfo.IMO_Number}/>
                 <GridInfoDetails title={"Year Built:"} value={shipInfo.yearBuilt}/>
                 <GridInfoDetails title={"Flag:"} value={shipInfo.flag}/>
                 <GridInfoDetails title={"DWT:"} value={shipInfo.DWT}/>
@@ -442,18 +272,15 @@ function Content() {
                   </Button>
                   <DeleteModal
                     onClose={handleCloseDeleteModal}
-                    selectedValue={selectedValue}
                     open={openDeleteModal}
                     shipName={shipInfo.vesselName}
                     shipID={id}
                   />
                   <DetailsModal
                     onClose={handleCloseEditModal}
-                    selectedValue={selectedValue}
                     open={openEditModal}
-                    handleUpdate={handleUpdate}
                     confirmUpdate={confirmUpdate}
-                    errorState={errorState}
+                    defaultFormValue={shipInfo}
                   />
                 </Typography>
               </Grid>
@@ -467,7 +294,7 @@ function Content() {
               alignItems: 'center',
               justifyContent: 'center',
               }}>
-                <Avatar variant="rounded" src={url + shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                <Avatar variant="rounded" src={shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
             </Typography>
           </div>
         </CardContent>

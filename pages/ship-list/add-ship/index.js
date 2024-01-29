@@ -53,23 +53,12 @@ function Users() {
     CheckInput(key, value, inputType, setInputedUser, setErrorState)
   };
 
-  const [shownPic, setShowPic] = useState('')
-  useEffect(() => {
-    if(inputedUser.vesselImage == ''){
-      setShowPic('')
-    }else{
-      setShowPic(URL.createObjectURL(inputedUser.vesselImage))
-    }
-  }, [inputedUser])
-
   const postData = async () => {
     if(checkAllErrorCleared(inputedUser, setErrorState)){
-      console.log("Result clear")
       const formData = new FormData();
       formData.append("imoNumber", inputedUser.IMO_Number)
       formData.append("vesselName", inputedUser.vesselName)
       formData.append("flag", inputedUser.flag)
-      formData.append("picture", inputedUser.vesselImage) 
       formData.append("dwt", parseInt(inputedUser.DWT))
       formData.append("grossTonage", parseInt(inputedUser.grossTonage))
       formData.append("year", parseInt(inputedUser.yearBuilt))
@@ -78,6 +67,7 @@ function Users() {
       formData.append("breadth", parseFloat(inputedUser.breadth))
       formData.append("vesselTypeGeneric", inputedUser.vesselTypeGeneric)
       formData.append("vesselTypeDetailed", inputedUser.vesselTypeDetailed)
+      formData.append("picture", inputedUser.vesselImage);
       try {
         const url = process.env.NEXT_PUBLIC_API_URL + "/ship" 
         const response = await axios.post(url, 
@@ -115,8 +105,6 @@ function Users() {
               errorState={errorState}
               setInputedUser={setInputedUser} 
               handleUpdate={handleUpdate} 
-              shownPic={shownPic} 
-              setShowPic={setShowPic}
             />
           </Grid>
         </Grid>
