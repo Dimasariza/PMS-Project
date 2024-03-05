@@ -28,7 +28,7 @@ function TitlesList() {
   });
 
   const handleUpdate = (key) => (event) => {
-    if(key == 'vesselImage'){
+    if(key == 'image'){
       setInputedUser((prev) => ({
         ...prev,
         [key]: event,
@@ -63,7 +63,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Vessel Name"
-                onChange={handleUpdate('vesselName')}
+                onChange={handleUpdate('vessel_name')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -71,7 +71,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="IMO Number"
-                onChange={handleUpdate('IMO_Number')}
+                onChange={handleUpdate('imo_number')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -79,7 +79,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Year Built"
-                onChange={handleUpdate('yearBuilt')}
+                onChange={handleUpdate('year')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -95,7 +95,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="DWT"
-                onChange={handleUpdate('DWT')}
+                onChange={handleUpdate('dwt')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -103,7 +103,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Gross Tonages"
-                onChange={handleUpdate('grossTonages')}
+                onChange={handleUpdate('gross_tonage')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -111,7 +111,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="DWT"
-                onChange={handleUpdate('DWT')}
+                onChange={handleUpdate('dwt')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -143,7 +143,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Vessel Type Generic"
-                onChange={handleUpdate('vesselTypeGeneric')}
+                onChange={handleUpdate('vessel_type_generic')}
                 InputLabelProps={{ shrink: true }}
               />
               <TextField
@@ -151,7 +151,7 @@ function TitlesList() {
                 required
                 id="outlined-required"
                 label="Vessel Type Detailed"
-                onChange={handleUpdate('vesselTypeDetailed')}
+                onChange={handleUpdate('vessel_type_detailed')}
                 InputLabelProps={{ shrink: true }}
               />
             </div>

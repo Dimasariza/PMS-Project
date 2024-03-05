@@ -1,9 +1,10 @@
 import { Card } from '@mui/material';
 import {
     CardMedia,
-    CardContent
+    CardContent,
+    Skeleton
 } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
@@ -13,7 +14,7 @@ import { useContext } from 'react';
 import { useRouter } from 'next/router';
 
 
-const ShipCard = ({ shipInfo, entriesPerRow }) => {
+const ShipCard = ({ shipInfo, entriesPerRow, loading = false }) => {
     const router = useRouter();
     const { setShipId } = useContext(SidebarContext);
     const [cardSizes, setCardSizes] = useState([{
@@ -67,28 +68,42 @@ const ShipCard = ({ shipInfo, entriesPerRow }) => {
             background: '#FFFFFF', 
             padding: cardSizes[entriesPerRow - 1].padding, boxSizing: 'border-box' 
         }}>
-            <CardMedia
-                sx={{ height: cardSizes[entriesPerRow - 1].imageHeight }}
-                image={shipInfo?.picture}
-                title={shipInfo.vesselName}
-            />
+            {
+                loading ? 
+                <Skeleton variant="rounded" animation="wave" sx={{height: cardSizes[entriesPerRow - 1].imageHeight, boxSizing: 'border-box' }}/>
+                :
+                <CardMedia
+                    sx={{ height: cardSizes[entriesPerRow - 1].imageHeight }}
+                    image={shipInfo?.image}
+                    title={shipInfo.vessel_name}
+                />
+            }
+            
             <CardContent sx={{ height: cardSizes[entriesPerRow - 1].textHeight }}>
-                <Typography gutterBottom variant="h5" component="div" align='left' color='#000000'>
-                {shipInfo?.vesselName}
-                </Typography>
+                {
+                    loading ? <Skeleton /> : 
+                    <Typography gutterBottom variant="h5" component="div" align='left' color='#000000'>
+                        {shipInfo?.vessel_name}
+                    </Typography>
+                }
             </CardContent>
             <CardActions sx={{ height: cardSizes[entriesPerRow - 1].actionHeight }}>
                 <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end'}}>
-                <Button 
-                    size="small" 
-                    width='50%' 
-                    variant="contained" 
-                    color="primary"
-                    className="text-3xl font-bold underline"
-                    onClick={() => {openDetails(shipInfo.id)}}
-                >
-                    See Details
-                </Button>
+                    {
+                        loading ? 
+                        <Skeleton variant="rounded" animation="wave" sx={{width:'50%', boxSizing: 'border-box' }}/>
+                        :
+                        <Button 
+                            size="small" 
+                            width='50%' 
+                            variant="contained" 
+                            color="primary"
+                            className="text-3xl font-bold underline"
+                            onClick={() => {openDetails(shipInfo.id)}}
+                        >
+                            See Details
+                        </Button>
+                    }
                 </div>
             </CardActions>
             </Card>

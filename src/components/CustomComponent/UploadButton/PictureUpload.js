@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from 'react';
 import UploadButton from "./UploadButton";
 
-const PictureUpload = ({title="Add Ship Picture", target = 'vesselImage', handleUpdate, picLink, error}) => {
+const PictureUpload = ({title="Add Ship Picture", target = 'image', handleUpdate, picLink, error}) => {
     const [shownPic, setShowPic] = useState('')
     useEffect(() => {
       if(picLink == ''){

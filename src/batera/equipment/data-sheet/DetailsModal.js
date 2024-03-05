@@ -113,11 +113,12 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
-                  Update Job
-                </Button>
-              </NextLink>
+              {/* <NextLink href= {url + "/batera/dashboards/ship-details/update-ship"} passHref>
+                
+              </NextLink> */}
+              <Button variant="contained" color="primary" style={{width: '45%'}}>
+                Update Job
+              </Button>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
                 Delete Job
               </Button>
@@ -132,8 +133,8 @@ function DetailsModal(props) {
 DetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  shipName: PropTypes.string.isRequired,
+  // selectedValue: PropTypes.string.isRequired,
+  // shipName: PropTypes.string.isRequired,
 };
 
 export default DetailsModal;

@@ -126,8 +126,8 @@ function DetailsModal(props) {
 DetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  shipName: PropTypes.string.isRequired,
+  // selectedValue: PropTypes.string.isRequired,
+  // shipName: PropTypes.string.isRequired,
 };
 
 export default DetailsModal;

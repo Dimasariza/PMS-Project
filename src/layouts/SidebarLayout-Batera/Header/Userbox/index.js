@@ -62,11 +62,12 @@ const UserBoxDescription = styled(Typography)(
 
 function HeaderUserbox() {
   const router = useRouter();
-  const { data : session } = useSession() 
+  const { data : session } = useSession(); 
+  // console.log(session);
   const user = {
-    name: session.user.name,
-    avatar: '/static/images/avatars/1.jpg',
-    jobtitle: session.user.title.name
+    name: session.user.username,
+    image: session.user.image,
+    jobtitle: session.user.role.name
   };
 
   const ref = useRef(null);
@@ -81,14 +82,14 @@ function HeaderUserbox() {
   };
 
   const handleLogout = async () => {
-    await signOut({ callbackUrl: 'http://localhost:6464/' });
+    await signOut({ callbackUrl: process.env.NEXT_PUBLIC_API_URL + "/" });
     // router.replace('/'); // Redirect to the login page
   };
 
   return (
     <>
       <UserBoxButton color="secondary" ref={ref} onClick={handleOpen}>
-        <Avatar variant="rounded" alt={user.name} src={user.avatar} />
+        <Avatar variant="rounded" alt={user.name} src={user.image} />
         <Hidden mdDown>
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
@@ -115,7 +116,7 @@ function HeaderUserbox() {
         }}
       >
         <MenuUserBox sx={{ minWidth: 210 }} display="flex">
-          <Avatar variant="rounded" alt={user.name} src={user.avatar} />
+          <Avatar variant="rounded" alt={user.name} src={user.image} />
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">

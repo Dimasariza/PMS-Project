@@ -14,40 +14,40 @@ function Users() {
   const router = useRouter()
   const [inputedUser, setInputedUser] = useState(
   {
-    vesselName: '',
-    IMO_Number: '',
-    yearBuilt: '',
+    vessel_name: '',
+    imo_number: '',
+    year: '',
     flag: '',
-    DWT: '',
-    grossTonage: '',
+    dwt: '',
+    gross_tonage: '',
     callSign: '',
     LOA: '',
     breadth: '',
-    vesselTypeGeneric: '',
-    vesselTypeDetailed: '',
-    vesselImage: '',
+    vessel_type_generic: '',
+    vessel_type_detailed: '',
+    image: '',
   });
 
   const [errorState, setErrorState] = useState(
   {
-    vesselName: null,
-    IMO_Number: null,
-    yearBuilt: null,
+    vessel_name: null,
+    imo_number: null,
+    year: null,
     flag: null,
-    DWT: null,
-    grossTonage: null,
+    dwt: null,
+    gross_tonage: null,
     callSign: null,
     LOA: null,
     breadth: null,
-    vesselTypeGeneric: null,
-    vesselTypeDetailed: null,
-    vesselImage: null,
+    vessel_type_generic: null,
+    vessel_type_detailed: null,
+    image: null,
   });
 
   const handleUpdate = (key, inputType) => (event) => {
     // console.log(event)
     var value = event
-    if(key != 'vesselImage'){
+    if(key != 'image'){
       value = event.target.value
     }
     CheckInput(key, value, inputType, setInputedUser, setErrorState)
@@ -56,20 +56,20 @@ function Users() {
   const postData = async () => {
     if(checkAllErrorCleared(inputedUser, setErrorState)){
       const formData = new FormData();
-      formData.append("imoNumber", inputedUser.IMO_Number)
-      formData.append("vesselName", inputedUser.vesselName)
+      formData.append("imo_number", inputedUser.imo_number)
+      formData.append("vessel_name", inputedUser.vessel_name)
       formData.append("flag", inputedUser.flag)
-      formData.append("dwt", parseInt(inputedUser.DWT))
-      formData.append("grossTonage", parseInt(inputedUser.grossTonage))
-      formData.append("year", parseInt(inputedUser.yearBuilt))
+      formData.append("dwt", parseInt(inputedUser.dwt))
+      formData.append("gross_tonage", parseInt(inputedUser.gross_tonage))
+      formData.append("year", parseInt(inputedUser.year))
       formData.append("callsign", inputedUser.callSign)
       formData.append("LOA", parseFloat(inputedUser.LOA))
       formData.append("breadth", parseFloat(inputedUser.breadth))
-      formData.append("vesselTypeGeneric", inputedUser.vesselTypeGeneric)
-      formData.append("vesselTypeDetailed", inputedUser.vesselTypeDetailed)
-      formData.append("picture", inputedUser.vesselImage);
+      formData.append("vessel_type_generic", inputedUser.vessel_type_generic)
+      formData.append("vessel_type_detailed", inputedUser.vessel_type_detailed)
+      formData.append("image", inputedUser.image);
       try {
-        const url = process.env.NEXT_PUBLIC_API_URL + "/ship" 
+        const url = process.env.NEXT_PUBLIC_API_URL + "/ships" 
         const response = await axios.post(url, 
         formData);
 

@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import axios from "axios";
+import { signOut } from 'next-auth/react';
 
 export default NextAuth({
     pages : {
@@ -35,23 +36,28 @@ export default NextAuth({
                 // Add logic here to look up the user from the credentials supplied
                 // const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
 
-                const url = process.env.NEXT_PUBLIC_API_URL + "/auth/login" 
+                const url = process.env.NEXT_PUBLIC_API_URL + "/login" 
                 
                 const result = await axios.post(url, {...credentials});
                 
-                let user = result.data.data
-
-                user = {
-                    name : user.fullname,
-                    ...user
-                }
+                let user = result.data;
+                axios.defaults.headers.common['Authorization'] = `Bearer ${result.data.jwt}`;  
+                // console.log(user);
+                // axios.defaults.withCredentials =true;
+                // let user = {
+                //     'username' : result.username,
+                //     'role' : result.role,
+                //     'jwt': result.jwt,
+                // }
+                
+                
 
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
-                    return user
+                    return user;
                 } else {
                     // If you return null then an error will be displayed advising the user to check their details.
-                    return null
+                    return null;
                     // return new Error('Invalid User')
                     // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
                 }
@@ -61,11 +67,17 @@ export default NextAuth({
     callbacks : {
         async session({session, token}) {
             session.user = token
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token.token}`;  
+            // console.log(token.jwt)
+            // axios.defaults.headers.common['Authorization'] = `Bearer ${token.jwt}`;  
+            // console.log(axios.defaults.headers.common['Authorization'])
             return session
         },
         async jwt({token, account, user}) {
             return {...token, ...account, ...user}
+        },
+        async redirect({ url, baseUrl }) {
+            // Specify your desired callback URL
+            return `${process.env.NAV_URL}/`; // Adjust as needed
         },
     },
 })

@@ -21,7 +21,8 @@ import {
   MenuItem,
   Typography,
   useTheme,
-  CardHeader
+  CardHeader,
+  Skeleton
 } from '@mui/material';
 
 import Label from 'src/components/Label';
@@ -70,7 +71,7 @@ const applyPagination = (summaryList, page, limit) => {
   return summaryList.slice(page * limit, page * limit + limit);
 };
 
-const SummaryTable = ({ summaryList }) => {
+const SummaryTable = ({ summaryList, loading = false }) => {
   const [page, setPage] = useState(0);
   const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
@@ -173,37 +174,46 @@ const SummaryTable = ({ summaryList }) => {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {summary.machine}
-                    </Typography>
+                    {
+                      loading ? <Skeleton sx={{width: '30%'}}/> :
+                      <Typography
+                        variant="body1"
+                        fontWeight="bold"
+                        color="text.primary"
+                        gutterBottom
+                        noWrap
+                      >
+                        {summary.machine}
+                      </Typography>
+                    }
                   </TableCell>
                   <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {summary.deck}
-                    </Typography>
+                    {
+                      loading ? <Skeleton sx={{width: '30%'}}/> :
+                      <Typography
+                        variant="body1"
+                        fontWeight="bold"
+                        color="text.primary"
+                        gutterBottom
+                        noWrap
+                      >
+                        {summary.deck}
+                      </Typography>
+                    }
                   </TableCell>
                   <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {summary.electrical}
-                    </Typography>
+                    {
+                      loading ? <Skeleton sx={{width: '30%'}} /> :
+                      <Typography
+                        variant="body1"
+                        fontWeight="bold"
+                        color="text.primary"
+                        gutterBottom
+                        noWrap
+                      >
+                        {summary.electrical}
+                      </Typography>
+                    }
                   </TableCell>
                 </TableRow>
               );
@@ -211,7 +221,7 @@ const SummaryTable = ({ summaryList }) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box p={2}>
+      {/* <Box p={2}>
         <TablePagination
           component="div"
           count={filteredSummaryList.length}
@@ -221,7 +231,7 @@ const SummaryTable = ({ summaryList }) => {
           rowsPerPage={limit}
           rowsPerPageOptions={[5, 10, 25, 30]}
         />
-      </Box>
+      </Box> */}
     </Card>
   );
 };

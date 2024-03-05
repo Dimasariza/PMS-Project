@@ -25,17 +25,17 @@ function TitlesList({handleUpdate, inputedUser, errorState}) {
           <div style={{display: 'flex', flexDirection: 'column', padding: '1rem 1rem', width: '100%', gap: '1rem'}}>
             {
               [
-                { label : "Vessel Name", onChange : "vesselName" },
-                { label : "IMO Number", onChange : "IMO_Number" },
-                { label : "Year Built", onChange : "yearBuilt", type : "year"},
+                { label : "Vessel Name", onChange : "imo_number" },
+                { label : "IMO Number", onChange : "vessel_name" },
+                { label : "Year Built", onChange : "year", type : "year"},
                 { label : "Flag", onChange : "flag" },
-                { label : "DWT", onChange : "DWT", type : "int"},
-                { label : "Gross Tonages", onChange : "grossTonage", type : "int"},
+                { label : "DWT", onChange : "dwt", type : "int"},
+                { label : "Gross Tonages", onChange : "gross_tonage", type : "int"},
                 { label : "Call Sign", onChange : "callSign" },
                 { label : "LOA (m)", onChange : "LOA", type : "float"},
                 { label : "Breadth (m)", onChange : "breadth", type : "float"},
-                { label : "Vessel Type Generic", onChange : "vesselTypeGeneric" },
-                { label : "Vessel Type Detailed", onChange : "vesselTypeDetailed" },
+                { label : "Vessel Type Generic", onChange : "vessel_type_generic" },
+                { label : "Vessel Type Detailed", onChange : "vessel_type_detailed" },
               ].map(({label, onChange, type="string"}, index) => 
                 
                   <TextField
@@ -58,12 +58,12 @@ function TitlesList({handleUpdate, inputedUser, errorState}) {
         </Card>
 
         <div style={{display: (screenState < 2 ) ? 'block' : 'none', width: (screenState < 2 ) ? '100%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px', marginTop: '5%'}}>
-          <PictureUpload picLink={inputedUser['vesselImage']} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
+          <PictureUpload picLink={inputedUser['image']} handleUpdate={handleUpdate} error={errorState['image']}/>
         </div>
       </div>
 
       <div style={{display: (screenState >= 2 ) ? 'block' : 'none', width: (screenState >= 2 ) ? '50%' : '0%', height: '50vh', minHeight: '400px', maxHeight: '550px'}}>
-        <PictureUpload picLink={inputedUser['vesselImage']} handleUpdate={handleUpdate} error={errorState['vesselImage']}/>
+        <PictureUpload picLink={inputedUser['image']} handleUpdate={handleUpdate} error={errorState['image']}/>
       </div>
         
     </div>

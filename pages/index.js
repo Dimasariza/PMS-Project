@@ -1,10 +1,12 @@
-import { Box, Container, Button, styled } from '@mui/material';
+import { Box, Container, Button, styled, CircularProgress } from '@mui/material';
 import BaseLayout from 'src/layouts/BaseLayout';
 import Head from 'next/head';
 import TextField from '@mui/material/TextField';
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useRouter } from 'next/router';
-import { signIn } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
+import axios from 'axios';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 const OverviewWrapper = styled(Box)(
   ({ theme }) => `
@@ -22,13 +24,41 @@ function Login() {
     const router = useRouter();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState(null)
+    const [loading, setLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false)
+    const { closeSidebar, setShipId } = useContext(SidebarContext);
+    // const { data : session } = useSession() 
 
     const handleLogin = async (e) => {
-      e.preventDefault()
-      const res = await signIn("credentials", { username, password, redirect : false })
-      if(res.ok) router.push('/ship-list')
-      if(res.error) return setErrorMessage(res)
+        setLoading(true);
+        e.preventDefault()
+        const res = await login();
+    }
+
+    const login = async () =>{
+        console.log("Login attempt")
+        const res = await signIn("credentials", { 'login': username, 'password' : password, redirect : false })
+        if(res.ok){
+            const session = await getSession();
+            if(session){
+                setErrorMessage(false)
+                setLoading(false);
+                if(session.user.role.ship_id == null){
+                    console.log("Show Ship List");
+                    router.push('/ship-list');
+                }else{
+                    console.log("Show Certain Ship");
+                    setShipId(session.user.role.ship_id)
+                    router.push(`/dashboards/ship-details?id=${session.user.role.ship_id}`)
+                }
+            }else{
+                setTimeout(async () => {await login();}, 1000);
+            }
+        } 
+        if(res.error) {
+            setErrorMessage(true)
+            setLoading(false);
+        }
     }
 
     return (
@@ -72,17 +102,32 @@ function Login() {
                             onChange={(event) => {setPassword(event.target.value)}}
                             InputLabelProps={{ shrink: true }}
                         />
-
-                        {errorMessage && <p style={{ color: 'red' }}>Login failed. Please check your credentials.</p>}
-
-                        <Button
-                            sx={{ width: '100%' }}
-                            variant="contained"
-                            className="text-3xl font-bold underline"
-                            onClick={handleLogin}
-                            >
-                            Login
-                        </Button>
+                        <Box sx={{ m: 1, position: 'relative' }}>
+                            <Button
+                                sx={{ width: '100%' }}
+                                variant="contained"
+                                className="text-3xl font-bold underline"
+                                onClick={handleLogin}
+                                disabled={loading}
+                                >
+                                Login
+                            </Button>
+                            {loading && (
+                                <CircularProgress
+                                    size={24}
+                                    sx={{
+                                    color: 'blue',
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    marginTop: '-12px',
+                                    marginLeft: '-12px',
+                                    }}
+                                />
+                            )}
+                        </Box>
+                        
+                        <p style={{ color: 'red', visibility: errorMessage ? "visible" : "hidden" }} >Login failed. Please check your credentials.</p>
 
                     </Box>
                 </Container>

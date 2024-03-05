@@ -29,18 +29,18 @@ import {
     const { onClose, open, confirmUpdate, defaultFormValue } = props;
 
     const defaultErrorState = {
-      vesselName: null,
-      IMO_Number: null,
-      yearBuilt: null,
+      vessel_name: null,
+      imo_number: null,
+      year: null,
       flag: null,
-      DWT: null,
-      grossTonage: null,
+      dwt: null,
+      gross_tonage: null,
       callSign: null,
       LOA: null,
       breadth: null,
-      vesselTypeGeneric: null,
-      vesselTypeDetailed: null,
-      vesselImage: null
+      vessel_type_generic: null,
+      vessel_type_detailed: null,
+      image: null
     }
 
     useEffect(() => {
@@ -53,18 +53,18 @@ import {
     const [errorState, setErrorState] = useState(defaultErrorState);
   
     const [selectedValue, setSelectedValue] = useState({
-        vesselName: 'MV.AXES',
-        IMO_Number: '123xxx1980',
-        yearBuilt: '1980',
+        vessel_name: 'MV.AXES',
+        imo_number: '123xxx1980',
+        year: '1980',
         flag: 'Indonesia',
-        DWT: '15.000',
-        grossTonage: '11.900',
+        dwt: '15.000',
+        gross_tonage: '11.900',
         callSign: 'AX VII',
         LOA: '149.6',
         breadth: '23.1',
-        vesselTypeGeneric: 'Cargo',
-        vesselTypeDetailed: 'Container Ship',
-        vesselImage: "/static/images/ship-card/ship1.jpg"
+        vessel_type_generic: 'Cargo',
+        vessel_type_detailed: 'Container Ship',
+        image: "/static/images/ship-card/ship1.jpg"
     });
 
     const handleUpdate = (key, inputType, incomingValue) => {
@@ -78,6 +78,7 @@ import {
 
     const confirm = () => {
       if(checkAllErrorCleared(selectedValue, setErrorState)){
+        console.log("Update confirmed for", selectedValue);
         confirmUpdate(selectedValue);
         handleClose();
       }
@@ -132,12 +133,12 @@ import {
                   <Grid container spacing={0} alignItems="stretch">
                   {
                     [
-                      { label : "Vessel Name", onChange : "vesselName" },
-                      { label : "IMO Number", onChange : "IMO_Number" },
-                      { label : "Year Built", onChange : "yearBuilt", type : "year"},
+                      { label : "Vessel Name", onChange : "vessel_name" },
+                      { label : "IMO Number", onChange : "imo_number" },
+                      { label : "Year Built", onChange : "year", type : "year"},
                       { label : "Flag", onChange : "flag" },
-                      { label : "DWT", onChange : "DWT", type : "int"},
-                      { label : "Gross Tonages", onChange : "grossTonage", type : "int"},
+                      { label : "DWT", onChange : "dwt", type : "int"},
+                      { label : "Gross Tonages", onChange : "gross_tonage", type : "int"},
                     ].map(({label, onChange, type="string"}, index) => 
                       <GridInfoDetailsEditable 
                         key={onChange}
@@ -164,8 +165,8 @@ import {
                         { label : "Call Sign", onChange : "callSign" },
                         { label : "LOA (m)", onChange : "LOA", type : "float"},
                         { label : "Breadth (m)", onChange : "breadth", type : "float"},
-                        { label : "Vessel Type Generic", onChange : "vesselTypeGeneric" },
-                        { label : "Vessel Type Detailed", onChange : "vesselTypeDetailed" },
+                        { label : "Vessel Type Generic", onChange : "vessel_type_generic" },
+                        { label : "Vessel Type Detailed", onChange : "vessel_type_detailed" },
                       ].map(({label, onChange, type="string"}, index) => 
                         <GridInfoDetailsEditable 
                           key={onChange}
@@ -205,7 +206,7 @@ import {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-                <PictureUpload title={"Current Ship Image"} picLink={selectedValue['vesselImage']} handleUpdate={updateImage} error={errorState['vesselImage']}/>
+                <PictureUpload title={"Current Ship Image"} picLink={selectedValue['image']} handleUpdate={updateImage} error={errorState['image']}/>
                 <Button variant="contained" color="primary" style={{marginTop: '1%', width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirm();}}>
                   Update
                 </Button>

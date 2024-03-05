@@ -4,17 +4,24 @@ import PageHeader from 'src/batera/equipment/data-sheet/add-data-sheet/PageHeade
 import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
-
 import AddDataSheetList from 'src/batera/equipment/data-sheet/add-data-sheet/AddDataSheetList';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 function AddDataSheet() {
+  const { shipID } = useContext(SidebarContext);	
+  const router = useRouter();
+  const postData = () => {
+    router.push(`/equipment/data-sheet?id=${shipID}`);
+  }
   return (
     <>
       <Head>
         <title>Add Data Sheet</title>
       </Head>
       <PageTitleWrapper>
-        <PageHeader />
+        <PageHeader postData={postData}/>
       </PageTitleWrapper>
       <Container maxWidth="lg">
         <Grid

@@ -71,9 +71,12 @@ function DetailsModal(props) {
                 width: '50%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetailsEditable title={"Job Name:"} value={selectedValue.jobName} handleEntryUpdate={(value) => handleUpdate('jobName', value)}/>
-                  <GridInfoDetails title={"Component Code:"} value={selectedValue.componentCode}/>
-                  <GridInfoDetails title={"Department:"} value={selectedValue.department}/>
+                  <GridInfoDetailsEditable title={"Job Name:"} value={selectedValue.job_name} handleEntryUpdate={(value) => handleUpdate('job_name', value)}/>
+                  <GridInfoDetails title={"Component Code:"} value={selectedValue.component_code} handleEntryUpdate={(value) => handleUpdate('component_code', value)}/>
+                  <GridInfoDetails title={"Department:"} value={selectedValue.department_name} handleEntryUpdate={(value) => handleUpdate('department_name', value)}/>
+                  <GridInfoDetails title={"System:"} value={selectedValue.department_system} handleEntryUpdate={(value) => handleUpdate('department_system', value)}/>
+                  <GridInfoDetails title={"Component Name:"} value={selectedValue.component_name} handleEntryUpdate={(value) => handleUpdate('component_name', value)}/>
+                  <GridInfoDetails title={"Part:"} value={selectedValue.component_part} handleEntryUpdate={(value) => handleUpdate('component_part', value)}/>
                 </Grid>
               </Typography>
               <Typography variant="subtitle2" sx={{
@@ -84,9 +87,11 @@ function DetailsModal(props) {
                 width: '50%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetails title={"System:"} value={selectedValue.system}/>
-                  <GridInfoDetails title={"Component:"} value={selectedValue.component}/>
-                  <GridInfoDetails title={"Part:"} value={selectedValue.part}/>
+                  <GridInfoDetailsEditable title={"Running Hours:"} value={selectedValue.running_hour} handleEntryUpdate={(value) => handleUpdate('running_hour', value)}/>
+                  <GridInfoDetails title={"Maintenance Interval:"} value={selectedValue.interval} handleEntryUpdate={(value) => handleUpdate('interval', value)}/>
+                  <GridInfoDetails title={"Diffrence:"} value={selectedValue.diffrence} handleEntryUpdate={(value) => handleUpdate('diffrence', value)}/>
+                  <GridInfoDetails title={"Status:"} value={selectedValue.job_status} handleEntryUpdate={(value) => handleUpdate('job_status', value)}/>
+                  <GridInfoDetails title={"Level:"} value={selectedValue.job_level} handleEntryUpdate={(value) => handleUpdate('job_level', value)}/>
                 </Grid>
               </Typography>
               <Typography variant="subtitle2" sx={{
@@ -97,12 +102,12 @@ function DetailsModal(props) {
                 width: '100%',
               }}>
                 <Grid container spacing={0} alignItems="stretch">
-                  <GridInfoDetailsEditable title={"Job Name:"} value={selectedValue.jobName} handleEntryUpdate={(value) => handleUpdate('jobName', value)}/>
-                  <GridInfoDetails title={"Component Code:"} value={selectedValue.componentCode}/>
-                  <GridInfoDetails title={"Department:"} value={selectedValue.department}/>
-                  <GridInfoDetails title={"System:"} value={selectedValue.system}/>
-                  <GridInfoDetails title={"Component Name:"} value={selectedValue.component}/>
-                  <GridInfoDetails title={"Part:"} value={selectedValue.part}/>
+                  <GridInfoDetailsEditable title={"Job Name:"} value={selectedValue.job_name} handleEntryUpdate={(value) => handleUpdate('job_name', value)}/>
+                  <GridInfoDetails title={"Component Code:"} value={selectedValue.component_code} handleEntryUpdate={(value) => handleUpdate('component_code', value)}/>
+                  <GridInfoDetails title={"Department:"} value={selectedValue.department_name} handleEntryUpdate={(value) => handleUpdate('department_name', value)}/>
+                  <GridInfoDetails title={"System:"} value={selectedValue.department_system} handleEntryUpdate={(value) => handleUpdate('department_system', value)}/>
+                  <GridInfoDetails title={"Component Name:"} value={selectedValue.component_name} handleEntryUpdate={(value) => handleUpdate('component_name', value)}/>
+                  <GridInfoDetails title={"Part:"} value={selectedValue.component_part} handleEntryUpdate={(value) => handleUpdate('component_part', value)}/>
                 </Grid>
               </Typography>
             </div>
@@ -115,7 +120,7 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <Button variant="contained" color="primary" style={{width: '45%'}}>
+              <Button variant="contained" color="primary" style={{width: '45%'}} onClick={() =>{selectedValue.confirmed = true; handleClose()}}>
                 Approve
               </Button>
               {/* <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}} onClick={() => {confirmUpdate(0); handleClose();}}>
@@ -132,8 +137,8 @@ function DetailsModal(props) {
 DetailsModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  selectedValue: PropTypes.string.isRequired,
-  shipName: PropTypes.string.isRequired,
+  // selectedValue: PropTypes.string.isRequired,
+  // shipName: PropTypes.string.isRequired,
 };
 
 export default DetailsModal;

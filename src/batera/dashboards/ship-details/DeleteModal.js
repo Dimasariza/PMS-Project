@@ -31,7 +31,7 @@ function DeleteModal(props) {
   
   const deleteData = async (id) => {
     try {
-      const url = process.env.NEXT_PUBLIC_API_URL + "/ship/"+id
+      const url = process.env.NEXT_PUBLIC_API_URL + "/ships/"+id
       const response = await axios.delete(url);
       // console.log(response)
       router.replace('/ship-list')

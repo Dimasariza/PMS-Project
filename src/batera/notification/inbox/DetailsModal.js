@@ -120,11 +120,9 @@ function DetailsModal(props) {
               justifyContent: 'center',
               alignItems: 'center'
             }}>
-              <NextLink href= {url + "/batera/notification/inbox"} passHref>
-                <Button variant="contained" color="primary" style={{width: '45%'}}>
+              <Button variant="contained" color="primary" style={{width: '45%'}}>
                   Update
-                </Button>
-              </NextLink>
+              </Button>
               <Button variant="contained" color="primary" style={{width: '45%', backgroundColor: '#FF5AD9'}}>
                 Approve
               </Button>

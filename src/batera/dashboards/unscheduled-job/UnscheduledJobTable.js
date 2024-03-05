@@ -62,6 +62,7 @@ const UnscheduledJobTable = ({ scheduledJobList, handleOpen }) => {
     limit
   );
   const theme = useTheme();
+  console.log(paginatedList)
 
   return (
     <Card>
@@ -85,7 +86,7 @@ const UnscheduledJobTable = ({ scheduledJobList, handleOpen }) => {
           <TableBody>
             {paginatedList.map((schedule, index) => {
               return (
-                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule)}>
+                <TableRow hover key={index}  onClick={() => handleOpen(schedule)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"

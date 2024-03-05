@@ -62,6 +62,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
     limit
   );
   const theme = useTheme();
+  console.log(paginatedUserList)
 
   return (
     <Card>
@@ -85,7 +86,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
           <TableBody>
             {paginatedUserList.map((schedule, index) => {
               return (
-                <TableRow hover key={schedule.id}  onClick={() => handleOpen(schedule, index)}>
+                <TableRow hover key={index}  onClick={() => handleOpen(schedule, index)}>
                   <TableCell align="left">
                     <Typography
                       variant="body1"
@@ -105,7 +106,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.jobName}
+                      {schedule.job_name}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -116,7 +117,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.componentCode}
+                      {schedule.component_code}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -127,7 +128,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.department}
+                      {schedule.department_name}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -138,7 +139,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                         gutterBottom
                         noWrap
                       >
-                        {schedule.system}
+                        {schedule.department_system}
                       </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -149,7 +150,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.component}
+                      {schedule.component_name}
                     </Typography>
                   </TableCell>
                   <TableCell align="left">
@@ -160,7 +161,7 @@ const ScheduledJobTable = ({ scheduledJobList, handleOpen }) => {
                       gutterBottom
                       noWrap
                     >
-                      {schedule.part}
+                      {schedule.component_part}
                     </Typography>
                   </TableCell>
                 </TableRow>

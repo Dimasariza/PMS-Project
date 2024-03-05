@@ -2,13 +2,11 @@ import { Typography, Button, Grid } from '@mui/material';
 import NextLink from 'next/link';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
+import { useContext } from 'react';
+import { SidebarContext } from 'src/contexts/SidebarContext';
 
 function PageHeader({postData}) {
-  const user = {
-    name: 'Catherine Pike',
-    avatar: '/static/images/avatars/1.jpg'
-  };
-  const url = process.env.PUBLIC_URL || ""
+  const { shipID } = useContext(SidebarContext);	
   return (
     <Grid container justifyContent="space-between" alignItems="center">
       <Grid item>
@@ -21,7 +19,7 @@ function PageHeader({postData}) {
         </Typography>
       </Grid>
       <Grid item>
-        <NextLink href="/equipment/data-sheet" passHref>
+        <NextLink href={`/equipment/data-sheet?id=${shipID}`} passHref>
           <Button
               sx={{ mt: { xs: 2, md: 0 }, marginRight: 2 }}
               variant="contained"

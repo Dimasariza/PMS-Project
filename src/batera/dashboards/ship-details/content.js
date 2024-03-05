@@ -7,7 +7,9 @@ import {
   Divider,
   Button,
   Avatar,
-  IconButton
+  IconButton,
+  CircularProgress,
+  Skeleton
 } from '@mui/material';
 import SummaryTable from './SummaryTable';
 import { useState, useEffect, useContext } from 'react';
@@ -25,6 +27,7 @@ function Content() {
   const url = process.env.PUBLIC_URL || ""
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [summaryList, setSummaryList] = useState([
     {
       jobStatus: 'On Progress',
@@ -44,42 +47,48 @@ function Content() {
       deck: '800',
       electrical: '50',
     },
-    {
-      jobStatus: 'Electrical',
-      machine: '350',
-      deck: '150',
-      electrical: '900',
-    },
   ]);
 
   const [shipInfo, setShipInfo] = useState(
     {
-      vesselName: 'MV.AXES',
-      IMO_Number: '123xxx1980',
-      yearBuilt: '1980',
+      vessel_name: 'MV.AXES',
+      imo_number: '123xxx1980',
+      year: '1980',
       flag: 'Indonesia',
-      DWT: '15.000',
-      grossTonage: '11.900',
+      dwt: '15.000',
+      gross_tonage: '11.900',
       callSign: 'AX VII',
       LOA_Breadth: '149.6 X 23.1 m',
-      vesselTypeGeneric: 'Cargo',
-      vesselTypeDetailed: 'Container Ship',
-      vesselImage: "/static/images/ship-card/ship1.jpg"
+      vessel_type_generic: 'Cargo',
+      vessel_type_detailed: 'Container Ship',
+      image: "/static/images/ship-card/ship1.jpg"
     }
   );
+
+  // const imageUrl = shipInfo.image instanceof File 
+  // ? URL.createObjectURL(shipInfo.image) 
+  // : '/static/images/ship-card/ship1.jpg';
+  // useEffect(() => {
+  //   setLoading(true);
+  //   // imageUrl = shipInfo.image instanceof File 
+  //   //   ? URL.createObjectURL(shipInfo.image) 
+  //   //   : '/static/images/ship-card/ship1.jpg';
+  //   setLoading(false);
+  // }, [shipInfo.image]); // This effect runs whenever `shipInfo.image` changes
+  
   
   const retriveData = async () => {
-    const url = process.env.NEXT_PUBLIC_API_URL + "/ship/" + id
+    const url = process.env.NEXT_PUBLIC_API_URL + "/ships/" + id;
     await axios.get(url)
-        .then(resp => processRetrivedData(resp.data.data))
+        .then(resp => {processRetrivedData(resp);})
         .catch(error => console.log(error))
   }
 
   const processRetrivedData = async (results) => {
-    console.log(results)
-    var shipData = results.ship
+    console.log(results);
+    var shipData = results.data
 
-    const imageUrl = shipData.picture;
+    const imageUrl = shipData.image;
     // console.log(imageUrl)
 
     // const response = await axios.get(imageUrl);
@@ -95,26 +104,28 @@ function Content() {
     // formData.append("image", imageData);
 
     const convertedResults = {
-      vesselName: shipData.vesselName,
-      IMO_Number: shipData.imoNumber,
-      yearBuilt: shipData.year,
+      vessel_name: shipData.vessel_name,
+      imo_number: shipData.imo_number,
+      year: shipData.year,
       flag: shipData.flag,
-      DWT: shipData.dwt,
-      grossTonage: shipData.grossTonage,
+      dwt: shipData.dwt,
+      gross_tonage: shipData.gross_tonage,
       callSign: shipData.callsign,
       LOA: shipData.LOA,
       breadth: shipData.breadth,
-      vesselTypeGeneric: shipData.vesselTypeGeneric,
-      vesselTypeDetailed: shipData.vesselTypeDetailed,
-      vesselImage: imageUrl
+      vessel_type_generic: shipData.vessel_type_generic,
+      vessel_type_detailed: shipData.vessel_type_detailed,
+      image: imageUrl
     }
     setShipInfo(convertedResults)
-    setSummaryList(results.jobLists.results) 
+    console.log(shipData.department_counts);
+    setSummaryList(shipData.department_counts) 
+    setLoading(false);
   }
 
   useEffect(() => {
-      if(router.isReady) retriveData()
-  }, [router.isReady])
+    retriveData()
+  }, [])
   
   const handleClickOpenDeleteModal = () => {
     setOpenDeleteModal(true);
@@ -145,6 +156,7 @@ function Content() {
   };
 
   const confirmUpdate = (selectedValue) => {
+    console.log(selectedValue);
     if(selectedValue != null){
       setShipInfo(selectedValue);
       postData(selectedValue)
@@ -152,31 +164,65 @@ function Content() {
   };
 
   const postData = async (selectedValue) => {
-    console.log(selectedValue);
-    const formData = new FormData();
-    formData.append("imoNumber", selectedValue.IMO_Number)
-    formData.append("vesselName", selectedValue.vesselName)
+    setLoading(true);
+    const formData = new URLSearchParams();
+    formData.append("imo_number", selectedValue.imo_number)
+    formData.append("vessel_name", selectedValue.vessel_name)
     formData.append("flag", selectedValue.flag)
-    formData.append("dwt", parseInt(selectedValue.DWT))
-    formData.append("grossTonage", parseInt(selectedValue.grossTonage))
-    formData.append("year", parseInt(selectedValue.yearBuilt))
+    formData.append("dwt", parseInt(selectedValue.dwt))
+    formData.append("gross_tonage", parseInt(selectedValue.gross_tonage))
+    formData.append("year", parseInt(selectedValue.year))
     formData.append("callsign", selectedValue.callSign)
     formData.append("LOA", parseFloat(selectedValue.LOA))
     formData.append("breadth", parseFloat(selectedValue.breadth))
-    formData.append("vesselTypeGeneric", selectedValue.vesselTypeGeneric)
-    formData.append("vesselTypeDetailed", selectedValue.vesselTypeDetailed)
-    formData.append("picture", selectedValue.vesselImage);
+    formData.append("vessel_type_generic", selectedValue.vessel_type_generic)
+    formData.append("vessel_type_detailed", selectedValue.vessel_type_detailed)
+    // formData.append("image", selectedValue.image);
 
+    // await axios.put(url, formData)
+    //     .then(resp => {console.log(resp);})
+    //     .catch(error => console.log(error))
     try {
-      const url = process.env.NEXT_PUBLIC_API_URL + "/ship/"+id+"/update" 
-      const response = await axios.post(url, 
-      formData);
+      console.log(selectedValue);
+      const url = process.env.NEXT_PUBLIC_API_URL + "/ships/"+id
+      const response = await axios.put(url, formData, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      console.log(response);
     } catch (error) {
       console.log(error)
     }
+
+    if(selectedValue.image != null){
+      const imageFormData = new FormData();
+      imageFormData.append("image", selectedValue.image);
+      // setShipInfo(prevState => ({
+      //   ...prevState,
+      //   image: null
+      // }));
+      try {
+        const url = process.env.NEXT_PUBLIC_API_URL + "/ships_image/"+id
+        const response = await axios.post(url, imageFormData);
+        setShipInfo(prevState => ({
+          ...prevState,
+          image: response.data.image
+        }));
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    setLoading(false);
+    // retriveData();
   }
 
-  const GridInfoDetails = ({title, value}) => {
+  // useEffect(() => {
+  //   console.log(shipInfo);
+  // }, [shipInfo])
+
+  const GridInfoDetails = ({title, value, loading = false}) => {
     return(
       <>
         <Grid item xs={6} sm={8} md={6} lg={4} textAlign={{ sm: 'left' }}>
@@ -186,9 +232,15 @@ function Content() {
         </Grid>
         <Grid item xs={6} sm={4} md={6} lg={8}>
           <Box sx={{ maxWidth: { xs: 'auto', sm: 300 } }}>
-            <Text color="black">
-              <b>{value}</b>
-            </Text>
+            {
+              loading ? 
+              <Skeleton animation="wave" /> 
+              : 
+              <Text color="black">
+                <b>{value}</b>
+              </Text>
+            }
+            
           </Box>
         </Grid>
       </>
@@ -224,16 +276,16 @@ function Content() {
               }
             }}>
               <Grid container spacing={0}>
-                <GridInfoDetails title={"Vessel name:"} value={shipInfo.vesselName}/>
-                <GridInfoDetails title={"IMO Number:"} value={shipInfo.IMO_Number}/>
-                <GridInfoDetails title={"Year Built:"} value={shipInfo.yearBuilt}/>
-                <GridInfoDetails title={"Flag:"} value={shipInfo.flag}/>
-                <GridInfoDetails title={"DWT:"} value={shipInfo.DWT}/>
-                <GridInfoDetails title={"Gross Tonage:"} value={shipInfo.grossTonage}/>
-                <GridInfoDetails title={"Call Sign:"} value={shipInfo.callSign}/>
-                <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA + " X " + shipInfo.breadth+" m"}/>
-                <GridInfoDetails title={"Vessel Type - Generic:"} value={shipInfo.vesselTypeGeneric}/>
-                <GridInfoDetails title={"Vessel Type - Detailed:"} value={shipInfo.vesselTypeDetailed}/>
+                <GridInfoDetails title={"Vessel name:"} value={shipInfo.vessel_name} loading={loading}/>
+                <GridInfoDetails title={"IMO Number:"} value={shipInfo.imo_number} loading={loading}/>
+                <GridInfoDetails title={"Year Built:"} value={shipInfo.year} loading={loading}/>
+                <GridInfoDetails title={"Flag:"} value={shipInfo.flag} loading={loading}/>
+                <GridInfoDetails title={"DWT:"} value={shipInfo.dwt} loading={loading}/>
+                <GridInfoDetails title={"Gross Tonage:"} value={shipInfo.gross_tonage} loading={loading}/>
+                <GridInfoDetails title={"Call Sign:"} value={shipInfo.callSign} loading={loading}/>
+                <GridInfoDetails title={"LOA x Breadth:"} value={shipInfo.LOA + " X " + shipInfo.breadth+" m"} loading={loading}/>
+                <GridInfoDetails title={"Vessel Type - Generic:"} value={shipInfo.vessel_type_generic} loading={loading}/>
+                <GridInfoDetails title={"Vessel Type - Detailed:"} value={shipInfo.vessel_type_detailed} loading={loading}/>
                 <Typography sx={{
                   width:'100%',
                   display: {
@@ -243,7 +295,11 @@ function Content() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   }}>
-                    <Avatar variant="rounded" src={shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                    {
+                      loading ? "a" : "b"
+                    }
+                    {/* <CircularProgress sx={{visibility: !loading ? 'hidden' : 'visible'}} />  */}
+                    {/* <Avatar variant="rounded" src={shipInfo.image} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/> */}
                 </Typography>
                 <Typography 
                   sx={{
@@ -273,13 +329,13 @@ function Content() {
                   <DeleteModal
                     onClose={handleCloseDeleteModal}
                     open={openDeleteModal}
-                    shipName={shipInfo.vesselName}
+                    shipName={shipInfo.vessel_name}
                     shipID={id}
                   />
                   <DetailsModal
                     onClose={handleCloseEditModal}
                     open={openEditModal}
-                    confirmUpdate={confirmUpdate}
+                    confirmUpdate={(value) => confirmUpdate(value)}
                     defaultFormValue={shipInfo}
                   />
                 </Typography>
@@ -291,17 +347,20 @@ function Content() {
                 xs: 'none',
                 sm: 'flex',
               },
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'center',
               }}>
-                <Avatar variant="rounded" src={shipInfo.vesselImage} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                {
+                  loading ? <Skeleton variant="rounded" animation="wave" sx={{ width: '100%', height: '100%', boxSizing: 'border-box' }}/> : <Avatar variant="rounded" src={shipInfo.image} sx={{ width: '80%', height: '80%', boxSizing: 'border-box' }}/>
+                }
+                    
             </Typography>
           </div>
         </CardContent>
       </Card>
       <div style={{height: '3vh'}} />
       <Card>
-        <SummaryTable summaryList={summaryList} />
+        <SummaryTable summaryList={summaryList} loading={loading}/>
       </Card>
     </>
   );
